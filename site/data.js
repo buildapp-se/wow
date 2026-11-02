@@ -49,7 +49,7 @@ export const GOALS = {
   crafta: {
     label: "Levla och crafta",
     build: { "Thrill of Adventure": 5, "Working Overtime": 5, "Field Guide": 3, "Field Medicine": 2, "Frequent Flier": 1 },
-    note: "Det här är din main. Thrill först: den hjälper i varje strid medan poängen kommer långsamt (3 poäng vid nivå 25, 6 vid 45). Working Overtime sänker sedan vad Engineering 225 till 300 kostar. Well Rested hoppar du över: du spelar 6 h om dagen, så rested tar snabbt slut och perken ger bara +4 % per rang.",
+    note: "Det här är din main. Thrill först: den hjälper i varje strid. Poängen gäller hela kontot, så de du tjänar på bank-alten kan din Mage också spendera, medan varje karaktär väljer sina egna perkar. Working Overtime sänker sedan vad Engineering 225 till 300 kostar. Well Rested hoppar du över: du spelar 6 h om dagen, så rested tar snabbt slut och perken ger bara +4 % per rang.",
   },
   guld: {
     label: "Samla och tjäna guld",

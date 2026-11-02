@@ -153,44 +153,53 @@ export const PLAN = [
 ];
 export const HANDEL = PLAN.flatMap((f) => f.rader.filter((r) => r.typ === "Spara" && r.kop));
 
-// Dyra föremål. beta: begärt pris på Forever-betan, WoWCensus 2026-10-12, nivåtak 30. classic: begärt pris i Classic Era, WoWCensus 2026-10-26.
-// Båda är begärda priser, inte försäljningar. Classic Era är en gammal ekonomi: det visar vad som är sällsynt, inte vad det ger i Forever.
-// Flask of the Titans, Shadowfang och Assassin's Blade: snitt räknat ur avrundat listvärde delat med antal. Fyra föremål på 25 g: warcraftforever.games 19 sept.
-// Alla är kontrollerade mot Wowheads Forever-databas 2026-11-02. Edgemaster's Handguards, Blackmetal Cape och Lady Maye's Pendant saknades där.
-const dyr = (vad, id, typ, krav, beta, classic) => ({ vad, id, typ, krav, beta: beta && beta * g, classic: classic && classic * g });
+// Dyra föremål. beta: begärt pris på Forever-betan, WoWCensus 2026-10-12, nivåtak 30. De fyra på 25 g: warcraftforever.games 19 sept.
+// var: Wowheads Forever-data 2026-11-02, de mobs med högst droppchans. Under 0,1 % syns inte. sallsynt ger högre gräns.
+const dyr = (vad, id, typ, krav, beta, varifran, sallsynt) => ({ vad, id, typ, krav, beta: beta && beta * g, var: varifran, sallsynt });
 export const BOE = [
-  dyr("The Green Tower", 1204, "Epic", "Nivå 36", 500.89),
-  dyr("Schematic: Sniper Scope", 10608, "Recept", "Engineering 240", 339.71),
-  dyr("Speedsteel Rapier", 13034, "Blå", "Nivå 36", 250.21),
-  dyr("Staff of Jordan", 873, "Epic", "Nivå 35", 250),
-  dyr("Tigerstrike Mantle", 13108, "Blå", "Nivå 29", 204.46),
-  dyr("Scarlet Boots", 10332, "Blå", "Nivå 30", 200),
-  dyr("Gnomish Shrink Ray", 10716, "Övrigt", "Engineering 205", 177.12),
-  dyr("Mantle of Thieves", 2264, "Blå", "Nivå 25", 160.29),
-  dyr("Warchief Kilt", 7760, "Blå", "Nivå 34", 129.92),
-  dyr("Big Iron Fishing Pole", 6367, "Övrigt", "Nivå 25, Fishing 100", 125.25),
-  dyr("Traveler's Backpack", 4500, "Väska", "", 100),
-  dyr("Vendetta", 776, "Blå", "Nivå 26", 99.63),
-  dyr("Forest Tracker Epaulets", 2278, "Blå", "Nivå 26", 96.22),
-  dyr("Pugilist Bracers", 4438, "Blå", "Nivå 25", 80),
-  ...[["Lil Timmy's Peashooter", 13136], ["Starsight Tunic", 12988], ["Searing Blade", 12992], ["Stormbringer Belt", 12978]].map(([v, id]) => dyr(v, id, "Blå", "", 25)),
-  dyr("Cloak of Flames", 3475, "Epic", "Nivå 60", null, 155998),
-  dyr("Formula: Enchant Chest - Greater Stats", 16253, "Recept", "Enchanting 300", null, 102997),
-  dyr("Teebu's Blazing Longsword", 1728, "Epic", "Nivå 60", null, 100000),
-  dyr("Sulfuron Hammer", 17193, "Epic", "Nivå 60", null, 34199),
-  dyr("Plans: Lionheart Helm", 12717, "Recept", "Blacksmithing 300", null, 28199),
-  dyr("Plans: Stronghold Gauntlets", 12720, "Recept", "Blacksmithing 300", null, 15299),
-  dyr("Plans: Sulfuron Hammer", 18592, "Recept", "Blacksmithing 300", null, 10829),
-  dyr("Pattern: Mooncloth Circlet", 14509, "Recept", "Tailoring 280", null, 10656),
-  dyr("Schematic: Flame Deflector", 4411, "Recept", "Engineering 125", null, 9399),
-  dyr("Schematic: Hyper-Radiant Flame Reflector", 18657, "Recept", "Engineering 290", null, 9266),
-  dyr("Recipe: Flask of the Titans", 13519, "Recept", "Alchemy 300", null, 6188),
-  dyr("Shadowfang", 1482, "Blå", "Nivå 19", null, 2405),
-  dyr("Assassin's Blade", 1935, "Blå", "Nivå 19", null, 2293),
-  ...[["Hand of Edward the Odd", 2243, 57], ["Blade of Hanna", 2801, 59], ["Cloudkeeper Legplates", 14554, 57], ["Wall of the Dead", 1979, 45], ["Flurry Axe", 871, 42], ["Fiery War Axe", 870, 35], ["Kang the Decapitator", 2291, 44], ["The Eye of Shadow", 18665, 60], ["Elemental Mage Staff", 944, 56]].map(([v, id, n]) => dyr(v, id, "Epic", `Nivå ${n}`)),
+  dyr("The Green Tower", 1204, "Epic", "Nivå 36", 500.89, "Världsdrop, 21 mobtyper: Dustwallow Marsh, Swamp of Sorrows, Feralas"),
+  dyr("Schematic: Sniper Scope", 10608, "Recept", "Engineering 240", 339.71, "Världsbossar: Ysondre, Lethon, Azuregos runt 5 %. Sällsynt i lådor"),
+  dyr("Speedsteel Rapier", 13034, "Blå", "Nivå 36", 250.21, "Världsdrop, 33 mobtyper: Badlands, Swamp of Sorrows, Dustwallow Marsh"),
+  dyr("Staff of Jordan", 873, "Epic", "Nivå 35", 250, "Världsdrop, 9 mobtyper: Arathi Highlands, Stranglethorn Vale, Desolace"),
+  dyr("Tigerstrike Mantle", 13108, "Blå", "Nivå 29", 204.46, "Världsdrop, 36 mobtyper: Stranglethorn Vale, Alterac Mountains"),
+  dyr("Scarlet Boots", 10332, "Blå", "Nivå 30", 200, "Scarlet Monastery, vanliga mobs"),
+  dyr("Gnomish Shrink Ray", 10716, "Övrigt", "Engineering 205", 177.12, "Craftas med Engineering, du kan göra den själv"),
+  dyr("Mantle of Thieves", 2264, "Blå", "Nivå 25", 160.29, "Razorfen Kraul, vanliga mobs"),
+  dyr("Warchief Kilt", 7760, "Blå", "Nivå 34", 129.92, "Scarlet Monastery, vanliga mobs"),
+  dyr("Big Iron Fishing Pole", 6367, "Övrigt", "Nivå 25, Fishing 100", 125.25, "Shellfish Trap i Desolace, 1,2 %"),
+  dyr("Traveler's Backpack", 4500, "Väska", "", 100, "16 platser. Världsdrop på över 200 mobtyper, bäst Blackrock Spire 1 % och Wetlands 0,7 %. Lockboxar. Behåll efter mount"),
+  dyr("Vendetta", 776, "Blå", "Nivå 26", 99.63, "Razorfen Kraul, vanliga mobs"),
+  dyr("Forest Tracker Epaulets", 2278, "Blå", "Nivå 26", 96.22, "Världsdrop, 43 mobtyper: Duskwood, Stranglethorn Vale, Hillsbrad Foothills"),
+  dyr("Pugilist Bracers", 4438, "Blå", "Nivå 25", 80, "Razorfen Kraul, vanliga mobs"),
+  dyr("Lil Timmy's Peashooter", 13136, "Blå", "", 25, "Världsdrop, 67 mobtyper: Ashenvale, Redridge Mountains"),
+  dyr("Starsight Tunic", 12988, "Blå", "", 25, "Världsdrop, 67 mobtyper: Ashenvale, Redridge Mountains"),
+  dyr("Searing Blade", 12992, "Blå", "", 25, "Lady Anacondra, Wailing Caverns 0,4 %. Världsdrop i Wetlands"),
+  dyr("Stormbringer Belt", 12978, "Blå", "", 25, "Dalaran Spellscribe, Silverpine Forest 0,3 %. Lord Pythas, Wailing Caverns 0,3 %"),
+  dyr("Cloak of Flames", 3475, "Epic", "Nivå 60", null, "Molten Core och Ahn'Qiraj, vanliga mobs", 1),
+  dyr("Formula: Enchant Chest - Greater Stats", 16253, "Recept", "Enchanting 300", null, "Världsbossar: Azuregos 2,1 %, Taerar 1,6 %, Ysondre 1,2 %", 1),
+  dyr("Teebu's Blazing Longsword", 1728, "Epic", "Nivå 60", null, "Blackwing Lair och Molten Core, vanliga mobs", 1),
+  dyr("Sulfuron Hammer", 17193, "Epic", "Nivå 60", null, "Craftas med Blacksmithing", 1),
+  dyr("Plans: Lionheart Helm", 12717, "Recept", "Blacksmithing 300", null, "Världsbossar: Azuregos 1,7 %, Ysondre 0,9 %, Emeriss 0,8 %", 1),
+  dyr("Plans: Stronghold Gauntlets", 12720, "Recept", "Blacksmithing 300", null, "Världsbossar: Emeriss 3,2 %, Azuregos 2,1 %, Taerar 1,6 %", 1),
+  dyr("Plans: Sulfuron Hammer", 18592, "Recept", "Blacksmithing 300", null, "Quest: A Binding Contract", 1),
+  dyr("Pattern: Mooncloth Circlet", 14509, "Recept", "Tailoring 280", null, "Världsbossar: Ysondre 2,3 %, Azuregos 2,2 %, Taerar 1,6 %", 1),
+  dyr("Schematic: Flame Deflector", 4411, "Recept", "Engineering 125", null, "Mekgineer Thermaplugg, Gnomeregan 0,5 %"),
+  dyr("Schematic: Hyper-Radiant Flame Reflector", 18657, "Recept", "Engineering 290", null, "Solakar Flamewreath, Blackrock Spire 8,2 %"),
+  dyr("Recipe: Flask of the Titans", 13519, "Recept", "Alchemy 300", null, "General Drakkisath, Blackrock Spire 4,1 %. Pix Xizzix, Stranglethorn Vale, säljer det också"),
+  dyr("Shadowfang", 1482, "Blå", "Nivå 19", null, "Shadowfang Keep, vanliga mobs"),
+  dyr("Assassin's Blade", 1935, "Blå", "Nivå 19", null, "Shadowfang Keep, vanliga mobs"),
+  dyr("Hand of Edward the Odd", 2243, "Epic", "Nivå 57", null, "Blackwing Lair och Molten Core, vanliga mobs"),
+  dyr("Blade of Hanna", 2801, "Epic", "Nivå 59", null, "Lieutenant General Nokhor, Silithus 12,6 %. Blackrock Spire, Molten Core"),
+  dyr("Cloudkeeper Legplates", 14554, "Epic", "Nivå 57", null, "Lieutenant General Nokhor, Silithus 5,8 %. Molten Core, Blackwing Lair"),
+  dyr("Wall of the Dead", 1979, "Epic", "Nivå 45", null, "Temple of Atal'Hakkar, vanliga mobs"),
+  dyr("Flurry Axe", 871, "Epic", "Nivå 42", null, "Världsdrop, 20 mobtyper: Azshara, Searing Gorge, Maraudon"),
+  dyr("Fiery War Axe", 870, "Epic", "Nivå 35", null, "Världsdrop, 13 mobtyper: Desolace, Arathi Highlands, Scarlet Monastery"),
+  dyr("Kang the Decapitator", 2291, "Epic", "Nivå 44", null, "Temple of Atal'Hakkar, vanliga mobs"),
+  dyr("The Eye of Shadow", 18665, "Epic", "Nivå 60", null, "Lord Kazzak, Blasted Lands 89,7 %. Dreadlords och Manahounds där runt 3,5 %"),
+  dyr("Elemental Mage Staff", 944, "Epic", "Nivå 56", null, "Världsdrop, 74 mobtyper: Dustwallow Marsh, Blackwing Lair"),
 ];
-// Min egen gräns, inget marknadspris: halva betapriset, annars efter hur dyrt det är i Classic Era.
-export const golv = (b) => b.beta ? Math.round(b.beta / 2 / s) * s : b.classic >= 10000 * g ? 500 * g : 100 * g;
+// Min egen gräns, inget marknadspris: halva betapriset, annars 500 g för de sällsynta och 100 g för övriga.
+export const golv = (b) => b.beta ? Math.round(b.beta / 2 / s) * s : b.sallsynt ? 500 * g : 100 * g;
 
 // Tidslinjen. Samma priser och antal som PLAN: ändra båda.
 const hos = (id) => `<button type="button" class="plats" data-plats="${id}">${PLATSER[id].namn}</button>`;

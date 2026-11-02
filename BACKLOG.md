@@ -8,4 +8,5 @@
 - [ ] `[P2]` Komplettera Missa inte: startdatum för Field of Honor, Drakefire-stegens koordinater och pre-raid-utrustning saknades i källorna 2026-11-02.
 - [ ] `[P2]` Kontrollera i spelet: om Darkmoon Faire finns under levlingen (Classics kalender säger 9 till 15 nov, inte belagt för Forever) och var Recipe: Greater Fire Protection Potion droppar.
 - [ ] `[P1]` Efter släppet: byt `GEAR` (`site/mage.js`) mot riktiga BiS-listor när Wowhead fyller sin Phase 1-tabell, och lägg till trinkets och mantlar. Kontrollera talangkartan på 31 till 60.
+- [ ] `[P1]` Dyra föremål: 4 recept och de världsdroppade epics som inte redan står i `BOE` hämtades inte, Wowhead svarade 403 efter runt 100 sidor. Kör om långsamt. 191 blå och lila recept saknar källa i Wowheads data (bland annat Forever-nya) och är inte med.
 - [ ] `[P2]` Bekräfta en exporterad Auctionator-lista och lägg in färdig import.

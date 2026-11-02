@@ -1,6 +1,6 @@
-import { PERKS, TREES, CLASSES, GOALS, CHALLENGES, REWARDS, buildFor } from "./data.js";
-import { PHASES, HANDEL, BUDGET, pris, wh } from "./plan.js";
-import { initSortable, sortable } from "./sortable.js";
+import { PERKS, TREES, CLASSES, GOALS, CHALLENGES, REWARDS, buildFor } from "./data.js?v=dev";
+import { PHASES, HANDEL, BUDGET, GANTT, MILSTOLPAR, START, SLUT, dag, datum, pris, wh } from "./plan.js?v=dev";
+import { initSortable, sortable } from "./sortable.js?v=dev";
 
 const $ = (s) => document.querySelector(s);
 
@@ -23,6 +23,18 @@ $("#tidslinje").innerHTML = PHASES.map((f, i) => `<li>
       ${f.inte ? `<div class="inte"><h4>Gör inte</h4><ul>${f.inte.map((t) => `<li>${t}</li>`).join("")}</ul></div>` : ""}
     </div>
   </div></li>`).join("");
+
+// Gantt-schemat: datum blir procent av tidsaxeln
+const pct = (d) => (dag(d) / dag(SLUT)) * 100;
+const linjer = MILSTOLPAR.map(([d]) => `<i class="g-linje" style="left:${pct(d)}%"></i>`).join("");
+const stapel = (typ, text, [a, b]) => `<span class="stapel ${typ}" style="left:${pct(a)}%;width:${pct(b) - pct(a)}%">${text}</span>`;
+const veckor = Array.from({ length: 7 }, (_, i) => new Date(Date.parse(START) + i * 7 * 864e5).toISOString().slice(0, 10));
+$("#gantt").innerHTML = `<li class="g-rad g-axel" aria-hidden="true"><div></div><div class="g-spar">
+    ${veckor.map((d) => `<span class="g-tick" style="left:${pct(d)}%">${datum(d)}</span>`).join("")}
+    ${MILSTOLPAR.map(([d, t]) => `<b class="g-mil" style="left:${pct(d)}%">${t}</b>`).join("")}</div></li>`
+  + GANTT.map((r) => `<li class="g-rad"><div><strong>${r.varor.join(", ")}</strong>
+    <small>Köp ${datum(r.kop[0])} till ${datum(r.kop[1])}. Sälj ${r.salj[1] === SLUT ? `från ${datum(r.salj[0])}` : `${datum(r.salj[0])} till ${datum(r.salj[1])}`}.</small></div>
+    <div class="g-spar" aria-hidden="true">${linjer}${stapel("kop", "Köp", r.kop)}${stapel("salj", "Sälj", r.salj)}</div></li>`).join("");
 
 // Handelslistan, grupperad per fas
 const faser = [...new Set(HANDEL.map((h) => h.fas))];

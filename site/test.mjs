@@ -2,7 +2,7 @@
 import assert from "node:assert";
 import { readFileSync } from "node:fs";
 import { PERKS, CLASSES, GOALS, CHALLENGES, buildFor, buildError } from "./data.js";
-import { HANDEL, BUDGET, PHASES, pris } from "./plan.js";
+import { HANDEL, BUDGET, PHASES, GANTT, MILSTOLPAR, START, SLUT, dag, datum, pris } from "./plan.js";
 
 assert.equal(Object.keys(PERKS).length, 21, "Blizzard anger 21 perkar");
 assert.equal(CHALLENGES.reduce((a, c) => a + c.points, 0), 65, "Blizzard anger 65 utmaningar");
@@ -29,6 +29,16 @@ for (const h of HANDEL) {
     assert.ok(h.kop <= TAK[tak] * 0.5, `${h.vad}: för dyrt köp`);
   }
 }
+// Schemat: allt som säljs ska finnas där, och köp måste börja före försäljning.
+const varor = GANTT.flatMap((r) => r.varor);
+for (const h of HANDEL.filter((x) => x.salj)) assert.ok(varor.includes(h.vad), `${h.vad} saknas i schemat`);
+for (const r of GANTT) {
+  assert.ok(dag(r.kop[0]) >= 0 && dag(r.kop[1]) > dag(r.kop[0]), r.varor[0]);
+  assert.ok(dag(r.salj[0]) > dag(r.kop[0]) && dag(r.salj[1]) > dag(r.salj[0]) && dag(r.salj[1]) <= dag(SLUT), r.varor[0]);
+}
+assert.equal(dag("2026-12-09"), 34);
+assert.equal(datum(START), "5 nov");
+assert.ok(MILSTOLPAR.every(([d]) => dag(d) > 0 && dag(d) < dag(SLUT)));
 assert.equal(pris(45000), "4 g 50 s");
 assert.equal(pris(300), "3 s");
 assert.equal(pris(830), "8 s 30 k");
@@ -36,6 +46,10 @@ assert.equal(pris(830), "8 s 30 k");
 const html = readFileSync(new URL("./index.html", import.meta.url), "utf8");
 const allText = html + readFileSync(new URL("./plan.js", import.meta.url), "utf8") + readFileSync(new URL("./data.js", import.meta.url), "utf8");
 assert.match(html, /<meta name="robots" content="noindex, nofollow">/);
+// Filerna cachas i 4 h. Utan version i adressen möter ny HTML gammal app.js och sidan blir tom.
+assert.match(html, /app\.js\?v=dev/);
+assert.match(html, /stil\.css\?v=dev/);
+assert.equal(readFileSync(new URL("./app.js", import.meta.url), "utf8").match(/from "\.\/[a-z]+\.js\?v=dev"/g).length, 3);
 assert.ok(!allText.includes("—"), "inget tankstreck i texten");
 assert.ok(!/Gemini|Ej belagt/i.test(allText), "ingen faktakollstext på sidan");
 for (const fas of HANDEL.map((h) => h.fas)) assert.ok(BUDGET[fas], fas);

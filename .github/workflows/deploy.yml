@@ -27,6 +27,8 @@ jobs:
       # Legacy-byggena måste gå att köpa i spelet och noindex måste finnas, annars ska sidan inte ut.
       - run: node site/test.mjs
       - run: rm site/test.mjs
+      # Assets cachas i 4 h: ny adress vid varje deploy, så att HTML och JS aldrig blandas.
+      - run: sed -i "s/?v=dev/?v=${GITHUB_SHA::7}/g" site/index.html site/app.js
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

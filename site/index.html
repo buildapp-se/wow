@@ -11,8 +11,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="stil.css">
-<script type="module" src="app.js"></script>
+<link rel="stylesheet" href="stil.css?v=dev">
+<script type="module" src="app.js?v=dev"></script>
 </head>
 <body>
 <div class="layout">
@@ -42,15 +42,16 @@
   <ol class="tidslinje" id="tidslinje"></ol>
 
   <h2 class="mellan">Main och alts</h2>
-  <p>Det finns ingen level lock eller level sync. Spelar du mer än kompisarna är lösningen två karaktärer som har olika jobb.</p>
+  <p><strong>Gör två alts direkt, inte en av varje klass.</strong> Main plus två alts räcker till 16 Legacy-poäng, alltså allt en karaktär kan använda. Alt 3 och 4 ger fler belöningar och täcker de sista yrkena. Övriga klasser lönar sig bara om du jagar Spectral Bear vid 55 poäng. Det finns ingen level lock, så en alt är också lösningen när du springer ifrån kompisarna.</p>
   <div class="tabell" tabindex="0" role="region" aria-label="Karaktärerna">
   <table data-sort-key="altar">
-  <thead><tr><th>Karaktär</th><th>Klass och yrken</th><th>Jobb</th><th>Spela den när</th></tr></thead>
+  <thead><tr><th>Karaktär</th><th>Klass</th><th>Yrken</th><th>Jobb</th><th>Spela den när</th><th>Legacy, summa</th></tr></thead>
   <tbody>
-  <tr><td><strong>Main</strong></td><td>Gnome Mage, Mining och Engineering</td><td>Tempo, guld, raid</td><td>Alltid när du spelar själv</td></tr>
-  <tr><td><strong>Vän-alt</strong></td><td>Protection Warrior eller Holy Priest</td><td>Tank eller healer åt gruppen, fylla grupper snabbt</td><td>Bara med kompisarna, så att ni ligger på samma nivå</td></tr>
-  <tr><td><strong>Bank-alt</strong></td><td>Warlock, Tailoring och Enchanting</td><td>Står vid AH. Levlas till 20 och sedan 25 för fem Legacy-poäng. Mount kommer från klassquest</td><td>När main saknar rested</td></tr>
-  <tr><td><strong>Alt 3</strong></td><td>Retribution Paladin, Mining och Blacksmithing</td><td>Snabb levling, klassmount, Legacy</td><td>Efter main på 40</td></tr>
+  <tr><td><strong>Main</strong></td><td>Gnome Mage</td><td>Mining, Engineering</td><td>Tempo, guld, raid</td><td>Alltid när du spelar själv</td><td data-sort-value="10">10: nivå 60, Engineering 300, dungeons, Rank 3</td></tr>
+  <tr><td><strong>Alt 2: vän-alt</strong></td><td>Protection Warrior</td><td>Herbalism, Alchemy</td><td>Tank åt gruppen. Gör fire-potions till Onyxia och transmutes</td><td>Bara med kompisarna, så att ni ligger på samma nivå</td><td data-sort-value="16">16: nivå 25. 18 med Alchemy 225</td></tr>
+  <tr><td><strong>Alt 1: bank-alt</strong></td><td>Warlock</td><td>Tailoring, Enchanting</td><td>Står vid AH. Väskor och tyg. Mount från klassquest</td><td>När main saknar rested</td><td data-sort-value="15">15: nivå 25, båda yrkena 225</td></tr>
+  <tr><td><strong>Alt 3</strong></td><td>Beast Mastery Hunter</td><td>Skinning, Leatherworking</td><td>Låg risk, Camp Tent, läder</td><td>Efter main på 60, om du vill ha fler belöningar</td><td data-sort-value="21">21: nivå 25, Leatherworking 225</td></tr>
+  <tr><td><strong>Alt 4</strong></td><td>Retribution Paladin</td><td>Mining, Blacksmithing</td><td>Snabb levling, klassmount</td><td>Efter alt 3</td><td data-sort-value="24">24: nivå 25, Blacksmithing 225. Nästa poäng ger 25-belöningen</td></tr>
   </tbody></table></div>
   <h3>Reglerna</h3>
   <ul>
@@ -102,7 +103,28 @@
   <h2>Köp och sälj</h2>
   <p>Priserna är startriktpriser, byggda på betans AH, vendorvärden och Mister Graphed. Skanna AH första kvällen och justera.</p>
   <p class="not"><strong>Hela idén:</strong> <a href="https://www.wowhead.com/forever/npc=263384" rel="noopener">Mister Graphed</a> i Riverglades säljer Scarce och toppmaterial till fast pris. Det sätter taket. Köp under 40 % av taket och sälj på 90 till 95 %.</p>
+
+  <h3>Schema: när du köper och säljer</h3>
+  <p>Datumen räknar med 6 h spel om dagen. Spelar du mindre, följ priserna: köp under maxpriset och sälj på riktpriset.</p>
+  <ul class="gantt" id="gantt"></ul>
   <div id="handelslista"></div>
+
+  <h3>Arbitrage: löpande affärer</h3>
+  <p>Gör affären bara om marginalen är minst 20 % efter deposition och AH-avgift. Auctionator visar priserna och vendorvärdet på varje skanning.</p>
+  <div class="tabell" tabindex="0" role="region" aria-label="Arbitrage">
+  <table data-sort-key="arbitrage">
+  <thead><tr><th>Affär</th><th>När</th><th>Gör så här</th><th>Exempel</th></tr></thead>
+  <tbody>
+  <tr><td><strong>Under vendorvärde</strong></td><td>Varje skanning</td><td>Köp allt som ligger under vendorpriset och sälj direkt till vendor. Riskfritt.</td><td>Thorium Bar under 6 s, Runecloth under 4 s</td></tr>
+  <tr><td><strong>Felprissatt vara</strong></td><td>Varje skanning</td><td>Köp det som ligger långt under medelpriset och lägg upp det på medelpriset.</td><td>Någon lägger ut per stack men räknar per styck</td></tr>
+  <tr><td><strong>Under Graphed-taket</strong></td><td>Löpande från nivå 40</td><td>Köp under 40 % av taket och sälj på 90 till 95 %.</td><td>Pristine Leather: köp upp till 2 g, sälj 4 g 50 s</td></tr>
+  <tr><td><strong>Rå mot förädlad</strong></td><td>När summan inte går ihop</td><td>Köp den billigare sidan. Är råvaran billig: förädla och sälj. Är den färdiga billig: köp den i stället för att tillverka.</td><td>4 Light Leather blir 1 Medium. Betan: 2 s 60 k i råvara mot 1 s 80 k färdigt, så köp färdigt</td></tr>
+  <tr><td><strong>Disenchant</strong></td><td>När bank-alten har Enchanting</td><td>Köp gröna BoE-prylar under värdet av materialen de ger, och sälj materialen.</td><td>Brown Linen Robe: 80 % Strange Dust, 20 % Lesser Magic Essence</td></tr>
+  <tr><td><strong>Stor stack till små</strong></td><td>När småköpare betalar mer</td><td>Köp hela stackar billigt per styck, dela upp och sälj i mindre stackar.</td><td>Stack på 20 delad i 5</td></tr>
+  <tr><td><strong>Tid på dygnet</strong></td><td>Varje dag</td><td>Köp när många lägger ut och få köper, sent på natten och förmiddag. Sälj kvällstid.</td><td>Consumables kvällen före raid</td></tr>
+  <tr><td><strong>Nytt behov</strong></td><td>Före varje milstolpe</td><td>Köp det som behövs innan köparna når dit, och sälj när de är framme.</td><td>Fire-material före 9 december</td></tr>
+  <tr><td><strong>Eget tillverkat</strong></td><td>När ett köp saknar säljare</td><td>Tillverka det marknaden saknar och som dina yrken kan.</td><td>Bronze Tube, väskor, Mithril Casing</td></tr>
+  </tbody></table></div>
 
   <h3>Tillverka och sälj</h3>
   <div class="tabell" tabindex="0" role="region" aria-label="Tillverka och sälj">

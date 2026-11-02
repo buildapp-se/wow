@@ -8,6 +8,19 @@ export function pris(c) {
   return [gold && `${gold} g`, silver && `${silver} s`, kop && `${kop} k`].filter(Boolean).join(" ") || "0";
 }
 
+// Gantt-schemat. Datumen räknar med 6 h spel om dagen.
+export const START = "2026-11-05", SLUT = "2026-12-24";
+export const dag = (d) => (Date.parse(d) - Date.parse(START)) / 864e5;
+export const datum = (d) => new Date(d).toLocaleDateString("sv-SE", { day: "numeric", month: "short", timeZone: "UTC" }).replace(".", "");
+export const MILSTOLPAR = [["2026-11-13", "Mount"], ["2026-11-25", "Nivå 60"], ["2026-12-09", "Raids"]];
+export const GANTT = [
+  { varor: ["Waylaid Crate"], kop: ["2026-11-05", "2026-11-09"], salj: ["2026-11-12", "2026-11-26"] },
+  { varor: ["Pristine Leather", "Frilled Lichen"], kop: ["2026-11-07", "2026-11-26"], salj: ["2026-11-19", SLUT] },
+  { varor: ["Rosecap", "Bauxite", "Pristine Hide"], kop: ["2026-11-13", "2026-11-26"], salj: ["2026-11-22", SLUT] },
+  { varor: ["Stranglevine", "Pitchblende", "Pristine Scale", "Death Lotus", "Fel Crystal", "Torbernite", "Black Lotus", "Arcane Crystal"], kop: ["2026-11-13", "2026-12-03"], salj: ["2026-11-26", SLUT] },
+  { varor: ["Elemental Fire", "Dreamfoil", "Heart of Fire"], kop: ["2026-11-19", "2026-12-01"], salj: ["2026-12-01", "2026-12-16"] },
+];
+
 // fas: när köpet görs. kop: maxpris per styck. salj: riktpris per styck.
 export const HANDEL = [
   { fas: "1. Första dagarna", vad: "Waylaid Crate", id: 248549, antal: 40, kop: 3 * s, salj: 20 * s, nar: "Vecka 2 till 3", grund: "Betan: 1 till 2 s tidigt, 15 till 49 s senare" },
@@ -22,9 +35,9 @@ export const HANDEL = [
     { fas: "3. Efter mount", vad, id, antal: 3, kop: 20 * g, salj: 45 * g, nar: "När folk når 60", grund: "Tak 50 g" })),
   ...[["Black Lotus", 13468], ["Arcane Crystal", 12363]].map(([vad, id]) => (
     { fas: "3. Efter mount", vad, id, antal: 2, kop: 20 * g, salj: 45 * g, nar: "När folk når 60", grund: "Tak 50 g" })),
-  { fas: "4. Inför raid", vad: "Elemental Fire", id: 7068, antal: 40, kop: 15 * s, salj: 60 * s, nar: "1 till 9 dec", grund: "Greater Fire Protection Potion. Vendor 4 s" },
-  { fas: "4. Inför raid", vad: "Dreamfoil", antal: 40, kop: 20 * s, salj: 60 * s, nar: "1 till 9 dec", grund: "Samma potion" },
-  { fas: "4. Inför raid", vad: "Heart of Fire", id: 7077, antal: 10, kop: 40 * s, salj: 1.5 * g, nar: "1 till 9 dec", grund: "Transmute till Elemental Fire" },
+  { fas: "4. Inför raid", vad: "Elemental Fire", id: 7068, antal: 40, kop: 15 * s, salj: 60 * s, nar: "1 till 16 dec", grund: "Greater Fire Protection Potion. Vendor 4 s" },
+  { fas: "4. Inför raid", vad: "Dreamfoil", antal: 40, kop: 20 * s, salj: 60 * s, nar: "1 till 16 dec", grund: "Samma potion" },
+  { fas: "4. Inför raid", vad: "Heart of Fire", id: 7077, antal: 10, kop: 40 * s, salj: 1.5 * g, nar: "1 till 16 dec", grund: "Transmute till Elemental Fire" },
 ];
 
 export const BUDGET = {

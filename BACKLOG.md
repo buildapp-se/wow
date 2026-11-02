@@ -7,4 +7,5 @@
 - [ ] `[P1]` Efter släppet: bekräfta Forever-versionerna i addontabellen på CurseForge. Filsidorna gick inte att öppna 2026-11-02.
 - [ ] `[P2]` Komplettera Missa inte: startdatum för Field of Honor, Drakefire-stegens koordinater och pre-raid-utrustning saknades i källorna 2026-11-02.
 - [ ] `[P2]` Kontrollera i spelet: om Darkmoon Faire finns under levlingen (Classics kalender säger 9 till 15 nov, inte belagt för Forever) och var Recipe: Greater Fire Protection Potion droppar.
+- [ ] `[P1]` Efter släppet: byt `GEAR` (`site/mage.js`) mot riktiga BiS-listor när Wowhead fyller sin Phase 1-tabell, och lägg till trinkets och mantlar. Kontrollera talangkartan på 31 till 60.
 - [ ] `[P2]` Bekräfta en exporterad Auctionator-lista och lägg in färdig import.

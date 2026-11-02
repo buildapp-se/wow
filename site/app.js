@@ -1,6 +1,7 @@
 import { PERKS, TREES, CLASSES, GOALS, CHALLENGES, REWARDS, buildFor, stegFor } from "./data.js?v=dev";
 import { PHASES, PLAN, PLATSER, RUTTER, BOE, golv, GANTT, MILSTOLPAR, RECEPT, START, SLUT, dag, datum, pris, wh } from "./plan.js?v=dev";
 import { initSortable, sortable } from "./sortable.js?v=dev";
+import { TALANGER, GEAR } from "./mage.js?v=dev";
 
 const $ = (s) => document.querySelector(s);
 
@@ -189,4 +190,7 @@ visa();
 
 for (const id of ["handel", "roadmap", "mal", "missa"]) mynt(document.getElementById(id));
 initSortable();
+const rang = {};
+$("#talanger").innerHTML = TALANGER.map((t) => `<li value="${10 + Object.values(rang).reduce((a, b) => a + b, 0)}">${t} ${(rang[t] = (rang[t] ?? 0) + 1)}</li>`).join("");
+$("#gear tbody").innerHTML = GEAR.map(([niva, plats, id, namn, krav, int, kalla]) => `<tr><td>${niva}</td><td>${plats}</td><td><a href="${wh("item", id)}" rel="noopener"><strong>${namn}</strong></a></td><td>${krav}</td><td>${int}</td><td>${kalla}</td></tr>`).join("");
 document.querySelectorAll("table[data-sort-key]").forEach(sortable);

@@ -217,3 +217,5 @@ ol.steg li { padding-left: 4px; }
   nav { display: none; }
   .layout { display: block; }
 }
+
+.talanger { columns: 3 11rem; padding-left: 2.5rem; }

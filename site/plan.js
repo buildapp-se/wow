@@ -214,14 +214,14 @@ export const PHASES = [
   },
   {
     nar: "Nivå 10 till 20", titel: "Yrket börjar betala",
-    gor: ["Frost-talanger från nivå 10", `Engineering hos ${hos("bronk")}`, "Mage-quests på nivå 10 och 15: gratis utrustning", "Hall of Thanes 14 till 17 och Deadmines 18 till 22, med alla quests", "Möt din sambo i Westfall eller Loch Modan", "Posta varje Waylaid Crate och Scarce-material till bank-alten", "Legacy-fönstret (Y): lägg första poängen på Thrill of Adventure"],
+    gor: ["Talanger från nivå 10: se kartan under Karaktärer", `Engineering hos ${hos("bronk")}`, "Mage-quests på nivå 10 och 15: gratis utrustning", "Hall of Thanes 14 till 17 och Deadmines 18 till 22, med alla quests", "Möt din sambo i Westfall eller Loch Modan", "Posta varje Waylaid Crate och Scarce-material till bank-alten", "Legacy-fönstret (Y): lägg första poängen på Thrill of Adventure"],
     kop: ["Pristine Leather: högst 2 g, 5 st", "Frilled Lichen: högst 1 g, 5 st", "Bronze Bar: högst 8 s, 50 st, bara om du inte bryter själv"],
     salj: ["Bank-alten: Strange Dust och Lesser Magic Essence från roben. Ger de mindre än 98 k per robe, sälj roben till vendor"],
     inte: ["Grinda inte kill-XP ihop: kill-XP delas, quest-XP inte", "Sälj inte Scarce under 3 g"],
   },
   {
     nar: "Nivå 20 till 30", titel: "AoE och mount-pengar", tim: "Nivå 30 vid 18 till 22 h",
-    gor: ["Byt till AoE-bygget. Teleport på 20", `Expert Engineering hos ${hos("springspindle")}`, "Gör 25 Bronze Tubes på 105 till 125", "Gör 15 Bronze Framework på 145 till 160", "Mage-quest på nivå 26", "Stockade 23 till 29, Excavation Site från 26, City of Dalaran 28 till 33 med quests"],
+    gor: ["Teleport på 20", `Expert Engineering hos ${hos("springspindle")}`, "Gör 25 Bronze Tubes på 105 till 125", "Gör 15 Bronze Framework på 145 till 160", "Mage-quest på nivå 26", "Stockade 23 till 29, Excavation Site från 26, City of Dalaran 28 till 33 med quests"],
     salj: ["Bronze Tube: 8-stackar, runt 40 s styck", "Bronze Framework: 4-stackar, runt 29 s styck", "Malm du inte behöver: över 2 gånger vendor"],
     inte: ["Köp inget att spara: mount först", "Kör inte dungeons utan quests för XP: den är låg. Undantag: de som krävs för Spelunker-poängen", "Återställ inte talanger i onödan: priset stiger"],
   },

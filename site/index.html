@@ -69,6 +69,7 @@
   <fieldset class="fas"><legend>Dag 1</legend>
     <label class="bock"><input type="checkbox" data-id="m1"><span><strong>Samma ruleset.</strong> Ni kan inte grupper mellan rulesets och byte kräver ny karaktär. På PvP får kontot bara ha en fraktion.</span></label>
     <label class="bock"><input type="checkbox" data-id="m2"><span><strong>Gratis väska (6 platser), senast nivå 7.</strong> Gnome och Dwarf: ta <a href="https://www.wowhead.com/forever/quest=97277" rel="noopener">Grund and Gozwin</a> av <button type="button" class="plats" data-plats="grund">Grund Drokda</button> i Coldridge Valley. Hitta lägret i bergen nordväst om honom, hämta loggboken och döda Snow Leopard Prowler. Human: <a href="https://www.wowhead.com/forever/quest=91775" rel="noopener">Book Return</a> av <button type="button" class="plats" data-plats="dughan">Marshal Dughan</button> i Goldshire: 6 böcker i Fargodeep Mine. Väskan är bunden, så gör den på varje karaktär.</span></label>
+    <label class="bock"><input type="checkbox" data-id="m2b"><span><strong>Spara Library-böcker.</strong> De hittas runt om i världen. 10, 20 och 25 böcker ger belöningar, bland annat <a href="https://www.wowhead.com/forever/item=281635" rel="noopener">Philanthropist's Ring</a>. 25 böcker kräver nivå 30. <a href="https://www.wowhead.com/forever/news=383251" rel="noopener">Wowhead</a>, från betan.</span></label>
     <label class="bock"><input type="checkbox" data-id="m3"><span><strong>Cooking och First Aid.</strong> Tillagad mat ger +5 % kill-XP i 15 min, tills du dör.</span></label>
     <label class="bock"><input type="checkbox" data-id="m4"><span><strong>The Great Outdoors, från nivå 4.</strong> Lär dig campa. Gnome och Dwarf: <a href="https://www.wowhead.com/forever/quest=96608" rel="noopener">questen</a> av <button type="button" class="plats" data-plats="eric">Eric Brighthammer</button> i Dun Morogh. Human: <a href="https://www.wowhead.com/forever/quest=95998" rel="noopener">questen</a> av <button type="button" class="plats" data-plats="sam">Sam Sarsaparilla</button> i Elwynn. Sätt dig vid elden tills du får Boosted Rest. Lär dig sedan Cooking i stan, så får du en egen Basic Campfire. Camp-buffar håller 1 h men kräver en full minut vid elden.</span></label>
     <label class="bock"><input type="checkbox" data-id="m5"><span><strong>Bank-alt vid AH och brevlåda.</strong> Parkerad i stan bygger den också rested.</span></label>
@@ -259,6 +260,33 @@
     <li><strong>Pull från nivå 20:</strong> samla, Frost Nova, starta Blizzard i Novans sista sekund, Cone of Cold håller slowen. Nova igen, Flamestrike, Cone för Shatter-crits, Arcane Explosion.</li>
     <li><strong>Regler:</strong> dra långt bort med Fireball rank 1. Resistad Nova: börja om. Ice Block vid dålig pull. Välj plats efter din spell rank. Blizzard saktar högst 40 %, så räkna med en hel Blizzard per pull.</li>
   </ul>
+
+  <h3>Talanger nivå för nivå, Frost Mage</h3>
+  <p>Ett poäng per nivå från 10 till 60, från <a href="https://www.icy-veins.com/wow-forever/frost-mage-leveling" rel="noopener">Icy Veins Forever-guide</a>. Bygget är inte provat på 31 till 60, eftersom betan stannade på 30. De första 10 poängen ligger i Arcane, och Frost börjar på nivå 20.</p>
+  <ol id="talanger" class="talanger"></ol>
+
+  <h3>Föremål nivå för nivå, Mage</h3>
+  <p>Mitt urval ur Wowheads Forever-databas: föremål med spell power, Intellect och crit, utan Horde-saker, PvP och raid. <strong>Det är ingen BiS-lista och inget är provat:</strong> Wowheads BiS-tabell för Forever är tom än, så jämför alltid med tooltipen. Tom ruta under Intellect betyder att tooltipen inte visar värdet där, inte att det saknas. Kolla på AH först: BoE och craftat går ofta att köpa. Listan saknar trinkets under nivå 50 och mantlar.</p>
+  <div class="tabell" tabindex="0" role="region" aria-label="Föremål för Mage">
+  <table id="gear" data-sort-key="gear">
+  <thead><tr><th>Nivå</th><th>Plats</th><th>Föremål</th><th>Kräver</th><th>Intellect</th><th>Var</th></tr></thead>
+  <tbody></tbody></table></div>
+
+  <h3>Vilka alts går snabbast?</h3>
+  <p>Hastigheten kommer från <a href="https://conquestcapped.com/guides/wow-forever/wow-forever-best-leveling-class/" rel="noopener">Conquest Capped</a> (22 oktober), byggd på betan med tak 30, så 31 till 60 är en prognos. För och emot är min bedömning. <strong>Min ordning: Warlock (bank-alten), Hunter, Paladin, Druid.</strong> Snabbast i sig är Hunter, men bank-altens yrken ger pengar och Legacy-poäng redan på nivå 20, så den kommer först.</p>
+  <div class="tabell" tabindex="0" role="region" aria-label="Alts">
+  <table id="alts" data-sort-key="alts">
+  <thead><tr><th>Klass</th><th>Hastighet</th><th>Fördelar</th><th>Nackdelar</th></tr></thead>
+  <tbody>
+    <tr><td data-sort-value="1"><strong>Hunter, Beast Mastery</strong></td><td data-sort-value="1">Mycket snabb</td><td>Petten tar stryk, så du dör sällan. Bra solo. Passar Skinning och Leatherworking.</td><td>Din sambo spelar redan Hunter, så gruppen får två av samma.</td></tr>
+    <tr><td data-sort-value="2"><strong>Warlock, Affliction</strong></td><td data-sort-value="2">Snabb</td><td>Lite vila tack vare Life Tap och demoner. Din bank-alt redan.</td><td>Soul Shards tar tid att samla.</td></tr>
+    <tr><td data-sort-value="3"><strong>Rogue, Combat</strong></td><td data-sort-value="2">Snabb</td><td>Bra solo och öppnar lådor själv.</td><td>Svårare i början. Inget Forever-pris på lådor, därför inte i planen.</td></tr>
+    <tr><td data-sort-value="4"><strong>Paladin, Retribution</strong></td><td data-sort-value="3">Medel</td><td>Mycket svår att döda, kan hela gruppen. Gruppen saknar Paladin.</td><td>Mana mellan striderna bromsar.</td></tr>
+    <tr><td data-sort-value="5"><strong>Shaman, Enhancement</strong></td><td data-sort-value="3">Medel</td><td>Bra efter 30, kan hela.</td><td>Sårbar före 30, enligt Conquest Capped.</td></tr>
+    <tr><td data-sort-value="6"><strong>Druid, Feral</strong></td><td data-sort-value="4">Långsam till 20, sedan snabb</td><td>Kan allt: tank, heal, skada. Bra till Mining och Blacksmithing-alten eftersom den tål mycket.</td><td>Långsam start, och en druid finns redan i gruppen.</td></tr>
+    <tr><td data-sort-value="7"><strong>Warrior</strong></td><td data-sort-value="5">Långsam först, snabb sent</td><td>Efterfrågad som tank.</td><td>Dyrast i tid: mat, vila, utrustning. Två finns redan.</td></tr>
+    <tr><td data-sort-value="8"><strong>Priest</strong></td><td data-sort-value="6">Långsam</td><td>Healer är alltid efterfrågad.</td><td>Långsammast solo. En finns redan.</td></tr>
+  </tbody></table></div>
 
   <h3>Human Hunter, Beast Mastery</h3>
   <ul>

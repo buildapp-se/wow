@@ -1,5 +1,5 @@
 import { PERKS, TREES, CLASSES, GOALS, CHALLENGES, REWARDS, buildFor } from "./data.js?v=dev";
-import { PHASES, HANDEL, BUDGET, GANTT, MILSTOLPAR, START, SLUT, dag, datum, pris, wh } from "./plan.js?v=dev";
+import { PHASES, HANDEL, BUDGET, GANTT, MILSTOLPAR, RECEPT, START, SLUT, dag, datum, pris, wh } from "./plan.js?v=dev";
 import { initSortable, sortable } from "./sortable.js?v=dev";
 
 const $ = (s) => document.querySelector(s);
@@ -35,6 +35,12 @@ $("#gantt").innerHTML = `<li class="g-rad g-axel" aria-hidden="true"><div></div>
   + GANTT.map((r) => `<li class="g-rad"><div><strong>${r.varor.join(", ")}</strong>
     <small>Köp ${datum(r.kop[0])} till ${datum(r.kop[1])}. Sälj ${r.salj[1] === SLUT ? `från ${datum(r.salj[0])}` : `${datum(r.salj[0])} till ${datum(r.salj[1])}`}.</small></div>
     <div class="g-spar" aria-hidden="true">${linjer}${stapel("kop", "Köp", r.kop)}${stapel("salj", "Sälj", r.salj)}</div></li>`).join("");
+
+// Tillverkning
+$("#recept tbody").innerHTML = RECEPT.map((r) => `<tr>
+  <td><a href="${wh("item", r.id)}" rel="noopener"><strong>${r.vad}</strong></a></td><td>${r.krav}</td><td>${r.mat}</td>
+  <td data-sort-value="${r.kostnad}">${pris(r.kostnad)}</td><td data-sort-value="${r.salj}">${pris(r.salj)}</td>
+  <td data-sort-value="${r.vendor}">${pris(r.vendor)}</td><td data-sort-value="${r.salj - r.kostnad}">${pris(r.salj - r.kostnad)}</td><td>${r.kopare}</td></tr>`).join("");
 
 // Handelslistan, grupperad per fas
 const faser = [...new Set(HANDEL.map((h) => h.fas))];

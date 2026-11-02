@@ -21,6 +21,16 @@ export const GANTT = [
   { varor: ["Elemental Fire", "Dreamfoil", "Heart of Fire"], kop: ["2026-11-19", "2026-12-01"], salj: ["2026-12-01", "2026-12-16"] },
 ];
 
+// Det du tillverkar. Priser per styck i koppar. kostnad är det högsta du ska betala i material.
+export const RECEPT = [
+  { vad: "Bronze Tube", id: 4371, krav: "Engineering 105", mat: "2 Bronze Bar, 1 Weak Flux", kostnad: 2 * 830 + 100, salj: 4000, vendor: 200, kopare: "Lådor, quest Look to the Stars, 13 recept" },
+  { vad: "Bronze Framework", id: 4382, krav: "Engineering 145", mat: "2 Bronze Bar, 1 Medium Leather, 1 Wool Cloth", kostnad: 2 * 830 + 269 + 100, salj: 2900, vendor: 600, kopare: "Journeyman Parts-lådor, 10 recept" },
+  { vad: "Gyrochronatom", id: 4389, krav: "Engineering 170", mat: "1 Iron Bar, 1 Gold Power Core", kostnad: 600, salj: 2800, vendor: 750, kopare: "Quest Gyro... What?, 18 recept" },
+  { vad: "Mithril Casing", id: 10561, krav: "Engineering 215", mat: "3 Mithril Bar", kostnad: 1800, salj: 3500, vendor: 1000, kopare: "Quest Chasing A-Me 01 från nivå 48, 22 recept" },
+  { vad: "Frost Oil", id: 3829, krav: "Alchemy 200, recept 26 s 31 k hos Bro'kin i Alterac", mat: "4 Khadgar's Whisker, 2 Wintersbite, 1 Leaded Vial ger 2 st", kostnad: 800, salj: 1500, vendor: 150, kopare: "Questen Coolant Heads Prevail från nivå 35, A Broken Trap från 56" },
+  { vad: "Free Action Potion", id: 5634, krav: "Alchemy 150, recept 18 s 94 k hos Soolie Berryfizz i Ironforge", mat: "2 Blackmouth Oil, 1 Stranglekelp, 1 Leaded Vial", kostnad: 500, salj: 1500, vendor: 75, kopare: "Raid och PvP, Craftsman's Writ" },
+];
+
 // fas: när köpet görs. kop: maxpris per styck. salj: riktpris per styck.
 export const HANDEL = [
   { fas: "1. Första dagarna", vad: "Waylaid Crate", id: 248549, antal: 40, kop: 3 * s, salj: 20 * s, nar: "Vecka 2 till 3", grund: "Betan: 1 till 2 s tidigt, 15 till 49 s senare" },
@@ -60,7 +70,7 @@ export const PHASES = [
   },
   {
     nar: "Nivå 1 till 10", titel: "Bygg grunden", tim: "Första kvällen",
-    gor: ["Bag-questen senast nivå 7", "Cooking, First Aid och Mining i första staden", "Sätt Hearthstone vid första värdshuset", "The Great Outdoors på nivå 5 ger Campfire", "Ställ bank-alten vid AH och brevlåda i Stormwind och logga ut där"],
+    gor: ["Bag-questen senast nivå 7", "Cooking, First Aid och Mining i första staden", "Sätt Hearthstone vid första värdshuset", "The Great Outdoors på nivå 5 ger Campfire", "Ställ bank-alten vid AH och brevlåda i Stormwind och logga ut där", "Bank-alten: köp Bronze Tube hos Billibub Cogspinner, se Köp och sälj"],
     kop: ["Waylaid Crate upp till 3 s, 40 st"],
     salj: ["Linen och Copper Ore direkt, om priset slår vendor plus deposition"],
     inte: ["Köp inte levlingsprylar på AH", "Sälj inte handelsvaror till vendor: posta till alten"],
@@ -80,7 +90,7 @@ export const PHASES = [
   },
   {
     nar: "Nivå 30 till 40", titel: "Mount", tim: "Spara 120 g",
-    gor: ["Riverglades 36 till 44, Drowned City 35 till 40", "Artisan Engineering hos Buzzek Bracketswing i Gadgetzan från nivå 35", "Nivå 40: Apprentice Riding och Portaler", "Sälj kratrarna nu om priset är över 15 s"],
+    gor: ["Riverglades 36 till 44, Drowned City 35 till 40", "Artisan Engineering hos Buzzek Bracketswing i Gadgetzan från nivå 35", "Lägg upp Gyrochronatom och andra questvaror", "Nivå 40: Apprentice Riding och Portaler", "Sälj Waylaid Crates om priset är över 15 s"],
     salj: ["Waylaid Crate 15 till 30 s", "Pristine Leather från 4 g om du behöver mounten först"],
     inte: ["Spekulera inte med mount-pengarna"],
   },

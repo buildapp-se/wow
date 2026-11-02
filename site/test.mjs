@@ -2,7 +2,7 @@
 import assert from "node:assert";
 import { readFileSync } from "node:fs";
 import { PERKS, CLASSES, GOALS, CHALLENGES, buildFor, buildError } from "./data.js";
-import { HANDEL, BUDGET, PHASES, GANTT, MILSTOLPAR, START, SLUT, dag, datum, pris } from "./plan.js";
+import { HANDEL, BUDGET, PHASES, RECEPT, GANTT, MILSTOLPAR, START, SLUT, dag, datum, pris } from "./plan.js";
 
 assert.equal(Object.keys(PERKS).length, 21, "Blizzard anger 21 perkar");
 assert.equal(CHALLENGES.reduce((a, c) => a + c.points, 0), 65, "Blizzard anger 65 utmaningar");
@@ -39,6 +39,14 @@ for (const r of GANTT) {
 assert.equal(dag("2026-12-09"), 34);
 assert.equal(datum(START), "5 nov");
 assert.ok(MILSTOLPAR.every(([d]) => dag(d) > 0 && dag(d) < dag(SLUT)));
+// Tillverkning: kalkylerna ska stämma mot recepten, och försäljning måste ge vinst.
+const kostnad = (vad) => RECEPT.find((r) => r.vad === vad).kostnad;
+assert.equal(kostnad("Bronze Framework"), 2029);
+assert.equal(kostnad("Bronze Tube"), 1760);
+for (const r of RECEPT) assert.ok(r.salj > r.kostnad && r.salj > r.vendor, r.vad);
+// 1 Gold Bar plus 3 Iron Bar för högst 18 s ger 3 Gyrochronatom för 22 s 50 k hos vendor.
+assert.ok(3 * RECEPT.find((r) => r.vad === "Gyrochronatom").vendor > 1800);
+assert.ok(RECEPT.find((r) => r.vad === "Gyrochronatom").salj < 3157, "Under vendorns pris");
 assert.equal(pris(45000), "4 g 50 s");
 assert.equal(pris(300), "3 s");
 assert.equal(pris(830), "8 s 30 k");

@@ -48,13 +48,18 @@ export const GOALS = {
   },
   crafta: {
     label: "Levla och crafta",
-    build: { "Working Overtime": 5, "Thrill of Adventure": 5, "Field Guide": 3, "Field Medicine": 2, "Frequent Flier": 1 },
-    note: "Passar om yrket ska upp under levlingen, till exempel Engineering.",
+    build: { "Thrill of Adventure": 5, "Working Overtime": 5, "Field Guide": 3, "Field Medicine": 2, "Frequent Flier": 1 },
+    note: "Det här är din main. Thrill först: den hjälper i varje strid medan poängen kommer långsamt (3 poäng vid nivå 25, 6 vid 45). Working Overtime sänker sedan vad Engineering 225 till 300 kostar. Well Rested hoppar du över: du spelar 6 h om dagen, så rested tar snabbt slut och perken ger bara +4 % per rang.",
   },
   guld: {
     label: "Samla och tjäna guld",
     build: { "Bountiful Harvest": 5, "Bartering": 2, "Performance Bonus": 3, "Dedicated Study": 1, "Master Chef": 5 },
     note: "Köp i den här ordningen: Master Chef kräver 10 poäng i trädet.",
+  },
+  bank: {
+    label: "Bank-alt",
+    build: { "Working Overtime": 5, "Bartering": 2, "Well Rested": 5, "Bountiful Harvest": 3, "Dedicated Study": 1 },
+    note: "Working Overtime först, för Bartering kräver 5 poäng i trädet. Bartering sänker vendorpriserna med 10 %. Bountiful Harvest gör inget för en alt utan samlaryrke, men de 3 poängen krävs för Dedicated Study: +1 skill i lägsta yrket varje dygn.",
   },
   raid: {
     label: "Raid på 60",
@@ -64,7 +69,7 @@ export const GOALS = {
   },
   pvp: {
     label: "Battlegrounds",
-    build: { "For Great Honor": 5, "Gourmand": 3, "The Quick and the Dead": 2, "Reagent Economy": 1, "Diplomat": 5 },
+    build: { "Gourmand": 3, "The Quick and the Dead": 2, "For Great Honor": 5, "Reagent Economy": 1, "Diplomat": 5 },
     swap: { "Reagent Economy": 0, "Reinforce": 1 },
     note: "High Alert, Field Medicine och Thrill fungerar inte i BG, så Adventure-trädet är tomt. Diplomat hjälper BG-reputationen.",
   },
@@ -104,26 +109,26 @@ export function buildFor(goal, cls) {
   return build;
 }
 
-// Finns det en köpordning som klarar alla grindar? Returnerar det första felet eller null.
+// Köpordningen som den står: första felet, eller null. Sidan visar bygget i den här ordningen, så ordningen måste fungera.
 export function buildError(build) {
   const total = Object.values(build).reduce((a, b) => a + b, 0);
   if (total !== 16) return `summan är ${total}, inte 16`;
   const spent = { A: 0, P: 0, R: 0 };
   const bought = {};
   for (const [perk, ranks] of Object.entries(build)) {
-    if (!PERKS[perk]) return `okänd perk ${perk}`;
-    if (ranks > PERKS[perk].ranks) return `${perk} har bara ${PERKS[perk].ranks} rang`;
-  }
-  let left = Object.keys(build);
-  while (left.length) {
-    const next = left.find((perk) => {
-      const p = PERKS[perk];
-      return (p.gate ?? 0) <= spent[p.tree] && (!p.needs || bought[p.needs] === PERKS[p.needs].ranks);
-    });
-    if (!next) return `kan inte köpa ${left.join(", ")}`;
-    bought[next] = build[next];
-    spent[PERKS[next].tree] += build[next];
-    left = left.filter((perk) => perk !== next);
+    const p = PERKS[perk];
+    if (!p) return `okänd perk ${perk}`;
+    if (ranks > p.ranks) return `${perk} har bara ${p.ranks} rang`;
+    if ((p.gate ?? 0) > spent[p.tree]) return `${perk} kräver ${p.gate} poäng i trädet`;
+    if (p.needs && bought[p.needs] !== PERKS[p.needs].ranks) return `${perk} kräver full ${p.needs}`;
+    bought[perk] = ranks;
+    spent[p.tree] += ranks;
   }
   return null;
+}
+
+// Vilka poäng varje perk tar, i köpordning.
+export function stegFor(build) {
+  let n = 0;
+  return Object.entries(build).map(([perk, rang]) => ({ perk, rang, max: PERKS[perk].ranks, fran: n + 1, till: (n += rang) }));
 }

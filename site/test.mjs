@@ -1,8 +1,8 @@
 // Går något av detta fel ska sidan inte ut: byggena måste gå att köpa i spelet och summorna stämma.
 import assert from "node:assert";
 import { readFileSync } from "node:fs";
-import { PERKS, CLASSES, GOALS, CHALLENGES, buildFor, buildError } from "./data.js";
-import { HANDEL, BUDGET, PHASES, RECEPT, GANTT, MILSTOLPAR, START, SLUT, dag, datum, pris } from "./plan.js";
+import { PERKS, CLASSES, GOALS, CHALLENGES, buildFor, buildError, stegFor } from "./data.js";
+import { HANDEL, PLAN, PLATSER, RUTTER, BOE, PHASES, RECEPT, GANTT, MILSTOLPAR, START, SLUT, dag, datum, pris } from "./plan.js";
 
 assert.equal(Object.keys(PERKS).length, 21, "Blizzard anger 21 perkar");
 assert.equal(CHALLENGES.reduce((a, c) => a + c.points, 0), 65, "Blizzard anger 65 utmaningar");
@@ -17,18 +17,32 @@ for (const goal of Object.keys(GOALS)) {
   }
 }
 assert.ok(buildError({ "Bountiful Harvest": 5, "Bartering": 2, "Master Chef": 5, "Luremaster": 2, "Dedicated Study": 1, "The Quick and the Dead": 1 }), "grindarna måste kunna fälla ett bygge");
+assert.match(buildError({ "Bartering": 2, "Working Overtime": 5, "Well Rested": 5, "Thrill of Adventure": 4 }), /Bartering kräver 5/, "ordningen måste räknas");
+assert.deepEqual(stegFor(GOALS.crafta.build).slice(0, 2).map((s) => [s.perk, s.fran, s.till]), [["Thrill of Adventure", 1, 5], ["Working Overtime", 6, 10]]);
 
 // Handeln: säljpriset ska ge vinst och aldrig ligga över Graphed-taket.
-const TAK = { "Tak 5 g": 50000, "Tak 20 g": 200000, "Tak 50 g": 500000 };
 for (const h of HANDEL) {
-  assert.ok(h.antal > 0 && h.kop > 0, h.vad);
-  if (h.salj) assert.ok(h.salj > h.kop * 1.3, `${h.vad}: för liten marginal`);
-  const tak = Object.keys(TAK).find((t) => h.grund.includes(t));
-  if (tak) {
-    assert.ok(h.salj <= TAK[tak] * 0.95, `${h.vad}: över taket`);
-    assert.ok(h.kop <= TAK[tak] * 0.5, `${h.vad}: för dyrt köp`);
-  }
+  assert.ok(h.antal > 0 && h.kop > 0 && h.salj > h.kop * 1.3, h.vad);
+  if (h.tak) assert.ok(h.salj <= h.tak * 0.95 && h.kop <= h.tak * 0.5, `${h.vad}: bryter takregeln`);
 }
+for (const f of PLAN) {
+  assert.ok(f.fas && f.tid && f.rader.length, f.fas);
+  for (const r of f.rader) {
+    assert.ok(["Köp", "Samla", "Spara", "Sälj"].includes(r.typ), r.vad);
+    assert.ok(!r.plats || PLATSER[r.plats], `${r.vad}: plats ${r.plats}`);
+    assert.ok(!r.rutt || RUTTER.some((x) => x.id === r.rutt), `${r.vad}: rutt ${r.rutt}`);
+    assert.ok(r.plats || r.rutt || r.var, `${r.vad}: saknar plats`);
+    assert.ok(r.salj || r.saljText, `${r.vad}: saknar säljpris`);
+  }
+  for (const t of f.gor) for (const [, typ, id] of t.matchAll(/\[(plats|rutt):(\w+)\]/g)) assert.ok(typ === "plats" ? PLATSER[id] : RUTTER.some((x) => x.id === id), id);
+}
+// Kartan: koordinater inom bilden, och varje stopp finns.
+for (const p of Object.values(PLATSER)) assert.ok(p.x > 0 && p.x < 100 && p.y > 0 && p.y < 100 && (p.npc || p.url), p.namn);
+for (const r of RUTTER) {
+  if (r.noder) for (const n of r.noder.split(",")) assert.match(n, /^\d+ \d+$/, r.id);
+  else for (const b of r.ben) for (const [id] of b.stopp) assert.ok(PLATSER[id] && PLATSER[id].zon === b.zon, `${r.id}: ${id}`);
+}
+for (const b of BOE) assert.ok(b.id && b.till > b.fran, b.vad);
 // Schemat: allt som säljs ska finnas där, och köp måste börja före försäljning.
 const varor = GANTT.flatMap((r) => r.varor);
 for (const h of HANDEL.filter((x) => x.salj)) assert.ok(varor.includes(h.vad), `${h.vad} saknas i schemat`);
@@ -60,6 +74,5 @@ assert.match(html, /stil\.css\?v=dev/);
 assert.equal(readFileSync(new URL("./app.js", import.meta.url), "utf8").match(/from "\.\/[a-z]+\.js\?v=dev"/g).length, 3);
 assert.ok(!allText.includes("—"), "inget tankstreck i texten");
 assert.ok(!/Gemini|Ej belagt/i.test(allText), "ingen faktakollstext på sidan");
-for (const fas of HANDEL.map((h) => h.fas)) assert.ok(BUDGET[fas], fas);
 assert.ok(PHASES.every((f) => f.gor.length), "varje fas har något att göra");
 console.log("ok");

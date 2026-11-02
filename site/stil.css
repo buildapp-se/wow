@@ -75,10 +75,56 @@ nav a[aria-current="page"] { color: var(--mässing); }
 .ord dd { margin: 2px 0 0; max-width: 72ch; }
 td.kryss { min-width: 0; padding: 0 8px; }
 td.kryss .bock { justify-content: center; min-width: 44px; }
-#handelslista td { min-width: 72px; }
-#handelslista td.kryss { min-width: 0; }
-#handelslista td:nth-child(2) { min-width: 110px; }
-#handelslista td:nth-child(n+6) { min-width: 170px; }
+/* Plan per nivå: samlingscellen hänger kvar medan raderna scrollar */
+#plan th, #plan td { padding: 8px; }
+#plan td { min-width: 64px; }
+#plan td.kryss { min-width: 0; padding: 0; }
+#plan td.plan-gor { padding: 4px 8px; }
+#plan tr > td:nth-last-child(1) { min-width: 104px; }
+#plan tr > td:nth-last-child(2) { min-width: 96px; }
+#plan tr > td:nth-last-child(5), #plan tr > td:nth-last-child(4) { min-width: 80px; }
+#plan tr > td:nth-last-child(7) { min-width: 150px; }
+#plan tr > td.plan-gor { min-width: 0; }
+.plan-fas { position: sticky; left: 0; z-index: 1; min-width: 118px; max-width: 150px; background: var(--papper-2); text-align: left; border-right: 2px solid var(--krita); font-weight: 400; }
+.plan-fas b { display: block; font: 600 1.45rem/1.1 "Barlow Condensed", sans-serif; color: var(--mässing); }
+.plan-fas small { display: block; margin-top: 6px; line-height: 1.25; }
+.plan-start > * { border-top: 2px solid var(--krita); }
+.plan-gor { background: var(--rut); }
+.plan-gor .bock { padding: 2px 0; }
+.typ { display: inline-block; min-width: 56px; padding: 1px 7px; text-align: center; color: #0e2f6e; font-size: .9rem; font-weight: 600; }
+.typ.kop { background: var(--himmel); }
+.typ.samla { background: #a8e6b4; }
+.typ.spara { background: var(--mässing); }
+.typ.salj { background: var(--korall); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+
+/* Mynt */
+.belopp { white-space: nowrap; }
+.mynt { display: inline-block; width: .78em; height: .78em; margin: 0 .22em 0 .14em; border-radius: 50%; vertical-align: -.04em; box-shadow: inset -1px -1px 0 rgba(0,0,0,.28), inset 1px 1px 0 rgba(255,255,255,.45); }
+.mynt.g { background: #f2c230; }
+.mynt.s { background: #d3d9e2; }
+.mynt.k { background: #c9743c; }
+
+/* Karta */
+.plats { all: unset; box-sizing: border-box; display: inline-flex; align-items: center; min-height: 44px; color: var(--himmel); text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
+.plats:hover { color: var(--krita); }
+.plats:focus-visible { outline: 3px solid var(--mässing); outline-offset: 2px; }
+.bock .plats { min-height: 32px; }
+.karta { margin: 1em 0; max-width: 772px; }
+.kbild { position: relative; line-height: 0; border: 1px solid var(--linje); background: var(--papper-2); }
+.kbild img { display: block; width: 100%; height: auto; }
+.kbild svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.rutt-linje { fill: none; stroke: #fff; stroke-width: .55; }
+.pil { fill: #fff; }
+.nod { fill: var(--mässing); stroke: #1b1b1b; stroke-width: .2; }
+.pin { position: absolute; display: grid; place-items: center; width: 44px; height: 44px; margin: -22px 0 0 -22px; color: #0e2f6e; font: 700 .9rem/1 Barlow, sans-serif; text-decoration: none; }
+.pin::before { content: ""; position: absolute; width: 26px; height: 26px; border: 2px solid #0e2f6e; border-radius: 50%; background: var(--mässing); }
+.pin { isolation: isolate; }
+.pin::before { z-index: -1; }
+figcaption { margin-top: 4px; color: var(--dov); font-size: .9rem; }
+dialog { width: min(820px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 16px; color: var(--krita); background: var(--papper); border: 2px solid var(--krita); }
+dialog::backdrop { background: rgba(6, 18, 44, .75); }
+.stang { display: block; min-height: 44px; margin-left: auto; padding: 0 16px; color: #0e2f6e; background: var(--mässing); border: 0; font: 600 1rem Barlow, sans-serif; cursor: pointer; }
 
 .not { border-left: 4px solid var(--mässing); padding: 2px 0 2px 16px; margin: 1.2em 0; max-width: 72ch; }
 

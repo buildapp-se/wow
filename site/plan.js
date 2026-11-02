@@ -111,7 +111,7 @@ export const PLAN = [
     { typ: "Sälj", vad: "Bronze Framework, bara för att levla yrket", id: 4382, antal: 15, kop: 2029, salj: 2900, plats: "ahSw", nar: "Direkt, i 4-stackar" },
     { typ: "Sälj", vad: "Malm och bars du inte använder", antal: "Överskott", saljText: "Över 2 gånger vendor", plats: "ahSw", nar: "Löpande" },
   ] },
-  { fas: "Nivå 30 till 40", tid: "9 till 13 nov", budget: "Spara 120 g till mount, köp inget att spara", gor: ["Artisan Engineering hos [plats:buzzek] från nivå 35. Kontrollera [plats:graphed] på nivå 36+. Riding på 40"], rader: [
+  { fas: "Nivå 30 till 40", tid: "9 till 13 nov", budget: "Spara 120 g till mount, köp inget att spara. Varorna här ger högst runt 25 g, resten måste bli questguld och BoE (ej uppmätt)", gor: ["Artisan Engineering hos [plats:buzzek] från nivå 35. Kontrollera [plats:graphed] på nivå 36+. Riding på 40"], rader: [
     { typ: "Samla", vad: "Iron Ore och Gold Ore", antal: "Allt", saljText: "Eget bruk", rutt: "arathi" },
     { typ: "Samla", vad: "Silk Cloth till bank-alten", antal: 216, saljText: "Eget bruk", var: "Humanoider på vägen" },
     { typ: "Samla", vad: "Heavy Leather, din sambo flår", antal: "Allt", saljText: "Över 2 gånger vendor", var: "Stranglethorn, Dustwallow" },
@@ -132,6 +132,7 @@ export const PLAN = [
   ] },
   { fas: "Nivå 50 till 60", tid: "19 till 25 nov", budget: "Högst 30 % av kassan, börja uppifrån", gor: ["Starta Dragonkin Menace hos [plats:helendis]"], rader: [
     { typ: "Samla", vad: "Thorium Ore till Engineering 300", antal: 225, saljText: "Eget bruk", rutt: "thorium" },
+    { typ: "Samla", vad: "Runecloth till Engineering 300", id: 14047, antal: 35, saljText: "Eget bruk", var: "På vägen, annars AH" },
     ...[["Stranglevine", 249274], ["Pitchblende", 249426], ["Pristine Scale"], ["Death Lotus"], ["Fel Crystal"], ["Torbernite"]].map(([vad, id]) => (
       { typ: "Spara", vad, id, antal: 3, kop: 20 * g, salj: 45 * g, tak: 50 * g, plats: "ahSw", nar: "Från 26 nov" })),
     ...[["Black Lotus", 13468], ["Arcane Crystal", 12363]].map(([vad, id]) => (
@@ -206,7 +207,7 @@ export const PHASES = [
   },
   {
     nar: "Nivå 1 till 10", titel: "Bygg grunden", tim: "Första kvällen",
-    gor: [`Väskan: Grund and Gozwin hos ${hos("grund")}, senast nivå 7`, "Cooking, First Aid och Mining i första staden", "Sätt Hearthstone vid första värdshuset", `The Great Outdoors hos ${hos("eric")} från nivå 4`, `Ställ bank-alten vid ${hos("ahSw")} och logga ut där`, "Posta all Linen till bank-alten, och några silver så att den kan köpa"],
+    gor: [`Väskan: Grund and Gozwin hos ${hos("grund")}, senast nivå 7`, "Cooking, First Aid och Mining i första staden", "Sätt Hearthstone vid första värdshuset", `The Great Outdoors hos ${hos("eric")} från nivå 4`, `Ställ bank-alten vid ${hos("ahSw")} och logga ut där. När den levlas: Book Return hos ${hos("dughan")} före nivå 7, gratis väska`, "Posta all Linen till bank-alten, och några silver så att den kan köpa"],
     kop: [`Bronze Tube hos ${hos("billibub")}: högst 8 s 42 k, 2 st per besök, om AH är över 15 s`, "Waylaid Crate: högst 3 s, 40 st"],
     salj: ["Bronze Tube från Billibub: strax under lägsta pris, betan gav runt 40 s", "Copper Ore du inte behöver: över 10 k, annars behåll"],
     inte: ["Sälj inte Linen: bank-alten gör Brown Linen Robe och disenchantar", "Köp inte levlingsprylar på AH", "Sälj inte handelsvaror till vendor: posta till alten"],
@@ -222,7 +223,7 @@ export const PHASES = [
     nar: "Nivå 20 till 30", titel: "AoE och mount-pengar", tim: "Nivå 30 vid 18 till 22 h",
     gor: ["Byt till AoE-bygget. Teleport på 20", `Expert Engineering hos ${hos("springspindle")}`, "Gör 25 Bronze Tubes på 105 till 125", "Gör 15 Bronze Framework på 145 till 160", "Mage-quest på nivå 26", "Stockade 23 till 29, Excavation Site från 26, City of Dalaran 28 till 33 med quests"],
     salj: ["Bronze Tube: 8-stackar, runt 40 s styck", "Bronze Framework: 4-stackar, runt 29 s styck", "Malm du inte behöver: över 2 gånger vendor"],
-    inte: ["Köp inget att spara: mount först", "Kör inte dungeons utan quests: dungeon-XP är låg", "Återställ inte talanger i onödan: priset stiger"],
+    inte: ["Köp inget att spara: mount först", "Kör inte dungeons utan quests för XP: den är låg. Undantag: de som krävs för Spelunker-poängen", "Återställ inte talanger i onödan: priset stiger"],
   },
   {
     nar: "Nivå 30 till 40", titel: "Mount", tim: "Spara 120 g",

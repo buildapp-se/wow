@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
 <title>Forever-ritningen</title>
-<meta name="description" content="Vår plan inför WoW: Forever: karaktärer, legacy points, ekonomi och addons, med säkerhetsmärkning på varje påstående.">
+<meta name="description" content="Roadmap för WoW: Forever: vad du gör, köper och säljer, och när.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230e2f6e'/%3E%3Ccircle cx='16' cy='16' r='8' fill='none' stroke='%23ffcf6b' stroke-width='3'/%3E%3Cpath d='M16 2v8M16 22v8M2 16h8M22 16h8' stroke='%23ffcf6b' stroke-width='3'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,347 +16,279 @@
 </head>
 <body>
 <div class="layout">
-<nav aria-label="Avsnitt">
-  <a href="#laget">Läget</a>
+<nav aria-label="Sidor">
+  <a href="#roadmap">Roadmap</a>
+  <a href="#missa">Missa inte</a>
+  <a href="#handel">Köp och sälj</a>
+  <a href="#mal">Mål</a>
   <a href="#karaktarer">Karaktärer</a>
   <a href="#legacy">Legacy</a>
-  <a href="#ekonomi">Ekonomi</a>
   <a href="#addons">Addons</a>
-  <a href="#faktakoll">Faktakoll</a>
-  <a href="#kallor">Källor</a>
 </nav>
 <main>
 
-<header class="huvud" id="laget">
-  <div>
-    <h1>Forever-ritningen</h1>
-    <p class="ingress">Vår plan inför WoW: Forever. Forever är inte Classic, så det mesta som står här är omkontrollerat, och varje påstående säger hur säkert det är.</p>
-  </div>
-  <dl class="titelblock">
-    <div><dt>Släpp i Sverige</dt><dd>Torsdag 5 nov kl. 00:00</dd></div>
-    <div><dt>Raids öppnar</dt><dd>9 december</dd></div>
-    <div><dt>Kontrollerat</dt><dd>2 november 2026</dd></div>
+<section id="roadmap" class="vy">
+  <header class="huvud">
+    <div>
+      <h1>Forever-ritningen</h1>
+      <p class="ingress">Vad du gör, köper och säljer, nivå för nivå.</p>
+    </div>
+    <dl class="titelblock">
+      <div><dt>Släpp</dt><dd>5 nov kl. 00:00</dd></div>
+      <div><dt>Raids</dt><dd>9 december</dd></div>
+      <div><dt>Nivå 60</dt><dd>103 till 124 h</dd></div>
+    </dl>
+  </header>
+  <ol class="tidslinje" id="tidslinje"></ol>
+
+  <h2 class="mellan">Main och alts</h2>
+  <p>Det finns ingen level lock eller level sync. Spelar du mer än kompisarna är lösningen två karaktärer som har olika jobb.</p>
+  <div class="tabell" tabindex="0" role="region" aria-label="Karaktärerna">
+  <table data-sort-key="altar">
+  <thead><tr><th>Karaktär</th><th>Klass och yrken</th><th>Jobb</th><th>Spela den när</th></tr></thead>
+  <tbody>
+  <tr><td><strong>Main</strong></td><td>Gnome Mage, Mining och Engineering</td><td>Tempo, guld, raid</td><td>Alltid när du spelar själv</td></tr>
+  <tr><td><strong>Vän-alt</strong></td><td>Protection Warrior eller Holy Priest</td><td>Tank eller healer åt gruppen, fylla grupper snabbt</td><td>Bara med kompisarna, så att ni ligger på samma nivå</td></tr>
+  <tr><td><strong>Bank-alt</strong></td><td>Warlock, Tailoring och Enchanting</td><td>Står vid AH. Levlas till 20 och sedan 25 för fem Legacy-poäng. Mount kommer från klassquest</td><td>När main saknar rested</td></tr>
+  <tr><td><strong>Alt 3</strong></td><td>Retribution Paladin, Mining och Blacksmithing</td><td>Snabb levling, klassmount, Legacy</td><td>Efter main på 40</td></tr>
+  </tbody></table></div>
+  <h3>Reglerna</h3>
+  <ul>
+    <li><strong>Main först till 40.</strong> Mount och Teleport gör allt annat billigare.</li>
+    <li><strong>Logga alltid ut i värdshus eller stad.</strong> Rested byggs 5 % av en nivå per 8 h, upp till 150 %, och dubblar kill-XP.</li>
+    <li><strong>Parkera alts från nivå 1 i stan redan första dagen.</strong> Rested fyller på i 10 dagar utan insats.</li>
+    <li><strong>Byt karaktär när main tar slut på rested,</strong> och spela alten med full mätare.</li>
+    <li><strong>Levla vän-alten bara med vännerna.</strong> En hög spelare i gruppen stoppar kill-XP för alla, så kör inte main där.</li>
+    <li><strong>Post mellan egna karaktärer går direkt</strong> och kostar 30 k per föremål. Ge alten saker från main utan AH.</li>
+  </ul>
+</section>
+
+<section id="missa" class="vy" hidden>
+  <h2>Missa inte</h2>
+  <fieldset class="fas"><legend>Dag 1</legend>
+    <label class="bock"><input type="checkbox" data-id="m1"><span><strong>Samma ruleset.</strong> Ni kan inte grupper mellan rulesets och byte kräver ny karaktär. På PvP får kontot bara ha en fraktion.</span></label>
+    <label class="bock"><input type="checkbox" data-id="m2"><span><strong>Bag-questen.</strong> Human: Book Return hos Marshal Dughan på nivå 1. Övriga raser får sin senast på nivå 7. Väskan är bunden, så gör den på varje karaktär.</span></label>
+    <label class="bock"><input type="checkbox" data-id="m3"><span><strong>Cooking och First Aid.</strong> Tillagad mat ger +5 % kill-XP i 15 min, tills du dör.</span></label>
+    <label class="bock"><input type="checkbox" data-id="m4"><span><strong>The Great Outdoors på nivå 5.</strong> Ger Campfire. Camp-buffar håller 1 h men kräver en full minut vid elden.</span></label>
+    <label class="bock"><input type="checkbox" data-id="m5"><span><strong>Bank-alt vid AH och brevlåda.</strong> Parkerad i stan bygger den också rested.</span></label>
+  </fieldset>
+  <fieldset class="fas"><legend>Under levlingen</legend>
+    <label class="bock"><input type="checkbox" data-id="m6"><span><strong>Mage-quests på nivå 10, 15 och 26.</strong> Gratis utrustning, bland annat Manaweave Robe och Astral Knot Garment.</span></label>
+    <label class="bock"><input type="checkbox" data-id="m7"><span><strong>Hämta dungeon-quests innan ni går in.</strong> Där finns XP:n. De går inte att dela.</span></label>
+    <label class="bock"><input type="checkbox" data-id="m8"><span><strong>Cozy Sleeping Bag.</strong> Startar på nivå 14 med "... and that note you found" vid Alexston Farmstead i Westfall. Upp till 3 bonusar på 1 %, 2 till 3 h jobb.</span></label>
+    <label class="bock"><input type="checkbox" data-id="m9"><span><strong>Waylaid Crates.</strong> Spara alla, från nivå 10. Se Köp och sälj.</span></label>
+    <label class="bock"><input type="checkbox" data-id="m10"><span><strong>Legacy-fönstret.</strong> Tangenten Y. Första poängen kommer vid nivå 25 eller 150 i ett craftyrke.</span></label>
+    <label class="bock"><input type="checkbox" data-id="m11"><span><strong>Dual spec på nivå 40.</strong> 50 g, och slipper dyra återställningar.</span></label>
+    <label class="bock"><input type="checkbox" data-id="m12"><span><a href="https://www.wowhead.com/forever/item=2820" rel="noopener"><strong>Nifty Stopwatch</strong></a> från <a href="https://www.wowhead.com/forever/quest=778" rel="noopener">This Is Going to Be Hard</a>: tre delar hos Lotwil Veriatus i Badlands, kräver nivå 35 och går inte att dela.</span></label>
+  </fieldset>
+  <fieldset class="fas"><legend>Inför 9 december</legend>
+    <label class="bock"><input type="checkbox" data-id="m13"><span><a href="https://www.wowhead.com/forever/item=16309" rel="noopener"><strong>Drakefire Amulet</strong></a> på varje raidkaraktär. Dragonkin Menace hos Helendis Riverhorn i Burning Steppes, sedan The True Masters, Blackrock Depths, Stormwind och Upper Blackrock Spire. Börja på nivå 52.</span></label>
+    <label class="bock"><input type="checkbox" data-id="m14"><span><strong>Fire resistance till Onyxia.</strong> Amuletten ger +15. <a href="https://www.wowhead.com/forever/item=13457" rel="noopener">Greater Fire Protection Potion</a> absorberar 1 950 till 3 250. Receptet droppar i Blackrock Spire.</span></label>
+    <label class="bock"><input type="checkbox" data-id="m15"><span><strong>Field of Honor.</strong> Veckorna 4, 7 och 10 ger Legacy-poäng. Börja i tid om du vill ha dem.</span></label>
+  </fieldset>
+  <h3>Gör inte det här</h3>
+  <ul>
+    <li>Logga inte ut ute i världen: ingen rested.</li>
+    <li>Betala inte för levlingsutrustning på AH.</li>
+    <li>Ta inte spirit healer i onödan: utrustningen skadas.</li>
+    <li>Bjud inte in förrän du har tagit questen: gruppen byter layer.</li>
+    <li>Max 5 instanser i timmen. Planera dungeon-körningar efter det.</li>
+    <li>Köp eller sälj aldrig guld, och flytta inte stora summor mellan vänner: Temporary Economy Hold låser handel, post och AH.</li>
+    <li>Arcane Explosion och Flamestrike drar aggro i dungeons.</li>
+  </ul>
+</section>
+
+<section id="handel" class="vy" hidden>
+  <h2>Köp och sälj</h2>
+  <p>Priserna är startriktpriser, byggda på betans AH, vendorvärden och Mister Graphed. Skanna AH första kvällen och justera.</p>
+  <p class="not"><strong>Hela idén:</strong> <a href="https://www.wowhead.com/forever/npc=263384" rel="noopener">Mister Graphed</a> i Riverglades säljer Scarce och toppmaterial till fast pris. Det sätter taket. Köp under 40 % av taket och sälj på 90 till 95 %.</p>
+  <div id="handelslista"></div>
+
+  <h3>Tillverka och sälj</h3>
+  <div class="tabell" tabindex="0" role="region" aria-label="Tillverka och sälj">
+  <table data-sort-key="tillverka">
+  <thead><tr><th>Vad</th><th>Antal</th><th>När</th><th>Sälj för</th></tr></thead>
+  <tbody>
+  <tr><td>Bronze Tube</td><td>25</td><td>Engineering 105 till 125</td><td>Runt 40 s</td></tr>
+  <tr><td>Bronze Framework</td><td>15</td><td>Engineering 150 till 160</td><td>Runt 29 s</td></tr>
+  <tr><td>Mat</td><td>Så mycket du hinner</td><td>Från dag 1</td><td>Till spelare, över vendor</td></tr>
+  <tr><td>Väskor på bank-alten</td><td>4 åt gången</td><td>Tailoring</td><td>Till spelare</td></tr>
+  <tr><td>Mithril Casing</td><td>På beställning</td><td>Engineering 215</td><td>När folk når Un'Goro</td></tr>
+  </tbody></table></div>
+
+  <h3>Köp till dig själv</h3>
+  <ul>
+    <li>Väskor: Woolen Bag (8) upp till 50 s, Small Silk Pack (10) upp till 1 g, Mageweave Bag (12) upp till 2 g. Köp fyra av den bästa du har råd med.</li>
+    <li>Bronze Bar upp till 8 s bara om du inte bryter själv.</li>
+    <li>Gift of Galloping för 150 g (+10 % mounted speed i 15 dagar): först när epic är betald.</li>
+  </ul>
+  <h3>Köp inte</h3>
+  <ul>
+    <li>Linen, Copper och andra vanliga material över vendor, de sjunker när alla samlar.</li>
+    <li>Något över 90 % av Graphed-taket.</li>
+    <li>Levlingsutrustning.</li>
+    <li>Pyrite: priset rörde sig inte på betan.</li>
+  </ul>
+
+  <h3>Vad är det här?</h3>
+  <dl class="ord">
+    <dt><a href="https://www.wowhead.com/forever/item=248549" rel="noopener">Waylaid Crate</a></dt>
+    <dd>Droppar från mobs nivå 9 till 35 och kräver nivå 10. Högerklicka: den blir en av 30 lådtyper. Fyll med ett paket material, till exempel 20 Copper Ore eller 8 Bronze Tube, och lämna in den förseglade lådan. Ofylld kan den säljas på AH.</dd>
+    <dt><a href="https://warcraft.wiki.gg/wiki/Merchant's_Favor" rel="noopener">Merchant's Favor</a></dt>
+    <dd>Valuta från lådorna, 5 till 30 per låda. Köper recept för 30 till 360 och <a href="https://www.wowhead.com/forever/item=262766" rel="noopener">Pack Kodo</a> för 6 000. Lämnas hos <a href="https://www.wowhead.com/forever/npc=256390" rel="noopener">Marcy Baker</a>, Three Corners i Redridge. <a href="https://www.wowhead.com/forever/guide/azeroth-commerce-authority-reputation-professions" rel="noopener">Hela guiden</a>.</dd>
+    <dt>Scarce-material</dt>
+    <dd>Sällsynt bonus från Mining, Herbalism och Skinning: <a href="https://www.wowhead.com/forever/item=249427" rel="noopener">Pristine Leather</a>, <a href="https://www.wowhead.com/forever/item=249399" rel="noopener">Frilled Lichen</a>, <a href="https://www.wowhead.com/forever/item=249391" rel="noopener">Pyrite</a>, <a href="https://www.wowhead.com/forever/item=249424" rel="noopener">Rosecap</a>, <a href="https://www.wowhead.com/forever/item=249425" rel="noopener">Bauxite</a>, <a href="https://www.wowhead.com/forever/item=249274" rel="noopener">Stranglevine</a>, <a href="https://www.wowhead.com/forever/item=249426" rel="noopener">Pitchblende</a>. Pristine Leather går in i 126 recept. Bountiful Harvest ger +20 % per rang.</dd>
+    <dt><a href="https://www.wowhead.com/forever/npc=263384" rel="noopener">Mister Graphed</a></dt>
+    <dd>Powderfuse Port, Riverglades. 5 g: Pristine Leather, Frilled Lichen, Pyrite. 20 g: Pristine Hide, Rosecap, Bauxite. 50 g: Pristine Scale, Stranglevine, Pitchblende, Death Lotus, Fel Crystal, Torbernite, Black Lotus, Arcane Crystal. Bartering ger 10 % rabatt.</dd>
+    <dt><a href="https://warcraft.wiki.gg/wiki/Camping" rel="noopener">Camping</a></dt>
+    <dd>Campfire från Cooking är grunden. Till lägret finns Fish Bowl, Mana Well, Sharpening Wheel och Camp Tent, som toppar rested.</dd>
   </dl>
-</header>
 
-<ol class="matt" aria-label="Tidsaxel">
-  <li><b>3 nov</b>Namnreservationen stänger, gäller bara med köpt paket</li>
-  <li><b>5 nov 00:00</b>Servrarna öppnar</li>
-  <li><b>Nivå 40</b>Mount: budgetera 100&nbsp;till&nbsp;120&nbsp;g</li>
-  <li><b>9 dec</b>Barrow Deeps, Hyjal, Onyxia. Då kommer raidefterfrågan.</li>
-</ol>
-
-<section style="padding-top:48px">
-<h2>Det här ändrar planen</h2>
-<ul>
-  <li><strong>Välj samma ruleset allihop innan någon skapar karaktär.</strong> Grupper över ruleset fungerar inte, och byte betyder en ny karaktär. På PvP får kontot bara ha en fraktion. <span class="g off">Officiell</span></li>
-  <li><strong>Molten Core finns inte i Blizzards raidöversikt.</strong> Allt i Gemini-listan som sparar till MC faller, men Onyxia kräver fire resistance från 9 december. <span class="g off">Officiell</span></li>
-  <li><strong>Gnome ger inte längre +15 Engineering.</strong> Racialen sänker i stället risken att prylar slår fel med 20 %. Gnome är ändå toppvalet för Mage. <span class="g fler">Flera källor</span></li>
-  <li><strong>Mage-AoE är nedskalad.</strong> Improved Blizzard saktar högst 40 %, Cone of Cold är kortare och du hinner en hel Blizzard per pull. Guldsiffrorna för Zul'Farrak saknar belägg. <span class="g beta">Beta</span></li>
-  <li><strong>Mountarna kostar mer:</strong> 100 g på nivå 40 och 1 000 g på 60, med 10 % rabatt vid Honored. Källorna är oense om första mounten ingår eller kostar 20 g till. <span class="g beta">Beta</span></li>
-  <li><strong>Dela inga större summor guld mellan vänner i onödan.</strong> Temporary Economy Hold kan låsa handel, post och AH vid misstänkt guldköp, och betan hade falska larm. Post mellan egna karaktärer är det säkra. <span class="g fler">Flera källor</span></li>
-</ul>
-<ul class="legend" aria-label="Säkerhetsmärkning">
-  <li><span class="g off">Officiell</span> Blizzard</li>
-  <li><span class="g fler">Flera källor</span> oberoende sajter</li>
-  <li><span class="g en">En källa</span> kan vara fel</li>
-  <li><span class="g beta">Beta</span> från betan, kapad vid nivå 30</li>
-  <li><span class="g cla">Classic</span> bara bekräftat där</li>
-  <li><span class="g bed">Bedömning</span> min slutsats</li>
-</ul>
-<p class="not">Ingen har uppmätt 1 till 60 i Forever än. Allt över nivå 30 är prognos. Vi rättar sidan efter släppet. Blizzard säger vid första inloggningen att den som är osäker på förinställning ska välja Enhanced.</p>
+  <h3>Vendorvärden: golvet för dina priser</h3>
+  <p>Täcker AH-priset inte det här plus depositionen: sälj till vendor.</p>
+  <div class="tabell" tabindex="0" role="region" aria-label="Vendorvärden">
+  <table data-sort-key="vendor">
+  <thead><tr><th>Material</th><th>Tyg</th><th>Metall</th><th>Läder</th></tr></thead>
+  <tbody>
+  <tr><td>Steg 1</td><td>Linen 13 k</td><td>Copper Ore 5 k</td><td>Light 15 k</td></tr>
+  <tr><td>Steg 2</td><td>Wool 33 k</td><td>Bronze Bar 50 k</td><td>Medium 50 k</td></tr>
+  <tr><td>Steg 3</td><td>Silk 1 s 50 k</td><td>Iron Bar 2 s</td><td>Heavy 1 s 50 k</td></tr>
+  <tr><td>Steg 4</td><td>Mageweave 2 s 50 k</td><td>Mithril Bar 4 s</td><td>Thick 3 s</td></tr>
+  <tr><td>Steg 5</td><td>Runecloth 4 s</td><td>Thorium Bar 6 s</td><td>Rugged 5 s</td></tr>
+  </tbody></table></div>
 </section>
 
-<section id="karaktarer">
-<h2>Karaktärer för den som kan spela</h2>
-<p>Tierlistorna blandar ofta ihop "lätt" och "bäst". Här är det toppen när spelaren är skicklig som räknas. Sammanfattningen:</p>
-<ul>
-  <li><strong>Levling med högst tak: Frost Mage, AoE-bygget.</strong> Tempot beror på hur stora pulls du klarar och din timing på Nova och Blizzard. <span class="g fler">Flera källor</span></li>
-  <li><strong>Levling med låg risk: Beast Mastery Hunter.</strong> Minst dötid och högst upp i flest listor, men med mindre skillnad mellan bra och mycket bra spel. <span class="g fler">Flera källor</span></li>
-  <li><strong>Bäst på 60: Demonology Warlock</strong> ligger S i både PvE och PvP i den enda lista som rankar allt, med Survival och Marksmanship Hunter och Fury Warrior som S i PvE. Mage ligger på A där. Det är en prognos. <span class="g en">En källa</span></li>
-  <li><strong>Bäst att ha i gruppen:</strong> Protection Warrior som tank och Holy Priest som healer ligger på S. <span class="g en">En källa</span></li>
-</ul>
-<p class="not"><strong>Mitt råd:</strong> kör Gnome Mage. Den ger snabbast levling, teleporter och gratis mat och vatten för alla. Argumentet om +15 Engineering gäller dock inte längre, så Engineering väljer du för prylarna, inte för racialen. Är målet högsta DPS på 60 är Warlock eller Hunter bättre val. <span class="g bed">Bedömning</span></p>
-
-<div class="tabell" tabindex="0" role="region" aria-label="Klasser">
-<table data-sort-key="klasser">
-<thead><tr><th>Klass</th><th>Levling</th><th>Levlingstier</th><th>60 PvE, prognos</th><th>PvP, prognos</th><th>Alliance-ras</th></tr></thead>
-<tbody>
-<tr><td><strong>Hunter</strong></td><td>Beast Mastery</td><td data-sort-value="1">S</td><td>Survival S, Marksmanship S, BM A</td><td>Marksmanship eller Survival S</td><td>Omstritt: Human eller Night Elf</td></tr>
-<tr><td><strong>Mage</strong></td><td>Frost, AoE-varianten</td><td data-sort-value="1">S</td><td>Arcane eller Fire A</td><td>Frost A</td><td>Gnome</td></tr>
-<tr><td><strong>Paladin</strong></td><td>Retribution</td><td data-sort-value="1">S</td><td>Ret, Prot, Holy A</td><td>Holy A</td><td data-sort-value="">Ej belagt</td></tr>
-<tr><td><strong>Warlock</strong></td><td>Affliction, ibland Demonology</td><td data-sort-value="2">A</td><td>Demonology S</td><td>Demonology S</td><td data-sort-value="">Ej belagt</td></tr>
-<tr><td><strong>Priest</strong></td><td>Discipline, andra säger Shadow</td><td data-sort-value="3">B</td><td>Holy S</td><td>Shadow S</td><td data-sort-value="">Ej belagt</td></tr>
-<tr><td><strong>Druid</strong></td><td>Feral. Balance är D</td><td data-sort-value="3">B</td><td>Feral Bear, Resto A</td><td>Resto A</td><td data-sort-value="">Ej belagt</td></tr>
-<tr><td><strong>Shaman</strong></td><td>Enhancement</td><td data-sort-value="4">C</td><td>Resto A</td><td>Elemental A</td><td data-sort-value="">Ej belagt</td></tr>
-<tr><td><strong>Rogue</strong></td><td>Combat, energi saknas sedan Restless Blades togs bort</td><td data-sort-value="4">C</td><td>Combat B</td><td>Subtlety A</td><td data-sort-value="">Ej belagt</td></tr>
-<tr><td><strong>Warrior</strong></td><td>Arms, andra säger Protection</td><td data-sort-value="4">C</td><td>Fury S, Protection S</td><td>Arms A</td><td data-sort-value="">Ej belagt</td></tr>
-</tbody></table></div>
-<p><small>Levling: mmonster (rankad på nivå 20), avstämd mot Fextralife. 60 och PvP: Conquest Capped, en källa och en prognos. Säljsajterna (koroboost, u4gm med flera) motsäger varandra och är inte med.</small></p>
-
-<h3>Gnome Mage, Frost</h3>
-<p><span class="g en">En källa</span> <span class="g beta">Beta</span> Talangträdet har ändrats sent: mmonster säger att Piercing Ice är borttagen, medan Conquest Capped bygger på den. Titta i ditt eget träd innan du lägger poängen.</p>
-<ul>
-  <li><strong>Questbygge:</strong> 10 till 14 Improved Frostbolt 5/5, 15 till 19 Frostbite 2/3 och Ice Shards 3/5, 20 Ice Lance, 21 till 24 Piercing Ice 3/3 och Improved Blizzard 1/3, 25 till 26 Ice Shards 5/5, 27 till 29 Shatter 3/3, 30 Fingers of Frost.</li>
-  <li><strong>AoE-bygge till 30:</strong> Elemental Precision 5/5, Improved Frost Nova 2/2, Permafrost 3/3, Improved Blizzard 3/3, Frost Channeling 2/3, Shatter 3/3, Ice Block, Arctic Reach 2/2. Hoppa över Frostbite, slumpfrysningar sprider gruppen.</li>
-  <li><strong>31 till 60 (ej testat):</strong> Improved Cone of Cold och Cold Snap 31 till 35, Ice Barrier på 40, sista 13 poängen i Fire med Improved Flamestrike 3/3.</li>
-  <li><strong>Från nivå 14:</strong> samla 3 till 4 mobs med Arcane Explosion, Frost Nova, kliv bakåt, Flamestrike på den frysta gruppen, Cone of Cold och Arcane Explosion.</li>
-  <li><strong>Från nivå 20:</strong> samla, Frost Nova, starta Blizzard i Novans sista sekund, Cone of Cold håller slowen tills Nova är redo igen. Nova igen, Flamestrike, Cone för Shatter-crits, avsluta med Arcane Explosion.</li>
-  <li><strong>Regler:</strong> dra långt bort med Fireball rank 1. Blir Nova resistad, börja om. Ice Block vid dålig pull. Välj plats efter din spell rank, inte mobbens färg.</li>
-  <li><strong>Forever-skillnader:</strong> wands och Auto Shot kräver 0,5 s stillastående. Teleporter finns på 20 och 30, mat och vatten på 4 och 6.</li>
-</ul>
-
-<h3>Human Hunter, Beast Mastery</h3>
-<p><span class="g en">En källa</span> <span class="g beta">Beta</span> Human är inte bevisat snabbast: Conquest Capped nämner Night Elf, och Human Ruthless är sänkt till 1 % crit. Spela Human om det är vad du vill spela. Skillnaden är inte uppmätt.</p>
-<ul>
-  <li><strong>Talanger till 30:</strong> Endurance Training och Focused Fire, Pathfinding 20 till 21, Summon Hawk 25, Intimidation 30. Källorna är oense om ordningen.</li>
-  <li><strong>31 till 60 (ej testat):</strong> Ferocity och Bestial Discipline, 4 i Frenzy, Bestial Wrath på 40, sedan Marksmanship.</li>
-  <li><strong>Teknik:</strong> skicka petten först, 2 till 3 slag innan du skjuter. Immolation Trap från 16 är bästa skadan per mana och fällor fungerar nu i strid. Håll hawks uppe från 25, väv in Raptor Strike mellan Auto Shots, kita genom att träffa var 7:e till 8:e sekund.</li>
-  <li><strong>Pet:</strong> byt till björn runt nivå 16 för Swipe. Petten tar inte emot dina buffar. Move-kommandot drar ut enstaka mobs ur läger.</li>
-  <li><strong>Att bevaka:</strong> en datamined hotfix 28 oktober skulle sänka Hawk och Trueshot Aura kraftigt. Den är obekräftad.</li>
-</ul>
-
-<h3>Mage och Hunter ihop</h3>
-<p>Ingen sajt har testat kombinationen, och Conquest Capped gissar att den hamnar långt ner. Skälet är att Huntern levlar så snabbt solo att en partner bromsar. Reglerna är: <span class="g en">En källa</span></p>
-<ul>
-  <li>Kill-XP delas, quest-XP får båda fullt. Därför lönar det sig att questa ihop och inte grinda ihop.</li>
-  <li>Gruppbonus kommer först vid 3 spelare, så kompisarna gör det mer värt.</li>
-  <li>XP utgår från din egen nivå sedan 8 oktober: hög partner kan inte dra upp låg.</li>
-  <li>Questföremål roterar mellan gruppmedlemmar, och många dungeonquests går inte att dela.</li>
-</ul>
-<p class="not"><strong>Yrken:</strong> en mob går bara att skinna en gång, så låt Huntern ta Skinning och Leatherworking och Magen Mining och Engineering, då krockar ni inte. Mage-guiden har annars Tailoring och Enchanting som förstaval, och Engineering-kostnaden i Forever är okänd. <span class="g bed">Bedömning</span></p>
+<section id="mal" class="vy" hidden>
+  <h2>Mål med minsta insats</h2>
+  <div class="tabell" tabindex="0" role="region" aria-label="Mål">
+  <table data-sort-key="mal">
+  <thead><tr><th>Mål</th><th>Snabbaste vägen</th><th>Kostnad</th></tr></thead>
+  <tbody>
+  <tr><td><strong>Mount på 40</strong></td><td>Mining på väg mellan quests. Sälj Bronze Tube och Framework från Engineering, sälj kratrar i vecka 2.</td><td>Spara 120 g. Riding 100 g, 90 g vid Honored</td></tr>
+  <tr><td><strong>Epic på 60</strong></td><td>Flippa Scarce under Graphed-taket och sälj allt du samlat när köparna når 60.</td><td>1 000 g, 900 g vid Honored</td></tr>
+  <tr><td><strong>Nivå 60</strong></td><td>Quests först, dungeons bara med quests, rested och mat på kill-XP.</td><td>103 till 124 h</td></tr>
+  <tr><td><strong>16 Legacy</strong></td><td>Main 60 (3), Engineering 300 (3), dungeons (3), Rank 3 (1), bank-alt på 25 med två crafts till 225 (5), en alt till 25 (1).</td><td>Main plus två alts</td></tr>
+  <tr><td><strong>Spectral Bear, 55 poäng</strong></td><td>Alla klasser och crafts ger 45, äventyr och dungeons 5 till. Resten är raid och PvP. Hoppa över om du inte ändå spelar alla klasser.</td><td>Mest tid i spelet</td></tr>
+  <tr><td><strong>Raid 9 dec</strong></td><td>Börja Drakefire på nivå 52, ha amuletten i väskan, skaffa fire resistance och potions.</td><td>Kedjan plus BRD och UBRS</td></tr>
+  <tr><td><strong>Honored för 10 % rabatt</strong></td><td>Stormwind Tabard från Captain Lancy Revshon, Trade District. Bär den i dungeons.</td><td>Sparar 100 g på epic</td></tr>
+  <tr><td><strong>Passivt guld</strong></td><td>Väskor från Tailoring på bank-alten. Alchemy-alt: Transmute: Legionite (275+, 47 h cooldown) när Heavy Thorium Bar plus Fel Crystal kostar mindre än resultatet.</td><td>Alt med yrke</td></tr>
+  <tr><td><strong>Engineering billigast</strong></td><td>1 till 30 Rough Blasting Powder, 30 till 50 Copper Bolts, 51 till 75 Rough Copper Bombs, 75 till 90 Coarse Blasting Powder, 105 till 125 Bronze Tubes, 150 till 160 Bronze Framework, 215 till 238 Mithril Casings, 260 till 285 Thorium Widgets, 285 till 300 Thorium Tubes.</td><td>225 Thorium Bar och 35 Runecloth till 225 till 300</td></tr>
+  </tbody></table></div>
 </section>
 
-<section id="legacy">
-<h2>Legacy points</h2>
-<p>Du tjänar poäng genom 65 utmaningar. Poängen gäller hela kontot, men varje karaktär spenderar egna, högst 16 vid släppet. Är ni två med varsitt konto samlar ni var för sig. <span class="g off">Officiell</span> Poäng över 16 räknas ändå mot kosmetiska belöningar vid 15, 25, 40 och 55 poäng. <span class="g fler">Flera källor</span></p>
+<section id="karaktarer" class="vy" hidden>
+  <h2>Bästa karaktärerna för hög skill</h2>
+  <ul>
+    <li><strong>Levling, högst tak:</strong> Frost Mage med AoE-bygget. Tempot beror på din timing.</li>
+    <li><strong>Levling, låg risk:</strong> Beast Mastery Hunter.</li>
+    <li><strong>Bäst på 60:</strong> Demonology Warlock, Survival eller Marksmanship Hunter och Fury Warrior.</li>
+    <li><strong>Grupp:</strong> Protection Warrior tank, Holy Priest healer.</li>
+    <li><strong>Mitt val för dig:</strong> Gnome Mage. Snabbast upp, teleporter och mat åt alla. Gnome ger inte längre +15 Engineering, utan 20 % färre felslag.</li>
+  </ul>
+  <div class="tabell" tabindex="0" role="region" aria-label="Klasser">
+  <table data-sort-key="klasser">
+  <thead><tr><th>Klass</th><th>Levling</th><th>Tier</th><th>60 PvE</th><th>PvP</th></tr></thead>
+  <tbody>
+  <tr><td><strong>Hunter</strong></td><td>Beast Mastery</td><td data-sort-value="1">S</td><td>Survival S, Marksmanship S, BM A</td><td>Marksmanship eller Survival S</td></tr>
+  <tr><td><strong>Mage</strong></td><td>Frost, AoE</td><td data-sort-value="1">S</td><td>Arcane eller Fire A</td><td>Frost A</td></tr>
+  <tr><td><strong>Paladin</strong></td><td>Retribution</td><td data-sort-value="1">S</td><td>Ret, Prot, Holy A</td><td>Holy A</td></tr>
+  <tr><td><strong>Warlock</strong></td><td>Affliction</td><td data-sort-value="2">A</td><td>Demonology S</td><td>Demonology S</td></tr>
+  <tr><td><strong>Priest</strong></td><td>Discipline</td><td data-sort-value="3">B</td><td>Holy S</td><td>Shadow S</td></tr>
+  <tr><td><strong>Druid</strong></td><td>Feral</td><td data-sort-value="3">B</td><td>Feral Bear, Resto A</td><td>Resto A</td></tr>
+  <tr><td><strong>Shaman</strong></td><td>Enhancement</td><td data-sort-value="4">C</td><td>Resto A</td><td>Elemental A</td></tr>
+  <tr><td><strong>Rogue</strong></td><td>Combat</td><td data-sort-value="4">C</td><td>Combat B</td><td>Subtlety A</td></tr>
+  <tr><td><strong>Warrior</strong></td><td>Arms</td><td data-sort-value="4">C</td><td>Fury S, Protection S</td><td>Arms A</td></tr>
+  </tbody></table></div>
 
-<h3>Vad ska jag välja?</h3>
-<fieldset><legend>Klass</legend><div class="chips" id="val-klass"></div></fieldset>
-<fieldset><legend>Vad karaktären ska göra</legend><div class="chips" id="val-mal"></div></fieldset>
-<div id="bygge" aria-live="polite"></div>
-<p><small>Alla kombinationer testas mot grindarna i perktabellen före varje publicering. Klassanpassningen är min bedömning. Återställning sker hos klasstränaren. På betan kostade första gången 10 g, priset vid släpp är inte satt.</small></p>
+  <h3>Gnome Mage, Frost</h3>
+  <p>Talangerna ändrades sent. Följ ordningen, men ta det som finns i ditt träd.</p>
+  <ul>
+    <li><strong>Questa:</strong> 10 till 14 Improved Frostbolt 5/5, 15 till 19 Frostbite 2/3 och Ice Shards 3/5, 20 Ice Lance, 21 till 24 Piercing Ice 3/3 och Improved Blizzard 1/3, 25 till 26 Ice Shards 5/5, 27 till 29 Shatter 3/3, 30 Fingers of Frost.</li>
+    <li><strong>AoE till 30:</strong> Elemental Precision 5/5, Improved Frost Nova 2/2, Permafrost 3/3, Improved Blizzard 3/3, Frost Channeling 2/3, Shatter 3/3, Ice Block, Arctic Reach 2/2. Inte Frostbite: slumpfrysningar sprider gruppen.</li>
+    <li><strong>31 till 60:</strong> Improved Cone of Cold och Cold Snap 31 till 35, Ice Barrier på 40, sista 13 i Fire med Improved Flamestrike 3/3.</li>
+    <li><strong>Pull från nivå 14:</strong> samla 3 till 4 mobs med Arcane Explosion, Frost Nova, kliv bakåt, Flamestrike, Cone of Cold, Arcane Explosion.</li>
+    <li><strong>Pull från nivå 20:</strong> samla, Frost Nova, starta Blizzard i Novans sista sekund, Cone of Cold håller slowen. Nova igen, Flamestrike, Cone för Shatter-crits, Arcane Explosion.</li>
+    <li><strong>Regler:</strong> dra långt bort med Fireball rank 1. Resistad Nova: börja om. Ice Block vid dålig pull. Välj plats efter din spell rank. Blizzard saktar högst 40 %, så räkna med en hel Blizzard per pull.</li>
+  </ul>
 
-<h3>Enklaste vägen till 16 för en Mage med Engineering</h3>
-<p>Poäng per steg är min uträkning. Yrkeskraven (nivå 10, 20 och 35 för 150, 225 och 300) kommer från en betaguide. <span class="g bed">Bedömning</span></p>
-<ol class="steg">
-  <li><strong>Engineering 150</strong> vid nivå 10 eller senare. Ger första poängen och låser upp systemet. Summa 1.</li>
-  <li><strong>Nivå 25 och Novice Spelunker</strong> under levlingen. Summa 3.</li>
-  <li><strong>Engineering 225, nivå 45, Experienced Spelunker.</strong> Summa 6.</li>
-  <li><strong>Nivå 60, Engineering 300, Master Spelunker</strong> (17 dungeons, kräver grupp). Summa 9.</li>
-  <li><strong>PvP Rank 3,</strong> några kvällar battlegrounds. Summa 10.</li>
-  <li><strong>Bank-alten blir poängmaskin:</strong> nivå 20 med Tailoring och Enchanting till 225 ger fyra poäng, nivå 25 ger en till. Summa 15.</li>
-  <li><strong>Sista poängen:</strong> en alt till nivå 25 eller en tredje craft till 150 på nivå 10. Summa 16.</li>
-</ol>
-<p>Den snabbaste vägen utan 60 kommer från Conquest Capped: sex crafts till 150, nio klasser till 25 och Novice Spelunker. Det tar lång tid att levla nio alts, så för oss är den sämre. Method kör 60 (3), två alts till 25 (2), Rank 3 (1), fyra crafts till 225 (8), Novice och Experienced (2). <span class="g en">En källa</span></p>
+  <h3>Human Hunter, Beast Mastery</h3>
+  <ul>
+    <li><strong>Till 30:</strong> Endurance Training och Focused Fire, Pathfinding 20 till 21, Summon Hawk 25, Intimidation 30.</li>
+    <li><strong>31 till 60:</strong> Ferocity och Bestial Discipline, 4 i Frenzy, Bestial Wrath på 40, sedan Marksmanship.</li>
+    <li><strong>Teknik:</strong> skicka petten först, 2 till 3 slag innan du skjuter. Immolation Trap från 16 är bästa skadan per mana. Håll hawks uppe från 25. Väv in Raptor Strike mellan Auto Shots. Björn runt nivå 16 för Swipe.</li>
+    <li><strong>Yrken:</strong> Skinning och Leatherworking, med blå Agility-utrustning från nivå 10. Magen tar Mining, så krockar ni inte.</li>
+  </ul>
 
-<div class="tabell" tabindex="0" role="region" aria-label="Utmaningar efter kostnad">
-<table data-sort-key="kostnad">
-<thead><tr><th>Ordning</th><th>Utmaning</th><th>Poäng</th><th>Vad det kostar</th></tr></thead>
-<tbody>
-<tr><td>1</td><td>Klass nivå 25</td><td>1 per klass</td><td>Bara tid, en till två kvällar</td></tr>
-<tr><td>2</td><td>Novice Spelunker</td><td>1</td><td>Ingen extra tid om du kör dem under levlingen</td></tr>
-<tr><td>3</td><td>PvP Rank 3</td><td>1</td><td>Några kvällar BG</td></tr>
-<tr><td>4</td><td>Experienced Spelunker</td><td>1</td><td>10 dungeons, grupp</td></tr>
-<tr><td>5</td><td>Klass nivå 45 och 60</td><td>1 per steg</td><td>Levling</td></tr>
-<tr><td>6</td><td>Yrke 150</td><td>1 per yrke</td><td>Guld okänt, kräver nivå 10</td></tr>
-<tr><td>7</td><td>Yrke 225</td><td>1 per yrke</td><td>Guld okänt, kräver nivå 20</td></tr>
-<tr><td>8</td><td>Master Spelunker</td><td>1</td><td>17 dungeons, grupp</td></tr>
-<tr><td>9</td><td>Yrke 300, höga PvP-ranker, raids</td><td>1 per styck</td><td>Dyrast. Raids öppnar 9 december</td></tr>
-</tbody></table></div>
-<p><small>Rangordning: Method och Conquest Capped, betaskattningar, inte mätningar. En karaktär kan själv nå högst 29 poäng enligt Blizzard. Det är obekräftat om framsteg på dungeons räknas över karaktärer: Conquest Capped säger ja, ingen annan källa bekräftar.</small></p>
-
-<h3>Bocka av</h3>
-<div>
-<p class="räknare" role="status"><strong id="poang"></strong><span id="nasta"></span></p>
-<div id="utmaningar"></div>
-</div>
-<p><small>Sparas bara i den här webbläsaren. Novice: Ragefire Chasm eller Hall of Thanes, Ruins of Lordaeron, Wailing Caverns, Deadmines, Shadowfang Keep, Excavation Site: Wetlands. Experienced: City of Dalaran, Blackfathom Deeps, Gnomeregan, The Drowned City, fyra Scarlet Monastery, Razorfen Kraul, Krol'dok Stronghold. Listorna kommer från Method, en källa.</small></p>
-
-<h3>Alla 21 perkar</h3>
-<div class="tabell" tabindex="0" role="region" aria-label="Perkar">
-<table id="perkar" data-sort-key="perkar">
-<thead><tr><th>Träd</th><th>Perk</th><th>Rang</th><th>Effekt</th><th>Kräver</th></tr></thead>
-<tbody></tbody></table></div>
-<p><small>Rang och effekt: Icy Veins, avstämt mot Zockify och warcraft.wiki.gg. Betadata. Att varje rang kostar 1 poäng är härlett, ingen källa säger det rakt ut.</small></p>
+  <h3>Spela ihop</h3>
+  <ul>
+    <li>Kill-XP delas, quest-XP får alla fullt. Questa ihop, grinda inte.</li>
+    <li>Gruppbonus: 3 spelare +16,6 %, 4 spelare +30 %, 5 spelare +40 %.</li>
+    <li>En hög spelare stoppar kill-XP för gruppen. Questföremål roterar mellan medlemmar.</li>
+    <li>Ingen Dungeon Finder och inga summons. Meeting stones är bara anslagstavlor.</li>
+  </ul>
 </section>
 
-<section id="ekonomi">
-<h2>Spela ekonomin från start</h2>
-<p>Ingen har riktiga priser än, och Blizzard har inte beskrivit AH:t. Därför finns inga köp- och säljpriser i guld här: alla sådana siffror vore påhittade, och de i Gemini-listan saknar belägg. Tre saker går att utnyttja:</p>
-<ul>
-  <li><strong>Alla saknar guld i början.</strong> Vanliga material ligger nära vendorvärdet från dag ett, så sälj dem tidigt eller använd dem. <span class="g beta">Beta</span></li>
-  <li><strong>Scarce-material är den nya valutan.</strong> Pristine Leather låg runt 1,60 g på betan mot 1,80 s för Medium Leather och går in i 126 recept. Thorium Bar går in i 131. <span class="g beta">Beta</span></li>
-  <li><strong>9 december är ett känt datum för efterfrågan.</strong> Bara fire resistance är officiellt nämnt, så köp in först när du ser vilka recept som behövs. <span class="g off">Officiell</span></li>
-</ul>
+<section id="legacy" class="vy" hidden>
+  <h2>Legacy points</h2>
+  <p>Poängen gäller hela kontot och du spenderar högst 16 per karaktär. Belöningar hämtas hos Innkeeper Wiley i Ratchet vid 15, 25, 40 och 55 poäng.</p>
+  <h3>Vad ska jag välja?</h3>
+  <fieldset><legend>Klass</legend><div class="chips" id="val-klass"></div></fieldset>
+  <fieldset><legend>Vad karaktären ska göra</legend><div class="chips" id="val-mal"></div></fieldset>
+  <div id="bygge" aria-live="polite"></div>
 
-<h3>Spellista</h3>
-<fieldset class="fas"><legend>Dag 1 till 3 (5 till 7 nov), nivå 1 till 20</legend>
-  <label class="bock"><input type="checkbox" data-id="e1"><span>Ställ en bank-alt nära AH och brevlåda. Post till egna karaktärer är direkt och kostar 30 koppar per föremål.</span></label>
-  <label class="bock"><input type="checkbox" data-id="e2"><span>Köp inga material. Kolla vendorvärdet innan du listar: täcker priset inte vendor plus deposition, sälj till vendor.</span></label>
-  <label class="bock"><input type="checkbox" data-id="e3"><span>Spara alla Waylaid Crates och Scarce-material på alten. Sälj Linen och Copper Ore tidigt.</span></label>
-  <label class="bock"><input type="checkbox" data-id="e4"><span>Huntern skinnar allt. Cooking och Fishing är billigt att levla, sälj maten till spelare.</span></label>
-  <label class="bock"><input type="checkbox" data-id="e5"><span>Gör bag-questen på varje karaktär, questväskorna är bundna. Human: Book Return hos Marshal Dughan.</span></label>
-</fieldset>
-<fieldset class="fas"><legend>Dag 4 till 14, nivå 20 till 40</legend>
-  <label class="bock"><input type="checkbox" data-id="e6"><span>Mount först: 100 till 120 g var, före all spekulation. Honored ger 10 % rabatt.</span></label>
-  <label class="bock"><input type="checkbox" data-id="e7"><span>Skanna AH dagligen med Auctionator så att du får egna medianpriser.</span></label>
-  <label class="bock"><input type="checkbox" data-id="e8"><span>Köp bara under vendorvärde eller under 60 till 70 % av din 7-dagarsmedian (tumregel).</span></label>
-  <label class="bock"><input type="checkbox" data-id="e9"><span>Sälj Waylaid Crates när de går över cirka 15 s, tidigast vecka 2. På betan gick de från 1 till 2 s till 15 till 49 s.</span></label>
-  <label class="bock"><input type="checkbox" data-id="e10"><span>Lämna in lådor för Merchant's Favor bara om du behöver recepten. Alliansens mottagare är Marcy Baker i Redridge.</span></label>
-</fieldset>
-<fieldset class="fas"><legend>Vecka 3 till 9 december, mot 60</legend>
-  <label class="bock"><input type="checkbox" data-id="e11"><span>Spara till Journeyman Riding: 1 000 g, 900 g vid Honored.</span></label>
-  <label class="bock"><input type="checkbox" data-id="e12"><span>Sälj Scarce-material när köparna på 60 har guld. Håll BoE-rare tills dess.</span></label>
-  <label class="bock"><input type="checkbox" data-id="e13"><span>Kolla Mister Graphed i Riverglades innan du köper Black Lotus eller Arcane Crystal.</span></label>
-  <label class="bock"><input type="checkbox" data-id="e14"><span>Köp in det som fire resistance kräver när recepten är kända, och sälj före raidkvällarna.</span></label>
-</fieldset>
+  <h3>Din väg till 16</h3>
+  <ol class="steg">
+    <li><strong>Engineering 150</strong> från nivå 10. Summa 1.</li>
+    <li><strong>Nivå 25 och Novice Spelunker.</strong> Summa 3.</li>
+    <li><strong>Engineering 225, nivå 45, Experienced Spelunker.</strong> Summa 6.</li>
+    <li><strong>Nivå 60, Engineering 300, Master Spelunker.</strong> Summa 9.</li>
+    <li><strong>PvP Rank 3,</strong> några kvällar BG. Summa 10.</li>
+    <li><strong>Bank-alten på nivå 20 med Tailoring och Enchanting till 225:</strong> fyra poäng. Nivå 25 ger en till. Summa 15.</li>
+    <li><strong>En alt till nivå 25.</strong> Summa 16.</li>
+  </ol>
+  <p>Yrkeskrav: 150 kräver nivå 10, 225 nivå 20, 300 nivå 35. Varje klass och craft ger poäng en gång.</p>
 
-<h3>Vad du flippar och investerar i</h3>
-<p>Prioriterat uppifrån. Kapitalet är bara det som finns kvar efter mounten.</p>
-<div class="tabell" tabindex="0" role="region" aria-label="Flippar och investeringar">
-<table data-sort-key="flippar">
-<thead><tr><th>Prio</th><th>Vad</th><th>Typ</th><th>Köp när</th><th>Sälj när</th><th>Säkerhet</th></tr></thead>
-<tbody>
-<tr><td>1</td><td><strong>Scarce</strong>: Pristine Leather, Frilled Lichen, Pyrite, Rosecap med flera</td><td>Investering</td><td>Köp inte, behåll det du samlar</td><td>Över cirka 2 gånger vanlig variant, gärna vecka 3 och framåt</td><td><span class="g beta">Beta</span></td></tr>
-<tr><td>2</td><td><strong>Waylaid Crates</strong></td><td>Investering</td><td>Behåll det du lootar</td><td>Vecka 2 till 3, över cirka 15 s</td><td><span class="g beta">Beta</span></td></tr>
-<tr><td>3</td><td><strong>Väskor</strong> av Tailoring</td><td>Tillverka och sälj</td><td>Egen cloth</td><td>Löpande till spelare, inte vendor</td><td><span class="g en">En källa</span></td></tr>
-<tr><td>4</td><td><strong>Mat</strong> av Cooking och Fishing</td><td>Tillverka och sälj</td><td>Billigt i startzonerna</td><td>Löpande</td><td><span class="g en">En källa</span></td></tr>
-<tr><td>5</td><td><strong>Thorium Bar</strong></td><td>Investering</td><td>När du själv bryter</td><td>När köparna når 60. Ingår i 131 recept</td><td><span class="g en">En källa</span></td></tr>
-<tr><td>6</td><td><strong>BoE-rare</strong></td><td>Investering</td><td>Långt under din median</td><td>När folk på 60 har guld</td><td><span class="g en">En källa</span></td></tr>
-<tr><td>7</td><td><strong>Blackmouth Oil och Stranglekelp</strong> till Free Action Potion</td><td>Kort flipp</td><td>Nära vendorvärde</td><td>När PvP tar fart</td><td><span class="g bed">Bedömning</span></td></tr>
-<tr><td>8</td><td><strong>Frost Oil</strong> för två quests</td><td>Kort flipp</td><td>Styckvis, billigt</td><td>Till questande spelare</td><td><span class="g bed">Bedömning</span></td></tr>
-<tr><td>9</td><td><strong>Mithril Casing</strong> för Chasing A-Me 01</td><td>Tillverka på beställning</td><td>När du har Engineering 215</td><td>När folk når Un'Goro</td><td><span class="g bed">Bedömning</span></td></tr>
-<tr><td>10</td><td><strong>Vanliga material</strong></td><td>Sälj av</td><td>Bara på eller under vendor</td><td>Direkt vid uppgång</td><td><span class="g beta">Beta</span></td></tr>
-</tbody></table></div>
+  <h3>Bocka av</h3>
+  <div>
+    <p class="räknare" role="status"><strong id="poang"></strong><span id="nasta"></span></p>
+    <div id="utmaningar"></div>
+  </div>
+  <p><small>Novice: Ragefire Chasm eller Hall of Thanes, Ruins of Lordaeron, Wailing Caverns, Deadmines, Shadowfang Keep, Excavation Site: Wetlands. Experienced: City of Dalaran, Blackfathom Deeps, Gnomeregan, The Drowned City, fyra Scarlet Monastery, Razorfen Kraul, Krol'dok Stronghold.</small></p>
 
-<h3>Gemini-listan, rad för rad</h3>
-<div class="tabell" tabindex="0" role="region" aria-label="Gemini-listan">
-<table data-sort-key="gemini">
-<thead><tr><th>Föremål</th><th>Besked</th><th>Vad som gäller</th></tr></thead>
-<tbody>
-<tr><td>Magic Wands</td><td><span class="hm">Svagt</span></td><td>Brown Linen Robe är grön, men bara 20 % av disenchant ger Lesser Magic Essence. En Lesser Wand kräver då cirka 3 robes. Dust och essenser var dessutom billiga på betan.</td></tr>
-<tr><td>Green Hills-sidor</td><td>Ej belagt</td><td>Inget om dem i Forever hittat. Köp inte blint.</td></tr>
-<tr><td>Swiftthistle</td><td>Ej belagt</td><td>Prisuppgången saknar belägg.</td></tr>
-<tr><td>Deadly Blunderbuss</td><td><span class="nej">Stryk</span></td><td>Finns, Engineering 105, men Warsong Supplies saknas i Forever-databasen. Efterfrågan okänd.</td></tr>
-<tr><td>Gyrochronatom</td><td><span class="nej">Fel recept</span></td><td>Kräver Engineering 170. Gold Power Core tar 1 Gold Bar per styck, inte 3 per bar. Bara på beställning.</td></tr>
-<tr><td>Frost Oil</td><td><span class="ok">Finns kvar</span></td><td>Alchemy 200, receptet droppar. Används i Coolant Heads Prevail och A Broken Trap.</td></tr>
-<tr><td>Mountain Lion Blood</td><td><span class="nej">Fel quest</span></td><td>Databasen visar bara Elixir of Pain, inte Costly Menace.</td></tr>
-<tr><td>Blackmouth och Stranglekelp</td><td><span class="ok">Stämmer</span></td><td>Free Action: 2 Blackmouth Oil, Stranglekelp, Leaded Vial. Det är Oil som behövs, inte fisken.</td></tr>
-<tr><td>Mithril Casing</td><td><span class="ok">Stämmer</span></td><td>Engineering 215, 3 Mithril Bar, Chasing A-Me 01.</td></tr>
-<tr><td>Elemental Fire</td><td><span class="nej">Premissen faller</span></td><td>Ingen MC. Onyxia kräver fire resistance, men vilka recept som behövs är okänt. Köp inte 100 stycken.</td></tr>
-<tr><td>Elemental Earth, Grave Moss, Fadeleaf, Gromsblood, Dreamfoil</td><td>Ej belagt</td><td>Bygger på MC-recept från Classic. Vänta tills recepten syns.</td></tr>
-<tr><td>Righteous Orb</td><td>Ej belagt</td><td>Crusader-kopplingen är inte bekräftad i Forever.</td></tr>
-<tr><td>Arcane Crystal</td><td><span class="nej">Stryk</span></td><td>Mister Graphed sålde dem till fast pris utan gräns på betan, det sätter ett tak på AH.</td></tr>
-<tr><td>Nifty Stopwatch-kit</td><td><span class="hm">Delvis</span></td><td>Questen finns, nivå 35 till 45, i tre delar. Vad den kräver är inte kontrollerat.</td></tr>
-<tr><td>"600 till 1 100 g tillbaka"</td><td><span class="nej">Påhittat</span></td><td>Inga data bakom. Att guldet inflaterar 5 till 8 gånger på några veckor är heller inte belagt.</td></tr>
-</tbody></table></div>
-<p class="not"><strong>Risker:</strong> AH:ts omfattning är inte officiell. Fansajter säger ett per ruleset, fraktion och region, och är marknaden tunn funkar flippar sämre. Vendorvärden ändrades tre gånger i oktober, och AH hade driftproblem på betan. GDKP uppges vara förbjudet och WoW Token saknas, enligt en sponsrad text.</p>
+  <h3>Alla 21 perkar</h3>
+  <div class="tabell" tabindex="0" role="region" aria-label="Perkar">
+  <table id="perkar" data-sort-key="perkar">
+  <thead><tr><th>Träd</th><th>Perk</th><th>Rang</th><th>Effekt</th><th>Kräver</th></tr></thead>
+  <tbody></tbody></table></div>
 </section>
 
-<section id="addons">
-<h2>Addons</h2>
-<p>Rena addons ligger i <code>World of Warcraft\_forever_\Interface\AddOns</code>. Forever kör samma begränsningar som Midnight: i strid är combat log, hot, auror och fiendens casts stängda för addons. Därför är många gamla favoriter döda. <span class="g off">Officiell</span> Det som ger ban är program utanför spelet som automatiserar spelandet, enligt forumen. Vi hittade ingen policytext från Blizzard för just Forever.</p>
-<p class="not">Vi kunde inte öppna CurseForges filsidor. "Finns" betyder att en namngiven Forever-version finns i en tredjepartslista från 20 oktober. Välj alltid filen märkt Forever: Leatrix standardfil är Classic-versionen.</p>
-
-<h3>Installera först</h3>
-<div class="tabell" tabindex="0" role="region" aria-label="Viktigaste addons">
-<table data-sort-key="addons">
-<thead><tr><th>Prio</th><th>Addon</th><th>Till vad</th><th>Forever-version</th></tr></thead>
-<tbody>
-<tr><td>1</td><td><a href="https://www.curseforge.com/wow/addons/questie" rel="noopener">Questie</a></td><td>Quests på kartan. Nya quests kan saknas.</td><td><span class="ok">Finns</span>, flera källor</td></tr>
-<tr><td>2</td><td><a href="https://www.curseforge.com/wow/addons/auctionator" rel="noopener">Auctionator</a></td><td>Skanning, prisminne, inköpslistor. Grunden för ekonomin.</td><td><span class="ok">Finns</span>, flera källor</td></tr>
-<tr><td>3</td><td><a href="https://www.curseforge.com/wow/addons/baganator" rel="noopener">Baganator</a></td><td>Samlade väskor, ser altens saker.</td><td><span class="ok">Finns</span>, flera källor</td></tr>
-<tr><td>4</td><td><a href="https://www.curseforge.com/wow/addons/leatrix-plus" rel="noopener">Leatrix Plus</a></td><td>Autosälj, reparation, små irritationer.</td><td><span class="ok">Finns</span>, flera källor</td></tr>
-<tr><td>5</td><td><a href="https://www.curseforge.com/wow/addons/leatrix-maps" rel="noopener">Leatrix Maps</a></td><td>Världskartan utan dimma. Kör bara en kartaddon.</td><td><span class="ok">Finns</span>, en källa</td></tr>
-<tr><td>6</td><td><a href="https://www.curseforge.com/wow/addons/deadly-boss-mods" rel="noopener">Deadly Boss Mods</a></td><td>Bossvarningar. Behövs senast 9 december.</td><td><span class="ok">Finns</span>, en källa</td></tr>
-<tr><td>7</td><td><a href="https://www.curseforge.com/wow/addons/bartender4" rel="noopener">Bartender4</a></td><td>Actionbars, valfritt om inbyggda räcker.</td><td><span class="ok">Finns</span>, en källa</td></tr>
-<tr><td>8</td><td><a href="https://github.com/max-ri/Guidelime/releases" rel="noopener">Guidelime</a></td><td>Gratis rutter. RestedXP är betalalternativ i en gråzon.</td><td>Ej kontrollerad</td></tr>
-</tbody></table></div>
-
-<h3>Efter kategori</h3>
-<div class="tabell" tabindex="0" role="region" aria-label="Addons efter kategori">
-<table data-sort-key="kategorier">
-<thead><tr><th>Behov</th><th>Val</th><th>Kommentar</th></tr></thead>
-<tbody>
-<tr><td>Skada och meter</td><td>Inbyggd damage meter</td><td>Details! rekommenderas av Mein-MMO, version ej bekräftad.</td></tr>
-<tr><td>Hot</td><td>ThreatClassic2</td><td>2.75-forever finns, men hot är en stängd uppgift i strid. Nyttan är oklar.</td></tr>
-<tr><td>Cooldowns och auror</td><td>Inbyggd Cooldown Manager</td><td>Slås på under Options, Gameplay Enhancement. ForeverAuras är under utveckling.</td></tr>
-<tr><td>Flytta gränssnitt</td><td>Inbyggd Edit Mode</td><td>Ingen addon behövs.</td></tr>
-<tr><td>Klassiskt utseende</td><td>ClassicUI Forever</td><td>Valfritt.</td></tr>
-<tr><td>Loot-listor</td><td>AtlasLoot Classic Forever</td><td>Bra inför raids.</td></tr>
-<tr><td>Felsökning</td><td>BugSack och BugGrabber</td><td>Bra när något bråkar.</td></tr>
-<tr><td>Post</td><td>Oklart</td><td>Postal är bara Retail. ForeverMail nämns men är inte kontrollerad.</td></tr>
-<tr><td>Swing timer, cast bars</td><td>Ingen hittad</td><td>WeaponSwingTimer och ClassicCastbars har ingen bekräftad Forever-version. Hunter-spelare får känna rytmen själva.</td></tr>
-<tr><td>Nameplates</td><td>Inbyggda</td><td>Threat Plates finns bara som inofficiell zip. Installera inte kod från sidokanaler.</td></tr>
-<tr><td>Mage- och Hunter-specifikt</td><td>Ingen hittad</td><td>Sökningen gav inget.</td></tr>
-<tr><td>TSM</td><td>Ej bekräftad</td><td>Ingen Forever-version hittad. Auctionator räcker.</td></tr>
-</tbody></table></div>
-<p><strong>Installera inte:</strong> WeakAuras, OmniBar, BigDebuffs, Hekili, Cell, Auctioneer, AdiBags, Postal, SexyMap, ForeverCompat. De saknar Forever-version eller uppges ställa till det. <span class="g en">En källa</span></p>
-<p><strong>Auctionator-inköpslistor:</strong> Geminis importsträng är inte bekräftad. Bygg en lista i spelet, exportera den och använd det formatet. Då vet du att det stämmer.</p>
+<section id="addons" class="vy" hidden>
+  <h2>Addons</h2>
+  <p>Lägg dem i <code>World of Warcraft\_forever_\Interface\AddOns</code> och välj filen märkt Forever. Leatrix standardfil är Classic-versionen. Program utanför spelet som automatiserar spelandet ger ban, så håll dig till addons.</p>
+  <div class="tabell" tabindex="0" role="region" aria-label="Addons">
+  <table data-sort-key="addons">
+  <thead><tr><th>Prio</th><th>Addon</th><th>Till vad</th></tr></thead>
+  <tbody>
+  <tr><td>1</td><td><a href="https://www.curseforge.com/wow/addons/questie" rel="noopener">Questie</a></td><td>Quests på kartan</td></tr>
+  <tr><td>2</td><td><a href="https://www.curseforge.com/wow/addons/auctionator" rel="noopener">Auctionator</a></td><td>Skanning, prisminne, inköpslistor</td></tr>
+  <tr><td>3</td><td><a href="https://www.curseforge.com/wow/addons/baganator" rel="noopener">Baganator</a></td><td>Samlade väskor, ser altens saker</td></tr>
+  <tr><td>4</td><td><a href="https://www.curseforge.com/wow/addons/leatrix-plus" rel="noopener">Leatrix Plus</a></td><td>Autosälj, reparation, små irritationer</td></tr>
+  <tr><td>5</td><td><a href="https://www.curseforge.com/wow/addons/leatrix-maps" rel="noopener">Leatrix Maps</a></td><td>Världskartan utan dimma</td></tr>
+  <tr><td>6</td><td><a href="https://www.curseforge.com/wow/addons/deadly-boss-mods" rel="noopener">Deadly Boss Mods</a></td><td>Bossvarningar, senast 9 december</td></tr>
+  <tr><td>7</td><td><a href="https://www.curseforge.com/wow/addons/bartender4" rel="noopener">Bartender4</a></td><td>Actionbars, valfritt</td></tr>
+  <tr><td>8</td><td><a href="https://github.com/max-ri/Guidelime/releases" rel="noopener">Guidelime</a></td><td>Gratis rutter</td></tr>
+  <tr><td>9</td><td><a href="https://www.curseforge.com/wow/addons/atlasloot-forever" rel="noopener">AtlasLoot Forever</a></td><td>Lootlistor inför raids</td></tr>
+  </tbody></table></div>
+  <h3>Redan inbyggt</h3>
+  <p>Damage meter, Cooldown Manager (Options, Gameplay Enhancement), Edit Mode, Click Casting och combat text.</p>
+  <h3>Installera inte</h3>
+  <p>WeakAuras, OmniBar, BigDebuffs, Hekili, Cell, Auctioneer, AdiBags, Postal, SexyMap, ForeverCompat. De fungerar inte i Forever eller ställer till det. Forever stänger combat log, hot, auror och fiendens casts för addons i strid.</p>
 </section>
 
-<section id="faktakoll">
-<h2>Faktakoll på resten av Gemini</h2>
-<div class="tabell" tabindex="0" role="region" aria-label="Faktakoll">
-<table data-sort-key="faktakoll">
-<thead><tr><th>Påstående</th><th>Besked</th><th>Vad som gäller</th></tr></thead>
-<tbody>
-<tr><td>Släpp natten 4 till 5 nov kl. 00:00</td><td><span class="ok">Stämmer</span></td><td>Blizzard: 00:00 CET den 5 november.</td></tr>
-<tr><td>Skyborne är inte pay to win</td><td><span class="ok">Stämmer</span></td><td>Mount, kosmetik, leksak och dekor. Riding köps ändå i spelet. Hur många platser ryggsäcken ger är inte angivet.</td></tr>
-<tr><td>Namnreservation till 3 nov</td><td><span class="ok">Stämmer</span></td><td>Tre karaktärer totalt, bara på kontot som köpte paketet.</td></tr>
-<tr><td>Bank-alt i stan och post</td><td><span class="ok">Stämmer</span></td><td>Fungerade på betan. Post inom kontot går direkt.</td></tr>
-<tr><td>Bara vanliga addons, ingen ban</td><td><span class="ok">Stämmer</span></td><td>Blizzard stänger API:t i stället, men det är forumens tolkning, inte en policytext.</td></tr>
-<tr><td>Hardcore vid släpp</td><td><span class="nej">Fel</span></td><td>Kommer efter släppet, inget datum.</td></tr>
-<tr><td>Riding 90 g på nivå 40</td><td><span class="hm">Halvt</span></td><td>90 g gäller bara vid Honored. Annars 100 g, plus eventuellt 20 g mount.</td></tr>
-<tr><td>+15 Engineering för Gnome</td><td><span class="nej">Fel</span></td><td>Borttaget, ersatt av 20 % lägre risk för felslag.</td></tr>
-<tr><td>Onyxia-kedja</td><td><span class="hm">Halvt</span></td><td>Drakefire Amulet krävs i väskan. Kedjans detaljer inte kontrollerade.</td></tr>
-<tr><td>Mark of Fordring före MC</td><td><span class="nej">Premissen faller</span></td><td>Ingen MC, belöningen inte bekräftad.</td></tr>
-<tr><td>Teleport 20, portal 40</td><td><span class="hm">Delvis</span></td><td>Teleporter på 20 och 30. Portaler på 40 bara bekräftat i Classic.</td></tr>
-<tr><td>Cortello's Riddle ger väska, Linken's via samma väg</td><td><span class="hm">Delvis</span></td><td>Cortello är en quest-startare, belöningen inte kontrollerad. Linken's Boomerang kommer från It's Dangerous to Go Alone.</td></tr>
-<tr><td>Guild charter och gillebank</td><td>Ej belagt</td><td>Blizzards Forever-texter säger inget om gillebank.</td></tr>
-<tr><td>Bankfack, 10 s</td><td>Ej belagt</td><td>Inga priser hittade. Banken är större: 48 platser på betan.</td></tr>
-<tr><td>Zul'Farrak-farm, 30 till 50 g/h</td><td>Ej belagt</td><td>Dungeon-XP är lägre och Mage-AoE nedskalad. SM-kistloopen togs bort.</td></tr>
-<tr><td>Spårvagn för Gnome på nivå 1, Mage-tränare i Northshire</td><td>Ej belagt</td><td>Gick inte att kontrollera för Forever. Testa på plats.</td></tr>
-</tbody></table></div>
-</section>
-
-<section id="kallor">
-<h2>Källor</h2>
-<p>Kontrollerade 2 november 2026. Blizzard går först. Conquest Capped säljer boostar men har de mest detaljerade betasiffrorna, så de är märkta därefter.</p>
-<ul class="kallor">
-  <li><a href="https://news.blizzard.com/en-us/article/24307383" rel="noopener">Blizzard: Legacy-systemet</a></li>
-  <li><a href="https://news.blizzard.com/en-us/article/24315820" rel="noopener">Blizzard: släpp och raids</a></li>
-  <li><a href="https://news.blizzard.com/en-us/article/24302070" rel="noopener">Blizzard: rulesets</a></li>
-  <li><a href="https://news.blizzard.com/en-us/article/24303009" rel="noopener">Blizzard: raidöversikt</a></li>
-  <li><a href="https://news.blizzard.com/en-us/article/24303866" rel="noopener">Blizzard: namn och installation</a></li>
-  <li><a href="https://news.blizzard.com/en-us/article/24301508" rel="noopener">Blizzard: paketens innehåll</a></li>
-  <li><a href="https://warcraft.wiki.gg/wiki/Patch_1.60.1/API_changes" rel="noopener">Warcraft Wiki: API-ändringar</a></li>
-  <li><a href="https://warcraft.wiki.gg/wiki/Legacy_System" rel="noopener">Warcraft Wiki: Legacy</a></li>
-  <li><a href="https://www.icy-veins.com/wow-forever/legacy-system" rel="noopener">Icy Veins: Legacy</a></li>
-  <li><a href="https://www.zockify.com/forever/legacy-system/" rel="noopener">Zockify: Legacy-kalkylator</a></li>
-  <li><a href="https://method.gg/wow-forever/legacy-calculator" rel="noopener">Method: Legacy-kalkylator</a></li>
-  <li><a href="https://www.method.gg/wow-forever/the-fastest-way-to-get-legacy-points-in-wow-forever" rel="noopener">Method: snabbaste poängen</a></li>
-  <li><a href="https://conquestcapped.com/guides/wow-forever/wow-forever-legacy-builds/" rel="noopener">Conquest Capped: Legacy-byggen</a></li>
-  <li><a href="https://conquestcapped.com/guides/wow-forever/wow-forever-legacy-points-farming/" rel="noopener">Conquest Capped: väg till 16</a></li>
-  <li><a href="https://conquestcapped.com/guides/wow-forever/wow-forever-gold-making/" rel="noopener">Conquest Capped: guld</a></li>
-  <li><a href="https://conquestcapped.com/guides/wow-forever/wow-forever-bank-alt" rel="noopener">Conquest Capped: bank-alt</a></li>
-  <li><a href="https://conquestcapped.com/guides/wow-forever/wow-forever-tier-list/" rel="noopener">Conquest Capped: tierlista</a></li>
-  <li><a href="https://conquestcapped.com/guides/wow-forever/wow-forever-mage-leveling/" rel="noopener">Conquest Capped: Mage</a></li>
-  <li><a href="https://conquestcapped.com/guides/wow-forever/wow-forever-hunter-leveling/" rel="noopener">Conquest Capped: Hunter</a></li>
-  <li><a href="https://conquestcapped.com/guides/wow-forever/wow-forever-duo-leveling/" rel="noopener">Conquest Capped: duo</a></li>
-  <li><a href="https://mmonster.co/wow-forever/guides/tier-lists/leveling-tier-list" rel="noopener">mmonster: levlingstier</a></li>
-  <li><a href="https://wowforever.wiki.fextralife.com/Leveling_Tier_List" rel="noopener">Fextralife: levlingstier</a></li>
-  <li><a href="https://wowclassicforever.info/races/human/hunter/" rel="noopener">Human Hunter</a></li>
-  <li><a href="https://www.warcrafttavern.com/forever/guides/riding" rel="noopener">Warcraft Tavern: riding</a></li>
-  <li><a href="https://www.wow-professions.com/forever/engineering-leveling-guide" rel="noopener">Engineering-guide</a></li>
-  <li><a href="https://www.wow-professions.com/forever/blacksmithing-trainers" rel="noopener">Yrkeskrav per nivå</a></li>
-  <li><a href="https://www.icy-veins.com/wow-forever/news/every-gathering-node-in-wow-forever-can-drop-a-scarce-material-youll-want/" rel="noopener">Icy Veins: Scarce-material</a></li>
-  <li><a href="https://www.curseforge.com/wow/addons/" rel="noopener">CurseForge</a></li>
-</ul>
-<footer>Privat samling, inte kopplad till Blizzard. Allt kan ändras vid släpp.</footer>
-</section>
-
+<footer>
+  <p>Byggt på Blizzard och betan, 2 november 2026. Allt över nivå 30 är prognos. Sidan uppdateras efter släppet. Inte kopplad till Blizzard.</p>
+  <p><a href="https://news.blizzard.com/en-us/article/24307383" rel="noopener">Legacy</a>, <a href="https://news.blizzard.com/en-us/article/24315820" rel="noopener">släpp</a>, <a href="https://news.blizzard.com/en-us/article/24302070" rel="noopener">rulesets</a>, <a href="https://news.blizzard.com/en-us/article/24303009" rel="noopener">raids</a>, <a href="https://www.wowhead.com/forever/" rel="noopener">Wowhead</a>, <a href="https://conquestcapped.com/guides/wow-forever/wow-forever-gold-making/" rel="noopener">guld</a>, <a href="https://conquestcapped.com/guides/wow-forever/wow-forever-leveling/" rel="noopener">levling</a>, <a href="https://www.wow-professions.com/forever/engineering-leveling-guide" rel="noopener">Engineering</a>, <a href="https://warcraft.wiki.gg/wiki/Legacy_System" rel="noopener">Legacy-wiki</a>.</p>
+</footer>
 </main>
 </div>
 </body>

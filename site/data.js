@@ -20,19 +20,19 @@ export const PERKS = {
   "Luremaster": { tree: "P", ranks: 2, gate: 10, effect: "25 eller 50 % extra fisk med bete." },
   "Gourmand": { tree: "R", ranks: 3, effect: "Matbuffar varar 33, 66 eller 100 % längre." },
   "The Quick and the Dead": { tree: "R", ranks: 2, effect: "Ghost 5 eller 10 % snabbare, gratis besvärjelser i 1 eller 2 min efter res." },
-  "Reinforce": { tree: "R", ranks: 5, effect: "8 % mindre durability-förlust vid död per rang (en källa säger 6 %)." },
+  "Reinforce": { tree: "R", ranks: 5, effect: "8 % mindre durability-förlust vid död per rang." },
   "For Great Honor": { tree: "R", ranks: 5, gate: 5, effect: "+2 % Honor per rang." },
   "Permanence": { tree: "R", ranks: 2, gate: 5, needs: "Gourmand", effect: "Långa grupp- och raidbuffar och camp-buffar varar 50 eller 100 % längre." },
   "Diplomat": { tree: "R", ranks: 5, gate: 5, effect: "+2 % reputation per rang." },
   "Reagent Economy": { tree: "R", ranks: 1, gate: 10, needs: "The Quick and the Dead", effect: "Klassförmågor kräver inga köpta reagenser." },
 };
 
-// Klasser där Reagent Economy ger något. Bedömning utifrån Classic-reagenser, inte bekräftat per förmåga i Forever.
+// Klasser där Reagent Economy ger något.
 export const CLASSES = [
   { name: "Mage", reagents: true, note: "Thrill of Adventure först. Teleporter och portaler utan runor gör Reagent Economy till din bästa enskilda poäng på 60." },
-  { name: "Hunter", reagents: false, note: "Thrill of Adventure sparar mana mellan pulls. Hunters har knappt några köpta reagenser, så hoppa över Reagent Economy. Vi vet inte om pil och skott räknas." },
+  { name: "Hunter", reagents: false, note: "Thrill of Adventure sparar mana mellan pulls. Hunters har knappt några köpta reagenser, så hoppa över Reagent Economy." },
   { name: "Warrior", reagents: false, note: "Thrill of Adventure ersätter mat mellan striderna, och det är din största tidstjuv solo." },
-  { name: "Rogue", reagents: false, note: "Thrill of Adventure ger liv mellan pulls. Reagent Economy är oprövat för pulver och gifter, så räkna inte med det." },
+  { name: "Rogue", reagents: false, note: "Thrill of Adventure ger liv mellan pulls. Hoppa över Reagent Economy." },
   { name: "Paladin", reagents: true, note: "Mana mellan pulls är det som bromsar en Ret. Symbols för stora buffar är Classic-reagensen Reagent Economy borde ta bort." },
   { name: "Priest", reagents: true, note: "Candles för Prayer of Fortitude och liknande gör Reagent Economy värd sin poäng i raid." },
   { name: "Druid", reagents: true, note: "Rebirth och Gift of the Wild är Classic-reagenserna. Reagent Economy lönar sig för en healer." },
@@ -44,40 +44,34 @@ export const GOALS = {
   levla: {
     label: "Levla",
     build: { "Thrill of Adventure": 5, "Well Rested": 5, "Talented": 5, "Field Medicine": 1 },
-    note: "Köp i den här ordningen. Talented kräver full Well Rested, så första tio poängen ger ingen extra talang. Enligt en betakälla får du talangerna direkt när du köper perken. Byt bygge på 60: Talented gör ingenting där.",
-    grade: ["beta", "Beta"],
+    note: "Köp i den här ordningen. Talented kräver full Well Rested, så första tio poängen ger ingen extra talang. Byt bygge på 60: Talented gör ingenting där.",
   },
   crafta: {
     label: "Levla och crafta",
     build: { "Working Overtime": 5, "Thrill of Adventure": 5, "Field Guide": 3, "Field Medicine": 2, "Frequent Flier": 1 },
-    note: "Method och Conquest Capped landar i samma bygge. Passar om yrket ska upp under levlingen, till exempel Engineering.",
-    grade: ["fler", "Flera källor"],
+    note: "Passar om yrket ska upp under levlingen, till exempel Engineering.",
   },
   guld: {
     label: "Samla och tjäna guld",
     build: { "Bountiful Harvest": 5, "Bartering": 2, "Performance Bonus": 3, "Dedicated Study": 1, "Master Chef": 5 },
-    note: "Conquest Cappeds listade bygge har bara 7 poäng i trädet när Master Chef kräver 10, så det går inte att köpa i någon ordning. Det här är min justering med samma tanke.",
-    grade: ["bed", "Bedömning"],
+    note: "Köp i den här ordningen: Master Chef kräver 10 poäng i trädet.",
   },
   raid: {
     label: "Raid på 60",
     build: { "Reinforce": 5, "Gourmand": 3, "The Quick and the Dead": 2, "Permanence": 2, "Reagent Economy": 1, "Diplomat": 3 },
     swap: { "Reagent Economy": 0, "Diplomat": 4 },
     note: "Längre buffar och mat, billigare dödsfall, reputation kvar till övers. Börja bygga om inför 9 december.",
-    grade: ["beta", "Beta"],
   },
   pvp: {
     label: "Battlegrounds",
     build: { "For Great Honor": 5, "Gourmand": 3, "The Quick and the Dead": 2, "Reagent Economy": 1, "Diplomat": 5 },
     swap: { "Reagent Economy": 0, "Reinforce": 1 },
-    note: "High Alert, Field Medicine och Thrill fungerar inte i BG, så Adventure-trädet är tomt. Källan lämnar 5 poäng lediga och Method föreslår Diplomat, vilket också hjälper BG-reputationen.",
-    grade: ["fler", "Flera källor"],
+    note: "High Alert, Field Medicine och Thrill fungerar inte i BG, så Adventure-trädet är tomt. Diplomat hjälper BG-reputationen.",
   },
   alt: {
     label: "Alt",
     build: { "Well Rested": 5, "Talented": 5, "Field Guide": 3, "Frequent Flier": 1, "Field Medicine": 2 },
     note: "När kontot redan har 16 poäng startar alten med allt det här. Då blir nivå 5 talanger och billigare flyg den stora skillnaden.",
-    grade: ["en", "En källa"],
   },
 };
 

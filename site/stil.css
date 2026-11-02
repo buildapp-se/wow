@@ -7,10 +7,7 @@
   --krita: #f3f7ff;
   --dov: #c2d4f5;
   --mässing: #ffcf6b;
-  --mint: #8ceac4;
   --himmel: #9fd4ff;
-  --beta: #ffcf6b;
-  --lila: #d6c2ff;
   --korall: #ffa794;
 }
 * { box-sizing: border-box; }
@@ -55,22 +52,33 @@ h1 { font-size: clamp(3.2rem, 9vw, 6.4rem); font-weight: 700; line-height: .92; 
 .titelblock dt { color: var(--dov); font-size: .9rem; }
 .titelblock dd { margin: 0; font: 600 1.4rem/1.15 "Barlow Condensed", sans-serif; }
 
-/* Måttlinjen: varje märke står där det hör hemma i tiden */
-.matt { list-style: none; padding: 0; margin: 40px 0 0; max-width: none; display: grid; grid-template-columns: 1.1fr 1fr 1fr 1.2fr; position: relative; }
-.matt::before { content: ""; position: absolute; left: 0; right: 0; top: 7px; border-top: 1px solid var(--krita); }
-.matt li { position: relative; padding: 24px 16px 0 0; margin: 0; }
-.matt li::before { content: ""; position: absolute; left: 0; top: 0; height: 15px; border-left: 2px solid var(--krita); }
-.matt b { display: block; font: 600 1.35rem/1.1 "Barlow Condensed", sans-serif; color: var(--mässing); }
-
-.lista-ändrar { counter-reset: none; padding-left: 1.2em; }
-
-/* Säkerhetsmärkning, text först så att färgen aldrig bär ensam */
-.g { display: inline-block; font: 500 .85rem/1.3 Barlow, sans-serif; padding: 0 7px; border: 1px solid currentColor; border-radius: 3px; white-space: nowrap; vertical-align: 1px; }
-.off { color: var(--mint); } .fler { color: var(--himmel); } .en { color: var(--krita); }
-.beta { color: var(--beta); } .cla { color: var(--lila); } .bed { color: var(--korall); }
-.nej { color: var(--korall); font-weight: 600; } .ok { color: var(--mint); font-weight: 600; } .hm { color: var(--beta); font-weight: 600; }
-.legend { display: flex; flex-wrap: wrap; gap: 8px 14px; margin: 12px 0 0; padding: 0; list-style: none; max-width: none; }
-.legend li { margin: 0; color: var(--dov); font-size: .95rem; }
+/* Tidslinjen: måttlinjen är ryggraden, tiden står kvar medan korten scrollar förbi */
+.tidslinje { list-style: none; margin: 40px 0 0; padding: 0; max-width: none; position: relative; }
+.tidslinje::before { content: ""; position: absolute; left: 150px; top: 0; bottom: 0; border-left: 2px solid var(--krita); }
+.tidslinje > li { display: grid; grid-template-columns: 150px minmax(0, 1fr); margin: 0 0 22px; position: relative; }
+.tid { position: sticky; top: 16px; align-self: start; padding-right: 18px; text-align: right; }
+.tid b { display: block; font: 600 1.45rem/1.1 "Barlow Condensed", sans-serif; color: var(--mässing); }
+.tid small { display: block; margin-top: 4px; line-height: 1.25; }
+.steg-kort { margin-left: 24px; border: 1px solid var(--linje); background: var(--papper); padding: 16px 18px; position: relative; }
+.steg-kort::before { content: ""; position: absolute; left: -25px; top: 16px; width: 24px; border-top: 2px solid var(--krita); }
+.steg-kort h3 { font-size: 1.7rem; margin: 0 0 10px; }
+.kolumner { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px 24px; }
+.kolumner h4 { color: var(--himmel); font-size: 1.15rem; margin-bottom: 4px; }
+.kolumner ul { padding-left: 1.1em; margin: 0; }
+.kolumner .bock { align-items: flex-start; padding: 5px 0; line-height: 1.35; }
+.kolumner .bock input { margin-top: 1px; }
+.inte h4 { color: var(--korall); }
+.mellan { margin-top: 64px; }
+nav a[aria-current="page"] { color: var(--mässing); }
+.vy[hidden] { display: none; }
+.ord dt { font: 600 1.2rem "Barlow Condensed", sans-serif; margin-top: 14px; }
+.ord dd { margin: 2px 0 0; max-width: 72ch; }
+td.kryss { min-width: 0; padding: 0 8px; }
+td.kryss .bock { justify-content: center; min-width: 44px; }
+#handelslista td { min-width: 72px; }
+#handelslista td.kryss { min-width: 0; }
+#handelslista td:nth-child(2) { min-width: 110px; }
+#handelslista td:nth-child(n+6) { min-width: 170px; }
 
 .not { border-left: 4px solid var(--mässing); padding: 2px 0 2px 16px; margin: 1.2em 0; max-width: 72ch; }
 
@@ -122,8 +130,6 @@ legend { font: 600 1.2rem "Barlow Condensed", sans-serif; padding: 0 6px; }
 
 footer { border-top: 1px solid var(--linje); margin-top: 64px; padding-top: 16px; color: var(--dov); }
 ol.steg li { padding-left: 4px; }
-.kallor { columns: 2 320px; max-width: none; padding-left: 1.1em; }
-.kallor li { break-inside: avoid; }
 
 @media (max-width: 920px) {
   .layout { display: block; padding: 0 16px; }
@@ -138,10 +144,11 @@ ol.steg li { padding-left: 4px; }
   body { font-size: 16px; }
   .huvud { grid-template-columns: 1fr; }
   .titelblock { border-left: 0; border-top: 2px solid var(--krita); }
-  .matt { grid-template-columns: 1fr; margin-left: 7px; }
-  .matt::before { top: 0; bottom: 0; right: auto; border-top: 0; border-left: 1px solid var(--krita); }
-  .matt li { padding: 0 0 18px 20px; }
-  .matt li::before { top: 8px; height: 0; width: 14px; border-left: 0; border-top: 2px solid var(--krita); }
+  .tidslinje::before { left: 0; }
+  .tidslinje > li { display: block; padding-left: 16px; margin-bottom: 26px; }
+  .tid { position: static; text-align: left; padding: 0 0 6px; }
+  .steg-kort { margin: 0; padding: 12px; }
+  .steg-kort::before { display: none; }
 }
 @media print {
   nav { display: none; }

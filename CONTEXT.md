@@ -6,18 +6,21 @@ Privat samlingssida för oss som börjar spela WoW: Forever (släpp 5 november 2
 
 ## Innehåll
 
-Läget, Karaktärer, Legacy, Ekonomi, Addons, Faktakoll (Gemini-råden), Källor. Allt i `site/index.html`. Legacy-data och byggen i `site/data.js`.
+Sju vyer, en i taget via länkar med `#`: Roadmap (tidslinje plus main och alts), Missa inte, Köp och sälj, Mål, Karaktärer, Legacy, Addons. Text i `site/index.html`, tidslinje och handelslista i `site/plan.js`, Legacy-data och byggen i `site/data.js`.
 
 ## Regler för innehållet
 
-- Forever är inte Classic. Inget Classic-minne utan märkning.
-- Varje påstående har en säkerhetsmärkning: Officiell, Flera källor, En källa, Beta, Classic, Bedömning.
-- Inga påhittade guldpriser. Köp- och säljregler är relativa tills det finns riktiga priser.
-- Conquest Capped säljer boostar. Används för detaljer men märks.
+Patriks beslut 2026-11-02, ersätter säkerhetsmärkningen och faktakollen i första versionen:
+
+- Sidan säger vad man ska göra. Inga texter om vad någon källa påstått eller vad som inte gick att belägga. Det som inte går att agera på utelämnas.
+- Forever är inte Classic. Inget Classic-minne utan att det är kontrollerat mot Forever.
+- Handelslistan har antal, maxpris och riktpris. Priserna är startvärden byggda på betans AH, vendorvärden och Mister Graphed, och skrivs om med riktiga priser efter släppet.
+- Att Mister Graphed säljer mer än Gift of Galloping kommer från tredjepartsguider, inte Wowheads databas. Hela takmodellen vilar på det, så sidan säger åt läsaren att kolla i spelet innan större köp.
+- Riktpriser utan betapris är egna uppskattningar: fire-materialen, väskorna och maxpriserna under Graphed-taket.
 
 ## Teknik
 
-Statisk sida på GitHub Pages utan byggsteg. `node site/test.mjs` (också i Actions) fäller publiceringen om ett Legacy-bygge inte går att köpa enligt grindarna, om summorna inte stämmer eller om `noindex` saknas. Tabellsortering kopierad från `elwyn-dash/public/sortable.js`. Bockar sparas i `localStorage`, per webbläsare.
+Statisk sida på GitHub Pages utan byggsteg. `node site/test.mjs` (också i Actions) fäller publiceringen om ett Legacy-bygge inte går att köpa enligt grindarna, om summorna inte stämmer, om ett handelspris saknar marginal eller går över Graphed-taket, om `noindex` saknas eller om tankstreck eller Gemini-text smyger sig in. Tabellsortering kopierad från `elwyn-dash/public/sortable.js`. Bockar sparas i `localStorage`, per webbläsare.
 
 ## Audits
 

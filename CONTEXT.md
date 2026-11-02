@@ -20,7 +20,7 @@ Patriks beslut 2026-11-02, ersätter säkerhetsmärkningen och faktakollen i fö
 - Forever är inte Classic. Inget Classic-minne utan att det är kontrollerat mot Forever.
 - Tabellen per nivå (`PLAN` i `site/plan.js`) är enda källan för vad som ska göras, köpas och säljas. Typkolumnen har bara Köp, Samla, Spara och Sälj. Den sorteras inte, eftersom nivåordningen är innehållet. Den har antal, maxpris och riktpris. Priserna är startvärden byggda på betans AH, vendorvärden och Mister Graphed, och skrivs om med riktiga priser efter släppet.
 - Att Mister Graphed säljer mer än Gift of Galloping kommer från tredjepartsguider, inte Wowheads databas. Hela takmodellen vilar på det, så sidan säger åt läsaren att kolla i spelet innan större köp.
-- Patriks beslut 2026-11-02: listan över dyra föremål visar också Classic Era-priser, märkta som äldre ekonomi, så att han inte säljer något sällsynt för billigt. Gränsen i listan är min egen regel. Föremål ska finnas i Wowheads Forever-databas för att komma med.
+- Efter Patriks fråga 2026-11-02: listan över dyra föremål visar också Classic Era-priser, märkta som äldre ekonomi, så att han inte säljer något sällsynt för billigt. Gränsen i listan är min egen regel. Föremål ska finnas i Wowheads Forever-databas för att komma med.
 - Riktpriser utan betapris är egna uppskattningar: fire-materialen, väskorna och maxpriserna under Graphed-taket.
 
 ## Teknik

@@ -154,6 +154,7 @@ export const HANDEL = PLAN.flatMap((f) => f.rader.filter((r) => r.typ === "Spara
 
 // Dyra föremål. beta: begärt pris på Forever-betan, WoWCensus 2026-10-12, nivåtak 30. classic: begärt pris i Classic Era, WoWCensus 2026-10-26.
 // Båda är begärda priser, inte försäljningar. Classic Era är en gammal ekonomi: det visar vad som är sällsynt, inte vad det ger i Forever.
+// Flask of the Titans, Shadowfang och Assassin's Blade: snitt räknat ur avrundat listvärde delat med antal. Fyra föremål på 25 g: warcraftforever.games 19 sept.
 // Alla är kontrollerade mot Wowheads Forever-databas 2026-11-02. Edgemaster's Handguards, Blackmetal Cape och Lady Maye's Pendant saknades där.
 const dyr = (vad, id, typ, krav, beta, classic) => ({ vad, id, typ, krav, beta: beta && beta * g, classic: classic && classic * g });
 export const BOE = [

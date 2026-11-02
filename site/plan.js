@@ -5,7 +5,7 @@ export const wh = (kind, id) => `https://www.wowhead.com/forever/${kind}=${id}`;
 
 export function pris(c) {
   const gold = Math.floor(c / g), silver = Math.floor((c % g) / s), kop = c % s;
-  return [gold && `${gold} g`, silver && `${silver} s`, kop && `${kop} k`].filter(Boolean).join(" ") || "0";
+  return [gold && `${String(gold).replace(/\B(?=(\d{3})+$)/g, " ")} g`, silver && `${silver} s`, kop && `${kop} k`].filter(Boolean).join(" ") || "0";
 }
 
 // Gantt-schemat. Datumen räknar med 6 h spel om dagen.
@@ -152,13 +152,43 @@ export const PLAN = [
 ];
 export const HANDEL = PLAN.flatMap((f) => f.rader.filter((r) => r.typ === "Spara" && r.kop));
 
-// Dyra BoE från betan. Pris i koppar. Betan hade nivåtak 30, så priserna är ett golv att kontrollera, inte ett facit.
+// Dyra föremål. beta: begärt pris på Forever-betan, WoWCensus 2026-10-12, nivåtak 30. classic: begärt pris i Classic Era, WoWCensus 2026-10-26.
+// Båda är begärda priser, inte försäljningar. Classic Era är en gammal ekonomi: det visar vad som är sällsynt, inte vad det ger i Forever.
+// Alla är kontrollerade mot Wowheads Forever-databas 2026-11-02. Edgemaster's Handguards, Blackmetal Cape och Lady Maye's Pendant saknades där.
+const dyr = (vad, id, typ, krav, beta, classic) => ({ vad, id, typ, krav, beta: beta && beta * g, classic: classic && classic * g });
 export const BOE = [
-  { vad: "Lil Timmy's Peashooter", id: 13136, fran: 10 * g, till: 25 * g },
-  { vad: "Starsight Tunic", id: 12988, fran: 10 * g, till: 25 * g },
-  { vad: "Searing Blade", id: 12992, fran: 10 * g, till: 25 * g },
-  { vad: "Stormbringer Belt", id: 12978, fran: 10 * g, till: 25 * g },
+  dyr("The Green Tower", 1204, "Epic", "Nivå 36", 500.89),
+  dyr("Schematic: Sniper Scope", 10608, "Recept", "Engineering 240", 339.71),
+  dyr("Speedsteel Rapier", 13034, "Blå", "Nivå 36", 250.21),
+  dyr("Staff of Jordan", 873, "Epic", "Nivå 35", 250),
+  dyr("Tigerstrike Mantle", 13108, "Blå", "Nivå 29", 204.46),
+  dyr("Scarlet Boots", 10332, "Blå", "Nivå 30", 200),
+  dyr("Gnomish Shrink Ray", 10716, "Övrigt", "Engineering 205", 177.12),
+  dyr("Mantle of Thieves", 2264, "Blå", "Nivå 25", 160.29),
+  dyr("Warchief Kilt", 7760, "Blå", "Nivå 34", 129.92),
+  dyr("Big Iron Fishing Pole", 6367, "Övrigt", "Nivå 25, Fishing 100", 125.25),
+  dyr("Traveler's Backpack", 4500, "Väska", "", 100),
+  dyr("Vendetta", 776, "Blå", "Nivå 26", 99.63),
+  dyr("Forest Tracker Epaulets", 2278, "Blå", "Nivå 26", 96.22),
+  dyr("Pugilist Bracers", 4438, "Blå", "Nivå 25", 80),
+  ...[["Lil Timmy's Peashooter", 13136], ["Starsight Tunic", 12988], ["Searing Blade", 12992], ["Stormbringer Belt", 12978]].map(([v, id]) => dyr(v, id, "Blå", "", 25)),
+  dyr("Cloak of Flames", 3475, "Epic", "Nivå 60", null, 155998),
+  dyr("Formula: Enchant Chest - Greater Stats", 16253, "Recept", "Enchanting 300", null, 102997),
+  dyr("Teebu's Blazing Longsword", 1728, "Epic", "Nivå 60", null, 100000),
+  dyr("Sulfuron Hammer", 17193, "Epic", "Nivå 60", null, 34199),
+  dyr("Plans: Lionheart Helm", 12717, "Recept", "Blacksmithing 300", null, 28199),
+  dyr("Plans: Stronghold Gauntlets", 12720, "Recept", "Blacksmithing 300", null, 15299),
+  dyr("Plans: Sulfuron Hammer", 18592, "Recept", "Blacksmithing 300", null, 10829),
+  dyr("Pattern: Mooncloth Circlet", 14509, "Recept", "Tailoring 280", null, 10656),
+  dyr("Schematic: Flame Deflector", 4411, "Recept", "Engineering 125", null, 9399),
+  dyr("Schematic: Hyper-Radiant Flame Reflector", 18657, "Recept", "Engineering 290", null, 9266),
+  dyr("Recipe: Flask of the Titans", 13519, "Recept", "Alchemy 300", null, 6188),
+  dyr("Shadowfang", 1482, "Blå", "Nivå 19", null, 2405),
+  dyr("Assassin's Blade", 1935, "Blå", "Nivå 19", null, 2293),
+  ...[["Hand of Edward the Odd", 2243, 57], ["Blade of Hanna", 2801, 59], ["Cloudkeeper Legplates", 14554, 57], ["Wall of the Dead", 1979, 45], ["Flurry Axe", 871, 42], ["Fiery War Axe", 870, 35], ["Kang the Decapitator", 2291, 44], ["The Eye of Shadow", 18665, 60], ["Elemental Mage Staff", 944, 56]].map(([v, id, n]) => dyr(v, id, "Epic", `Nivå ${n}`)),
 ];
+// Min egen gräns, inget marknadspris: halva betapriset, annars efter hur dyrt det är i Classic Era.
+export const golv = (b) => b.beta ? Math.round(b.beta / 2 / s) * s : b.classic >= 10000 * g ? 500 * g : 100 * g;
 
 // Tidslinjen. Samma priser och antal som PLAN: ändra båda.
 const hos = (id) => `<button type="button" class="plats" data-plats="${id}">${PLATSER[id].namn}</button>`;

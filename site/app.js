@@ -1,5 +1,5 @@
 import { PERKS, TREES, CLASSES, GOALS, CHALLENGES, REWARDS, buildFor, stegFor } from "./data.js?v=dev";
-import { PHASES, PLAN, PLATSER, RUTTER, BOE, GANTT, MILSTOLPAR, RECEPT, START, SLUT, dag, datum, pris, wh } from "./plan.js?v=dev";
+import { PHASES, PLAN, PLATSER, RUTTER, BOE, golv, GANTT, MILSTOLPAR, RECEPT, START, SLUT, dag, datum, pris, wh } from "./plan.js?v=dev";
 import { initSortable, sortable } from "./sortable.js?v=dev";
 
 const $ = (s) => document.querySelector(s);
@@ -125,8 +125,8 @@ const renderRutt = () => { $("#rutt").innerHTML = ruttHtml(RUTTER.find((r) => r.
 renderRutt();
 
 // Dyra BoE
-$("#boe tbody").innerHTML = BOE.map((b) => `<tr><td><a href="${wh("item", b.id)}" rel="noopener"><strong>${b.vad}</strong></a></td>
-  <td data-sort-value="${b.fran}">${pris(b.fran)}</td><td data-sort-value="${b.till}">${pris(b.till)}</td><td data-sort-value="${b.fran / 2}">${pris(b.fran / 2)}</td></tr>`).join("");
+$("#boe tbody").innerHTML = BOE.map((b) => `<tr><td><a href="${wh("item", b.id)}" rel="noopener"><strong>${b.vad}</strong></a></td><td>${b.typ}</td><td>${b.krav}</td>
+  <td data-sort-value="${golv(b)}">${pris(golv(b))}</td><td data-sort-value="${b.beta ?? ""}">${b.beta ? pris(b.beta) : ""}</td><td data-sort-value="${b.classic ?? ""}">${b.classic ? pris(b.classic) : ""}</td></tr>`).join("");
 
 // Perktabellen
 $("#perkar tbody").innerHTML = Object.entries(PERKS).map(([name, p]) => `<tr>

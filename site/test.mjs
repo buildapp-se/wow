@@ -2,7 +2,7 @@
 import assert from "node:assert";
 import { readFileSync } from "node:fs";
 import { PERKS, CLASSES, GOALS, CHALLENGES, buildFor, buildError, stegFor } from "./data.js";
-import { HANDEL, PLAN, PLATSER, RUTTER, BOE, PHASES, RECEPT, GANTT, MILSTOLPAR, START, SLUT, dag, datum, pris } from "./plan.js";
+import { HANDEL, PLAN, PLATSER, RUTTER, BOE, golv, PHASES, RECEPT, GANTT, MILSTOLPAR, START, SLUT, dag, datum, pris } from "./plan.js";
 
 assert.equal(Object.keys(PERKS).length, 21, "Blizzard anger 21 perkar");
 assert.equal(CHALLENGES.reduce((a, c) => a + c.points, 0), 65, "Blizzard anger 65 utmaningar");
@@ -42,7 +42,12 @@ for (const r of RUTTER) {
   if (r.noder) for (const n of r.noder.split(",")) assert.match(n, /^\d+ \d+$/, r.id);
   else for (const b of r.ben) for (const [id] of b.stopp) assert.ok(PLATSER[id] && PLATSER[id].zon === b.zon, `${r.id}: ${id}`);
 }
-for (const b of BOE) assert.ok(b.id && b.till > b.fran, b.vad);
+for (const b of BOE) assert.ok(b.id && golv(b) > 0 && (!b.beta || golv(b) < b.beta), b.vad);
+assert.equal(new Set(BOE.map((b) => b.id)).size, BOE.length, "dubblett i BOE");
+assert.equal(golv(BOE.find((b) => b.vad === "Staff of Jordan")), 1250000);
+assert.equal(golv(BOE.find((b) => b.vad === "Cloak of Flames")), 5000000);
+assert.equal(golv(BOE.find((b) => b.vad === "Flurry Axe")), 1000000);
+assert.equal(pris(1559980000), "155 998 g");
 // Schemat: allt som säljs ska finnas där, och köp måste börja före försäljning.
 const varor = GANTT.flatMap((r) => r.varor);
 for (const h of HANDEL.filter((x) => x.salj)) assert.ok(varor.includes(h.vad), `${h.vad} saknas i schemat`);

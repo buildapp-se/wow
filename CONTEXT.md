@@ -8,6 +8,10 @@ Privat samlingssida för oss som börjar spela WoW: Forever (släpp 5 november 2
 
 Sju vyer, en i taget via länkar med `#`: Roadmap (tidslinje plus main och alts), Missa inte, Köp och sälj (Gantt-schema, handelslista, arbitrage), Mål, Karaktärer, Legacy, Addons. Text i `site/index.html`, tidslinje och handelslista i `site/plan.js`, Legacy-data och byggen i `site/data.js`.
 
+## Gruppen
+
+Patrik spelar Gnome Mage med Mining och Engineering, plus bank-alt med Tailoring och Enchanting (hans egna val). Sambon spelar Hunter med Skinning och Leatherworking. Övriga: Protection Warrior, Priest, Druid och en Warrior som spelar mer sällan. Altplanen utgår från det: alt 2 är Paladin eftersom den fyller den roll som saknas. Legacy räknas per konto, så andras yrken ger inte Patrik poäng.
+
 ## Regler för innehållet
 
 Patriks beslut 2026-11-02, ersätter säkerhetsmärkningen och faktakollen i första versionen:

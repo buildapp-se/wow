@@ -67,7 +67,7 @@ export const PHASES = [
   },
   {
     nar: "Nivå 10 till 20", titel: "Yrket börjar betala", 
-    gor: ["Frost-talanger från nivå 10", "Engineering hos Bronk Guzzlegear i Dun Morogh", "Mage-quests på nivå 10 och 15: gratis utrustning", "Hall of Thanes 14 till 17 och Deadmines 18 till 22, med alla quests", "Möt Huntern i Westfall eller Loch Modan", "Spara varje Waylaid Crate och Scarce-material på alten"],
+    gor: ["Frost-talanger från nivå 10", "Engineering hos Bronk Guzzlegear i Dun Morogh", "Mage-quests på nivå 10 och 15: gratis utrustning", "Hall of Thanes 14 till 17 och Deadmines 18 till 22, med alla quests", "Möt din sambo i Westfall eller Loch Modan", "Spara varje Waylaid Crate och Scarce-material på alten"],
     kop: ["Pristine Leather upp till 2 g, Frilled Lichen upp till 1 g, 5 st var"],
     salj: ["Mat till spelare"],
     inte: ["Grinda inte kill-XP ihop: kill-XP delas, quest-XP inte", "Sälj inte Scarce under 3 g"],

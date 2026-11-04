@@ -80,7 +80,10 @@ assert.match(html, /<meta name="robots" content="noindex, nofollow">/);
 // Filerna cachas i 4 h. Utan version i adressen möter ny HTML gammal app.js och sidan blir tom.
 assert.match(html, /app\.js\?v=dev/);
 assert.match(html, /stil\.css\?v=dev/);
-assert.equal(readFileSync(new URL("./app.js", import.meta.url), "utf8").match(/from "\.\/[a-z]+\.js\?v=dev"/g).length, 4);
+const importer = readFileSync(new URL("./app.js", import.meta.url), "utf8").match(/from "\.\/[a-z]+\.js\?v=dev"/g);
+assert.equal(importer.length, 4);
+// modulepreload hämtar modulerna parallellt med app.js. Fel adress ger dubbel hämtning i stället.
+assert.deepEqual([...html.matchAll(/rel="modulepreload" href="([a-z]+\.js\?v=dev)"/g)].map((m) => m[1]).sort(), importer.map((s) => s.slice(8, -1)).sort());
 assert.ok(!allText.includes("—"), "inget tankstreck i texten");
 assert.ok(!/Gemini|Ej belagt/i.test(allText), "ingen faktakollstext på sidan");
 assert.ok(PHASES.every((f) => f.gor.length), "varje fas har något att göra");

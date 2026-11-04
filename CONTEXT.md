@@ -32,3 +32,4 @@ Kartan använder Wowheads zonbilder direkt från `wow.zamimg.com` (`classicplus/
 ## Audits
 
 - UX: 2026-11-02, warn, 5 av 6 skriptkontroller gröna, kvar är radio- och kryssrutor under 44 px vars etiketter ger målytan. Navigationens 39 px rättades efter körningen. Breda tabeller scrollar i egen ruta på mobil.
+- Mutation: 2026-11-04, pass, Stryker 100 % (före 82,47 %), 97 mutanter i logiken i site/data.js och site/plan.js, alla överlevande granskade och dödade med tester

@@ -9,6 +9,10 @@ reviewedAt: 2026-11-02
 
 # Handoff
 
+## 2026-11-04: mutationstest
+
+Stryker (command runner, `node site/test.mjs`) på logiken i `site/data.js` (`buildFor`, `buildError`, `stegFor`) och `site/plan.js` (`wh`, `pris`, `dag`, `datum`, `golv`): 82,47 % före, 100 % efter. Överlevande: bytet av Reagent Economy i `buildFor` var helt otestat, `buildError` saknade test för summa, okänd perk, rang och `needs`, och tusentalsavgränsaren i `pris` testades bara med sex siffror. Bara tester, ingen bugg. Kör om med `npm i --no-save @stryker-mutator/core && npx stryker run`, rapporten hamnar i `reports/` (ignorerad). Gren `claude/mutation-2026-11-04`, draft-PR #2.
+
 ## 2026-11-02: första versionen
 
 Byggd från fem researchspår och Blizzards egna artiklar. Conquest Cappeds samlarbygge klarar inte grindarna enligt perktabellen och ersattes av ett justerat bygge.

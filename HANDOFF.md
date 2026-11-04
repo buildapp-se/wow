@@ -4,7 +4,7 @@ status: active
 currentGoal: Handlingsplanen är live på buildapp.se/wow inför släppet 5 november 2026
 nextAction: Efter släppet: byt riktpriserna i site/plan.js mot riktiga AH-priser, se BACKLOG.md
 blockers: []
-reviewedAt: 2026-11-02
+reviewedAt: 2026-11-04
 ---
 
 # Handoff
@@ -32,3 +32,7 @@ Kontroll av Playwright: gå till `about:blank` före ny laddning, annars räknas
 Lokalt: `cd site` och valfri statisk server. Test: `node site/test.mjs`.
 
 Publicerad efter Patriks ja. Repot är `buildapp-se/wow`, gren `main`, Pages via Actions. Orgen kräver kontot Elwyndaz: `GH_TOKEN="$(gh auth token --user Elwyndaz)"` före `gh`-kommandon, eftersom `fackligastudier-ui` är aktivt konto och saknar rättigheter. Ingen rad i buildapp.se:s sitemap eller startsida, med flit.
+
+## 2026-11-04: koll före släppet
+
+Blizzards pre-launch-noter (2 nov, via Warcraft Tavern 4 nov) lästa mot sajten. Piercing Ice borttagen och Elemental Precision blev Precision 3/3. Talangkartan i `site/mage.js` hade redan det, men punktlistan i Mage-avsnittet var gammal: questa- och 31-till-60-raderna togs bort (kartan täcker dem), AoE-bygget fick Precision 3/3 och de två frigjorda poängen i Frost Channeling 3/3 och Ice Shards 1/5 (mitt val, ej provat). Icy Veins svarar 403 mot WebFetch. Övrigt i noterna: klassträning 1 till 60 kostar 206 till 207 g, högre nivåers mobs har mer hälsa, snabbare respawn i startzoner. Inget om yrken, AH, mount eller dual spec.

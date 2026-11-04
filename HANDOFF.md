@@ -9,6 +9,10 @@ reviewedAt: 2026-11-04
 
 # Handoff
 
+## 2026-11-04: backlogrunda (draft-PR #3, staplad på #1)
+
+Gren `claude/backlog-2026-11-04` från `claude/forbattringar-2026-11-04`; #1 mergas först. Dyra föremål: 14 världsepics och 10 recept tillagda (126 rader). Wowheads sidor gick inte att läsa, så kandidaterna kom från AtlasLoot Classics världsepics och classicdb.ch:s blå och lila recept; varje rad kontrollerad mot `nether.wowhead.com/forever/tooltip/item/<id>` (finns i Forever, binder inte vid upplockning). Var-texten säger "i Classic". 27 av AtlasLoots 41 saknade världsepics finns inte i Forever-datan (404) och är inte med. Roadmapens första fas heter "Före första inloggningen", namnreservationen är borta. Länkkontroll: warcraft.wiki.gg via wikins API och GitHub-repot finns; CurseForge, Icy Veins och Conquest Capped fortfarande okontrollerade. `node site/test.mjs` ok, axe 0 fel på Roadmap och Köp och sälj i 390 och 1280 px, ingen horisontell scroll.
+
 ## 2026-11-04: förbättringsrunda före släppet
 
 Gren `claude/forbattringar-2026-11-04`, draft-PR #1. Bara rättningar: rangpipsen i Legacy fick `role="img"` (axe-fel), mobilmenyn scrollar fram den aktiva vyn, modulerna laddas med `modulepreload` (testet kräver samma adresser som importerna), kartrutan stängs av tryck utanför och Warchief Kilts betapris visade flyttalsrester. axe-core på alla vyer i 390 och 1280 px: 0 fel efter.

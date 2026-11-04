@@ -183,6 +183,9 @@ function visa() {
     if (a.hash === `#${vy}`) a.setAttribute("aria-current", "page");
     else a.removeAttribute("aria-current");
   });
+  // På mobil scrollar menyn i sidled: håll den aktiva länken synlig, annars syns inte var man är.
+  const nav = $("nav"), aktiv = nav.querySelector("[aria-current]");
+  if (aktiv && nav.scrollWidth > nav.clientWidth) nav.scrollLeft = aktiv.offsetLeft - (nav.clientWidth - aktiv.offsetWidth) / 2;
   scrollTo(0, 0);
 }
 addEventListener("hashchange", visa);

@@ -95,6 +95,12 @@ const platsHtml = (id) => {
 const dialog = $("#kartruta");
 const visaIDialog = (html) => { $("#kartinnehall").innerHTML = html; mynt($("#kartinnehall")); dialog.showModal(); };
 $("#kartstang").addEventListener("click", () => dialog.close());
+// Tryck utanför rutan stänger den, som man väntar sig på mobil. Klick på rutans egen kant räknas inte.
+dialog.addEventListener("click", (e) => {
+  if (e.target !== dialog) return;
+  const r = dialog.getBoundingClientRect();
+  if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close();
+});
 document.addEventListener("click", (e) => {
   const b = e.target.closest?.("[data-plats], [data-rutt]");
   if (!b) return;
@@ -144,7 +150,7 @@ function renderBuild() {
   const build = buildFor(goal, cls);
   const g = GOALS[goal];
   $("#bygge").innerHTML = `<h4>${cls.name}, ${g.label.toLowerCase()}</h4>
-  <ol class="pips">${stegFor(build).map((s) => `<li><span><b>Poäng ${s.fran === s.till ? s.fran : `${s.fran} till ${s.till}`}:</b> ${s.perk}</span><span class="pip" aria-label="${s.rang} av ${s.max}">${"<i class=on></i>".repeat(s.rang)}${"<i></i>".repeat(s.max - s.rang)}</span><small>${TREES[PERKS[s.perk].tree]}. ${PERKS[s.perk].effect}</small></li>`).join("")}</ol>
+  <ol class="pips">${stegFor(build).map((s) => `<li><span><b>Poäng ${s.fran === s.till ? s.fran : `${s.fran} till ${s.till}`}:</b> ${s.perk}</span><span class="pip" role="img" aria-label="${s.rang} av ${s.max}">${"<i class=on></i>".repeat(s.rang)}${"<i></i>".repeat(s.max - s.rang)}</span><small>${TREES[PERKS[s.perk].tree]}. ${PERKS[s.perk].effect}</small></li>`).join("")}</ol>
   <p>${g.note}</p><p><strong>${cls.name}:</strong> ${cls.note}</p>`;
 }
 renderBuild();
@@ -183,6 +189,9 @@ function visa() {
     if (a.hash === `#${vy}`) a.setAttribute("aria-current", "page");
     else a.removeAttribute("aria-current");
   });
+  // På mobil scrollar menyn i sidled: håll den aktiva länken synlig, annars syns inte var man är.
+  const nav = $("nav"), aktiv = nav.querySelector("[aria-current]");
+  if (aktiv && nav.scrollWidth > nav.clientWidth) nav.scrollLeft = aktiv.offsetLeft - (nav.clientWidth - aktiv.offsetWidth) / 2;
   scrollTo(0, 0);
 }
 addEventListener("hashchange", visa);

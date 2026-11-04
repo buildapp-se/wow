@@ -10,3 +10,5 @@
 - [ ] `[P1]` Efter släppet: byt `GEAR` (`site/mage.js`) mot riktiga BiS-listor när Wowhead fyller sin Phase 1-tabell, och lägg till trinkets och mantlar. Kontrollera talangkartan på 31 till 60.
 - [ ] `[P1]` Dyra föremål: 4 recept och de världsdroppade epics som inte redan står i `BOE` hämtades inte, Wowhead svarade 403 efter runt 100 sidor. Kör om långsamt. 191 blå och lila recept saknar källa i Wowheads data (bland annat Forever-nya) och är inte med.
 - [ ] `[P2]` Bekräfta en exporterad Auctionator-lista och lägg in färdig import.
+- [ ] `[P2]` Roadmapens första fas "Nu till 4 nov" (bland annat namnreservation senast 3 nov) är passerad efter släppet. Ta bort eller korta den.
+- [ ] `[P2]` Länkarna till CurseForge, Icy Veins, Conquest Capped, warcraft.wiki.gg och GitHub svarar 403 mot skript och kontrollerades inte 2026-11-04. Klicka igenom dem i webbläsaren.

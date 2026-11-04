@@ -45,6 +45,9 @@ for (const r of RUTTER) {
 }
 for (const b of BOE) assert.ok(b.id && golv(b) > 0 && (!b.beta || golv(b) < b.beta), b.vad);
 assert.equal(new Set(BOE.map((b) => b.id)).size, BOE.length, "dubblett i BOE");
+// 129.92 * 10000 blir 1299199,99... i flyttal och visades som "99.99999999976717 k".
+for (const b of BOE) assert.ok(!b.beta || Number.isInteger(b.beta), `${b.vad}: betapriset måste vara hela koppar`);
+assert.equal(pris(BOE.find((b) => b.vad === "Warchief Kilt").beta), "129 g 92 s");
 assert.equal(golv(BOE.find((b) => b.vad === "Staff of Jordan")), 1250000);
 assert.equal(golv(BOE.find((b) => b.vad === "Cloak of Flames")), 5000000);
 assert.equal(golv(BOE.find((b) => b.vad === "Flurry Axe")), 1000000);
@@ -80,7 +83,10 @@ assert.match(html, /<meta name="robots" content="noindex, nofollow">/);
 // Filerna cachas i 4 h. Utan version i adressen möter ny HTML gammal app.js och sidan blir tom.
 assert.match(html, /app\.js\?v=dev/);
 assert.match(html, /stil\.css\?v=dev/);
-assert.equal(readFileSync(new URL("./app.js", import.meta.url), "utf8").match(/from "\.\/[a-z]+\.js\?v=dev"/g).length, 4);
+const importer = readFileSync(new URL("./app.js", import.meta.url), "utf8").match(/from "\.\/[a-z]+\.js\?v=dev"/g);
+assert.equal(importer.length, 4);
+// modulepreload hämtar modulerna parallellt med app.js. Fel adress ger dubbel hämtning i stället.
+assert.deepEqual([...html.matchAll(/rel="modulepreload" href="([a-z]+\.js\?v=dev)"/g)].map((m) => m[1]).sort(), importer.map((s) => s.slice(8, -1)).sort());
 assert.ok(!allText.includes("—"), "inget tankstreck i texten");
 assert.ok(!/Gemini|Ej belagt/i.test(allText), "ingen faktakollstext på sidan");
 assert.ok(PHASES.every((f) => f.gor.length), "varje fas har något att göra");

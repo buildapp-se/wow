@@ -95,6 +95,12 @@ const platsHtml = (id) => {
 const dialog = $("#kartruta");
 const visaIDialog = (html) => { $("#kartinnehall").innerHTML = html; mynt($("#kartinnehall")); dialog.showModal(); };
 $("#kartstang").addEventListener("click", () => dialog.close());
+// Tryck utanför rutan stänger den, som man väntar sig på mobil. Klick på rutans egen kant räknas inte.
+dialog.addEventListener("click", (e) => {
+  if (e.target !== dialog) return;
+  const r = dialog.getBoundingClientRect();
+  if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close();
+});
 document.addEventListener("click", (e) => {
   const b = e.target.closest?.("[data-plats], [data-rutt]");
   if (!b) return;

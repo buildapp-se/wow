@@ -144,7 +144,7 @@ function renderBuild() {
   const build = buildFor(goal, cls);
   const g = GOALS[goal];
   $("#bygge").innerHTML = `<h4>${cls.name}, ${g.label.toLowerCase()}</h4>
-  <ol class="pips">${stegFor(build).map((s) => `<li><span><b>Poäng ${s.fran === s.till ? s.fran : `${s.fran} till ${s.till}`}:</b> ${s.perk}</span><span class="pip" aria-label="${s.rang} av ${s.max}">${"<i class=on></i>".repeat(s.rang)}${"<i></i>".repeat(s.max - s.rang)}</span><small>${TREES[PERKS[s.perk].tree]}. ${PERKS[s.perk].effect}</small></li>`).join("")}</ol>
+  <ol class="pips">${stegFor(build).map((s) => `<li><span><b>Poäng ${s.fran === s.till ? s.fran : `${s.fran} till ${s.till}`}:</b> ${s.perk}</span><span class="pip" role="img" aria-label="${s.rang} av ${s.max}">${"<i class=on></i>".repeat(s.rang)}${"<i></i>".repeat(s.max - s.rang)}</span><small>${TREES[PERKS[s.perk].tree]}. ${PERKS[s.perk].effect}</small></li>`).join("")}</ol>
   <p>${g.note}</p><p><strong>${cls.name}:</strong> ${cls.note}</p>`;
 }
 renderBuild();

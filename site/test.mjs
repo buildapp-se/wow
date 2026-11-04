@@ -45,6 +45,9 @@ for (const r of RUTTER) {
 }
 for (const b of BOE) assert.ok(b.id && golv(b) > 0 && (!b.beta || golv(b) < b.beta), b.vad);
 assert.equal(new Set(BOE.map((b) => b.id)).size, BOE.length, "dubblett i BOE");
+// 129.92 * 10000 blir 1299199,99... i flyttal och visades som "99.99999999976717 k".
+for (const b of BOE) assert.ok(!b.beta || Number.isInteger(b.beta), `${b.vad}: betapriset måste vara hela koppar`);
+assert.equal(pris(BOE.find((b) => b.vad === "Warchief Kilt").beta), "129 g 92 s");
 assert.equal(golv(BOE.find((b) => b.vad === "Staff of Jordan")), 1250000);
 assert.equal(golv(BOE.find((b) => b.vad === "Cloak of Flames")), 5000000);
 assert.equal(golv(BOE.find((b) => b.vad === "Flurry Axe")), 1000000);

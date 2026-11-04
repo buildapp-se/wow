@@ -155,7 +155,7 @@ export const HANDEL = PLAN.flatMap((f) => f.rader.filter((r) => r.typ === "Spara
 
 // Dyra föremål. beta: begärt pris på Forever-betan, WoWCensus 2026-10-12, nivåtak 30. De fyra på 25 g: warcraftforever.games 19 sept.
 // var: Wowheads Forever-data 2026-11-02, de mobs med högst droppchans. Under 0,1 % syns inte. grans: min gräns i guld när betapris saknas, standard 100. Recept: skill 290 eller epic 500, skill 200 100, annars 25.
-const dyr = (vad, id, typ, krav, beta, varifran, grans) => ({ vad, id, typ, krav, beta: beta && beta * g, var: varifran, grans });
+const dyr = (vad, id, typ, krav, beta, varifran, grans) => ({ vad, id, typ, krav, beta: beta && Math.round(beta * g), var: varifran, grans });
 export const BOE = [
   dyr("The Green Tower", 1204, "Epic", "Nivå 36", 500.89, "Världsdrop, 21 mobtyper: Dustwallow Marsh, Swamp of Sorrows, Feralas"),
   dyr("Schematic: Sniper Scope", 10608, "Recept", "Engineering 240", 339.71, "Världsbossar: Ysondre, Lethon, Azuregos runt 5 %. Sällsynt i lådor"),

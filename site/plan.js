@@ -267,8 +267,8 @@ export const golv = (b) => b.beta ? Math.round(b.beta / 2 / s) * s : (b.grans ??
 const hos = (id) => `<button type="button" class="plats" data-plats="${id}">${PLATSER[id].namn}</button>`;
 export const PHASES = [
   {
-    nar: "Nu till 4 nov", titel: "Före släpp",
-    gor: ["Bestäm ruleset och fraktion med alla. Normal om ni inte vill ha PvP", "Reservera namn senast 3 nov om du har köpt paket", "Installera via Battle.net, Game Version, World of Warcraft: Forever", "Lägg in addons i _forever_\\Interface\\AddOns"],
+    nar: "Före första inloggningen", titel: "Förberedelser",
+    gor: ["Bestäm ruleset och fraktion med alla. Normal om ni inte vill ha PvP", "Installera via Battle.net, Game Version, World of Warcraft: Forever", "Lägg in addons i _forever_\\Interface\\AddOns"],
     inte: ["Skapa inte karaktärer på olika rulesets"],
   },
   {

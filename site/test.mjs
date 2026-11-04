@@ -3,7 +3,7 @@ import assert from "node:assert";
 import { readFileSync } from "node:fs";
 import { PERKS, CLASSES, GOALS, CHALLENGES, buildFor, buildError, stegFor } from "./data.js";
 import { TALANGER, GEAR } from "./mage.js";
-import { HANDEL, PLAN, PLATSER, RUTTER, BOE, golv, PHASES, RECEPT, GANTT, MILSTOLPAR, START, SLUT, dag, datum, pris } from "./plan.js";
+import { wh, HANDEL, PLAN, PLATSER, RUTTER, BOE, golv, PHASES, RECEPT, GANTT, MILSTOLPAR, START, SLUT, dag, datum, pris } from "./plan.js";
 
 assert.equal(Object.keys(PERKS).length, 21, "Blizzard anger 21 perkar");
 assert.equal(CHALLENGES.reduce((a, c) => a + c.points, 0), 65, "Blizzard anger 65 utmaningar");
@@ -19,6 +19,20 @@ for (const goal of Object.keys(GOALS)) {
 }
 assert.ok(buildError({ "Bountiful Harvest": 5, "Bartering": 2, "Master Chef": 5, "Luremaster": 2, "Dedicated Study": 1, "The Quick and the Dead": 1 }), "grindarna måste kunna fälla ett bygge");
 assert.match(buildError({ "Bartering": 2, "Working Overtime": 5, "Well Rested": 5, "Thrill of Adventure": 4 }), /Bartering kräver 5/, "ordningen måste räknas");
+// Bytet: klasser utan köpta reagenser får inte Reagent Economy, de andra behåller bygget orört.
+const klass = (namn) => CLASSES.find((c) => c.name === namn);
+assert.deepEqual(buildFor("raid", klass("Mage")), GOALS.raid.build);
+assert.deepEqual(buildFor("raid", klass("Hunter")), { "Reinforce": 5, "Gourmand": 3, "The Quick and the Dead": 2, "Permanence": 2, "Diplomat": 4 });
+assert.deepEqual(buildFor("pvp", klass("Warrior")), { "Gourmand": 3, "The Quick and the Dead": 2, "For Great Honor": 5, "Diplomat": 5, "Reinforce": 1 });
+assert.notEqual(buildFor("raid", klass("Hunter")), GOALS.raid.build, "bytet får inte skriva om GOALS");
+assert.equal(GOALS.raid.build["Reagent Economy"], 1);
+// Varje grind ska ge sitt eget fel.
+assert.equal(buildError({ "Well Rested": 5 }), "summan är 5, inte 16");
+assert.equal(buildError({ "Well Rested": 5, "Okänd": 11 }), "okänd perk Okänd");
+assert.equal(buildError({ "Well Rested": 6, "Working Overtime": 5, "Reinforce": 5 }), "Well Rested har bara 5 rang");
+assert.equal(buildError({ "Thrill of Adventure": 5, "Talented": 5, "Working Overtime": 5, "Gourmand": 1 }), "Talented kräver full Well Rested");
+assert.equal(buildError({ "Well Rested": 4, "Thrill of Adventure": 1, "Talented": 5, "Working Overtime": 5, "Gourmand": 1 }), "Talented kräver full Well Rested");
+assert.equal(buildError({ "Well Rested": 5, "Talented": 5, "Working Overtime": 5, "Gourmand": 1 }), null);
 assert.deepEqual(stegFor(GOALS.crafta.build).slice(0, 2).map((s) => [s.perk, s.fran, s.till]), [["Thrill of Adventure", 1, 5], ["Working Overtime", 6, 10]]);
 
 // Handeln: säljpriset ska ge vinst och aldrig ligga över Graphed-taket.
@@ -73,6 +87,9 @@ assert.ok(RECEPT.find((r) => r.vad === "Gyrochronatom").salj < 3157, "Under vend
 assert.equal(pris(45000), "4 g 50 s");
 assert.equal(pris(300), "3 s");
 assert.equal(pris(830), "8 s 30 k");
+assert.equal(pris(1e10), "1 000 000 g", "tusentalsmellanslag i varje grupp");
+assert.equal(pris(0), "0");
+assert.equal(wh("item", 4371), "https://www.wowhead.com/forever/item=4371");
 
 const html = readFileSync(new URL("./index.html", import.meta.url), "utf8");
 const allText = html + readFileSync(new URL("./plan.js", import.meta.url), "utf8") + readFileSync(new URL("./data.js", import.meta.url), "utf8");

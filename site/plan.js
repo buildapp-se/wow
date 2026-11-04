@@ -154,7 +154,7 @@ export const PLAN = [
 export const HANDEL = PLAN.flatMap((f) => f.rader.filter((r) => r.typ === "Spara" && r.kop));
 
 // Dyra föremål. beta: begärt pris på Forever-betan, WoWCensus 2026-10-12, nivåtak 30. De fyra på 25 g: warcraftforever.games 19 sept.
-// var: Wowheads Forever-data 2026-11-02, de mobs med högst droppchans. Under 0,1 % syns inte. grans: min gräns i guld när betapris saknas, standard 100. Recept: skill 290 eller epic 500, skill 200 100, annars 25.
+// var: Wowheads Forever-data 2026-11-02, de mobs med högst droppchans. Rader med "i Classic" kommer från classicdb.ch 2026-11-04. Under 0,1 % syns inte. grans: min gräns i guld när betapris saknas, standard 100. Recept: skill 290 eller epic 500, skill 200 100, annars 25.
 const dyr = (vad, id, typ, krav, beta, varifran, grans) => ({ vad, id, typ, krav, beta: beta && Math.round(beta * g), var: varifran, grans });
 export const BOE = [
   dyr("The Green Tower", 1204, "Epic", "Nivå 36", 500.89, "Världsdrop, 21 mobtyper: Dustwallow Marsh, Swamp of Sorrows, Feralas"),
@@ -258,7 +258,33 @@ export const BOE = [
   dyr("Plans: Sageblade", 22389, "Recept", "Blacksmithing 300", null, "Ysondre, Duskwood 1,9 %. Taerar, Duskwood 1,6 %. Azuregos, Azshara 1 %", 500),
   dyr("Pattern: Gloves of Spell Mastery", 14511, "Recept", "Tailoring 295", null, "Lethon, Duskwood 1,7 %. Taerar, Duskwood 0,9 %. Azuregos, Azshara 0,9 %", 500),
   dyr("Pattern: Hide of the Wild", 18518, "Recept", "Leatherworking 300", null, "Ur Knot Thimblejack's Cache", 500),
-  dyr("Plans: Persuader", 22390, "Recept", "Blacksmithing 300", null, "Lethon, Duskwood 0,9 %. Emeriss, Duskwood 0,5 %. Taerar, Duskwood 0,5 %", 500),
+  dyr("Plans: Persuader", 22390, "Recept", "Blacksmithing 300", null, "Lethon, Duskwood 0,9 %. Emeriss, Duskwood 0,5 %. Taerar, Duskwood 0,5 %", 500),  // Hämtade 2026-11-04 utan Wowheads sidor (403): AtlasLoot Classics lista över världsepics och Classic-recept
+  // som saknades ovan, var och en kontrollerad mot Wowheads Forever-tooltip (finns, binder vid equip eller inte alls).
+  // Var kommer från classicdb.ch, alltså Classic och inte Forever. Världsepics har 0,025 % per mob där.
+  dyr("Dazzling Longsword", 869, "Epic", "Nivå 36", null, "Världsdrop i Classic, 124 mobtyper: Stranglethorn Vale, Badlands, Feralas"),
+  dyr("Gloves of Holy Might", 867, "Epic", "Nivå 37", null, "Världsdrop i Classic, 196 mobtyper: Feralas, Stranglethorn Vale, Tanaris"),
+  dyr("Bow of Searing Arrows", 2825, "Epic", "Nivå 37", null, "Världsdrop i Classic, 196 mobtyper: Feralas, Stranglethorn Vale, Tanaris"),
+  dyr("Ardent Custodian", 868, "Epic", "Nivå 38", null, "Världsdrop i Classic, 196 mobtyper: Feralas, Stranglethorn Vale, Tanaris"),
+  dyr("Underworld Band", 1980, "Epic", "Nivå 38", null, "Världsdrop i Classic, 196 mobtyper: Feralas, Stranglethorn Vale, Tanaris"),
+  dyr("Icemail Jerkin", 1981, "Epic", "Nivå 39", null, "Världsdrop i Classic, 226 mobtyper: Feralas, Tanaris, Maraudon"),
+  dyr("Nightblade", 1982, "Epic", "Nivå 39", null, "Världsdrop i Classic, 226 mobtyper: Feralas, Tanaris, Maraudon"),
+  dyr("Gut Ripper", 2164, "Epic", "Nivå 40", null, "Världsdrop i Classic, 226 mobtyper: Feralas, Tanaris, Maraudon"),
+  dyr("Boots of Avoidance", 14549, "Epic", "Nivå 40", null, "Världsdrop i Classic, 226 mobtyper: Feralas, Tanaris, Maraudon"),
+  dyr("Ring of Saviors", 1447, "Epic", "Nivå 41", null, "Världsdrop i Classic, 224 mobtyper: Feralas, Tanaris, The Hinterlands"),
+  dyr("Stonerender Gauntlets", 17007, "Epic", "Nivå 46", null, "Världsdrop i Classic, 250 mobtyper: Felwood, Un'Goro Crater, Azshara"),
+  dyr("Hammer of the Northern Wind", 810, "Epic", "Nivå 49", null, "Världsdrop i Classic, 368 mobtyper: Western Plaguelands, Eastern Plaguelands, Felwood"),
+  dyr("Glowing Brightwood Staff", 812, "Epic", "Nivå 49", null, "Världsdrop i Classic, 368 mobtyper: Western Plaguelands, Eastern Plaguelands, Felwood"),
+  dyr("Helm of Narv", 2245, "Epic", "Nivå 54", null, "Världsdrop i Classic, 353 mobtyper: Blackrock Spire, Eastern Plaguelands, Silithus"),
+  dyr("Pattern: Rich Purple Silk Shirt", 4354, "Recept", "Tailoring 150", null, "Världsdrop i Classic, 45 mobtyper: Scarlet Monastery, Uldaman, Stranglethorn Vale", 25),
+  dyr("Plans: Mithril Shield Spike", 7976, "Recept", "Blacksmithing 190", null, "Världsdrop i Classic, 178 mobtyper: Tanaris, Feralas, Uldaman. Lockboxar", 25),
+  dyr("Pattern: Storm Gauntlets", 12703, "Recept", "Leatherworking 270", null, "Världsdrop i Classic, 129 mobtyper: Blackrock Spire, Stratholme, Scholomance", 100),
+  dyr("Pattern: Invulnerable Mail", 12728, "Recept", "Leatherworking 295", null, "Världsdrop i Classic, 30 mobtyper: Blackrock Spire, Molten Core, Blackwing Lair", 500),
+  dyr("Formula: Enchant Weapon - Lifestealing", 16254, "Recept", "Enchanting 300", null, "Spectral Researcher, Scholomance 0,88 % i Classic", 500),
+  dyr("Recipe: Major Rejuvenation Potion", 18257, "Recept", "Alchemy 300", null, "Molten Core, sju bossar 0,2 % i Classic", 500),
+  dyr("Pattern: Belt of the Archmage", 18414, "Recept", "Tailoring 295", null, "Ur Knot Thimblejack's Cache, Dire Maul 2 % i Classic", 500),
+  dyr("Pattern: Chromatic Cloak", 18517, "Recept", "Leatherworking 300", null, "Ur Knot Thimblejack's Cache, Dire Maul 2 % i Classic", 500),
+  dyr("Pattern: Shifting Cloak", 18519, "Recept", "Leatherworking 300", null, "Ur Knot Thimblejack's Cache, Dire Maul 2 % i Classic", 500),
+  dyr("Plans: Titanic Leggings", 22388, "Recept", "Blacksmithing 300", null, "Världsdrop i Classic, 28 mobtyper: Scholomance, Stratholme, Eastern Plaguelands", 500),
 ];
 // Min egen gräns, inget marknadspris: halva betapriset, annars grans.
 export const golv = (b) => b.beta ? Math.round(b.beta / 2 / s) * s : (b.grans ?? 100) * g;

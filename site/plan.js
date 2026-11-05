@@ -31,6 +31,7 @@ export const RECEPT = [
   { vad: "Free Action Potion", id: 5634, krav: "Alchemy 150, recept 18 s 94 k hos Soolie Berryfizz i Ironforge", mat: "2 Blackmouth Oil, 1 Stranglekelp, 1 Leaded Vial", kostnad: 500, salj: 1500, vendor: 75, kopare: "Raid och PvP, Craftsman's Writ" },
 ];
 
+// Klassträning i budget: Wowheads Forever-data för Mage, Alliance, 2026-11-05. Summan där är 249 g, Blizzard säger 206 till 207 g, så budgeten är tilltagen.
 // Platser på kartan. Koordinater och zon-id från Wowheads Forever-data 2026-11-02.
 export const PLATSER = {
   ahSw: { namn: "AH Stormwind", zon: 1519, zonNamn: "Stormwind", x: 53.2, y: 60.4, npc: 8670 },
@@ -94,7 +95,7 @@ export const PLAN = [
     { typ: "Samla", vad: "Copper Ore", antal: "Allt", saljText: "Över 2 gånger vendor", rutt: "copper" },
     { typ: "Spara", vad: "Waylaid Crate", id: 248549, antal: 40, kop: 3 * s, salj: 20 * s, plats: "ahSw", nar: "12 till 26 nov" },
   ] },
-  { fas: "Nivå 1 till 20", tid: "Också låga alts. 5 till 8 nov", budget: "Högst 20 % av kassan", gor: ["Engineering hos [plats:bronk]. Mining till 65 och smält Bronze (1 Copper Bar plus 1 Tin Bar ger 2)"], rader: [
+  { fas: "Nivå 1 till 20", tid: "Också låga alts. 5 till 8 nov", budget: "Högst 20 % av kassan. Klassträning runt 2 g", gor: ["Engineering hos [plats:bronk]. Mining till 65 och smält Bronze (1 Copper Bar plus 1 Tin Bar ger 2)"], rader: [
     { typ: "Köp", vad: "Bronze Bar, bara om du inte bryter själv", antal: 50, kop: 8 * s, saljText: "Eget bruk", plats: "ahSw" },
     { typ: "Samla", vad: "Tin Ore", antal: "Allt", saljText: "Eget bruk", rutt: "tin" },
     { typ: "Samla", vad: "Linen Cloth till bank-alten", antal: 65, saljText: "Eget bruk", var: "Humanoider på vägen" },
@@ -104,14 +105,14 @@ export const PLAN = [
     { typ: "Sälj", vad: "Bronze Tube du gör själv, Engineering 105", id: 4371, antal: 25, kop: 1760, salj: 4000, plats: "ahSw", nar: "Direkt, i 8-stackar" },
     { typ: "Sälj", vad: "Bank-alten, Tailoring 25: Brown Linen Robe, disenchanta", id: 6238, antal: "Så länge det går runt", kopText: "Under 98 k i material", saljText: "Dust och Essence, annars vendor 98 k", plats: "ahSw", nar: "Direkt" },
   ] },
-  { fas: "Nivå 20 till 30", tid: "8 till 9 nov", budget: "Köp inget nytt att spara: mount först", gor: ["Expert Engineering hos [plats:springspindle]. Smält Iron på Mining 125 och Gold på 155"], rader: [
+  { fas: "Nivå 20 till 30", tid: "8 till 9 nov", budget: "Köp inget nytt att spara: mount först. Klassträning runt 11 g", gor: ["Expert Engineering hos [plats:springspindle]. Smält Iron på Mining 125 och Gold på 155"], rader: [
     { typ: "Köp", vad: "Gold Bar till Gold Power Core, 1 ger 3", antal: "Efter behov", kop: 9 * s, saljText: "Eget bruk", plats: "ahSw" },
     { typ: "Samla", vad: "Wool Cloth till bank-alten", antal: 459, saljText: "Eget bruk", var: "Humanoider på vägen" },
     { typ: "Samla", vad: "Medium Leather, din sambo flår", antal: "Allt", kopText: "Beta 2 s 69 k", saljText: "Eget bruk eller AH", var: "Wetlands, Ashenvale" },
     { typ: "Sälj", vad: "Bronze Framework, bara för att levla yrket", id: 4382, antal: 15, kop: 2029, salj: 2900, plats: "ahSw", nar: "Direkt, i 4-stackar" },
     { typ: "Sälj", vad: "Malm och bars du inte använder", antal: "Överskott", saljText: "Över 2 gånger vendor", plats: "ahSw", nar: "Löpande" },
   ] },
-  { fas: "Nivå 30 till 40", tid: "9 till 13 nov", budget: "Spara 120 g till mount, köp inget att spara. Varorna här ger högst runt 25 g, resten måste bli questguld och BoE (ej uppmätt)", gor: ["Artisan Engineering hos [plats:buzzek] från nivå 35. Kontrollera [plats:graphed] på nivå 36+. Riding på 40"], rader: [
+  { fas: "Nivå 30 till 40", tid: "9 till 13 nov", budget: "Ha 140 g på nivå 40: 120 g mount och riding, 18 g klassträning. Träning 30 till 38 kostar runt 30 g på vägen. Köp inget att spara. Varorna här ger högst runt 25 g, resten måste bli questguld och BoE (ej uppmätt)", gor: ["Artisan Engineering hos [plats:buzzek] från nivå 35. Kontrollera [plats:graphed] på nivå 36+. Riding på 40"], rader: [
     { typ: "Samla", vad: "Iron Ore och Gold Ore", antal: "Allt", saljText: "Eget bruk", rutt: "arathi" },
     { typ: "Samla", vad: "Silk Cloth till bank-alten", antal: 216, saljText: "Eget bruk", var: "Humanoider på vägen" },
     { typ: "Samla", vad: "Heavy Leather, din sambo flår", antal: "Allt", saljText: "Över 2 gånger vendor", var: "Stranglethorn, Dustwallow" },
@@ -121,7 +122,7 @@ export const PLAN = [
     { typ: "Sälj", vad: "Waylaid Crates", antal: "Alla", saljText: "15 till 30 s", plats: "ahSw", nar: "Senast 26 nov" },
     { typ: "Sälj", vad: "Pristine Leather, Frilled Lichen, bara om mountpengarna saknas", antal: "Det som behövs", saljText: "Från 4 g", plats: "ahSw", nar: "Direkt" },
   ] },
-  { fas: "Nivå 40 till 50", tid: "13 till 19 nov", budget: "Mount först, sedan högst 30 % av kassan", gor: ["Dual spec för 50 g hos din Mage-lärare, se Missa inte"], rader: [
+  { fas: "Nivå 40 till 50", tid: "13 till 19 nov", budget: "Mount först, sedan högst 30 % av kassan. Klassträning runt 50 g, plus dual spec 50 g", gor: ["Dual spec för 50 g hos din Mage-lärare, se Missa inte"], rader: [
     { typ: "Samla", vad: "Mithril Ore", antal: "Allt", saljText: "Eget bruk", rutt: "mithril" },
     { typ: "Samla", vad: "Thick Leather, din sambo flår", antal: "Allt", saljText: "Över 2 gånger vendor", var: "Feralas, Tanaris, Hinterlands" },
     { typ: "Spara", vad: "Pristine Leather", id: 249427, antal: 20, kop: 2.5 * g, salj: 4.5 * g, tak: 5 * g, plats: "ahSw", nar: "Från 19 nov" },
@@ -130,7 +131,7 @@ export const PLAN = [
       { typ: "Spara", vad, id, antal: 5, kop: 8 * g, salj: 18 * g, tak: 20 * g, plats: "ahSw", nar: "Från 22 nov" })),
     { typ: "Sälj", vad: "Mithril Casing, Engineering 215: 3 Mithril Bar", id: 10561, antal: 5, kop: 1800, salj: 3500, plats: "ahSw", nar: "När folk når nivå 48" },
   ] },
-  { fas: "Nivå 50 till 60", tid: "19 till 25 nov", budget: "Högst 30 % av kassan, börja uppifrån", gor: ["Starta Dragonkin Menace hos [plats:helendis]"], rader: [
+  { fas: "Nivå 50 till 60", tid: "19 till 25 nov", budget: "Högst 30 % av kassan, börja uppifrån. Klassträning runt 140 g, varav 41 g på nivå 60", gor: ["Starta Dragonkin Menace hos [plats:helendis]"], rader: [
     { typ: "Samla", vad: "Thorium Ore till Engineering 300", antal: 225, saljText: "Eget bruk", rutt: "thorium" },
     { typ: "Samla", vad: "Runecloth till Engineering 300", id: 14047, antal: 35, saljText: "Eget bruk", var: "På vägen, annars AH" },
     ...[["Stranglevine", 249274], ["Pitchblende", 249426], ["Pristine Scale"], ["Death Lotus"], ["Fel Crystal"], ["Torbernite"]].map(([vad, id]) => (
@@ -323,7 +324,7 @@ export const PHASES = [
     inte: ["Köp inget att spara: mount först", "Kör inte dungeons utan quests för XP: den är låg. Undantag: de som krävs för Spelunker-poängen", "Återställ inte talanger i onödan: priset stiger"],
   },
   {
-    nar: "Nivå 30 till 40", titel: "Mount", tim: "Spara 120 g",
+    nar: "Nivå 30 till 40", titel: "Mount", tim: "Ha 140 g på nivå 40",
     gor: ["Riverglades 36 till 44, Drowned City 35 till 40", `Artisan Engineering hos ${hos("buzzek")} i Gadgetzan från nivå 35`, `Nivå 36+: kontrollera priserna hos ${hos("graphed")}`, "Nivå 40: Apprentice Riding och Portaler"],
     kop: ["1 Gold Bar plus 3 Iron Bar: högst 18 s tillsammans, blir 3 Gyrochronatom"],
     salj: ["Gyrochronatom: 25 till 30 s, högst 5 st åt gången", "Waylaid Crate: 15 till 30 s, alla senast 26 nov", "Pristine Leather från 4 g, bara om mountpengarna saknas"],

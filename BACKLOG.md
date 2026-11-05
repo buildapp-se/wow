@@ -4,7 +4,6 @@
 - [ ] `[P1]` Första dagen: kontrollera att Billibub Cogspinner säljer Bronze Tube för 8 s 42 k och mät hur snabbt lagret fylls på. Steg 1 i inkomstlistan vilar på det.
 - [ ] `[P1]` Efter släppet: byt gränserna i `BOE` (`site/plan.js`) mot riktiga Forever-priser från WoWCensus och AH, och lägg till det som dyker upp på högre nivåer.
 - [ ] `[P1]` Efter släppet: stäm av mountpris (ingår första mounten?), Legacy-kostnad för återställning, yrkeskrav per nivå mot spelet.
-- [ ] `[P1]` Efter släppet: bekräfta Forever-versionerna i addontabellen på CurseForge. Filsidorna gick inte att öppna 2026-11-02.
 - [ ] `[P2]` Komplettera Missa inte: startdatum för Field of Honor, Drakefire-stegens koordinater och pre-raid-utrustning saknades i källorna 2026-11-02.
 - [ ] `[P2]` Kontrollera i spelet: om Darkmoon Faire finns under levlingen (Classics kalender säger 9 till 15 nov, inte belagt för Forever) och var Recipe: Greater Fire Protection Potion droppar.
 - [ ] `[P1]` Efter släppet: byt `GEAR` (`site/mage.js`) mot riktiga BiS-listor när Wowhead fyller sin Phase 1-tabell, och lägg till trinkets och mantlar. Kontrollera talangkartan på 31 till 60.

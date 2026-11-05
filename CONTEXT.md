@@ -17,7 +17,7 @@ Patrik spelar Gnome Mage med Mining och Engineering, plus bank-alt med Tailoring
 Patriks beslut 2026-11-02, ersätter säkerhetsmärkningen och faktakollen i första versionen:
 
 - Sidan säger vad man ska göra. Inga texter om vad någon källa påstått eller vad som inte gick att belägga. Det som inte går att agera på utelämnas.
-- Forever är inte Classic. Inget Classic-minne utan att det är kontrollerat mot Forever.
+- Forever är inte Classic. Classic-uppgifter får vara med när de är relevanta och Forever saknar data, märkta "i Classic" (Patriks beslut 2026-11-05). Annars inget Classic-minne utan kontroll mot Forever.
 - Tabellen per nivå (`PLAN` i `site/plan.js`) är enda källan för vad som ska göras, köpas och säljas. Typkolumnen har bara Köp, Samla, Spara och Sälj. Den sorteras inte, eftersom nivåordningen är innehållet. Den har antal, maxpris och riktpris. Priserna är startvärden byggda på betans AH, vendorvärden och Mister Graphed, och skrivs om med riktiga priser efter släppet.
 - Att Mister Graphed säljer mer än Gift of Galloping kommer från tredjepartsguider, inte Wowheads databas. Hela takmodellen vilar på det, så sidan säger åt läsaren att kolla i spelet innan större köp.
 - Listan över dyra föremål visar betapris och var föremålet droppar. Patrik tog bort Classic Era-kolumnen 2026-11-02: den tillförde inget. Gränsen är min egen regel. Föremål ska finnas i Wowheads Forever-databas för att komma med.

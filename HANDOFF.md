@@ -4,7 +4,7 @@ status: active
 currentGoal: Handlingsplanen är live på buildapp.se/wow inför släppet 5 november 2026
 nextAction: Efter släppet: byt riktpriserna i site/plan.js mot riktiga AH-priser, se BACKLOG.md
 blockers: []
-reviewedAt: 2026-11-05
+reviewedAt: 2026-11-06
 ---
 
 # Handoff
@@ -54,3 +54,7 @@ Blizzards pre-launch-noter (2 nov, via Warcraft Tavern 4 nov) lästa mot sajten.
 ## 2026-11-05: träningskostnad och addons
 
 Budgetraderna i `PLAN` (`site/plan.js`) och mountraden har nu Mage-träningen per nivåspann, läst ur Wowheads Forever-listvy `spells/abilities/mage` (`trainingcost`, Horde-portaler borträknade). Wowhead summerar till 249 g, Blizzard säger 206 till 207 g, så budgeten är tilltagen. Mount: ha 140 g på nivå 40 (120 g mount och riding, 18 g träning). Addons: alla nio har en Forever-fil på CurseForge 5 nov, läst via Playwright (filsidans "Recent Files", raden "WoW Forever"). AtlasLoot-länken går till AtlasLoot Classic Forever. Ny rutt `yrken` (Yrken på vägen): Mining, Engineering, First Aid och Fishing i Kharanos och Ironforge, koordinater och priser ur Wowheads Forever-data.
+
+## 2026-11-06: yrkesvägar för bank-alten
+
+Två tabeller i vyn Mål (`site/index.html`): Tailoring och Enchanting 1 till 225. Färggränser, material och stavar lästa ur Wowheads Forever-listvyer `spells/professions/tailoring` och `enchanting` (`colors`, `reagents`) plus spellsidornas Tools-rad. Forever har ändrat början av Enchanting: Runed Copper Rod av Mote of Magic, Dust to Motes och Disenchant ger skill till 20, Enchant Bracer - Minor Health finns inte. Ordningen är min, inte provad i spelet.

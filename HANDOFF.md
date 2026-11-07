@@ -4,7 +4,7 @@ status: active
 currentGoal: Handlingsplanen är live på buildapp.se/wow inför släppet 5 november 2026
 nextAction: Efter släppet: byt riktpriserna i site/plan.js mot riktiga AH-priser, se BACKLOG.md
 blockers: []
-reviewedAt: 2026-11-07
+reviewedAt: 2026-11-08
 ---
 
 # Handoff
@@ -66,3 +66,7 @@ Tailoring-tabellen har nu kostnad, vendorpris och netto per styck: tyg räknat t
 ## 2026-11-07: AH-priser och affärer
 
 AH-priser finns på wow.gg/auction-house/forever (AHledger-skanning). Välj EU i regionknappen: sidan startar på US. Läs priserna i DOM:en via attributet `data-copper` under `[data-col="minBuyout"]` och `[data-col="median"]`, raden har `data-item-id`. Backend-API:t (railway) svarar 403 utan sidans egen auth: använd det inte. Ny sorterbar tabell Affärer i vyn Köp och sälj, EU Alliance PvE 7 nov. Bronze Tube, Framework och Gyrochronatom i `plan.js` har nu AH-priser i stället för betapriser (Bronze Bar 2 s 10 k, inte 8 s 30 k), och testets kostnader följer med. Recept kontrollerade via `nether.wowhead.com/forever/tooltip/spell/<id>`. Kvar: mountbudgetens inkomstplan bygger fortfarande på att Engineering ger mycket, vilket inte håller med dagens priser (BACKLOG).
+
+## 2026-11-08: Engineering-tabell och vendor-arbitrage
+
+Ny progressionstabell Main: Engineering till 225 i Mål, före bank-altens Tailoring. Färggränserna kommer från ClassicDB (`classicdb.ch/?spells=11.202`, vanilla) eftersom Wowheads Forever-lista gav Human Verification (405). Byt till Forever-färger när Wowhead svarar. AH-priser från wow.gg EU 7 nov. Affärer fick fem vendor-mot-AH-rader (recept och Rune of Teleportation), med vendorpriser från wikin. Silver Contact kostar 25 k på AH, så Big Bronze Bomb kostar 15 s 47 k.

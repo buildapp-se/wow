@@ -4,7 +4,7 @@ status: active
 currentGoal: Handlingsplanen är live på buildapp.se/wow inför släppet 5 november 2026
 nextAction: Efter släppet: byt riktpriserna i site/plan.js mot riktiga AH-priser, se BACKLOG.md
 blockers: []
-reviewedAt: 2026-11-06
+reviewedAt: 2026-11-07
 ---
 
 # Handoff
@@ -58,3 +58,7 @@ Budgetraderna i `PLAN` (`site/plan.js`) och mountraden har nu Mage-träningen pe
 ## 2026-11-06: yrkesvägar för bank-alten
 
 Två tabeller i vyn Mål (`site/index.html`): Tailoring och Enchanting 1 till 225. Färggränser, material och stavar lästa ur Wowheads Forever-listvyer `spells/professions/tailoring` och `enchanting` (`colors`, `reagents`) plus spellsidornas Tools-rad. Forever har ändrat början av Enchanting: Runed Copper Rod av Mote of Magic, Dust to Motes och Disenchant ger skill till 20, Enchant Bracer - Minor Health finns inte. Ordningen är min, inte provad i spelet.
+
+## 2026-11-07: pengar i yrkestabellerna, fishing
+
+Tailoring-tabellen har nu kostnad, vendorpris och netto per styck: tyg räknat till vendorpris, tråd och färg till vendorns köppris. Säljpriser ur Wowheads Forever-tooltip-API (`nether.wowhead.com/forever/tooltip/item/<id>`, inte spärrat när www.wowhead.com ger Human Verification efter ungefär 100 anrop). Köppriser för tråd och färg från warcraft.wiki.gg (`{{cost}}`). Heavy Silken Thread saknar källa, så den är satt till 4 × säljpriset (20 s) och markerad "cirka". 205 till 225 är nu Black Mageweave Headband, inte Red Mageweave Bag, eftersom den kostar mindre per poäng. Ny tabell för Fishing 1 till 300 i Mål. Zonernas skillnivåer kommer från wikins tabell för senare patchar (ungefärliga), och Nat Pagle-questen för Artisan gäller Classic, inte kontrollerad för Forever. Ny arbitragerad: Mageweave till Black Mageweave Vest, vendor 48 s.

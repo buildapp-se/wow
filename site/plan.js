@@ -23,9 +23,9 @@ export const GANTT = [
 
 // Det du tillverkar. Priser per styck i koppar. kostnad är det högsta du ska betala i material.
 export const RECEPT = [
-  { vad: "Bronze Tube", id: 4371, krav: "Engineering 105", mat: "2 Bronze Bar, 1 Weak Flux", kostnad: 2 * 830 + 100, salj: 4000, vendor: 200, kopare: "Lådor, quest Look to the Stars, 13 recept" },
-  { vad: "Bronze Framework", id: 4382, krav: "Engineering 145", mat: "2 Bronze Bar, 1 Medium Leather, 1 Wool Cloth", kostnad: 2 * 830 + 269 + 100, salj: 2900, vendor: 600, kopare: "Journeyman Parts-lådor, 10 recept" },
-  { vad: "Gyrochronatom", id: 4389, krav: "Engineering 170", mat: "1 Iron Bar, 1 Gold Power Core", kostnad: 600, salj: 2800, vendor: 750, kopare: "Quest Gyro... What?, 18 recept" },
+  { vad: "Bronze Tube", id: 4371, krav: "Engineering 105", mat: "2 Bronze Bar, 1 Weak Flux", kostnad: 2 * 210 + 100, salj: 1233, vendor: 200, kopare: "Lådor, quest Look to the Stars, 13 recept" },
+  { vad: "Bronze Framework", id: 4382, krav: "Engineering 145", mat: "2 Bronze Bar, 1 Medium Leather, 1 Wool Cloth", kostnad: 2 * 210 + 111 + 84, salj: 975, vendor: 600, kopare: "Journeyman Parts-lådor, 10 recept" },
+  { vad: "Gyrochronatom", id: 4389, krav: "Engineering 170", mat: "1 Iron Bar, 1 Gold Power Core", kostnad: 600, salj: 2598, vendor: 750, kopare: "Quest Gyro... What?, 18 recept" },
   { vad: "Mithril Casing", id: 10561, krav: "Engineering 215", mat: "3 Mithril Bar", kostnad: 1800, salj: 3500, vendor: 1000, kopare: "Quest Chasing A-Me 01 från nivå 48, 22 recept" },
   { vad: "Frost Oil", id: 3829, krav: "Alchemy 200, recept 26 s 31 k hos Bro'kin i Alterac", mat: "4 Khadgar's Whisker, 2 Wintersbite, 1 Leaded Vial ger 2 st", kostnad: 800, salj: 1500, vendor: 150, kopare: "Questen Coolant Heads Prevail från nivå 35, A Broken Trap från 56" },
   { vad: "Free Action Potion", id: 5634, krav: "Alchemy 150, recept 18 s 94 k hos Soolie Berryfizz i Ironforge", mat: "2 Blackmouth Oil, 1 Stranglekelp, 1 Leaded Vial", kostnad: 500, salj: 1500, vendor: 75, kopare: "Raid och PvP, Craftsman's Writ" },
@@ -92,7 +92,7 @@ export const RUTTER = [
 // plats öppnar kartan på en plats, rutt på en rutt, var är ren text.
 export const PLAN = [
   { fas: "Alltid", tid: "Alla nivåer, main och alts", gor: ["Kör [rutt:dagens] på bank-alten morgon och kväll", "Logga ut i stan eller på värdshus, så byggs rested", "Sälj på AH i Stormwind eller Ironforge (5 % avgift), inte i Gadgetzan (15 %)"], rader: [
-    { typ: "Köp", vad: "Bronze Tube", id: 4371, antal: "2 per besök", kop: 842, salj: 4000, plats: "billibub", nar: "Bara om AH är över 15 s" },
+    { typ: "Köp", vad: "Bronze Tube", id: 4371, antal: "2 per besök", kop: 842, salj: 1233, plats: "billibub", nar: "Bara om AH är över 15 s" },
     { typ: "Köp", vad: "Bronze Framework", id: 4382, antal: "1 per besök", kop: 2526, saljText: "35 s eller mer", plats: "billibub", nar: "Bara om AH är över 35 s" },
     { typ: "Köp", vad: "Gyrochronatom", id: 4389, antal: "1 per besök", kop: 3157, saljText: "45 s eller mer", plats: "billibub", nar: "Bara om AH är över 45 s" },
     { typ: "Köp", vad: "Allt under vendorvärde", antal: "Allt", kopText: "Under vendorvärdet", saljText: "Vendor", plats: "ahSw", nar: "Direkt" },
@@ -113,21 +113,21 @@ export const PLAN = [
     { typ: "Samla", vad: "Light Leather, din sambo flår", antal: "Allt", saljText: "Över 2 gånger vendor", var: "Dun Morogh, Loch Modan, Darkshore" },
     { typ: "Spara", vad: "Pristine Leather", id: 249427, antal: 5, kop: 2 * g, salj: 4.5 * g, tak: 5 * g, plats: "ahSw", nar: "Från 19 nov" },
     { typ: "Spara", vad: "Frilled Lichen", id: 249399, antal: 5, kop: 1 * g, salj: 4.5 * g, tak: 5 * g, plats: "ahSw", nar: "Från 19 nov" },
-    { typ: "Sälj", vad: "Bronze Tube du gör själv, Engineering 105", id: 4371, antal: 25, kop: 1760, salj: 4000, plats: "ahSw", nar: "Direkt, i 8-stackar" },
+    { typ: "Sälj", vad: "Bronze Tube du gör själv, Engineering 105", id: 4371, antal: 25, kop: 520, salj: 1233, plats: "ahSw", nar: "Direkt, i 8-stackar" },
     { typ: "Sälj", vad: "Bank-alten, Tailoring 25: Brown Linen Robe, disenchanta", id: 6238, antal: "Så länge det går runt", kopText: "Under 98 k i material", saljText: "Dust och Essence, annars vendor 98 k", plats: "ahSw", nar: "Direkt" },
   ] },
   { fas: "Nivå 20 till 30", tid: "8 till 9 nov", budget: "Köp inget nytt att spara: mount först. Klassträning runt 11 g", gor: ["Expert Engineering hos [plats:springspindle]. Smält Iron på Mining 125 och Gold på 155"], rader: [
     { typ: "Köp", vad: "Gold Bar till Gold Power Core, 1 ger 3", antal: "Efter behov", kop: 9 * s, saljText: "Eget bruk", plats: "ahSw" },
     { typ: "Samla", vad: "Wool Cloth till bank-alten", antal: 459, saljText: "Eget bruk", var: "Humanoider på vägen" },
     { typ: "Samla", vad: "Medium Leather, din sambo flår", antal: "Allt", kopText: "Beta 2 s 69 k", saljText: "Eget bruk eller AH", var: "Wetlands, Ashenvale" },
-    { typ: "Sälj", vad: "Bronze Framework, bara för att levla yrket", id: 4382, antal: 15, kop: 2029, salj: 2900, plats: "ahSw", nar: "Direkt, i 4-stackar" },
+    { typ: "Sälj", vad: "Bronze Framework, bara för att levla yrket", id: 4382, antal: 15, kop: 615, salj: 975, plats: "ahSw", nar: "Direkt, i 4-stackar" },
     { typ: "Sälj", vad: "Malm och bars du inte använder", antal: "Överskott", saljText: "Över 2 gånger vendor", plats: "ahSw", nar: "Löpande" },
   ] },
   { fas: "Nivå 30 till 40", tid: "9 till 13 nov", budget: "Ha 140 g på nivå 40: 120 g mount och riding, 18 g klassträning. Träning 30 till 38 kostar runt 30 g på vägen. Köp inget att spara. Varorna här ger högst runt 25 g, resten måste bli questguld och BoE (ej uppmätt)", gor: ["Artisan Engineering hos [plats:buzzek] från nivå 35. Kontrollera [plats:graphed] på nivå 36+. Riding på 40"], rader: [
     { typ: "Samla", vad: "Iron Ore och Gold Ore", antal: "Allt", saljText: "Eget bruk", rutt: "arathi" },
     { typ: "Samla", vad: "Silk Cloth till bank-alten", antal: 216, saljText: "Eget bruk", var: "Humanoider på vägen" },
     { typ: "Samla", vad: "Heavy Leather, din sambo flår", antal: "Allt", saljText: "Över 2 gånger vendor", var: "Stranglethorn, Dustwallow" },
-    { typ: "Sälj", vad: "Gyrochronatom, Engineering 170: 1 Iron Bar plus 1 Gold Power Core", id: 4389, antal: "5 åt gången", kop: 600, salj: 2800, plats: "ahSw", nar: "Från nivå 35 på servern" },
+    { typ: "Sälj", vad: "Gyrochronatom, Engineering 170: 1 Iron Bar plus 1 Gold Power Core", id: 4389, antal: "5 åt gången", kop: 600, salj: 2598, plats: "ahSw", nar: "Från nivå 35 på servern" },
     { typ: "Sälj", vad: "Vän-alten, Alchemy 150: Free Action Potion. Recept hos Soolie", id: 5634, antal: "5 åt gången", kop: 500, salj: 1500, plats: "soolie", nar: "Löpande" },
     { typ: "Sälj", vad: "Vän-alten, Alchemy 200: Frost Oil. Recept hos Bro'kin", id: 3829, antal: "5 åt gången", kop: 800, salj: 1500, plats: "brokin", nar: "Från nivå 35 på servern" },
     { typ: "Sälj", vad: "Waylaid Crates", antal: "Alla", saljText: "15 till 30 s", plats: "ahSw", nar: "Senast 26 nov" },
@@ -318,7 +318,7 @@ export const PHASES = [
     nar: "Nivå 1 till 10", titel: "Bygg grunden", tim: "Första kvällen",
     gor: [`Väskan: Grund and Gozwin hos ${hos("grund")}, senast nivå 7`, "Cooking, First Aid och Mining i första staden", "Sätt Hearthstone vid första värdshuset", `The Great Outdoors hos ${hos("eric")} från nivå 4`, `Ställ bank-alten vid ${hos("ahSw")} och logga ut där. När den levlas: Book Return hos ${hos("dughan")} före nivå 7, gratis väska`, "Posta all Linen till bank-alten, och några silver så att den kan köpa"],
     kop: [`Bronze Tube hos ${hos("billibub")}: högst 8 s 42 k, 2 st per besök, om AH är över 15 s`, "Waylaid Crate: högst 3 s, 40 st"],
-    salj: ["Bronze Tube från Billibub: strax under lägsta pris, betan gav runt 40 s", "Copper Ore du inte behöver: över 10 k, annars behåll"],
+    salj: ["Bronze Tube från Billibub: strax under lägsta pris, 7 nov låg AH på 8 till 12 s, alltså ingen vinst", "Copper Ore du inte behöver: över 10 k, annars behåll"],
     inte: ["Sälj inte Linen: bank-alten gör Brown Linen Robe och disenchantar", "Köp inte levlingsprylar på AH", "Sälj inte handelsvaror till vendor: posta till alten"],
   },
   {
@@ -331,14 +331,14 @@ export const PHASES = [
   {
     nar: "Nivå 20 till 30", titel: "AoE och mount-pengar", tim: "Nivå 30 vid 18 till 22 h",
     gor: ["Teleport på 20", `Expert Engineering hos ${hos("springspindle")}`, "Gör 25 Bronze Tubes på 105 till 125", "Gör 15 Bronze Framework på 145 till 160", "Mage-quest på nivå 26", "Stockade 23 till 29, Excavation Site från 26, City of Dalaran 28 till 33 med quests"],
-    salj: ["Bronze Tube: 8-stackar, runt 40 s styck", "Bronze Framework: 4-stackar, runt 29 s styck", "Malm du inte behöver: över 2 gånger vendor"],
+    salj: ["Bronze Tube: 8-stackar, runt 8 till 12 s styck", "Bronze Framework: 4-stackar, runt 10 s styck", "Malm du inte behöver: över 2 gånger vendor"],
     inte: ["Köp inget att spara: mount först", "Kör inte dungeons utan quests för XP: den är låg. Undantag: de som krävs för Spelunker-poängen", "Återställ inte talanger i onödan: priset stiger"],
   },
   {
     nar: "Nivå 30 till 40", titel: "Mount", tim: "Ha 140 g på nivå 40",
     gor: ["Riverglades 36 till 44, Drowned City 35 till 40", `Artisan Engineering hos ${hos("buzzek")} i Gadgetzan från nivå 35`, `Nivå 36+: kontrollera priserna hos ${hos("graphed")}`, "Nivå 40: Apprentice Riding och Portaler"],
     kop: ["1 Gold Bar plus 3 Iron Bar: högst 18 s tillsammans, blir 3 Gyrochronatom"],
-    salj: ["Gyrochronatom: 25 till 30 s, högst 5 st åt gången", "Waylaid Crate: 15 till 30 s, alla senast 26 nov", "Pristine Leather från 4 g, bara om mountpengarna saknas"],
+    salj: ["Gyrochronatom: 20 till 26 s, högst 5 st åt gången", "Waylaid Crate: 15 till 30 s, alla senast 26 nov", "Pristine Leather från 4 g, bara om mountpengarna saknas"],
     inte: ["Spekulera inte med mount-pengarna"],
   },
   {

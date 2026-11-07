@@ -70,3 +70,5 @@ AH-priser finns på wow.gg/auction-house/forever (AHledger-skanning). Välj EU i
 ## 2026-11-08: Engineering-tabell och vendor-arbitrage
 
 Ny progressionstabell Main: Engineering till 225 i Mål, före bank-altens Tailoring. Färggränserna kommer från ClassicDB (`classicdb.ch/?spells=11.202`, vanilla) eftersom Wowheads Forever-lista gav Human Verification (405). Byt till Forever-färger när Wowhead svarar. AH-priser från wow.gg EU 7 nov. Affärer fick fem vendor-mot-AH-rader (recept och Rune of Teleportation), med vendorpriser från wikin. Silver Contact kostar 25 k på AH, så Big Bronze Bomb kostar 15 s 47 k.
+
+Fisketabellen fick kolumnerna Zonens nivå (wikins Zones by level (original)) och AH per styck (wow.gg EU 7 nov).

@@ -1,7 +1,7 @@
 import { PERKS, TREES, CLASSES, GOALS, CHALLENGES, REWARDS, buildFor, stegFor } from "./data.js?v=dev";
 import { PHASES, PLAN, PLATSER, RUTTER, BOE, golv, GANTT, MILSTOLPAR, RECEPT, START, SLUT, dag, datum, pris, wh } from "./plan.js?v=dev";
 import { initSortable, sortable } from "./sortable.js?v=dev";
-import { TALANGER, GEAR } from "./mage.js?v=dev";
+import { GEAR } from "./mage.js?v=dev";
 
 const $ = (s) => document.querySelector(s);
 
@@ -181,25 +181,36 @@ document.addEventListener("change", (e) => {
 });
 
 // En sida i taget. Länkar på formen #handel går att dela.
+// Rubrikerna i varje vy får id:n (#mal-fishing-var-vad-...) så att undermenyn och delade länkar kan peka på dem.
+const rubriker = (s) => [...s.querySelectorAll(":scope > h3, :scope > h2.mellan")];
+document.querySelectorAll(".vy").forEach((s) => rubriker(s).forEach((h) => {
+  h.id ||= `${s.id}-${h.textContent.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
+}));
 function visa() {
-  const id = location.hash.slice(1);
-  const vy = document.getElementById(id)?.classList.contains("vy") ? id : "roadmap";
-  document.querySelectorAll(".vy").forEach((s) => { s.hidden = s.id !== vy; });
-  document.querySelectorAll("nav a").forEach((a) => {
+  const mal = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  const sektion = mal?.closest(".vy") ?? $("#roadmap");
+  const vy = sektion.id;
+  document.querySelectorAll(".vy").forEach((s) => { s.hidden = s !== sektion; });
+  document.querySelectorAll("nav > a").forEach((a) => {
     if (a.hash === `#${vy}`) a.setAttribute("aria-current", "page");
     else a.removeAttribute("aria-current");
   });
-  // På mobil scrollar menyn i sidled: håll den aktiva länken synlig, annars syns inte var man är.
   const nav = $("nav"), aktiv = nav.querySelector("[aria-current]");
+  // Undermeny med den aktiva vyns rubriker, direkt under dess länk.
+  nav.querySelector(".under")?.remove();
+  const under = Object.assign(document.createElement("div"), { className: "under" });
+  under.append(...rubriker(sektion).map((h) => Object.assign(document.createElement("a"), { href: `#${h.id}`, textContent: h.textContent })));
+  aktiv?.after(under);
+  // På mobil scrollar menyn i sidled: håll den aktiva länken synlig, annars syns inte var man är.
   if (aktiv && nav.scrollWidth > nav.clientWidth) nav.scrollLeft = aktiv.offsetLeft - (nav.clientWidth - aktiv.offsetWidth) / 2;
-  scrollTo(0, 0);
+  if (mal && mal !== sektion) mal.scrollIntoView();
+  else scrollTo(0, 0);
 }
 addEventListener("hashchange", visa);
-visa();
 
 for (const id of ["handel", "roadmap", "mal", "missa"]) mynt(document.getElementById(id));
 initSortable();
-const rang = {};
-$("#talanger").innerHTML = TALANGER.map((t) => `<li value="${10 + Object.values(rang).reduce((a, b) => a + b, 0)}">${t} ${(rang[t] = (rang[t] ?? 0) + 1)}</li>`).join("");
 $("#gear tbody").innerHTML = GEAR.map(([niva, plats, id, namn, krav, int, kalla]) => `<tr><td>${niva}</td><td>${plats}</td><td><a href="${wh("item", id)}" rel="noopener"><strong>${namn}</strong></a></td><td>${krav}</td><td>${int}</td><td>${kalla}</td></tr>`).join("");
 document.querySelectorAll("table[data-sort-key]").forEach(sortable);
+// Sist, när allt är renderat: annars hamnar en direktlänk till en rubrik fel när innehållet ovanför växer.
+visa();

@@ -1,9 +1,3 @@
-// Talanger: Icy Veins Forever-kalkylator, läst nivå för nivå 2026-11-02. Första poängen på nivå 10.
-export const TALANGER = ["Wand Specialization", "Wand Specialization", "Improved Channeling", "Improved Channeling", "Improved Channeling", "Missile Barrage", "Missile Barrage", "Precision", "Precision", "Precision",
-  "Improved Frostbolt", "Improved Frostbolt", "Frostbite", "Frostbite", "Frostbite", "Improved Frostbolt", "Improved Frostbolt", "Ice Lance", "Improved Frostbolt", "Ice Shards",
-  "Ice Shards", "Ice Shards", "Shatter", "Shatter", "Shatter", "Ice Shards", "Ice Shards", "Fingers of Frost", "Fingers of Frost", "Ice Block",
-  "Arctic Reach", "Arctic Reach", "Frost Channeling", "Frost Channeling", "Frost Channeling", "Permafrost", "Cold Snap", "Ice Barrier", "Arcane Subtlety", "Arcane Subtlety",
-  "Arcane Concentration", "Arcane Blast", "Permafrost", "Permafrost", "Improved Blizzard", "Incineration", "Incineration", "Incineration", "Incineration", "Incineration", "Arcane Concentration"];
 
 // Nivåspann, plats, Wowhead-id, namn, krävd nivå, Intellect (tom om tooltipen inte visar det), källa. Wowheads Forever-databas 2026-11-02.
 // Urvalet är mitt: Wowheads statfördelning (spell power, Intellect, crit), utan Horde-saker, PvP och raid. Wowheads BiS-tabell för Phase 1 är tom.

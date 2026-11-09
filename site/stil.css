@@ -38,6 +38,11 @@ small { color: var(--dov); }
 nav { position: sticky; top: 0; align-self: start; padding-top: 28px; }
 nav a { display: flex; align-items: center; min-height: 44px; color: var(--krita); text-decoration: none; font: 500 1.25rem "Barlow Condensed", sans-serif; border-bottom: 1px solid var(--linje); }
 nav a:hover { color: var(--mässing); }
+nav { max-height: 100dvh; overflow-y: auto; scrollbar-width: thin; }
+nav .under { padding: 4px 0 10px 12px; border-bottom: 1px solid var(--linje); border-left: 2px solid var(--mässing); }
+nav .under a { min-height: 34px; padding: 4px 0; border: 0; font: 400 1rem/1.2 Barlow, sans-serif; color: var(--dov); }
+nav .under a:hover { color: var(--mässing); }
+h2, h3 { scroll-margin-top: 16px; }
 main { padding: 28px 0 80px; min-width: 0; }
 section { padding-top: 64px; }
 
@@ -193,6 +198,8 @@ footer { border-top: 1px solid var(--linje); margin-top: 64px; padding-top: 16px
 ol.steg li { padding-left: 4px; }
 
 @media (max-width: 920px) {
+  nav { max-height: none; }
+  nav .under { display: none; }
   .layout { display: block; padding: 0 16px; }
   nav { display: flex; overflow-x: auto; scrollbar-width: none; gap: 18px; background: var(--papper-2); margin: 0 -16px; padding: 0 16px; z-index: 3; }
   nav a { border: 0; flex: none; min-width: 44px; justify-content: center; }
@@ -218,4 +225,3 @@ ol.steg li { padding-left: 4px; }
   .layout { display: block; }
 }
 
-.talanger { columns: 3 11rem; padding-left: 2.5rem; }

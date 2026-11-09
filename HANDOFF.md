@@ -4,7 +4,7 @@ status: active
 currentGoal: Handlingsplanen är live på buildapp.se/wow inför släppet 5 november 2026
 nextAction: Efter släppet: byt riktpriserna i site/plan.js mot riktiga AH-priser, se BACKLOG.md
 blockers: []
-reviewedAt: 2026-11-08
+reviewedAt: 2026-11-09
 ---
 
 # Handoff
@@ -72,3 +72,7 @@ AH-priser finns på wow.gg/auction-house/forever (AHledger-skanning). Välj EU i
 Ny progressionstabell Main: Engineering till 225 i Mål, före bank-altens Tailoring. Färggränserna kommer från ClassicDB (`classicdb.ch/?spells=11.202`, vanilla) eftersom Wowheads Forever-lista gav Human Verification (405). Byt till Forever-färger när Wowhead svarar. AH-priser från wow.gg EU 7 nov. Affärer fick fem vendor-mot-AH-rader (recept och Rune of Teleportation), med vendorpriser från wikin. Silver Contact kostar 25 k på AH, så Big Bronze Bomb kostar 15 s 47 k.
 
 Fisketabellen fick kolumnerna Zonens nivå (wikins Zones by level (original)) och AH per styck (wow.gg EU 7 nov).
+
+## 2026-11-09: undermeny och Icy Veins-länk
+
+Vänstermenyn visar den aktiva vyns rubriker (h3 och h2.mellan direkt under sektionen) som länkar. Rubrikerna får id:n `<vy>-<slug>` i `app.js`, och `visa()` hittar vyn via `closest(".vy")`, så `#mal-fishing-...` öppnar Mål och scrollar dit. `visa()` körs sist i `app.js`, annars hamnar direktlänkar fel när innehållet renderas. Undermenyn döljs under 920 px. Talangerna nivå för nivå och AoE-raden är ersatta av länkar till Icy Veins Forever-bygget och kalkylatorn: `TALANGER` är borttagen ur `mage.js`.

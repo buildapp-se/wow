@@ -2,7 +2,7 @@
 import assert from "node:assert";
 import { readFileSync } from "node:fs";
 import { PERKS, CLASSES, GOALS, CHALLENGES, buildFor, buildError, stegFor } from "./data.js";
-import { TALANGER, GEAR } from "./mage.js";
+import { GEAR } from "./mage.js";
 import { wh, HANDEL, PLAN, PLATSER, RUTTER, BOE, golv, PHASES, RECEPT, GANTT, MILSTOLPAR, START, SLUT, dag, datum, pris } from "./plan.js";
 
 assert.equal(Object.keys(PERKS).length, 21, "Blizzard anger 21 perkar");
@@ -66,7 +66,6 @@ assert.equal(golv(BOE.find((b) => b.vad === "Staff of Jordan")), 1250000);
 assert.equal(golv(BOE.find((b) => b.vad === "Cloak of Flames")), 5000000);
 assert.equal(golv(BOE.find((b) => b.vad === "Flurry Axe")), 1000000);
 assert.equal(pris(1559980000), "155 998 g");
-assert.equal(TALANGER.length, 51, "ett poäng per nivå 10 till 60");
 assert.equal(new Set(GEAR.map((r) => r[2])).size, GEAR.length, "dubblett i GEAR");
 for (const [niva, , id, , krav] of GEAR) { const [fran, till] = niva.split(" till ").map(Number); assert.ok(id && krav >= fran && krav <= till, `${id}: nivå`); }
 // Schemat: allt som säljs ska finnas där, och köp måste börja före försäljning.

@@ -200,7 +200,7 @@ function visa() {
   nav.querySelector(".under")?.remove();
   const under = Object.assign(document.createElement("div"), { className: "under" });
   under.append(...rubriker(sektion).map((h) => Object.assign(document.createElement("a"), { href: `#${h.id}`, textContent: h.textContent })));
-  aktiv?.after(under);
+  if (under.childElementCount) aktiv?.after(under);
   // På mobil scrollar menyn i sidled: håll den aktiva länken synlig, annars syns inte var man är.
   if (aktiv && nav.scrollWidth > nav.clientWidth) nav.scrollLeft = aktiv.offsetLeft - (nav.clientWidth - aktiv.offsetWidth) / 2;
   if (mal && mal !== sektion) mal.scrollIntoView();

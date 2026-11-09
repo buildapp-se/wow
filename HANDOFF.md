@@ -76,3 +76,5 @@ Fisketabellen fick kolumnerna Zonens nivå (wikins Zones by level (original)) oc
 ## 2026-11-09: undermeny och Icy Veins-länk
 
 Vänstermenyn visar den aktiva vyns rubriker (h3 och h2.mellan direkt under sektionen) som länkar. Rubrikerna får id:n `<vy>-<slug>` i `app.js`, och `visa()` hittar vyn via `closest(".vy")`, så `#mal-fishing-...` öppnar Mål och scrollar dit. `visa()` körs sist i `app.js`, annars hamnar direktlänkar fel när innehållet renderas. Undermenyn döljs under 920 px. Talangerna nivå för nivå och AoE-raden är ersatta av länkar till Icy Veins Forever-bygget och kalkylatorn: `TALANGER` är borttagen ur `mage.js`.
+
+Ny vy Dungeons (`#dungeons`): nivåer ur wikins Forever-lista (sidan World of Warcraft: Forever, avsnittet Dungeons and raids), mage-drops ur Wowheads zon-listvy `drops` filtrerad på Int eller spell power via nether-tooltipen. Urvalet tog bara de fem högsta blå per dungeon som kandidater. Wowhead saknar drops för City of Dalaran, Drowned City, Krol'dok, Alcaz, Blackmaw, Shaper's Terrace och Blackrock Spire (zon 17804): fyll i när de dyker upp. Undermenyn visas bara när vyn har rubriker.

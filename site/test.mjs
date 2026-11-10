@@ -80,8 +80,8 @@ assert.equal(datum(START), "5 nov");
 assert.ok(MILSTOLPAR.every(([d]) => dag(d) > 0 && dag(d) < dag(SLUT)));
 // Tillverkning: kalkylerna ska stämma mot recepten, och försäljning måste ge vinst.
 const kostnad = (vad) => RECEPT.find((r) => r.vad === vad).kostnad;
-assert.equal(kostnad("Bronze Framework"), 615);
-assert.equal(kostnad("Bronze Tube"), 520);
+assert.equal(kostnad("Bronze Framework"), 508);
+assert.equal(kostnad("Bronze Tube"), 436);
 for (const r of RECEPT) assert.ok(r.salj > r.kostnad && r.salj > r.vendor, r.vad);
 // 1 Gold Bar plus 3 Iron Bar för högst 18 s ger 3 Gyrochronatom för 22 s 50 k hos vendor.
 assert.ok(3 * RECEPT.find((r) => r.vad === "Gyrochronatom").vendor > 1800);

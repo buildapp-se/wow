@@ -4,7 +4,7 @@ status: active
 currentGoal: Handlingsplanen är live på buildapp.se/wow inför släppet 5 november 2026
 nextAction: Efter släppet: byt riktpriserna i site/plan.js mot riktiga AH-priser, se BACKLOG.md
 blockers: []
-reviewedAt: 2026-11-09
+reviewedAt: 2026-11-10
 ---
 
 # Handoff
@@ -78,3 +78,7 @@ Fisketabellen fick kolumnerna Zonens nivå (wikins Zones by level (original)) oc
 Vänstermenyn visar den aktiva vyns rubriker (h3 och h2.mellan direkt under sektionen) som länkar. Rubrikerna får id:n `<vy>-<slug>` i `app.js`, och `visa()` hittar vyn via `closest(".vy")`, så `#mal-fishing-...` öppnar Mål och scrollar dit. `visa()` körs sist i `app.js`, annars hamnar direktlänkar fel när innehållet renderas. Undermenyn döljs under 920 px. Talangerna nivå för nivå och AoE-raden är ersatta av länkar till Icy Veins Forever-bygget och kalkylatorn: `TALANGER` är borttagen ur `mage.js`.
 
 Ny vy Dungeons (`#dungeons`): nivåer ur wikins Forever-lista (sidan World of Warcraft: Forever, avsnittet Dungeons and raids), mage-drops ur Wowheads zon-listvy `drops` filtrerad på Int eller spell power via nether-tooltipen. Urvalet tog bara de fem högsta blå per dungeon som kandidater. Wowhead saknar drops för City of Dalaran, Drowned City, Krol'dok, Alcaz, Blackmaw, Shaper's Terrace och Blackrock Spire (zon 17804): fyll i när de dyker upp. Undermenyn visas bara när vyn har rubriker.
+
+## 2026-11-10: AH-priser 10 nov, Reddit-arbitrage
+
+Affärer och Engineering-tabellen räknade om med wow.gg EU 10 nov (genererade av ett engångsskript, vinsten räknas ur kopparvärden). Big Bronze Bomb föll 50 s till 6 s, Mageweave Bag 2 g 52 s till 1 g 32 s. Utbud-kolumnen är borttagen: wow.gg visar inte antal längre i DOM:en. Reddit-tipsen kontrollerade mot Forever-recept (nether spell-tooltip): Light Leather Pants, Flying Tiger Goggles, Rough Dynamite, Heavy Blasting Powder och Cured Medium Hide går plus; Greater Magic Wand (2 Lesser Magic Essence i Forever, inte Greater), Cured Heavy Hide och Light till Medium Leather (4 Light i Forever, inte 3) går minus. Fisketabellens AH-priser och plan.js Engineering-priser är fortfarande från 7 nov och daterade som det.

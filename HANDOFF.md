@@ -4,7 +4,7 @@ status: active
 currentGoal: Handlingsplanen är live på buildapp.se/wow inför släppet 5 november 2026
 nextAction: Efter släppet: byt riktpriserna i site/plan.js mot riktiga AH-priser, se BACKLOG.md
 blockers: []
-reviewedAt: 2026-11-10
+reviewedAt: 2026-11-11
 ---
 
 # Handoff
@@ -82,3 +82,7 @@ Ny vy Dungeons (`#dungeons`): nivåer ur wikins Forever-lista (sidan World of Wa
 ## 2026-11-10: AH-priser 10 nov, Reddit-arbitrage
 
 Affärer och Engineering-tabellen räknade om med wow.gg EU 10 nov (genererade av ett engångsskript, vinsten räknas ur kopparvärden). Big Bronze Bomb föll 50 s till 6 s, Mageweave Bag 2 g 52 s till 1 g 32 s. Utbud-kolumnen är borttagen: wow.gg visar inte antal längre i DOM:en. Reddit-tipsen kontrollerade mot Forever-recept (nether spell-tooltip): Light Leather Pants, Flying Tiger Goggles, Rough Dynamite, Heavy Blasting Powder och Cured Medium Hide går plus; Greater Magic Wand (2 Lesser Magic Essence i Forever, inte Greater), Cured Heavy Hide och Light till Medium Leather (4 Light i Forever, inte 3) går minus. Fisketabellens AH-priser, tyget i Tailoring-texten och plan.js Engineering-priser (RECEPT, HANDEL, testets kostnader) är också uppdaterade till 10 nov.
+
+## 2026-11-11: Legacy-val
+
+Patrik valde Bountiful Harvest på mainen (inte Thrill som sajtens Levla och crafta föreslår). Rogue-alten får Skinning och Herbalism. Noterat under Karaktärer. Öppet: Wowheads live-tooltip för Working Overtime säger 10 % totalt, sajten och guiden 4 % per rang; ej ändrat förrän spelets tooltip avläses.

@@ -4,7 +4,7 @@ status: active
 currentGoal: Handlingsplanen är live på buildapp.se/wow inför släppet 5 november 2026
 nextAction: Efter släppet: byt riktpriserna i site/plan.js mot riktiga AH-priser, se BACKLOG.md
 blockers: []
-reviewedAt: 2026-11-11
+reviewedAt: 2026-11-14
 ---
 
 # Handoff
@@ -86,3 +86,11 @@ Affärer och Engineering-tabellen räknade om med wow.gg EU 10 nov (genererade a
 ## 2026-11-11: Legacy-val
 
 Patrik valde Bountiful Harvest på mainen (inte Thrill som sajtens Levla och crafta föreslår). Rogue-alten får Skinning och Herbalism. Noterat under Karaktärer. Öppet: Wowheads live-tooltip för Working Overtime säger 10 % totalt, sajten och guiden 4 % per rang; ej ändrat förrän spelets tooltip avläses.
+
+## 2026-11-14: Dungeons med rogue och förberedelse
+
+Dungeons-tabellen fick kolumnerna Rogue (alt) och Gör innan, och mage-kolumnen fylldes för Dalaran, SM Graveyard, Drowned City, Krol'dok, Alcaz, Blackmaw, LBRS, UBRS och DM West/North. Droppar ur Wowheads zon-listvyer (32 zoner, 14 nov) med stats från nether-tooltipen, set-bonusar bortklippta (annars räknas setets stats som föremålets). Rangordningen är min formel: rogue vapen-dps och 2 x Agi + Str, mage 1,3 x SP + Int. Blackrock Spire och Dire Maul är en zon var hos Wowhead, uppdelade på raderna efter boss. Shaper's Terrace saknar fortfarande data. Det finns en andra City of Dalaran-zon (16560, quests nivå 52 till 60) som inte har någon rad.
+
+Quest-ID:n kommer ur zonernas quest-listvy (Alliance och båda). Kedjorna före dem kommer från warcraft.wiki.gg (API med `origin=*`): Classic-sidorna för gamla dungeons och Forever-mallarna (`Template:<dungeon> quests`) för nya. Wowheads quest-sidor gav Human Verification efter zonhämtningen.
+
+Arbetsmetod: Wowhead läses i Patriks Chrome (Claude in Chrome) med `fetch` från en wowhead.com-flik och `Listview`-blocken tolkade ur HTML:en. Playwright fick Human Verification direkt. Stora resultat läses ut genom att skriva dem i sidan och köra `get_page_text`: `javascript_tool` kapar svaret vid ungefär 1 000 tecken. Auto-läget stoppade `curl` mot nether och Chrome mot Wowhead. Det kördes i manuellt läge.

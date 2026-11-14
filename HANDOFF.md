@@ -94,3 +94,5 @@ Dungeons-tabellen fick kolumnerna Rogue (alt) och Gör innan, och mage-kolumnen 
 Quest-ID:n kommer ur zonernas quest-listvy (Alliance och båda). Kedjorna före dem kommer från warcraft.wiki.gg (API med `origin=*`): Classic-sidorna för gamla dungeons och Forever-mallarna (`Template:<dungeon> quests`) för nya. Wowheads quest-sidor gav Human Verification efter zonhämtningen.
 
 Arbetsmetod: Wowhead läses i Patriks Chrome (Claude in Chrome) med `fetch` från en wowhead.com-flik och `Listview`-blocken tolkade ur HTML:en. Playwright fick Human Verification direkt. Stora resultat läses ut genom att skriva dem i sidan och köra `get_page_text`: `javascript_tool` kapar svaret vid ungefär 1 000 tecken. Auto-läget stoppade `curl` mot nether och Chrome mot Wowhead. Det kördes i manuellt läge.
+
+Flygpunkter (samma dag): Notering fick "Flyg:" med närmaste Alliance-flygpunkt. Flygmästarna kommer ur zonernas npc-listvy (`react[0] === 1` betyder vänlig mot Alliance) och nether-npc-tooltips för zonerna där Wowhead gav Human Verification. Ortnamnen är mina, kopplade till flygmästarens zon och koordinater. Riverglades är inte kontrollerad.

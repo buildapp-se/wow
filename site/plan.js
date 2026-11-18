@@ -167,7 +167,9 @@ export const HANDEL = PLAN.flatMap((f) => f.rader.filter((r) => r.typ === "Spara
 
 // Dyra föremål. beta: begärt pris på Forever-betan, WoWCensus 2026-10-12, nivåtak 30. De fyra på 25 g: warcraftforever.games 19 sept.
 // var: Wowheads Forever-data 2026-11-02, de mobs med högst droppchans. Rader med "i Classic" kommer från classicdb.ch 2026-11-04. Under 0,1 % syns inte. grans: min gräns i guld när betapris saknas, standard 100. Recept: skill 290 eller epic 500, skill 200 100, annars 25.
-const dyr = (vad, id, typ, krav, beta, varifran, grans) => ({ vad, id, typ, krav, beta: beta && Math.round(beta * g), var: varifran, grans });
+// AH: medianpris i koppar på wow.gg (AHledger), EU Alliance PvE 18 nov. Saknas föremålet låg det inte ute. Begärda priser, ofta en enda annons.
+export const AH = { 1204: 204500, 10608: 50000, 13034: 69999, 873: 789999, 13108: 24900, 10332: 399999, 2264: 88787, 7760: 165000, 6367: 282900, 4500: 191098, 776: 94599, 2278: 32000, 4438: 42000, 13136: 49799, 12988: 2800, 12992: 6600, 12978: 5000, 16253: 4899999, 12717: 15909999, 14509: 800000, 4411: 39949, 18657: 174900, 13519: 1096067, 1935: 144000, 2243: 20000000, 14554: 4674900, 1979: 299600, 871: 1009996, 870: 299800, 2291: 1209999, 944: 2449998, 14510: 1480000, 12838: 106000, 15772: 200000, 12835: 45000, 12839: 350000, 15781: 38000, 10605: 4099, 4415: 10598, 14507: 150701, 12833: 22000, 8384: 40000, 12711: 300000, 4301: 12053, 8028: 10100, 11610: 7524, 12837: 90000, 12836: 23078, 15770: 20000, 21548: 1192600, 3871: 14000, 12716: 192600, 15763: 29900, 7991: 11997, 14501: 80000, 15760: 128300, 7452: 30000, 15753: 600000, 15764: 399999, 14497: 98000, 11611: 8099, 3875: 49900, 4298: 49900, 15733: 4890, 15752: 10000, 22389: 2450000, 14511: 4992600, 18518: 3900000, 22390: 999998, 869: 449999, 867: 599900, 2825: 369900, 868: 109998, 1980: 314400, 1981: 264998, 1982: 254999, 2164: 204800, 14549: 165095, 1447: 97000, 17007: 355099, 810: 254998, 812: 1999999, 2245: 405551, 4354: 26000, 7976: 101000, 12703: 25097, 12728: 300000, 16254: 489900, 18414: 2009900, 18517: 1550000, 18519: 999800 };
+const dyr = (vad, id, typ, krav, beta, varifran, grans) => ({ vad, id, typ, krav, beta: beta && Math.round(beta * g), ah: AH[id], var: varifran, grans });
 export const BOE = [
   dyr("The Green Tower", 1204, "Epic", "Nivå 36", 500.89, "Världsdrop, 21 mobtyper: Dustwallow Marsh, Swamp of Sorrows, Feralas"),
   dyr("Schematic: Sniper Scope", 10608, "Recept", "Engineering 240", 339.71, "Världsbossar: Ysondre, Lethon, Azuregos runt 5 %. Sällsynt i lådor"),
@@ -298,8 +300,8 @@ export const BOE = [
   dyr("Pattern: Shifting Cloak", 18519, "Recept", "Leatherworking 300", null, "Ur Knot Thimblejack's Cache, Dire Maul 2 % i Classic", 500),
   dyr("Plans: Titanic Leggings", 22388, "Recept", "Blacksmithing 300", null, "Världsdrop i Classic, 28 mobtyper: Scholomance, Stratholme, Eastern Plaguelands", 500),
 ];
-// Min egen gräns, inget marknadspris: halva betapriset, annars grans.
-export const golv = (b) => b.beta ? Math.round(b.beta / 2 / s) * s : (b.grans ?? 100) * g;
+// Min egen gräns: halva AH-priset, annars halva betapriset, annars grans.
+export const golv = (b) => (b.ah ?? b.beta) ? Math.round((b.ah ?? b.beta) / 2 / s) * s : (b.grans ?? 100) * g;
 
 // Tidslinjen. Samma priser och antal som PLAN: ändra båda.
 const hos = (id) => `<button type="button" class="plats" data-plats="${id}">${PLATSER[id].namn}</button>`;

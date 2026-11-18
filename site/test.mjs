@@ -57,14 +57,16 @@ for (const r of RUTTER) {
   if (r.noder) for (const n of r.noder.split(",")) assert.match(n, /^\d+ \d+$/, r.id);
   else for (const b of r.ben) for (const [id] of b.stopp) assert.ok(PLATSER[id] && PLATSER[id].zon === b.zon, `${r.id}: ${id}`);
 }
-for (const b of BOE) assert.ok(b.id && golv(b) > 0 && (!b.beta || golv(b) < b.beta), b.vad);
+for (const b of BOE) assert.ok(b.id && golv(b) > 0 && (!(b.ah ?? b.beta) || golv(b) < (b.ah ?? b.beta)), b.vad);
+for (const b of BOE) assert.ok(!b.ah || Number.isInteger(b.ah), `${b.vad}: AH-priset måste vara hela koppar`);
 assert.equal(new Set(BOE.map((b) => b.id)).size, BOE.length, "dubblett i BOE");
 // 129.92 * 10000 blir 1299199,99... i flyttal och visades som "99.99999999976717 k".
 for (const b of BOE) assert.ok(!b.beta || Number.isInteger(b.beta), `${b.vad}: betapriset måste vara hela koppar`);
 assert.equal(pris(BOE.find((b) => b.vad === "Warchief Kilt").beta), "129 g 92 s");
-assert.equal(golv(BOE.find((b) => b.vad === "Staff of Jordan")), 1250000);
+assert.equal(golv(BOE.find((b) => b.vad === "Staff of Jordan")), 395000); // AH 79 g går före betans 250 g
+assert.equal(golv(BOE.find((b) => b.vad === "Gnomish Shrink Ray")), 885600); // ingen på AH: halva betapriset
 assert.equal(golv(BOE.find((b) => b.vad === "Cloak of Flames")), 5000000);
-assert.equal(golv(BOE.find((b) => b.vad === "Flurry Axe")), 1000000);
+assert.equal(golv(BOE.find((b) => b.vad === "Flurry Axe")), 505000); // AH går före grans
 assert.equal(pris(1559980000), "155 998 g");
 assert.equal(new Set(GEAR.map((r) => r[2])).size, GEAR.length, "dubblett i GEAR");
 for (const [niva, , id, , krav] of GEAR) { const [fran, till] = niva.split(" till ").map(Number); assert.ok(id && krav >= fran && krav <= till, `${id}: nivå`); }

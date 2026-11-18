@@ -133,7 +133,7 @@ renderRutt();
 
 // Dyra BoE
 $("#boe tbody").innerHTML = BOE.map((b) => `<tr><td><a href="${wh("item", b.id)}" rel="noopener"><strong>${b.vad}</strong></a></td><td>${b.typ}</td><td>${b.krav}</td>
-  <td data-sort-value="${golv(b)}">${pris(golv(b))}</td><td data-sort-value="${b.beta ?? ""}">${b.beta ? pris(b.beta) : ""}</td><td>${b.var}</td></tr>`).join("");
+  <td data-sort-value="${golv(b)}">${pris(golv(b))}</td><td data-sort-value="${b.ah ?? ""}">${b.ah ? pris(b.ah) : ""}</td><td data-sort-value="${b.beta ?? ""}">${b.beta ? pris(b.beta) : ""}</td><td>${b.var}</td></tr>`).join("");
 
 // Perktabellen
 $("#perkar tbody").innerHTML = Object.entries(PERKS).map(([name, p]) => `<tr>

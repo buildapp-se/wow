@@ -4,7 +4,7 @@ status: active
 currentGoal: Handlingsplanen är live på buildapp.se/wow inför släppet 5 november 2026
 nextAction: Efter släppet: byt riktpriserna i site/plan.js mot riktiga AH-priser, se BACKLOG.md
 blockers: []
-reviewedAt: 2026-11-14
+reviewedAt: 2026-11-18
 ---
 
 # Handoff
@@ -96,3 +96,7 @@ Quest-ID:n kommer ur zonernas quest-listvy (Alliance och båda). Kedjorna före 
 Arbetsmetod: Wowhead läses i Patriks Chrome (Claude in Chrome) med `fetch` från en wowhead.com-flik och `Listview`-blocken tolkade ur HTML:en. Playwright fick Human Verification direkt. Stora resultat läses ut genom att skriva dem i sidan och köra `get_page_text`: `javascript_tool` kapar svaret vid ungefär 1 000 tecken. Auto-läget stoppade `curl` mot nether och Chrome mot Wowhead. Det kördes i manuellt läge.
 
 Flygpunkter (samma dag): Notering fick "Flyg:" med närmaste Alliance-flygpunkt. Flygmästarna kommer ur zonernas npc-listvy (`react[0] === 1` betyder vänlig mot Alliance) och nether-npc-tooltips för zonerna där Wowhead gav Human Verification. Ortnamnen är mina, kopplade till flygmästarens zon och koordinater. Riverglades är inte kontrollerad.
+
+## 2026-11-18: AH-priser i Dyra föremål (backlogsvep, agent)
+
+wow.gg EU Alliance PvE lästes med playwright-cli: regionknappen (US) byts till EU, sökrutan fylls med föremålets namn och raden med rätt `data-item-id` läses (`median`, annars `minBuyout`). 91 av 126 BOE-rader låg ute. Priserna står i `AH` i `site/plan.js` och styr nu gränsen; många är en enda annons och långt under betan (The Green Tower 20 g mot 500 g). Wowhead lästes inte. Övriga P1 kräver spelet.

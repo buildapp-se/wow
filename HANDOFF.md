@@ -108,3 +108,11 @@ Alla AH-priser är nu wow.gg EU Alliance PvE 20 nov, cirka 15:30: Dyra föremål
 Metod (playwright-cli, egen session): regionen byts med knappen vars klass innehåller `Dropdown_trigger` och texten US, sedan det synliga menyvalet EU (`:visible`, det finns dolda kopior). Fyll sökrutan (`getByPlaceholder('Search')`), vänta på sidans eget svar från `/api/forever/ah?` med `.eu` och `q=`, läs raden i DOM:en (`data-item-id`, `data-copper` under `data-col="minBuyout"`/`"median"`). Utan id matchas raden på exakt namn. Skriv skriptet som fil och kör `run-code --filename`: inline-JS med regex stoppas av dcg. 216 sökningar tar runt 7 minuter. warcraft.wiki.gg:s API rate-limitar utan egen User-Agent.
 
 `golv`-testet för halva betapriset använder nu ett syntetiskt föremål: 20 nov hade alla rader med betapris också ett AH-pris. Många AH-priser är en enda annons (Gnomish Shrink Ray 1 g 60 s mot betans 177 g), så gränsen kan bli orimligt låg.
+
+## 2026-11-20: granskning av mage, yrken och ekonomi (agent)
+
+En granskningsagent läste sajten mot wikin, nether-tooltips och Icy Veins. Rättat, med källorna kontrollerade en gång till: pullraderna (Flamestrike kommer på 16, Cone of Cold på 26, enligt wikins Mage abilities (Forever)), talangkalkylatorns länk (Icy Veins byggde om guiden 9 och 17 nov), dungeonnivåerna (25 rader enligt wikins Forever-lista), Missa inte (klassquests på 30, 35 och 50), fiskeboken på skill 150 och Nat Pagle bekräftad för Forever, Darkmoon-biljetterna märkta "i Classic". I `GEAR` är nio rader borttagna: fem binder vid upplockning men stod som bank-altens, tre kräver League of Arathor (PvP) och Rose Colored Goggles kräver Engineering 230. Sorcerer's-delarna heter nu Dungeon Set 2-kedjan. Tidslinjen säger Bountiful Harvest i stället för Thrill.
+
+Ej ändrat: bygget "Levla och crafta" (Thrill först) visas fortfarande först i Legacy (`app.js`, `data.js`), trots valet 11 nov. Övriga förslag ligger i BACKLOG.
+
+Arbetsmetod: Icy Veins Forever-sidor svarar 200 mot `curl` med en webbläsar-User-Agent. nether-tooltipen ska anropas utan `dataEnv`: `?dataEnv=13` ger Classic-data.

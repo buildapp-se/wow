@@ -325,7 +325,7 @@ export const PHASES = [
   },
   {
     nar: "Nivå 10 till 20", titel: "Yrket börjar betala",
-    gor: ["Talanger från nivå 10: se kartan under Karaktärer", `Engineering hos ${hos("bronk")}`, "Mage-quests på nivå 10 och 15: gratis utrustning", "Hall of Thanes 14 till 17 och Deadmines 18 till 22, med alla quests", "Möt din sambo i Westfall eller Loch Modan", "Posta varje Waylaid Crate och Scarce-material till bank-alten", "Legacy-fönstret (Y): lägg första poängen på Thrill of Adventure"],
+    gor: ["Talanger från nivå 10: följ Icy Veins-bygget, länken står under Karaktärer", `Engineering hos ${hos("bronk")}`, "Mage-quests på nivå 10 och 15: gratis utrustning", "Hall of Thanes 14 till 17 och Deadmines 18 till 22, med alla quests", "Möt din sambo i Westfall eller Loch Modan", "Posta varje Waylaid Crate och Scarce-material till bank-alten", "Legacy-fönstret (Y): första poängen på Bountiful Harvest, ditt val 11 nov"],
     kop: ["Pristine Leather: högst 2 g, 5 st", "Frilled Lichen: högst 1 g, 5 st", "Bronze Bar: högst 8 s, 50 st, bara om du inte bryter själv"],
     salj: ["Bank-alten: Strange Dust och Lesser Magic Essence från roben. Ger de mindre än 98 k per robe, sälj roben till vendor"],
     inte: ["Grinda inte kill-XP ihop: kill-XP delas, quest-XP inte", "Sälj inte Scarce under 3 g"],

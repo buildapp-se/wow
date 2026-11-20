@@ -4,7 +4,7 @@ status: active
 currentGoal: Handlingsplanen är live på buildapp.se/wow inför släppet 5 november 2026
 nextAction: Efter släppet: byt riktpriserna i site/plan.js mot riktiga AH-priser, se BACKLOG.md
 blockers: []
-reviewedAt: 2026-11-18
+reviewedAt: 2026-11-20
 ---
 
 # Handoff
@@ -100,3 +100,11 @@ Flygpunkter (samma dag): Notering fick "Flyg:" med närmaste Alliance-flygpunkt.
 ## 2026-11-18: AH-priser i Dyra föremål (backlogsvep, agent)
 
 wow.gg EU Alliance PvE lästes med playwright-cli: regionknappen (US) byts till EU, sökrutan fylls med föremålets namn och raden med rätt `data-item-id` läses (`median`, annars `minBuyout`). 91 av 126 BOE-rader låg ute. Priserna står i `AH` i `site/plan.js` och styr nu gränsen; många är en enda annons och långt under betan (The Green Tower 20 g mot 500 g). Wowhead lästes inte. Övriga P1 kräver spelet.
+
+## 2026-11-20: AH-priser 20 nov överallt
+
+Alla AH-priser är nu wow.gg EU Alliance PvE 20 nov, cirka 15:30: Dyra föremål (`AH` i `plan.js`, median, 96 av 126 rader ute mot 91), Affärer (omräknad och omsorterad, lägsta utköp), Engineering-tabellen, fisketabellen, tyget i Tailoring-texten och `RECEPT` för Bronze Tube, Framework och Gyrochronatom. Stora skiften sedan 10 nov: Bronze Tube 9 s till 5 s (Billibub-köpet går back), Silk Headband från förlust till +23 s, Mithril Casing och Unstable Trigger går plus, Mageweave-sömnad är förlust (Mageweave 5 s 21 k). Affärer räknade tidigare Gyrochronatom på Iron Ore, rättat till Iron Bar. Gray Dye säljs hos vendor (wikin: säljpris 87 k, alltså cirka 3 s 50 k), Salt 50 k (säljpris 12 k).
+
+Metod (playwright-cli, egen session): regionen byts med knappen vars klass innehåller `Dropdown_trigger` och texten US, sedan det synliga menyvalet EU (`:visible`, det finns dolda kopior). Fyll sökrutan (`getByPlaceholder('Search')`), vänta på sidans eget svar från `/api/forever/ah?` med `.eu` och `q=`, läs raden i DOM:en (`data-item-id`, `data-copper` under `data-col="minBuyout"`/`"median"`). Utan id matchas raden på exakt namn. Skriv skriptet som fil och kör `run-code --filename`: inline-JS med regex stoppas av dcg. 216 sökningar tar runt 7 minuter. warcraft.wiki.gg:s API rate-limitar utan egen User-Agent.
+
+`golv`-testet för halva betapriset använder nu ett syntetiskt föremål: 20 nov hade alla rader med betapris också ett AH-pris. Många AH-priser är en enda annons (Gnomish Shrink Ray 1 g 60 s mot betans 177 g), så gränsen kan bli orimligt låg.

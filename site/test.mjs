@@ -63,10 +63,10 @@ assert.equal(new Set(BOE.map((b) => b.id)).size, BOE.length, "dubblett i BOE");
 // 129.92 * 10000 blir 1299199,99... i flyttal och visades som "99.99999999976717 k".
 for (const b of BOE) assert.ok(!b.beta || Number.isInteger(b.beta), `${b.vad}: betapriset måste vara hela koppar`);
 assert.equal(pris(BOE.find((b) => b.vad === "Warchief Kilt").beta), "129 g 92 s");
-assert.equal(golv(BOE.find((b) => b.vad === "Staff of Jordan")), 395000); // AH 79 g går före betans 250 g
-assert.equal(golv(BOE.find((b) => b.vad === "Gnomish Shrink Ray")), 885600); // ingen på AH: halva betapriset
+assert.equal(golv(BOE.find((b) => b.vad === "Staff of Jordan")), 500000); // AH 100 g går före betans 250 g
+assert.equal(golv({ beta: 1771200 }), 885600); // ingen på AH: halva betapriset (20 nov har alla med betapris ett AH-pris)
 assert.equal(golv(BOE.find((b) => b.vad === "Cloak of Flames")), 5000000);
-assert.equal(golv(BOE.find((b) => b.vad === "Flurry Axe")), 505000); // AH går före grans
+assert.equal(golv(BOE.find((b) => b.vad === "Flurry Axe")), 889500); // AH går före grans
 assert.equal(pris(1559980000), "155 998 g");
 assert.equal(new Set(GEAR.map((r) => r[2])).size, GEAR.length, "dubblett i GEAR");
 for (const [niva, , id, , krav] of GEAR) { const [fran, till] = niva.split(" till ").map(Number); assert.ok(id && krav >= fran && krav <= till, `${id}: nivå`); }
@@ -82,8 +82,8 @@ assert.equal(datum(START), "5 nov");
 assert.ok(MILSTOLPAR.every(([d]) => dag(d) > 0 && dag(d) < dag(SLUT)));
 // Tillverkning: kalkylerna ska stämma mot recepten, och försäljning måste ge vinst.
 const kostnad = (vad) => RECEPT.find((r) => r.vad === vad).kostnad;
-assert.equal(kostnad("Bronze Framework"), 508);
-assert.equal(kostnad("Bronze Tube"), 436);
+assert.equal(kostnad("Bronze Framework"), 631);
+assert.equal(kostnad("Bronze Tube"), 486);
 for (const r of RECEPT) assert.ok(r.salj > r.kostnad && r.salj > r.vendor, r.vad);
 // 1 Gold Bar plus 3 Iron Bar för högst 18 s ger 3 Gyrochronatom för 22 s 50 k hos vendor.
 assert.ok(3 * RECEPT.find((r) => r.vad === "Gyrochronatom").vendor > 1800);

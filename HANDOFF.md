@@ -4,7 +4,7 @@ status: active
 currentGoal: Handlingsplanen är live på buildapp.se/wow inför släppet 5 november 2026
 nextAction: Efter släppet: byt riktpriserna i site/plan.js mot riktiga AH-priser, se BACKLOG.md
 blockers: []
-reviewedAt: 2026-11-20
+reviewedAt: 2026-11-21
 ---
 
 # Handoff
@@ -116,3 +116,11 @@ En granskningsagent läste sajten mot wikin, nether-tooltips och Icy Veins. Rät
 Ej ändrat: bygget "Levla och crafta" (Thrill först) visas fortfarande först i Legacy (`app.js`, `data.js`), trots valet 11 nov. Övriga förslag ligger i BACKLOG.
 
 Arbetsmetod: Icy Veins Forever-sidor svarar 200 mot `curl` med en webbläsar-User-Agent. nether-tooltipen ska anropas utan `dataEnv`: `?dataEnv=13` ger Classic-data.
+
+## 2026-11-21: Warrior-alt med Blacksmithing
+
+Patrik startade en Warrior-alt med Blacksmithing (nivå 6 vid start). Nytt i Karaktärer: Warrior-avsnitt med Legacy-råd, föremål nivå för nivå (Alliance, inga plate-saker före 40, inget PvP och ingen raid) och enchants nivå för nivå (bank-altens Enchanting till 225, effekter ur nether-tooltips: Forever har höjt flera). Nytt i Mål: Blacksmithing 1 till 225, inköpslista och vad smeden gör åt Warrior och Rogue. Alt 4 i tabellen är nu Arms Warrior; Mining som andra yrke är antaget.
+
+Vägen räknades med ett skript över alla tränarrecept upp till 225 (Wowheads Forever-listvy `spells/professions/blacksmithing`, `colors` och `reagents`) och wow.gg EU 21 nov lägsta utköp. Chansen för gul och grön är (grå minus skill) / (grå minus gul), och vid varje skillpoäng valdes receptet med lägst kostnad per förväntad poäng. Summa runt 67 g, mest Mithril och Steel. Working Overtime 5 sänker det med 4 till 8 g beroende på om perken ger +10 eller +20 procentenheter.
+
+Arbetsmetod: Wowheads föremålsfilter med vikter fungerar i Chrome (`/forever/items?filter=ub=1;minrl=X;maxrl=Y;wt=20:21:22;wtv=10:7:3`), `g_listviews.items.data` har `score`, stats, `source` och `sourcemore`. Questens sida läses med `fetch('/forever/quest=ID')` från en wowhead-flik och "Side:" i HTML:en; flera Forever-quests är Horde trots att de kommer upp i filtret. wow.gg har nu en cookie-ruta utan avvisa-knapp: skriptet tar bort elementet i stället för att godkänna, och regionmenyn ligger i `[class*=Dropdown_menu__]` (portal), inte under knappen.

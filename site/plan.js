@@ -4,6 +4,7 @@ const g = 10000, s = 100;
 export const wh = (kind, id) => `https://www.wowhead.com/forever/${kind}=${id}`;
 
 export function pris(c) {
+  if (c < 0) return `−${pris(-c)}`;
   const gold = Math.floor(c / g), silver = Math.floor((c % g) / s), kop = c % s;
   return [gold && `${String(gold).replace(/\B(?=(\d{3})+$)/g, " ")} g`, silver && `${silver} s`, kop && `${kop} k`].filter(Boolean).join(" ") || "0";
 }

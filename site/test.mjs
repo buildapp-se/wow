@@ -97,6 +97,9 @@ assert.equal(pris(300), "3 s");
 assert.equal(pris(830), "8 s 30 k");
 assert.equal(pris(1e10), "1 000 000 g", "tusentalsmellanslag i varje grupp");
 assert.equal(pris(0), "0");
+// Förlust: Vinst-kolumnen i Tillverkning visade -1 g -1 s -5 k för fem koppar back.
+assert.equal(pris(-5), "−5 k");
+assert.equal(pris(-12345), "−1 g 23 s 45 k");
 assert.equal(wh("item", 4371), "https://www.wowhead.com/forever/item=4371");
 
 const html = readFileSync(new URL("./index.html", import.meta.url), "utf8");

@@ -114,6 +114,10 @@ assert.deepEqual([...html.matchAll(/rel="modulepreload" href="([a-z]+\.js\?v=dev
 assert.ok(!allText.includes("—"), "inget tankstreck i texten");
 assert.ok(!/Gemini|Ej belagt/i.test(allText), "ingen faktakollstext på sidan");
 assert.ok(PHASES.every((f) => f.gor.length), "varje fas har något att göra");
+// En cell som börjar med ett pris ("8 k", "13 s 19 k") sorterar som text utan data-sort-value: 8 k hamnade mellan 5 s och 8 s.
+for (const [tabell] of html.matchAll(/<table data-sort-key[\s\S]*?<\/table>/g)) {
+  for (const [, cellHtml] of tabell.matchAll(/<td>(\d+ (?:g|s|k)\b[^<]*)<\/td>/g)) assert.fail(`pris utan data-sort-value: ${cellHtml}`);
+}
 
 // Tabellsorteringen (sortable.js, kopia av elwyn-dash): attrapper i stället för DOM.
 const cell = (text, sortValue, select) => ({ textContent: text, dataset: sortValue === undefined ? {} : { sortValue }, querySelector: (q) => (select === undefined || q !== "select" ? null : { value: select }) });

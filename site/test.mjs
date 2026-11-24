@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 import { PERKS, CLASSES, GOALS, CHALLENGES, buildFor, buildError, stegFor } from "./data.js";
 import { GEAR } from "./mage.js";
 import { numberOf, cellValue, compareValues, orderedRows, sortable, initSortable } from "./sortable.js";
-import { wh, HANDEL, PLAN, PLATSER, RUTTER, BOE, golv, PHASES, RECEPT, GANTT, MILSTOLPAR, START, SLUT, dag, datum, pris } from "./plan.js";
+import { wh, HANDEL, PLAN, PLATSER, RUTTER, BOE, golv, PHASES, RECEPT, GANTT, MILSTOLPAR, START, SLUT, dag, datum, pris, rikt } from "./plan.js";
 
 assert.equal(Object.keys(PERKS).length, 21, "Blizzard anger 21 perkar");
 assert.equal(CHALLENGES.reduce((a, c) => a + c.points, 0), 65, "Blizzard anger 65 utmaningar");
@@ -83,8 +83,11 @@ assert.equal(datum(START), "5 nov");
 assert.ok(MILSTOLPAR.every(([d]) => dag(d) > 0 && dag(d) < dag(SLUT)));
 // Tillverkning: kalkylerna ska stämma mot recepten, och försäljning måste ge vinst.
 const kostnad = (vad) => RECEPT.find((r) => r.vad === vad).kostnad;
-assert.equal(kostnad("Bronze Framework"), 631);
-assert.equal(kostnad("Bronze Tube"), 486);
+assert.equal(kostnad("Bronze Framework"), 586);
+assert.equal(kostnad("Bronze Tube"), 488);
+// Riktpris är AH-medianen avrundad, maxpris hälften nedåt: under 1 g till 10 k, annars till hela silver.
+assert.deepEqual(rikt("Pristine Leather"), { salj: 370, kop: 180 });
+assert.deepEqual(rikt("Death Lotus"), { salj: 72900, kop: 36400 }); // maxpriset avrundas nedåt
 for (const r of RECEPT) assert.ok(r.salj > r.kostnad && r.salj > r.vendor, r.vad);
 // 1 Gold Bar plus 3 Iron Bar för högst 18 s ger 3 Gyrochronatom för 22 s 50 k hos vendor.
 assert.ok(3 * RECEPT.find((r) => r.vad === "Gyrochronatom").vendor > 1800);

@@ -2,7 +2,7 @@
   "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
   "testRunner": "command",
   "commandRunner": { "command": "node site/test.mjs" },
-  "mutate": ["site/data.js:99-134", "site/plan.js:1-14", "site/plan.js:304-304", "site/sortable.js"],
+  "mutate": ["site/data.js:99-134", "site/plan.js:1-21", "site/plan.js:312-312", "site/sortable.js"],
   "reporters": ["clear-text", "progress", "json", "html"],
   "coverageAnalysis": "off",
   "concurrency": 2

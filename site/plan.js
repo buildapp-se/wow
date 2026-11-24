@@ -8,6 +8,13 @@ export function pris(c) {
   return [gold && `${String(gold).replace(/\B(?=(\d{3})+$)/g, " ")} g`, silver && `${silver} s`, kop && `${kop} k`].filter(Boolean).join(" ") || "0";
 }
 
+// AH-median i koppar, wow.gg EU Alliance PvE 24 nov kväll. Riktpris är medianen, maxpris hälften (samma regel som Dyra föremål).
+const AH24 = { "Pristine Leather": 369, "Frilled Lichen": 4030, "Rosecap": 895, "Bauxite": 1138, "Pristine Hide": 395, "Stranglevine": 2740, "Pitchblende": 2705, "Pristine Scale": 3900, "Death Lotus": 72899, "Fel Crystal": 97900, "Torbernite": 29898, "Black Lotus": 87778, "Arcane Crystal": 138997, "Elemental Fire": 3949, "Dreamfoil": 1848, "Heart of Fire": 10600, "Bronze Tube": 1243, "Bronze Framework": 850, "Gyrochronatom": 790, "Mithril Casing": 3600, "Frost Oil": 2396, "Free Action Potion": 840 };
+const avrunda = (c, f = Math.round) => c < g ? f(c / 10) * 10 : f(c / s) * s;
+export const rikt = (vad, salj = avrunda(AH24[vad])) => ({ salj, kop: avrunda(salj / 2, Math.floor) });
+const hogst = (...varor) => varor.map((v) => `${v}: högst ${pris(rikt(v).kop)}`).join(", ");
+const priser = (...varor) => varor.map((v) => `${v} ${pris(rikt(v).salj)}`).join(", ");
+
 // Gantt-schemat. Datumen räknar med 6 h spel om dagen.
 export const START = "2026-11-05", SLUT = "2026-12-24";
 export const dag = (d) => (Date.parse(d) - Date.parse(START)) / 864e5;
@@ -21,14 +28,14 @@ export const GANTT = [
   { varor: ["Elemental Fire", "Dreamfoil", "Heart of Fire"], kop: ["2026-11-19", "2026-12-01"], salj: ["2026-12-01", "2026-12-16"] },
 ];
 
-// Det du tillverkar. Priser per styck i koppar. kostnad är det högsta du ska betala i material.
+// Det du tillverkar. Priser per styck i koppar, wow.gg EU Alliance PvE 24 nov, lägsta utköp. kostnad är det högsta du ska betala i material.
 export const RECEPT = [
-  { vad: "Bronze Tube", id: 4371, krav: "Engineering 105", mat: "2 Bronze Bar, 1 Weak Flux", kostnad: 2 * 193 + 100, salj: 506, vendor: 200, kopare: "Lådor, quest Look to the Stars, 13 recept" },
-  { vad: "Bronze Framework", id: 4382, krav: "Engineering 145", mat: "2 Bronze Bar, 1 Medium Leather, 1 Wool Cloth", kostnad: 2 * 193 + 99 + 146, salj: 798, vendor: 600, kopare: "Journeyman Parts-lådor, 10 recept" },
-  { vad: "Gyrochronatom", id: 4389, krav: "Engineering 170", mat: "1 Iron Bar, 1 Gold Power Core", kostnad: 334 + 389, salj: 777, vendor: 750, kopare: "Quest Gyro... What?, 18 recept" },
-  { vad: "Mithril Casing", id: 10561, krav: "Engineering 215", mat: "3 Mithril Bar", kostnad: 1800, salj: 3500, vendor: 1000, kopare: "Quest Chasing A-Me 01 från nivå 48, 22 recept" },
-  { vad: "Frost Oil", id: 3829, krav: "Alchemy 200, recept 26 s 31 k hos Bro'kin i Alterac", mat: "4 Khadgar's Whisker, 2 Wintersbite, 1 Leaded Vial ger 2 st", kostnad: 800, salj: 1500, vendor: 150, kopare: "Questen Coolant Heads Prevail från nivå 35, A Broken Trap från 56" },
-  { vad: "Free Action Potion", id: 5634, krav: "Alchemy 150, recept 18 s 94 k hos Soolie Berryfizz i Ironforge", mat: "2 Blackmouth Oil, 1 Stranglekelp, 1 Leaded Vial", kostnad: 500, salj: 1500, vendor: 75, kopare: "Raid och PvP, Craftsman's Writ" },
+  { vad: "Bronze Tube", id: 4371, krav: "Engineering 105", mat: "2 Bronze Bar, 1 Weak Flux", kostnad: 2 * 194 + 100, salj: 831, vendor: 200, kopare: "Lådor, quest Look to the Stars, 13 recept" },
+  { vad: "Bronze Framework", id: 4382, krav: "Engineering 145", mat: "2 Bronze Bar, 1 Medium Leather, 1 Wool Cloth", kostnad: 2 * 194 + 93 + 105, salj: 815, vendor: 600, kopare: "Journeyman Parts-lådor, 10 recept" },
+  { vad: "Gyrochronatom", id: 4389, krav: "Engineering 170", mat: "1 Iron Bar, 1 Gold Power Core", kostnad: 340 + 379, salj: 790, vendor: 750, kopare: "Quest Gyro... What?, 18 recept" },
+  { vad: "Mithril Casing", id: 10561, krav: "Engineering 215", mat: "3 Mithril Bar", kostnad: 3 * 1149, salj: 3598, vendor: 1000, kopare: "Quest Chasing A-Me 01 från nivå 48, 22 recept" },
+  { vad: "Frost Oil", id: 3829, krav: "Alchemy 200, recept 26 s 31 k hos Bro'kin i Alterac", mat: "4 Khadgar's Whisker, 2 Wintersbite, 1 Leaded Vial ger 2 st", kostnad: (4 * 375 + 2 * 1140 + 42) / 2, salj: 2396, vendor: 150, kopare: "Questen Coolant Heads Prevail från nivå 35, A Broken Trap från 56" },
+  { vad: "Free Action Potion", id: 5634, krav: "Alchemy 150, recept 18 s 94 k hos Soolie Berryfizz i Ironforge", mat: "2 Blackmouth Oil, 1 Stranglekelp, 1 Leaded Vial", kostnad: 2 * 162 + 198 + 42, salj: 599, vendor: 75, kopare: "Raid och PvP, Craftsman's Writ" },
 ];
 
 // Klassträning i budget: Wowheads Forever-data för Mage, Alliance, 2026-11-05. Summan där är 249 g, Blizzard säger 206 till 207 g, så budgeten är tilltagen.
@@ -90,6 +97,7 @@ export const RUTTER = [
 // Huvudtabellen. Priser i koppar. kop är maxpris, salj riktpris.
 // Köp: köp och sälj vidare direkt, eller använd. Samla: bryt, flå eller loota. Spara: håll för att sälja senare. Sälj: lägg upp nu.
 // plats öppnar kartan på en plats, rutt på en rutt, var är ren text.
+const mat = (vad) => RECEPT.find((r) => r.vad === vad).kostnad;
 export const PLAN = [
   { fas: "Alltid", tid: "Alla nivåer, main och alts", gor: ["Kör [rutt:dagens] på bank-alten morgon och kväll", "Logga ut i stan eller på värdshus, så byggs rested", "Sälj på AH i Stormwind eller Ironforge (5 % avgift), inte i Gadgetzan (15 %)"], rader: [
     { typ: "Köp", vad: "Bronze Tube", id: 4371, antal: "2 per besök", kop: 842, saljText: "15 s eller mer", plats: "billibub", nar: "Bara om AH är över 15 s" },
@@ -111,56 +119,56 @@ export const PLAN = [
     { typ: "Samla", vad: "Tin Ore", antal: "Allt", saljText: "Eget bruk", rutt: "tin" },
     { typ: "Samla", vad: "Linen Cloth till bank-alten", antal: 65, saljText: "Eget bruk", var: "Humanoider på vägen" },
     { typ: "Samla", vad: "Light Leather, din sambo flår", antal: "Allt", saljText: "Över 2 gånger vendor", var: "Dun Morogh, Loch Modan, Darkshore" },
-    { typ: "Spara", vad: "Pristine Leather", id: 249427, antal: 5, kop: 2 * g, salj: 4.5 * g, tak: 5 * g, plats: "ahSw", nar: "Från 19 nov" },
-    { typ: "Spara", vad: "Frilled Lichen", id: 249399, antal: 5, kop: 1 * g, salj: 4.5 * g, tak: 5 * g, plats: "ahSw", nar: "Från 19 nov" },
-    { typ: "Sälj", vad: "Bronze Tube du gör själv, Engineering 105", id: 4371, antal: 25, kop: 436, salj: 1150, plats: "ahSw", nar: "Direkt, i 8-stackar" },
+    { typ: "Spara", vad: "Pristine Leather", id: 249427, antal: 5, ...rikt("Pristine Leather"), tak: 5 * g, plats: "ahSw", nar: "Från 19 nov" },
+    { typ: "Spara", vad: "Frilled Lichen", id: 249399, antal: 5, ...rikt("Frilled Lichen"), tak: 5 * g, plats: "ahSw", nar: "Från 19 nov" },
+    { typ: "Sälj", vad: "Bronze Tube du gör själv, Engineering 105", id: 4371, antal: 25, kop: mat("Bronze Tube"), salj: rikt("Bronze Tube").salj, plats: "ahSw", nar: "Direkt, i 8-stackar" },
     { typ: "Sälj", vad: "Bank-alten, Tailoring 25: Brown Linen Robe, disenchanta", id: 6238, antal: "Så länge det går runt", kopText: "Under 98 k i material", saljText: "Dust och Essence, annars vendor 98 k", plats: "ahSw", nar: "Direkt" },
   ] },
   { fas: "Nivå 20 till 30", tid: "8 till 9 nov", budget: "Köp inget nytt att spara: mount först. Klassträning runt 11 g", gor: ["Expert Engineering hos [plats:springspindle]. Smält Iron på Mining 125 och Gold på 155"], rader: [
     { typ: "Köp", vad: "Gold Bar till Gold Power Core, 1 ger 3", antal: "Efter behov", kop: 9 * s, saljText: "Eget bruk", plats: "ahSw" },
     { typ: "Samla", vad: "Wool Cloth till bank-alten", antal: 459, saljText: "Eget bruk", var: "Humanoider på vägen" },
     { typ: "Samla", vad: "Medium Leather, din sambo flår", antal: "Allt", kopText: "Beta 2 s 69 k", saljText: "Eget bruk eller AH", var: "Wetlands, Ashenvale" },
-    { typ: "Sälj", vad: "Bronze Framework, bara för att levla yrket", id: 4382, antal: 15, kop: 508, salj: 830, plats: "ahSw", nar: "Direkt, i 4-stackar" },
+    { typ: "Sälj", vad: "Bronze Framework, bara för att levla yrket", id: 4382, antal: 15, kop: mat("Bronze Framework"), salj: rikt("Bronze Framework").salj, plats: "ahSw", nar: "Direkt, i 4-stackar" },
     { typ: "Sälj", vad: "Malm och bars du inte använder", antal: "Överskott", saljText: "Över 2 gånger vendor", plats: "ahSw", nar: "Löpande" },
   ] },
   { fas: "Nivå 30 till 40", tid: "9 till 13 nov", budget: "Ha 120 g på nivå 40: 100 g Apprentice Riding med första mounten (90 g vid Honored), 18 g klassträning. Träning 30 till 38 kostar runt 30 g på vägen. Köp inget att spara. Varorna här ger högst runt 25 g, resten måste bli questguld och BoE (ej uppmätt)", gor: ["Artisan Engineering hos [plats:buzzek] från nivå 35. Kontrollera [plats:graphed] på nivå 36+. Riding på 40"], rader: [
     { typ: "Samla", vad: "Iron Ore och Gold Ore", antal: "Allt", saljText: "Eget bruk", rutt: "arathi" },
     { typ: "Samla", vad: "Silk Cloth till bank-alten", antal: 216, saljText: "Eget bruk", var: "Humanoider på vägen" },
     { typ: "Samla", vad: "Heavy Leather, din sambo flår", antal: "Allt", saljText: "Över 2 gånger vendor", var: "Stranglethorn, Dustwallow" },
-    { typ: "Sälj", vad: "Gyrochronatom, Engineering 170: 1 Iron Bar plus 1 Gold Power Core", id: 4389, antal: "5 åt gången", kop: 600, salj: 1025, plats: "ahSw", nar: "Från nivå 35 på servern" },
-    { typ: "Sälj", vad: "Vän-alten, Alchemy 150: Free Action Potion. Recept hos Soolie", id: 5634, antal: "5 åt gången", kop: 500, salj: 1500, plats: "soolie", nar: "Löpande" },
-    { typ: "Sälj", vad: "Vän-alten, Alchemy 200: Frost Oil. Recept hos Bro'kin", id: 3829, antal: "5 åt gången", kop: 800, salj: 1500, plats: "brokin", nar: "Från nivå 35 på servern" },
+    { typ: "Sälj", vad: "Gyrochronatom, Engineering 170: 1 Iron Bar plus 1 Gold Power Core", id: 4389, antal: "5 åt gången", kop: mat("Gyrochronatom"), salj: rikt("Gyrochronatom").salj, plats: "ahSw", nar: "Från nivå 35 på servern" },
+    { typ: "Sälj", vad: "Vän-alten, Alchemy 150: Free Action Potion. Recept hos Soolie", id: 5634, antal: "5 åt gången", kop: mat("Free Action Potion"), salj: rikt("Free Action Potion").salj, plats: "soolie", nar: "Löpande" },
+    { typ: "Sälj", vad: "Vän-alten, Alchemy 200: Frost Oil. Recept hos Bro'kin", id: 3829, antal: "5 åt gången", kop: mat("Frost Oil"), salj: rikt("Frost Oil").salj, plats: "brokin", nar: "Från nivå 35 på servern" },
     { typ: "Sälj", vad: "Waylaid Crates", antal: "Alla", saljText: "15 till 30 s", plats: "ahSw", nar: "Senast 26 nov" },
-    { typ: "Sälj", vad: "Pristine Leather, Frilled Lichen, bara om mountpengarna saknas", antal: "Det som behövs", saljText: "Från 4 g", plats: "ahSw", nar: "Direkt" },
+    { typ: "Sälj", vad: "Pristine Leather, Frilled Lichen, bara om mountpengarna saknas", antal: "Det som behövs", saljText: priser("Pristine Leather", "Frilled Lichen"), plats: "ahSw", nar: "Direkt" },
   ] },
   { fas: "Nivå 40 till 50", tid: "13 till 19 nov", budget: "Mount först, sedan högst 30 % av kassan. Klassträning runt 50 g, plus dual spec 50 g", gor: ["Dual spec för 50 g hos din Mage-lärare, se Missa inte"], rader: [
     { typ: "Samla", vad: "Mithril Ore", antal: "Allt", saljText: "Eget bruk", rutt: "mithril" },
     { typ: "Samla", vad: "Thick Leather, din sambo flår", antal: "Allt", saljText: "Över 2 gånger vendor", var: "Feralas, Tanaris, Hinterlands" },
-    { typ: "Spara", vad: "Pristine Leather", id: 249427, antal: 20, kop: 2.5 * g, salj: 4.5 * g, tak: 5 * g, plats: "ahSw", nar: "Från 19 nov" },
-    { typ: "Spara", vad: "Frilled Lichen", id: 249399, antal: 20, kop: 1.5 * g, salj: 4.5 * g, tak: 5 * g, plats: "ahSw", nar: "Från 19 nov" },
-    ...[["Rosecap", 249424], ["Bauxite", 249425], ["Pristine Hide"]].map(([vad, id]) => (
-      { typ: "Spara", vad, id, antal: 5, kop: 8 * g, salj: 18 * g, tak: 20 * g, plats: "ahSw", nar: "Från 22 nov" })),
-    { typ: "Sälj", vad: "Mithril Casing, Engineering 215: 3 Mithril Bar", id: 10561, antal: 5, kop: 1800, salj: 3500, plats: "ahSw", nar: "När folk når nivå 48" },
+    { typ: "Spara", vad: "Pristine Leather", id: 249427, antal: 20, ...rikt("Pristine Leather"), tak: 5 * g, plats: "ahSw", nar: "Från 19 nov" },
+    { typ: "Spara", vad: "Frilled Lichen", id: 249399, antal: 20, ...rikt("Frilled Lichen"), tak: 5 * g, plats: "ahSw", nar: "Från 19 nov" },
+    ...[["Rosecap", 249424], ["Bauxite", 249425], ["Pristine Hide", 249428]].map(([vad, id]) => (
+      { typ: "Spara", vad, id, antal: 5, ...rikt(vad), tak: 20 * g, plats: "ahSw", nar: "Från 22 nov" })),
+    { typ: "Sälj", vad: "Mithril Casing, Engineering 215: 3 Mithril Bar", id: 10561, antal: 5, kop: mat("Mithril Casing"), salj: rikt("Mithril Casing").salj, plats: "ahSw", nar: "Bara med egna Mithril Bar: köpta kostar mer än AH ger" },
   ] },
   { fas: "Nivå 50 till 60", tid: "19 till 25 nov", budget: "Högst 30 % av kassan, börja uppifrån. Klassträning runt 140 g, varav 41 g på nivå 60", gor: ["Starta Dragonkin Menace hos [plats:helendis]"], rader: [
     { typ: "Samla", vad: "Thorium Ore till Engineering 300", antal: 225, saljText: "Eget bruk", rutt: "thorium" },
     { typ: "Samla", vad: "Runecloth till Engineering 300", id: 14047, antal: 35, saljText: "Eget bruk", var: "På vägen, annars AH" },
-    ...[["Stranglevine", 249274], ["Pitchblende", 249426], ["Pristine Scale"], ["Death Lotus"], ["Fel Crystal"], ["Torbernite"]].map(([vad, id]) => (
-      { typ: "Spara", vad, id, antal: 3, kop: 20 * g, salj: 45 * g, tak: 50 * g, plats: "ahSw", nar: "Från 26 nov" })),
+    ...[["Stranglevine", 249274], ["Pitchblende", 249426], ["Pristine Scale", 249429], ["Death Lotus", 248822], ["Fel Crystal", 248819], ["Torbernite", 248820]].map(([vad, id]) => (
+      { typ: "Spara", vad, id, antal: 3, ...rikt(vad), tak: 50 * g, plats: "ahSw", nar: "Från 26 nov" })),
     ...[["Black Lotus", 13468], ["Arcane Crystal", 12363]].map(([vad, id]) => (
-      { typ: "Spara", vad, id, antal: 2, kop: 20 * g, salj: 45 * g, tak: 50 * g, plats: "ahSw", nar: "Från 26 nov" })),
-    { typ: "Spara", vad: "Elemental Fire", id: 7068, antal: 40, kop: 15 * s, salj: 60 * s, plats: "ahSw", nar: "1 till 16 dec" },
-    { typ: "Spara", vad: "Dreamfoil", antal: 40, kop: 20 * s, salj: 60 * s, plats: "ahSw", nar: "1 till 16 dec" },
-    { typ: "Spara", vad: "Heart of Fire", id: 7077, antal: 10, kop: 40 * s, salj: 1.5 * g, plats: "ahSw", nar: "1 till 16 dec" },
+      { typ: "Spara", vad, id, antal: 2, ...rikt(vad), tak: 50 * g, plats: "ahSw", nar: "Från 26 nov" })),
+    { typ: "Spara", vad: "Elemental Fire", id: 7068, antal: 40, ...rikt("Elemental Fire"), plats: "ahSw", nar: "1 till 16 dec" },
+    { typ: "Spara", vad: "Dreamfoil", id: 13463, antal: 40, ...rikt("Dreamfoil"), plats: "ahSw", nar: "1 till 16 dec" },
+    { typ: "Spara", vad: "Heart of Fire", id: 7077, antal: 10, ...rikt("Heart of Fire"), plats: "ahSw", nar: "1 till 16 dec" },
   ] },
   { fas: "Nivå 60 till raid", tid: "25 nov till 9 dec", budget: "Sälj det du sparat. Köp bara under maxpris", gor: ["Journeyman Riding 1 000 g, 900 g vid Honored. Drakefire Amulet klar. PvP Rank 3"], rader: [
-    { typ: "Sälj", vad: "Pristine Leather, Frilled Lichen", antal: "Allt", saljText: "4 g 50 s", plats: "ahSw", nar: "Löpande" },
-    { typ: "Sälj", vad: "Rosecap, Bauxite, Pristine Hide", antal: "Allt", saljText: "18 g", plats: "ahSw", nar: "Löpande" },
-    { typ: "Sälj", vad: "Allt med 50 g-tak hos Mister Graphed", antal: "Allt", saljText: "45 g", plats: "ahSw", nar: "Löpande" },
-    { typ: "Sälj", vad: "Elemental Fire, Dreamfoil, Heart of Fire", antal: "Hälften", saljText: "60 s, Heart 1 g 50 s", plats: "ahSw", nar: "Från 1 dec" },
+    { typ: "Sälj", vad: "Pristine Leather, Frilled Lichen", antal: "Allt", saljText: priser("Pristine Leather", "Frilled Lichen"), plats: "ahSw", nar: "Löpande" },
+    { typ: "Sälj", vad: "Rosecap, Bauxite, Pristine Hide", antal: "Allt", saljText: priser("Rosecap", "Bauxite", "Pristine Hide"), plats: "ahSw", nar: "Löpande" },
+    { typ: "Sälj", vad: "Det du sparat på nivå 50 till 60", antal: "Allt", saljText: "Riktpriset där", plats: "ahSw", nar: "Löpande" },
+    { typ: "Sälj", vad: "Elemental Fire, Dreamfoil, Heart of Fire", antal: "Hälften", saljText: priser("Elemental Fire", "Dreamfoil", "Heart of Fire"), plats: "ahSw", nar: "Från 1 dec" },
   ] },
   { fas: "Raids", tid: "Från 9 dec", gor: ["Fortsätt flippa under taket hos [plats:graphed]. Gift of Galloping för 150 g först när epic är betald"], rader: [
-    { typ: "Sälj", vad: "Resten av fire-varorna, helst kvällen före raid", antal: "Allt", saljText: "60 s och uppåt", plats: "ahSw", nar: "Senast 16 dec" },
+    { typ: "Sälj", vad: "Resten av fire-varorna, helst kvällen före raid", antal: "Allt", saljText: "Riktpriset och uppåt", plats: "ahSw", nar: "Senast 16 dec" },
   ] },
 ];
 export const HANDEL = PLAN.flatMap((f) => f.rader.filter((r) => r.typ === "Spara" && r.kop));
@@ -326,47 +334,47 @@ export const PHASES = [
   {
     nar: "Nivå 10 till 20", titel: "Yrket börjar betala",
     gor: ["Talanger från nivå 10: följ Icy Veins-bygget, länken står under Karaktärer", `Engineering hos ${hos("bronk")}`, "Mage-quests på nivå 10 och 15: gratis utrustning", "Hall of Thanes 14 till 17 och Deadmines 18 till 22, med alla quests", "Möt din sambo i Westfall eller Loch Modan", "Posta varje Waylaid Crate och Scarce-material till bank-alten", "Legacy-fönstret (Y): första poängen på Bountiful Harvest, ditt val 11 nov"],
-    kop: ["Pristine Leather: högst 2 g, 5 st", "Frilled Lichen: högst 1 g, 5 st", "Bronze Bar: högst 8 s, 50 st, bara om du inte bryter själv"],
+    kop: [`${hogst("Pristine Leather", "Frilled Lichen")}, 5 st var`, "Bronze Bar: högst 8 s, 50 st, bara om du inte bryter själv"],
     salj: ["Bank-alten: Strange Dust och Lesser Magic Essence från roben. Ger de mindre än 98 k per robe, sälj roben till vendor"],
-    inte: ["Grinda inte kill-XP ihop: kill-XP delas, quest-XP inte", "Sälj inte Scarce under 3 g"],
+    inte: ["Grinda inte kill-XP ihop: kill-XP delas, quest-XP inte", "Sälj inte Scarce under riktpriset i tabellen på Köp och sälj"],
   },
   {
     nar: "Nivå 20 till 30", titel: "AoE och mount-pengar", tim: "Nivå 30 vid 18 till 22 h",
     gor: ["Teleport på 20", `Expert Engineering hos ${hos("springspindle")}`, "Gör 25 Bronze Tubes på 105 till 125", "Gör 15 Bronze Framework på 145 till 160", "Mage-quest på nivå 26", "Stockade 23 till 29, Excavation Site från 26, City of Dalaran 28 till 33 med quests"],
-    salj: ["Bronze Tube: 8-stackar, runt 9 till 11 s styck", "Bronze Framework: 4-stackar, runt 8 s styck", "Malm du inte behöver: över 2 gånger vendor"],
+    salj: [`Bronze Tube: 8-stackar, runt ${pris(rikt("Bronze Tube").salj)} styck`, `Bronze Framework: 4-stackar, runt ${pris(rikt("Bronze Framework").salj)} styck`, "Malm du inte behöver: över 2 gånger vendor"],
     inte: ["Köp inget att spara: mount först", "Kör inte dungeons utan quests för XP: den är låg. Undantag: de som krävs för Spelunker-poängen", "Återställ inte talanger i onödan: priset stiger"],
   },
   {
     nar: "Nivå 30 till 40", titel: "Mount", tim: "Ha 120 g på nivå 40",
     gor: ["Riverglades 36 till 44, Drowned City 35 till 40", `Artisan Engineering hos ${hos("buzzek")} i Gadgetzan från nivå 35`, `Nivå 36+: kontrollera priserna hos ${hos("graphed")}`, "Nivå 40: Apprentice Riding och Portaler"],
     kop: ["1 Gold Bar plus 3 Iron Bar: högst 18 s tillsammans, blir 3 Gyrochronatom"],
-    salj: ["Gyrochronatom: runt 10 s, högst 5 st åt gången. Under 7 s 50 k: sälj till vendorn", "Waylaid Crate: 15 till 30 s, alla senast 26 nov", "Pristine Leather från 4 g, bara om mountpengarna saknas"],
+    salj: [`Gyrochronatom: runt ${pris(rikt("Gyrochronatom").salj)}, högst 5 st åt gången. Vendorn ger 7 s 50 k, så AH lönar sig först över 7 s 90 k`, "Waylaid Crate: 15 till 30 s, alla senast 26 nov", `Pristine Leather från ${pris(rikt("Pristine Leather").salj)}, bara om mountpengarna saknas`],
     inte: ["Spekulera inte med mount-pengarna"],
   },
   {
     nar: "Nivå 40 till 50", titel: "Börja investera", tim: "Mount först, sedan högst 30 % av kassan",
     gor: ["Dual spec för 50 g hos din Mage-lärare: Frost AoE och Frost solo", "Badlands, Tanaris, Feralas, Hinterlands", `Nifty Stopwatch: This Is Going to Be Hard hos ${hos("lotwil")}`, "Krol'dok Stronghold med quests"],
-    kop: ["Pristine Leather: högst 2 g 50 s, 20 st", "Frilled Lichen: högst 1 g 50 s, 20 st", "Rosecap, Bauxite, Pristine Hide: högst 8 g, 5 st var"],
-    salj: ["Blåa BoE: kolla AH-priset, betan gav 10 till 250 g", "Mithril Casing: 35 s, 5 st, när folk når nivå 48"],
+    kop: [`${hogst("Pristine Leather", "Frilled Lichen")}, 20 st var`, `${hogst("Rosecap", "Bauxite", "Pristine Hide")}, 5 st var`],
+    salj: ["Blåa BoE: kolla AH-priset, betan gav 10 till 250 g", `Mithril Casing: runt ${pris(rikt("Mithril Casing").salj)}, 5 st, bara med egna Mithril Bar`],
     inte: ["Betala aldrig mer än 45 g för något Mister Graphed säljer för 50 g", "Sälj aldrig en BoE till vendor: då binds den"],
   },
   {
     nar: "Nivå 50 till 60", titel: "Raid-förberedelser", tim: "60 vid 103 till 124 h",
     gor: [`Starta Dragonkin Menace hos ${hos("helendis")}`, "Alcaz 48 till 53, Blackrock Depths 52 till 60", "Bryt 225 Thorium till Engineering 225 till 300, se rutten på Köp och sälj"],
-    kop: ["Stranglevine, Pitchblende, Pristine Scale, Death Lotus, Fel Crystal, Torbernite: högst 20 g, 3 st var", "Black Lotus, Arcane Crystal: högst 20 g, 2 st var", "Elemental Fire: högst 15 s, 40 st", "Dreamfoil: högst 20 s, 40 st", "Heart of Fire: högst 40 s, 10 st"],
-    salj: ["Pristine Leather, Frilled Lichen: 4 g 50 s", "Rosecap, Bauxite, Pristine Hide: 18 g, från 22 nov"],
+    kop: [`${hogst("Stranglevine", "Pitchblende", "Pristine Scale", "Death Lotus", "Fel Crystal", "Torbernite")}, 3 st var`, `${hogst("Black Lotus", "Arcane Crystal")}, 2 st var`, `${hogst("Elemental Fire", "Dreamfoil")}, 40 st var`, `${hogst("Heart of Fire")}, 10 st`],
+    salj: [priser("Pristine Leather", "Frilled Lichen"), `${priser("Rosecap", "Bauxite", "Pristine Hide")}, från 22 nov`],
     inte: ["Sälj inte ditt Thorium: du behöver det själv"],
   },
   {
     nar: "60 till 9 dec", titel: "Epic och Onyxia", tim: "6 h om dagen ger 60 runt 25 nov",
     gor: ["Journeyman Riding: 1 000 g, 900 g vid Honored", "Drakefire Amulet klar: The True Masters, Blackrock Depths, Stormwind, Upper Blackrock Spire", "Bygg fire resistance till Onyxia", "PvP Rank 3 för en Legacy-poäng"],
-    salj: ["Allt med 50 g-tak: 45 g, från 26 nov", "Hälften av fire-varorna från 1 dec: Elemental Fire och Dreamfoil 60 s, Heart of Fire 1 g 50 s"],
+    salj: ["Det du sparat på nivå 50 till 60: riktpriset i tabellen på Köp och sälj, från 26 nov", `Hälften av fire-varorna från 1 dec: ${priser("Elemental Fire", "Dreamfoil", "Heart of Fire")}`],
     inte: ["Köp inte Gift of Galloping för 150 g före epic mount"],
   },
   {
     nar: "9 dec och framåt", titel: "Raids", tim: "Barrow Deeps, Hyjal, Onyxia",
     gor: ["Barrow Deeps 10, Hyjal 20, Onyxia 40", "Amuleten i väskan, den behöver inte bäras", "Raidklarningar ger Legacy-poäng"],
-    salj: ["Resten av fire-varorna, helst kvällen före raid: 60 s och uppåt, senast 16 dec"],
+    salj: ["Resten av fire-varorna, helst kvällen före raid: riktpriset och uppåt, senast 16 dec"],
     inte: ["Lagra inte fire-varor efter första veckorna"],
   },
 ];

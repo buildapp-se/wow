@@ -156,3 +156,15 @@ Metod för wow.gg: sidan startar nu på Horde. Gå direkt till `https://wow.gg/a
 Pages-flaket ("No artifacts named github-pages", 3 av 8 körningar 24 nov): `deploy-pages` i eget `deploy`-jobb med `environment: github-pages`, `upload-pages-artifact@v4`, som investeringar 85358bc. Första körningen efter (45485232498) grön med båda jobben.
 
 Legacy-återställningens 10 g gick inte att belägga: Conquest Capped guld- och levlingsguiden nämner det inte i dag och wikins Legacy System saknar pris. Inte ändrat.
+
+## 2026-11-24: buggjakt (agent, worktree `_wt/wow-1124h`, gren `hunt/2026-11-24`): klar
+
+Alla åtta vyer genomgångna i 390 och 1440 px med Playwright, lokalt och live: växla vyer, tillbaka-knappen, omladdning med bockar, direktlänk till varje rubrik (38), kartrutan med tangentbord (Enter öppnar, fokus på Stäng, Escape stänger och fokus tillbaka), rutterna med piltangenter, byggväljaren, okänd `#`. Ingen horisontell scroll, inga konsolfel. Sidan har inga textfält, så tom eller lång inmatning går inte att pröva.
+
+Rättat:
+- Inköpslistorna för Blacksmithing och Alchemy: kolumnen AH per styck sorterade som text (8 k hamnade mellan 5 s 25 k och 8 s 79 k, 50 k sist). Cellerna har nu `data-sort-value` i koppar, och `site/test.mjs` fäller varje cell i en sorterbar tabell som börjar med ett pris utan `data-sort-value`.
+- `pris()` i `site/plan.js` skrev en förlust på 5 koppar som "-1 g -1 s -5 k" (golvavrundning av negativa tal). Nu "−5 k". Ingen rad går back i dag, så det syntes inte live, men Vinst i Tillverkning visar det så fort ett recept hamnar under kostnaden. Kontrollerat live genom att tvinga Mithril Casing under kostnaden i en uppfångad `plan.js`. `stryker.config.json` flyttad en rad.
+- Actions pinnade till SHA och Pages-rättigheterna bara i deploy-jobbet (P3 i BACKLOG). Körning 45489908447 grön.
+
+Inte rättat: bockarnas id är position i listan (`p<fas>-<rad>`, `plan<nivå>-<rad>` i `app.js`). Tas en rad bort eller läggs en till mitt i en fas flyttar sparade bockar till fel rad. Text som nyckel tål inte prisändringar, så det kräver fasta id:n i datan.
+

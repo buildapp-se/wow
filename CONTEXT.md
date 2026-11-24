@@ -78,3 +78,4 @@ graph LR
 
 - UX: 2026-11-24, warn, 5 av 7 skriptkontroller gröna (2026-11-02: 5 av 6). Kvar: menyn har 8 vyer (Hick, över 7) och platsknapparna i bockraderna är 32 px (`.bock .plats` i stil.css, avståndet klarar WCAG 2.5.8). Kryssrutornas 22 px täcks av etiketten på 44 px. Ingen horisontell scroll i 390 och 1440 px.
 - Mutation: 2026-11-24, pass, Stryker 99,59 % på 242 mutanter (2026-11-04: 100 % på 97): site/data.js 100 %, site/plan.js 100 %, site/sortable.js 99,3 % (ej mätt förut, inga tester). Enda överlevande är `* direction` mot `/ direction` i compareValues, likvärdig när riktningen är 1 eller -1.
+- OWASP Top 10: 2026-11-24, pass, code review (Gemini 4 Neon High, findings checked by Claude), no live probe; 0 high, 0 medium open

@@ -9,6 +9,10 @@ reviewedAt: 2026-11-24
 
 # Handoff
 
+## 2026-11-24: OWASP Top 10-granskning
+
+Gren `owasp/2026-11-24`. Gemini 4 Neon High granskade read-only, Claude kontrollerade fynden mot koden: inga höga eller medelhöga, tre låga, alla verkliga. Rättat: CSP som `<meta>` i `site/index.html` (`default-src 'none'`, bara egna skript, inline-stilattribut tillåtna för Gantt och kartnålar, typsnitt från Google Fonts, bilder från `wow.zamimg.com`), låst av ett test i `site/test.mjs`. Kontrollerat i Playwright: 0 konsolfel, typsnitt och zonbild laddar, ett injicerat inline-skript blockeras. Kvar i BACKLOG (P3): självhosta typsnitten, pinna Actions till SHA och dela deployjobbet.
+
 ## 2026-11-04: backlogrunda (draft-PR #3, staplad på #1)
 
 Gren `claude/backlog-2026-11-04` från `claude/forbattringar-2026-11-04`; #1 mergas först. Dyra föremål: 14 världsepics och 10 recept tillagda (126 rader). Wowheads sidor gick inte att läsa, så kandidaterna kom från AtlasLoot Classics världsepics och classicdb.ch:s blå och lila recept; varje rad kontrollerad mot `nether.wowhead.com/forever/tooltip/item/<id>` (finns i Forever, binder inte vid upplockning). Var-texten säger "i Classic". 27 av AtlasLoots 41 saknade världsepics finns inte i Forever-datan (404) och är inte med. Roadmapens första fas heter "Före första inloggningen", namnreservationen är borta. Länkkontroll: warcraft.wiki.gg via wikins API och GitHub-repot finns; CurseForge, Icy Veins och Conquest Capped fortfarande okontrollerade. `node site/test.mjs` ok, axe 0 fel på Roadmap och Köp och sälj i 390 och 1280 px, ingen horisontell scroll.

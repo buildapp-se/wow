@@ -6,7 +6,7 @@ Privat samlingssida för oss som börjar spela WoW: Forever (släpp 5 november 2
 
 ## Innehåll
 
-Sju vyer, en i taget via länkar med `#`: Roadmap (tidslinje plus main och alts), Missa inte, Köp och sälj (tabell per nivå, tillverkning, malm, Gantt-schema, arbitrage), Mål, Karaktärer, Legacy, Addons. Text i `site/index.html`, tidslinje och handelslista i `site/plan.js`, Legacy-data och byggen i `site/data.js`.
+Åtta vyer, en i taget via länkar med `#`: Roadmap (tidslinje plus main och alts), Missa inte, Köp och sälj (tabell per nivå, tillverkning, malm, Gantt-schema, arbitrage), Mål, Karaktärer, Dungeons, Legacy, Addons. Text i `site/index.html`, tidslinje och handelslista i `site/plan.js`, Legacy-data och byggen i `site/data.js`.
 
 ## Gruppen
 
@@ -46,7 +46,7 @@ graph LR
   PAGES[GitHub Pages buildapp.se/wow]
 
   subgraph SITE["site/"]
-    HTML[index.html sju vyer]
+    HTML[index.html åtta vyer]
     APP[app.js]
     DATA[plan.js, data.js och mage.js]
   end
@@ -76,5 +76,5 @@ graph LR
 
 ## Audits
 
-- UX: 2026-11-02, warn, 5 av 6 skriptkontroller gröna, kvar är radio- och kryssrutor under 44 px vars etiketter ger målytan. Navigationens 39 px rättades efter körningen. Breda tabeller scrollar i egen ruta på mobil.
-- Mutation: 2026-11-04, pass, Stryker 100 % (före 82,47 %), 97 mutanter i logiken i site/data.js och site/plan.js, alla överlevande granskade och dödade med tester
+- UX: 2026-11-24, warn, 5 av 7 skriptkontroller gröna (2026-11-02: 5 av 6). Kvar: menyn har 8 vyer (Hick, över 7) och platsknapparna i bockraderna är 32 px (`.bock .plats` i stil.css, avståndet klarar WCAG 2.5.8). Kryssrutornas 22 px täcks av etiketten på 44 px. Ingen horisontell scroll i 390 och 1440 px.
+- Mutation: 2026-11-24, pass, Stryker 99,59 % på 242 mutanter (2026-11-04: 100 % på 97): site/data.js 100 %, site/plan.js 100 %, site/sortable.js 99,3 % (ej mätt förut, inga tester). Enda överlevande är `* direction` mot `/ direction` i compareValues, likvärdig när riktningen är 1 eller -1.

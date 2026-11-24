@@ -123,7 +123,7 @@ export const PLAN = [
     { typ: "Sälj", vad: "Bronze Framework, bara för att levla yrket", id: 4382, antal: 15, kop: 508, salj: 830, plats: "ahSw", nar: "Direkt, i 4-stackar" },
     { typ: "Sälj", vad: "Malm och bars du inte använder", antal: "Överskott", saljText: "Över 2 gånger vendor", plats: "ahSw", nar: "Löpande" },
   ] },
-  { fas: "Nivå 30 till 40", tid: "9 till 13 nov", budget: "Ha 140 g på nivå 40: 120 g mount och riding, 18 g klassträning. Träning 30 till 38 kostar runt 30 g på vägen. Köp inget att spara. Varorna här ger högst runt 25 g, resten måste bli questguld och BoE (ej uppmätt)", gor: ["Artisan Engineering hos [plats:buzzek] från nivå 35. Kontrollera [plats:graphed] på nivå 36+. Riding på 40"], rader: [
+  { fas: "Nivå 30 till 40", tid: "9 till 13 nov", budget: "Ha 120 g på nivå 40: 100 g Apprentice Riding med första mounten (90 g vid Honored), 18 g klassträning. Träning 30 till 38 kostar runt 30 g på vägen. Köp inget att spara. Varorna här ger högst runt 25 g, resten måste bli questguld och BoE (ej uppmätt)", gor: ["Artisan Engineering hos [plats:buzzek] från nivå 35. Kontrollera [plats:graphed] på nivå 36+. Riding på 40"], rader: [
     { typ: "Samla", vad: "Iron Ore och Gold Ore", antal: "Allt", saljText: "Eget bruk", rutt: "arathi" },
     { typ: "Samla", vad: "Silk Cloth till bank-alten", antal: 216, saljText: "Eget bruk", var: "Humanoider på vägen" },
     { typ: "Samla", vad: "Heavy Leather, din sambo flår", antal: "Allt", saljText: "Över 2 gånger vendor", var: "Stranglethorn, Dustwallow" },
@@ -337,7 +337,7 @@ export const PHASES = [
     inte: ["Köp inget att spara: mount först", "Kör inte dungeons utan quests för XP: den är låg. Undantag: de som krävs för Spelunker-poängen", "Återställ inte talanger i onödan: priset stiger"],
   },
   {
-    nar: "Nivå 30 till 40", titel: "Mount", tim: "Ha 140 g på nivå 40",
+    nar: "Nivå 30 till 40", titel: "Mount", tim: "Ha 120 g på nivå 40",
     gor: ["Riverglades 36 till 44, Drowned City 35 till 40", `Artisan Engineering hos ${hos("buzzek")} i Gadgetzan från nivå 35`, `Nivå 36+: kontrollera priserna hos ${hos("graphed")}`, "Nivå 40: Apprentice Riding och Portaler"],
     kop: ["1 Gold Bar plus 3 Iron Bar: högst 18 s tillsammans, blir 3 Gyrochronatom"],
     salj: ["Gyrochronatom: runt 10 s, högst 5 st åt gången. Under 7 s 50 k: sälj till vendorn", "Waylaid Crate: 15 till 30 s, alla senast 26 nov", "Pristine Leather från 4 g, bara om mountpengarna saknas"],

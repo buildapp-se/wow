@@ -11,7 +11,7 @@ reviewedAt: 2026-11-24
 
 ## 2026-11-24: OWASP Top 10-granskning
 
-Gren `owasp/2026-11-24`. Gemini 4 Neon High granskade read-only, Claude kontrollerade fynden mot koden: inga höga eller medelhöga, tre låga, alla verkliga. Rättat: CSP som `<meta>` i `site/index.html` (`default-src 'none'`, bara egna skript, inline-stilattribut tillåtna för Gantt och kartnålar, typsnitt från Google Fonts, bilder från `wow.zamimg.com`), låst av ett test i `site/test.mjs`. Kontrollerat i Playwright: 0 konsolfel, typsnitt och zonbild laddar, ett injicerat inline-skript blockeras. Kvar i BACKLOG (P3): självhosta typsnitten, pinna Actions till SHA och dela deployjobbet.
+Gren `owasp/2026-11-24`. Gemini 4 Neon High granskade read-only, Claude kontrollerade fynden mot koden: inga höga eller medelhöga, tre låga, alla verkliga. Rättat: CSP som `<meta>` i `site/index.html` (`default-src 'none'`, bara egna skript, inline-stilattribut tillåtna för Gantt och kartnålar, typsnitt från Google Fonts, bilder från `wow.zamimg.com`), låst av ett test i `site/test.mjs`. Cloudflare injicerar Web Analytics-beaconen i HTML till webbläsare, så CSP:n tillåter `static.cloudflareinsights.com` (script) och `cloudflareinsights.com` (connect); första versionen blockerade den live. Kontrollerat i Playwright: 0 konsolfel, typsnitt och zonbild laddar, ett injicerat inline-skript blockeras. Kvar i BACKLOG (P3): självhosta typsnitten, pinna Actions till SHA och dela deployjobbet.
 
 ## 2026-11-04: backlogrunda (draft-PR #3, staplad på #1)
 

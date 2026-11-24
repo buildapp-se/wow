@@ -64,7 +64,7 @@ export const PLATSER = {
 // Rutter. stopp går i ordning. noder är spawnpunkter i kortaste slinga: närliggande punkter är sammanslagna.
 export const RUTTER = [
   { id: "dagens", namn: "Dagens runda", not: "Bank-alten, 5 min, morgon och kväll. Töm posten i en postlåda på vägen.", ben: [
-    { zon: 1519, zonNamn: "Stormwind", stopp: [["ahSw", "Skanna med Auctionator. Köp allt under maxpris."], ["billibub", "Köp Bronze Tube och det som klarar tabellens villkor."], ["ahSw", "Lägg upp med kortaste tid, strax under lägsta pris."]] },
+    { zon: 1519, zonNamn: "Stormwind", stopp: [["ahSw", "Skanna med Auctionator. Köp allt under maxpris."], ["billibub", "Köp bara det som klarar tabellens villkor: AH över 15 s för Bronze Tube, 35 s för Framework, 45 s för Gyrochronatom. Annars gå förbi."], ["ahSw", "Lägg upp med kortaste tid, strax under lägsta pris."]] },
   ] },
   { id: "vendor", namn: "Vendorrunda", not: "Tre vendorer på en runda. Ta Deeprun Tram mellan Stormwind och Ironforge. Lagret är litet, så varje vendor är ett nytt köp.", ben: [
     { zon: 1519, zonNamn: "Stormwind", stopp: [["billibub", "Köp enligt tabellen, ta sedan tåget."]] },
@@ -92,7 +92,7 @@ export const RUTTER = [
 // plats öppnar kartan på en plats, rutt på en rutt, var är ren text.
 export const PLAN = [
   { fas: "Alltid", tid: "Alla nivåer, main och alts", gor: ["Kör [rutt:dagens] på bank-alten morgon och kväll", "Logga ut i stan eller på värdshus, så byggs rested", "Sälj på AH i Stormwind eller Ironforge (5 % avgift), inte i Gadgetzan (15 %)"], rader: [
-    { typ: "Köp", vad: "Bronze Tube", id: 4371, antal: "2 per besök", kop: 842, salj: 1150, plats: "billibub", nar: "Bara om AH är över 15 s" },
+    { typ: "Köp", vad: "Bronze Tube", id: 4371, antal: "2 per besök", kop: 842, saljText: "15 s eller mer", plats: "billibub", nar: "Bara om AH är över 15 s" },
     { typ: "Köp", vad: "Bronze Framework", id: 4382, antal: "1 per besök", kop: 2526, saljText: "35 s eller mer", plats: "billibub", nar: "Bara om AH är över 35 s" },
     { typ: "Köp", vad: "Gyrochronatom", id: 4389, antal: "1 per besök", kop: 3157, saljText: "45 s eller mer", plats: "billibub", nar: "Bara om AH är över 45 s" },
     { typ: "Köp", vad: "Allt under vendorvärde", antal: "Allt", kopText: "Under vendorvärdet", saljText: "Vendor", plats: "ahSw", nar: "Direkt" },
@@ -320,7 +320,7 @@ export const PHASES = [
     nar: "Nivå 1 till 10", titel: "Bygg grunden", tim: "Första kvällen",
     gor: [`Väskan: Grund and Gozwin hos ${hos("grund")}, senast nivå 7`, "Cooking, First Aid och Mining i första staden", "Sätt Hearthstone vid första värdshuset", `The Great Outdoors hos ${hos("eric")} från nivå 4`, `Ställ bank-alten vid ${hos("ahSw")} och logga ut där. När den levlas: Book Return hos ${hos("dughan")} före nivå 7, gratis väska`, "Posta all Linen till bank-alten, och några silver så att den kan köpa"],
     kop: [`Bronze Tube hos ${hos("billibub")}: högst 8 s 42 k, 2 st per besök, om AH är över 15 s`, "Waylaid Crate: högst 3 s, 40 st"],
-    salj: ["Bronze Tube från Billibub: bara om AH är över 9 s: 20 nov låg AH på 5 s, alltså förlust", "Copper Ore du inte behöver: över 10 k, annars behåll"],
+    salj: ["Bronze Tube från Billibub: 15 s eller mer. 20 nov låg AH på 5 s: köp inte då", "Copper Ore du inte behöver: över 10 k, annars behåll"],
     inte: ["Sälj inte Linen: bank-alten gör Brown Linen Robe och disenchantar", "Köp inte levlingsprylar på AH", "Sälj inte handelsvaror till vendor: posta till alten"],
   },
   {

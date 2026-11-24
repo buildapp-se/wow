@@ -3,6 +3,7 @@ import assert from "node:assert";
 import { readFileSync } from "node:fs";
 import { PERKS, CLASSES, GOALS, CHALLENGES, buildFor, buildError, stegFor } from "./data.js";
 import { GEAR } from "./mage.js";
+import { numberOf, cellValue, compareValues, orderedRows, sortable, initSortable } from "./sortable.js";
 import { wh, HANDEL, PLAN, PLATSER, RUTTER, BOE, golv, PHASES, RECEPT, GANTT, MILSTOLPAR, START, SLUT, dag, datum, pris } from "./plan.js";
 
 assert.equal(Object.keys(PERKS).length, 21, "Blizzard anger 21 perkar");
@@ -108,4 +109,59 @@ assert.deepEqual([...html.matchAll(/rel="modulepreload" href="([a-z]+\.js\?v=dev
 assert.ok(!allText.includes("—"), "inget tankstreck i texten");
 assert.ok(!/Gemini|Ej belagt/i.test(allText), "ingen faktakollstext på sidan");
 assert.ok(PHASES.every((f) => f.gor.length), "varje fas har något att göra");
+
+// Tabellsorteringen (sortable.js, kopia av elwyn-dash): attrapper i stället för DOM.
+const cell = (text, sortValue, select) => ({ textContent: text, dataset: sortValue === undefined ? {} : { sortValue }, querySelector: (q) => (select === undefined || q !== "select" ? null : { value: select }) });
+const row = (name, value, divider = false) => ({ name, cells: [cell(name), cell(value)], hasAttribute: (a) => divider && a === "data-sort-divider" });
+const names = (rows) => rows.map((r) => r.name);
+for (const [t, n] of [["1 240", 1240], ["12 500 000", 12500000], ["27,5", 27.5], ["27,55", 27.55], ["12 %", 12], ["12%", 12], ["-3", -3], ["0", 0]]) assert.equal(numberOf(t), n, t);
+for (const t of ["33 öppna", "2026-10-30", "1.5", "1 24", "abc", "", "12 500 kr", "x12", "12x", "- 3"]) assert.equal(numberOf(t), null, t);
+assert.ok(compareValues("1 240", "27") > 0 && compareValues("4,5", "27") < 0, "tal jämförs som tal");
+assert.ok(compareValues("4 öppna", "33 öppna") < 0 && compareValues("ö", "z") > 0 && compareValues("a", "A") === 0);
+for (const d of [1, -1]) assert.ok(compareValues("", "a", d) > 0 && compareValues("a", "", d) < 0 && compareValues("", "", d) === 0, "tomt sist åt båda hållen");
+assert.ok(compareValues("5", "abc") < 0 && compareValues("abc", "5") > 0, "tal mot text jämförs som text");
+// ponytail: * direction och / direction är samma sak när direction är 1 eller -1, den mutanten kan inte dö.
+assert.ok(compareValues("a", "b", -1) > 0 && compareValues("1", "2", -1) > 0 && compareValues("2", "1") > 0);
+assert.equal(cellValue(cell("synligt", "3", "1")), "3");
+assert.equal(cellValue(cell("1 2 3", undefined, "2")), "2");
+assert.equal(cellValue(cell("  text  ")), "text");
+assert.equal(cellValue(cell("aldrig", "")), "");
+assert.equal(cellValue(cell("·")), "");
+assert.equal(cellValue(undefined), "");
+assert.equal(cellValue({ dataset: {}, querySelector: () => null }), "");
+const rader = [row("c", "3"), row("blank", ""), row("a", "1"), row("div", "", true), row("z", "9"), row("y", "8")];
+assert.deepEqual(names(orderedRows(rader, 1, 1)), ["a", "c", "blank", "div", "y", "z"]);
+assert.deepEqual(names(orderedRows(rader, 1, -1)), ["c", "a", "blank", "div", "z", "y"]);
+assert.deepEqual(names(orderedRows([row("first", "1"), row("second", "1"), row("third", "0")], 1, -1)), ["first", "second", "third"], "lika behåller ordningen");
+sortable(null); sortable({ tHead: null }); sortable({ tHead: { rows: [] } });
+// En hel tabell: rubrikerna blir knappar, klick sorterar, andra klicket vänder, data-sort-first="desc" börjar störst.
+const th = (text, attrs = {}) => ({ textContent: text, innerHTML: text, dataset: attrs, aria: null, querySelector: (s) => (s === "button, input" && attrs.input ? {} : null), setAttribute(k, v) { assert.equal(k, "aria-sort"); this.aria = v; } });
+const tbody = { rows: [row("b", "2"), row("a", "10"), row("c", "")], append(...r) { this.rows = r; } };
+const tabell = { dataset: { sortKey: "prov" }, tHead: { rows: [{ cells: [th("Namn"), th("Pris", { sortFirst: "desc" }), th(" "), th("Val", { input: true })] }] }, tBodies: [tbody] };
+for (const h of tabell.tHead.rows[0].cells) h.closest = (s) => (s === "table[data-sort-key]" ? tabell : null);
+sortable(tabell);
+assert.deepEqual(tabell.tHead.rows[0].cells.map((h) => h.innerHTML), ['<button type="button" class="sort-head">Namn</button>', '<button type="button" class="sort-head">Pris</button>', " ", "Val"], "blank rubrik blir ingen knapp");
+assert.deepEqual(tabell.tHead.rows[0].cells.map((h) => h.aria), ["none", "none", "none", "none"]);
+assert.deepEqual(names(tbody.rows), ["b", "a", "c"], "osorterad tills någon klickar");
+let klick;
+initSortable({ addEventListener: (typ, f) => { assert.equal(typ, "click"); klick = f; } });
+const tryck = (h, knapp = true) => klick({ target: { closest: (s) => (s === "thead th" ? h : s === "button" ? knapp : null) } });
+const [namnTh, prisTh] = tabell.tHead.rows[0].cells;
+for (const h of tabell.tHead.rows[0].cells) h.textContent = h.textContent.padEnd(h.textContent.length + 1); // trim() ska matcha rubriken
+tryck(prisTh, false);
+assert.deepEqual(names(tbody.rows), ["b", "a", "c"], "klick utanför knappen sorterar inte");
+klick({ target: { closest: () => null } });
+tryck({ textContent: "X", closest: () => null });
+tryck(prisTh);
+assert.deepEqual(names(tbody.rows), ["a", "b", "c"], "desc först: störst överst, tomt sist");
+assert.deepEqual(tabell.tHead.rows[0].cells.map((h) => h.aria), ["none", "descending", "none", "none"]);
+tryck(prisTh);
+assert.deepEqual(names(tbody.rows), ["b", "a", "c"]);
+assert.equal(prisTh.aria, "ascending");
+tryck(namnTh);
+assert.deepEqual(names(tbody.rows), ["a", "b", "c"]);
+assert.deepEqual(tabell.tHead.rows[0].cells.map((h) => h.aria), ["ascending", "none", "none", "none"]);
+tbody.rows = [row("y", "1"), row("x", "2")];
+sortable(tabell);
+assert.deepEqual(names(tbody.rows), ["x", "y"], "omritning behåller sorteringen");
 console.log("ok");

@@ -4,7 +4,7 @@ status: active
 currentGoal: Handlingsplanen är live på buildapp.se/wow inför släppet 5 november 2026
 nextAction: Efter släppet: byt riktpriserna i site/plan.js mot riktiga AH-priser, se BACKLOG.md
 blockers: []
-reviewedAt: 2026-11-21
+reviewedAt: 2026-11-24
 ---
 
 # Handoff
@@ -128,3 +128,9 @@ Arbetsmetod: Wowheads föremålsfilter med vikter fungerar i Chrome (`/forever/i
 Samma dag: alten är Protection (Icy Veins Forever kallar det snabbaste Warrior-specen). Gear-tabellen fick enhandsvapen och sköldar från nivå 14, valda på Stamina, Strength, armor och dps ur nether-tooltips. Horde-quests sorterades bort via questens tooltiptext (vart den lämnas in). Wowheads föremålssidor visade efter ett 60-tal anrop en mänsklighetskontroll som inte ska lösas: nether-tooltips (`nether.wowhead.com/forever/tooltip/item|quest/ID`) fungerade fortfarande, och källorna för drops lästes i stället via warcraft.wiki.gg:s `api.php?action=parse&prop=wikitext` från en wiki-flik i Chrome (curl ger 403).
 
 Samma dag: Alchemy till 225 under Mål (tabell och inköpslista), räknat som Blacksmithing men med AH-median i stället för lägsta utköp. Runt 7 g. Vem som ska göra Alchemy är inte bestämt; texten föreslår att Rogue-altens örter postas dit. Forevers tränarlista för Alchemy saknar Minor Healing Potion och liknande: läkdryckerna heter Discolored och kräver Murloc Eye. Flaskpriserna är uppskattade som 4 gånger säljpriset.
+
+## 2026-11-24: backlogsvep (agent, worktree `wow-sweep-1124`, gren `sweep/2026-11-24`): klar
+
+Legacy: bygget "Samla, levla och crafta" (förvalt, mainen) är nu Bountiful Harvest 5, Thrill 5, Working Overtime 5, Field Medicine 1, efter Patriks val 11 nov. Field Guide och Frequent Flier föll bort: mitt val, eftersom Thrill och Working Overtime var de första tio poängen förut. Mage-raden i `CLASSES` sade "Thrill först", nu "före resten av Adventure-trädet". Billibub: alla köp är villkorade på AH över 15, 35 och 45 s, även Dagens runda; 9 s-gränsen i tidslinjen och Arbitrage bröt sidans egen 20 %-regel. Altplanen har Rogue-alten som Alt 2, Warrior Alt 3, Paladin och Hunter som förslag, med omräknade summor. Mountbudgeten är 120 g på nivå 40 (Apprentice Riding 100 g med första mounten, Conquest Capped guld- och levlingsguide, ändrad 16 nov), inte 140 g.
+
+Länkkontroll: Icy Veins och Conquest Capped svarar 200 mot `curl` med webbläsar-User-Agent men ger Cloudflare-utmaningen ("Vänta...") mot headless Playwright. CurseForge ger utmaningen mot båda och lämnades.

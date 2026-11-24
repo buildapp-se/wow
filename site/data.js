@@ -29,7 +29,7 @@ export const PERKS = {
 
 // Klasser där Reagent Economy ger något.
 export const CLASSES = [
-  { name: "Mage", reagents: true, note: "Thrill of Adventure först. Teleporter och portaler utan runor gör Reagent Economy till din bästa enskilda poäng på 60." },
+  { name: "Mage", reagents: true, note: "Thrill of Adventure före resten av Adventure-trädet. Teleporter och portaler utan runor gör Reagent Economy till din bästa enskilda poäng på 60." },
   { name: "Hunter", reagents: false, note: "Thrill of Adventure sparar mana mellan pulls. Hunters har knappt några köpta reagenser, så hoppa över Reagent Economy." },
   { name: "Warrior", reagents: false, note: "Thrill of Adventure ersätter mat mellan striderna, och det är din största tidstjuv solo." },
   { name: "Rogue", reagents: false, note: "Thrill of Adventure ger liv mellan pulls. Hoppa över Reagent Economy." },
@@ -47,9 +47,9 @@ export const GOALS = {
     note: "Köp i den här ordningen. Talented kräver full Well Rested, så första tio poängen ger ingen extra talang. Byt bygge på 60: Talented gör ingenting där.",
   },
   crafta: {
-    label: "Levla och crafta",
-    build: { "Thrill of Adventure": 5, "Working Overtime": 5, "Field Guide": 3, "Field Medicine": 2, "Frequent Flier": 1 },
-    note: "Det här är din main. Thrill först: den hjälper i varje strid. Poängen gäller hela kontot, så de du tjänar på bank-alten kan din Mage också spendera, medan varje karaktär väljer sina egna perkar. Working Overtime sänker sedan vad Engineering 225 till 300 kostar. Well Rested hoppar du över: du spelar 6 h om dagen, så rested tar snabbt slut och perken ger bara +4 % per rang.",
+    label: "Samla, levla och crafta",
+    build: { "Bountiful Harvest": 5, "Thrill of Adventure": 5, "Working Overtime": 5, "Field Medicine": 1 },
+    note: "Det här är din main. Bountiful Harvest först, ditt val 11 november: du bryter malm och Rogue-alten flår och plockar, och full rang dubblar Scarce-materialen. Sedan Thrill, som hjälper i varje strid. Poängen gäller hela kontot, så de du tjänar på bank-alten kan din Mage också spendera, medan varje karaktär väljer sina egna perkar. Working Overtime sänker sedan vad Engineering 225 till 300 kostar. Well Rested hoppar du över: du spelar 6 h om dagen, så rested tar snabbt slut och perken ger bara +4 % per rang.",
   },
   guld: {
     label: "Samla och tjäna guld",

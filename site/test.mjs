@@ -33,7 +33,7 @@ assert.equal(buildError({ "Well Rested": 6, "Working Overtime": 5, "Reinforce": 
 assert.equal(buildError({ "Thrill of Adventure": 5, "Talented": 5, "Working Overtime": 5, "Gourmand": 1 }), "Talented kräver full Well Rested");
 assert.equal(buildError({ "Well Rested": 4, "Thrill of Adventure": 1, "Talented": 5, "Working Overtime": 5, "Gourmand": 1 }), "Talented kräver full Well Rested");
 assert.equal(buildError({ "Well Rested": 5, "Talented": 5, "Working Overtime": 5, "Gourmand": 1 }), null);
-assert.deepEqual(stegFor(GOALS.crafta.build).slice(0, 2).map((s) => [s.perk, s.fran, s.till]), [["Thrill of Adventure", 1, 5], ["Working Overtime", 6, 10]]);
+assert.deepEqual(stegFor(GOALS.crafta.build).slice(0, 2).map((s) => [s.perk, s.fran, s.till]), [["Bountiful Harvest", 1, 5], ["Thrill of Adventure", 6, 10]]);
 
 // Handeln: säljpriset ska ge vinst och aldrig ligga över Graphed-taket.
 for (const h of HANDEL) {

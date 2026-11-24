@@ -30,7 +30,18 @@ jobs:
       # Assets cachas i 4 h: ny adress vid varje deploy, så att HTML och JS aldrig blandas.
       - run: sed -i "s/?v=dev/?v=${GITHUB_SHA::7}/g" site/index.html site/app.js
       - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v4
         with:
           path: site
-      - uses: actions/deploy-pages@v4
+
+  # Eget jobb som i GitHubs mall: i samma jobb hittade deploy-pages ibland inte
+  # artefakten ("No artifacts named github-pages", "count is 2"), 2026-11-24.
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

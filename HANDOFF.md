@@ -203,3 +203,7 @@ Flerstegsscenarier med headless Playwright mot lokal server: en vecka i komprime
 Rättat (BACKLOG har detaljerna): två flikar skrev över varandras bockar; bockarnas nyckel var plats i listan, så nya eller borttagna rader flyttade sparade bockar (det som buggjakt 1 lämnade); sparad data som inte var ett objekt tappade nya bockar; en modul som inte laddas ger nu en uppmaning att ladda om. Utan fel: vecka, volym, breddbyte, tillbaka-knappen.
 
 Inte gjort: fallback-typsnitt mot CLS (BACKLOG P3, går inte att belägga på telefoner). En flik som fortfarande kör gammal `app.js` (cache 4 h) kan skriva platsnycklar; nästa laddning flyttar dem efter dagens ordning.
+
+## 2026-11-25: P3-pass (agent, worktree `_wt/wow-1125p`, gren `p3/2026-11-25`): klar, inget byggt
+
+Alla sex öppna P3-punkter kräver ett beslut eller en inställning som inte är min: Hick (8 vyer) och Fitts (32 och 23 px) är enligt BACKLOG Patriks val, `font-display: optional` likaså, längre cachetid kräver en Cache Rule i Cloudflare, och fallback-typsnitten med `size-adjust` lämnade scenariojakten för att vinsten inte går att belägga på telefoner. Inga oprioriterade punkter. Ingen kod ändrad.

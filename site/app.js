@@ -187,7 +187,10 @@ document.querySelectorAll(".vy").forEach((s) => rubriker(s).forEach((h) => {
   h.id ||= `${s.id}-${h.textContent.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
 }));
 function visa() {
-  const mal = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  // En avkapad länk ("#mal%") får decodeURIComponent att kasta: då blir det Roadmap i stället för halvritad meny.
+  let id = location.hash.slice(1);
+  try { id = decodeURIComponent(id); } catch {}
+  const mal = document.getElementById(id);
   const sektion = mal?.closest(".vy") ?? $("#roadmap");
   const vy = sektion.id;
   document.querySelectorAll(".vy").forEach((s) => { s.hidden = s !== sektion; });

@@ -351,7 +351,7 @@ export const PHASES = [
   },
   {
     nar: "Nivå 30 till 40", titel: "Mount", tim: "Ha 120 g på nivå 40",
-    gor: ["Riverglades 36 till 44, Drowned City 35 till 40", `Artisan Engineering hos ${hos("buzzek")} i Gadgetzan från nivå 35`, `Nivå 36+: kontrollera priserna hos ${hos("graphed")}`, "Nivå 40: Apprentice Riding och Portaler"],
+    gor: ["Riverglades 36 till 44, Drowned City 35 till 40", `Artisan Engineering hos ${hos("buzzek")} i Gadgetzan från nivå 35`, `Nivå 36+: kontrollera priserna hos ${hos("graphed")}`, "Nivå 40: Apprentice Riding och portaler"],
     kop: ["1 Gold Bar plus 3 Iron Bar: högst 18 s tillsammans, blir 3 Gyrochronatom"],
     salj: [`Gyrochronatom: runt ${pris(rikt("Gyrochronatom").salj)}, högst 5 st åt gången. Vendorn ger 7 s 50 k, så AH lönar sig först över 7 s 90 k`, "Waylaid Crate: 15 till 30 s, alla senast 26 nov", `Pristine Leather från ${pris(rikt("Pristine Leather").salj)}, bara om mountpengarna saknas`],
     inte: ["Spekulera inte med mount-pengarna"],
@@ -378,7 +378,7 @@ export const PHASES = [
   },
   {
     nar: "9 dec och framåt", titel: "Raids", tim: "Barrow Deeps, Hyjal, Onyxia",
-    gor: ["Barrow Deeps 10, Hyjal 20, Onyxia 40", "Amuleten i väskan, den behöver inte bäras", "Raidklarningar ger Legacy-poäng"],
+    gor: ["Barrow Deeps 10, Hyjal 20, Onyxia 40", "Amuletten i väskan, den behöver inte bäras", "Raidklarningar ger Legacy-poäng"],
     salj: ["Resten av fire-varorna, helst kvällen före raid: riktpriset och uppåt, senast 16 dec"],
     inte: ["Lagra inte fire-varor efter första veckorna"],
   },

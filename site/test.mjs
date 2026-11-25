@@ -105,6 +105,10 @@ assert.equal(wh("item", 4371), "https://www.wowhead.com/forever/item=4371");
 const html = readFileSync(new URL("./index.html", import.meta.url), "utf8");
 const allText = html + readFileSync(new URL("./plan.js", import.meta.url), "utf8") + readFileSync(new URL("./data.js", import.meta.url), "utf8");
 assert.match(html, /<meta name="robots" content="noindex, nofollow">/);
+// 404-sidan (GitHub Pages visar annars sin engelska) är också olistad och leder tillbaka.
+const fyra = readFileSync(new URL("./404.html", import.meta.url), "utf8");
+assert.match(fyra, /<meta name="robots" content="noindex, nofollow">/);
+assert.match(fyra, /<a href="\/wow\/">/);
 // CSP: bara egna skript, inga inline-skript (OWASP 2026-11-24).
 assert.match(html, /<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'( https:\/\/[a-z.]+)*;/);
 // Filerna cachas i 4 h. Utan version i adressen möter ny HTML gammal app.js och sidan blir tom.

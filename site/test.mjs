@@ -117,6 +117,8 @@ assert.deepEqual([...html.matchAll(/rel="modulepreload" href="([a-z]+\.js\?v=dev
 assert.ok(!allText.includes("—"), "inget tankstreck i texten");
 // Svensk text: tusentalsmellanslag ("1 548 armor", inte "1548 armor").
 assert.deepEqual(html.replace(/<[^>]*>/g, " ").match(/(?<![\d.,\/=#?:-])\d{4,}(?= [a-zåäö])/gi), null, "tal utan tusentalsmellanslag");
+// Pengar skrivs i mynt ("7 g 23 s"), inte som decimaler av guld ("7,24 g").
+assert.deepEqual(allText.match(/\d,\d+ [gsk]\b/g), null, "pengar som decimaltal");
 assert.ok(!/Gemini|Ej belagt/i.test(allText), "ingen faktakollstext på sidan");
 assert.ok(PHASES.every((f) => f.gor.length), "varje fas har något att göra");
 // En cell som börjar med ett pris ("8 k", "13 s 19 k") sorterar som text utan data-sort-value: 8 k hamnade mellan 5 s och 8 s.

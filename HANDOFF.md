@@ -207,3 +207,11 @@ Inte gjort: fallback-typsnitt mot CLS (BACKLOG P3, går inte att belägga på te
 ## 2026-11-25: P3-pass (agent, worktree `_wt/wow-1125p`, gren `p3/2026-11-25`): klar, inget byggt
 
 Alla sex öppna P3-punkter kräver ett beslut eller en inställning som inte är min: Hick (8 vyer) och Fitts (32 och 23 px) är enligt BACKLOG Patriks val, `font-display: optional` likaså, längre cachetid kräver en Cache Rule i Cloudflare, och fallback-typsnitten med `size-adjust` lämnade scenariojakten för att vinsten inte går att belägga på telefoner. Inga oprioriterade punkter. Ingen kod ändrad.
+
+## 2026-11-25: webbläsarpass (agent, worktree `_wt/wow-1125x`, gren `xb/2026-11-25`): klar, inget att rätta
+
+Headless Playwright (`playwright-core` 1.64.1, WebKit 2370, Firefox 1555, Chromium 1248) mot lokal server och live. WebKit (Playwright) med iPhone 13-profilen (390 px, touch, mobil-UA) jämfört med Chromium i samma profil, Firefox i 1440 px jämfört med Chromium i 1440 px. Inte provat på en riktig iPhone.
+
+Samma resultat i alla fyra: alla åtta vyer via tryck på menyn (ingen horisontell scroll, aktiv länk, undermeny, antal tabellrader), tidslinjens datum (`toLocaleDateString` ger "5 nov" överallt), Gantt-staplarnas lägen, myntikonerna, alla 98 rubriker i de 19 sorterbara tabellerna två klick var (samma ordning, `Intl.Collator("sv")` sorterar å ä ö lika), bock plus omladdning, Legacy-räknaren, byggväljaren, rutterna, kartrutan (`showModal`, fokus på Stäng, stängs av tryck utanför, Escape och Stäng), direktlänk till rubrik, tillbaka-knappen, två flikar (`storage`-händelsen), klibbig meny och CSS-funktionerna (`dvh`, `inset`, `:focus-visible`, `accent-color` syns ibockad i WebKit). Sidan har inga textfält, datumfält, urklipp, delning, service worker eller IndexedDB, och ingen lookbehind eller `structuredClone`.
+
+Konsolen: WebKit loggar en CSP-vägran per skärmbild, men den kommer från Playwrights eget stilblad vid `screenshot` (0 fel före, 1 efter, live). Firefox varnar för `getElementById("")` när `#` saknas (`visa()`, ofarligt) och loggar på 404-sidan att CSP:n stoppar `/favicon.ico`; Chromium får 404 på samma fil, så ingen webbläsare visar en ikon där. Skript och rapporter i `%TEMP%\aifabriken-lanes\xb-wow\` (`xb.mjs`, `diff.mjs`).

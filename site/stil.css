@@ -1,3 +1,10 @@
+/* Självhostade (Google Fonts latin, OFL), 2026-11-25: ingen render-blockerande CSS från googleapis. */
+@font-face { font-family: "Barlow"; font-weight: 400; font-display: swap; src: url(fonts/barlow-400.woff2) format("woff2"); }
+@font-face { font-family: "Barlow"; font-weight: 500; font-display: swap; src: url(fonts/barlow-500.woff2) format("woff2"); }
+@font-face { font-family: "Barlow"; font-weight: 600; font-display: swap; src: url(fonts/barlow-600.woff2) format("woff2"); }
+@font-face { font-family: "Barlow Condensed"; font-weight: 500; font-display: swap; src: url(fonts/barlow-condensed-500.woff2) format("woff2"); }
+@font-face { font-family: "Barlow Condensed"; font-weight: 600; font-display: swap; src: url(fonts/barlow-condensed-600.woff2) format("woff2"); }
+@font-face { font-family: "Barlow Condensed"; font-weight: 700; font-display: swap; src: url(fonts/barlow-condensed-700.woff2) format("woff2"); }
 :root {
   color-scheme: dark;
   --papper: #0e2f6e;
@@ -28,7 +35,7 @@ a:hover { color: var(--krita); }
 :focus-visible { outline: 3px solid var(--mässing); outline-offset: 2px; }
 h1, h2, h3, h4 { font-family: "Barlow Condensed", Barlow, sans-serif; font-weight: 600; line-height: 1.1; margin: 0; }
 h2 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin-bottom: .4em; }
-h3 { font-size: 1.6rem; margin: 2em 0 .5em; }
+h3, .del { font-size: 1.6rem; margin: 2em 0 .5em; }
 h4 { font-size: 1.3rem; margin-bottom: .5em; }
 p, ul, ol { max-width: 72ch; }
 li { margin-bottom: .45em; }
@@ -50,6 +57,10 @@ section { padding-top: 64px; }
 .huvud { border: 2px solid var(--krita); display: grid; grid-template-columns: minmax(0, 1fr) 280px; }
 .huvud > div:first-child { padding: clamp(20px, 4vw, 40px); }
 h1 { font-size: clamp(3.2rem, 9vw, 6.4rem); font-weight: 700; line-height: .92; }
+/* Vyernas rubrik är h1 för skärmläsare men ser ut som h2. */
+.vyrubrik { font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 600; line-height: 1.1; margin-bottom: .4em; }
+/* Tidslinjen ritas av app.js: håll platsen så att det under inte hoppar ner (CLS 0,23 i 390 px, 2026-11-25). */
+.tidslinje:empty { min-height: 100vh; }
 .ingress { font-size: 1.2rem; margin: 1em 0 0; }
 .titelblock { border-left: 2px solid var(--krita); margin: 0; display: flex; flex-direction: column; }
 .titelblock div { padding: 12px 16px; border-bottom: 1px solid var(--krita); flex: 1; }
@@ -172,6 +183,7 @@ legend { font: 600 1.2rem "Barlow Condensed", sans-serif; padding: 0 6px; }
 .chip input:checked + span { background: var(--mässing); border-color: var(--mässing); color: #0e2f6e; font-weight: 600; }
 .chip input:focus-visible + span { outline: 3px solid var(--mässing); outline-offset: 2px; }
 #bygge { border: 2px solid var(--krita); padding: 20px; background: var(--papper-2); }
+#bygge h3 { font-size: 1.3rem; margin: 0 0 .5em; }
 .pips { list-style: none; padding: 0; margin: 0 0 1em; max-width: 560px; }
 .pips li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0 12px; margin: 0; padding: 7px 0; border-bottom: 1px solid var(--linje); }
 .pips small { grid-column: 1 / -1; }

@@ -149,7 +149,7 @@ function renderBuild() {
   const goal = $("[name=mal]:checked").value;
   const build = buildFor(goal, cls);
   const g = GOALS[goal];
-  $("#bygge").innerHTML = `<h4>${cls.name}, ${g.label.toLowerCase()}</h4>
+  $("#bygge").innerHTML = `<h3>${cls.name}, ${g.label.toLowerCase()}</h3>
   <ol class="pips">${stegFor(build).map((s) => `<li><span><b>Poäng ${s.fran === s.till ? s.fran : `${s.fran} till ${s.till}`}:</b> ${s.perk}</span><span class="pip" role="img" aria-label="${s.rang} av ${s.max}">${"<i class=on></i>".repeat(s.rang)}${"<i></i>".repeat(s.max - s.rang)}</span><small>${TREES[PERKS[s.perk].tree]}. ${PERKS[s.perk].effect}</small></li>`).join("")}</ol>
   <p>${g.note}</p><p><strong>${cls.name}:</strong> ${cls.note}</p>`;
 }
@@ -182,7 +182,7 @@ document.addEventListener("change", (e) => {
 
 // En sida i taget. Länkar på formen #handel går att dela.
 // Rubrikerna i varje vy får id:n (#mal-fishing-var-vad-...) så att undermenyn och delade länkar kan peka på dem.
-const rubriker = (s) => [...s.querySelectorAll(":scope > h3, :scope > h2.mellan")];
+const rubriker = (s) => [...s.querySelectorAll(":scope > h3, :scope > h2.mellan, :scope > h2.del")];
 document.querySelectorAll(".vy").forEach((s) => rubriker(s).forEach((h) => {
   h.id ||= `${s.id}-${h.textContent.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
 }));

@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' https://wow.zamimg.com data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; style-src-attr 'unsafe-inline'; font-src 'self'; img-src 'self' https://wow.zamimg.com data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Forever-ritningen</title>
 <meta name="description" content="Roadmap för WoW: Forever: vad du gör, köper och säljer, och när.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230e2f6e'/%3E%3Ccircle cx='16' cy='16' r='8' fill='none' stroke='%23ffcf6b' stroke-width='3'/%3E%3Cpath d='M16 2v8M16 22v8M2 16h8M22 16h8' stroke='%23ffcf6b' stroke-width='3'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/barlow-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/barlow-condensed-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/barlow-condensed-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="stil.css?v=dev">
 <script type="module" src="app.js?v=dev"></script>
 <link rel="modulepreload" href="data.js?v=dev">
@@ -45,6 +45,7 @@
       <div><dt>Nivå 60</dt><dd>103 till 124 h</dd></div>
     </dl>
   </header>
+  <h2 class="sr">Tidslinje</h2>
   <ol class="tidslinje" id="tidslinje"></ol>
 
   <h2 class="mellan">Main och alts</h2>
@@ -72,7 +73,7 @@
 </section>
 
 <section id="missa" class="vy" hidden>
-  <h2>Missa inte</h2>
+  <h1 class="vyrubrik">Missa inte</h1>
   <fieldset class="fas"><legend>Dag 1</legend>
     <label class="bock"><input type="checkbox" data-id="m1"><span><strong>Samma ruleset.</strong> Ni kan inte grupper mellan rulesets och byte kräver ny karaktär. På PvP får kontot bara ha en fraktion.</span></label>
     <label class="bock"><input type="checkbox" data-id="m2"><span><strong>Gratis väska (6 platser), senast nivå 7.</strong> Gnome och Dwarf: ta <a href="https://www.wowhead.com/forever/quest=97277" rel="noopener">Grund and Gozwin</a> av <button type="button" class="plats" data-plats="grund">Grund Drokda</button> i Coldridge Valley. Hitta lägret i bergen nordväst om honom, hämta loggboken och döda Snow Leopard Prowler. Human: <a href="https://www.wowhead.com/forever/quest=91775" rel="noopener">Book Return</a> av <button type="button" class="plats" data-plats="dughan">Marshal Dughan</button> i Goldshire: 6 böcker i Fargodeep Mine. Väskan är bunden, så gör den på varje karaktär.</span></label>
@@ -95,7 +96,7 @@
     <label class="bock"><input type="checkbox" data-id="m14"><span><strong>Fire resistance till Onyxia.</strong> Amuletten ger +15. <a href="https://www.wowhead.com/forever/item=13457" rel="noopener">Greater Fire Protection Potion</a> absorberar 1 950 till 3 250. Receptet droppar i Blackrock Spire.</span></label>
     <label class="bock"><input type="checkbox" data-id="m15"><span><strong>Field of Honor.</strong> Veckorna 4, 7 och 10 ger Legacy-poäng. Börja i tid om du vill ha dem.</span></label>
   </fieldset>
-  <h3>Gör inte det här</h3>
+  <h2 class="del">Gör inte det här</h2>
   <ul>
     <li>Logga inte ut ute i världen: ingen rested.</li>
     <li>Betala inte för levlingsutrustning på AH.</li>
@@ -108,20 +109,20 @@
 </section>
 
 <section id="handel" class="vy" hidden>
-  <h2>Köp och sälj</h2>
+  <h1 class="vyrubrik">Köp och sälj</h1>
   <p>Riktpriserna är medianpriset på wow.gg, EU Alliance PvE, 24 november på kvällen, och maxpriset är hälften. Det som tillverkas räknas på vad materialen kostar på AH samma dag. Priserna rör sig snabbt: kolla med Auctionator innan du köper in.</p>
-  <h3>Vad du gör, köper och säljer per nivå</h3>
+  <h2 class="del">Vad du gör, köper och säljer per nivå</h2>
   <p>Börja med din nivå och raden Alltid. <strong>Köp:</strong> köp och sälj vidare direkt, eller använd. <strong>Samla:</strong> bryt, flå eller loota. <strong>Spara:</strong> köp och sitt på det till kolumnen När. <strong>Sälj:</strong> lägg upp nu. Tryck på en plats för att se den på kartan. Datumen räknar med 6 h spel om dagen.</p>
   <div class="tabell" id="planbox" tabindex="0" role="region" aria-label="Plan per nivå">
   <table id="plan">
   <thead><tr><th scope="col">Nivå</th><th scope="col"><span class="sr">Klart</span></th><th scope="col">Typ</th><th scope="col">Vad</th><th scope="col">Antal</th><th scope="col">Köp för högst</th><th scope="col">Sälj för</th><th scope="col">Vinst per st</th><th scope="col">Var</th><th scope="col">När</th></tr></thead>
   <tbody></tbody></table></div>
 
-  <h3>Karta och rutter</h3>
+  <h2 class="del">Karta och rutter</h2>
   <fieldset><legend>Välj rutt</legend><div class="chips" id="val-rutt"></div></fieldset>
   <div id="rutt"></div>
 
-  <h3>Dyra föremål: kolla listan innan du säljer</h3>
+  <h2 class="del">Dyra föremål: kolla listan innan du säljer</h2>
   <p>Hittar du något här: sälj det inte billigt och aldrig till vendor, för då binds det. <strong>Gräns</strong> är min egen gräns: köp under den, sälj inte under den. Ligger ingen ute på AH, börja på dubbla gränsen. Behöver du inte pengarna just då, låt bank-alten hålla föremålet tills fler har guld.</p>
   <p><strong>AH 20 nov</strong> är medianpriset på wow.gg, EU Alliance PvE, 20 november: begärda priser, ofta en enda annons. Gränsen är halva det priset, annars halva betapriset. Tom ruta betyder att ingen hade det ute.</p>
   <p><strong>Forever-betan</strong> är begärda priser vid nivåtak 30, skannade 12 oktober. De fyra på 25 g är översta priset i en betabild från 19 september. Tom ruta betyder att betan inte hade något pris. <strong>Var</strong> kommer från Wowheads Forever-data: de mobs som ger det oftast. Står det <em>i Classic</em> kommer uppgiften från Classic-databasen, eftersom Wowhead inte gick att läsa: föremålet finns i Forever, men var det droppar kan skilja sig. Listan har alla droppade blå och lila recept som binder när de tas på, så långt hämtningen kom. Gränsen på recept utan betapris är en tumregel efter skill-krav. Efter släppet: <a href="https://wowcensus.io/auctionhouse" rel="noopener">se aktuella skanningar på WoWCensus</a> och kolla AH. Blå BoE som inte står här: kolla alltid priset först.</p>
@@ -131,14 +132,14 @@
   <tbody></tbody></table></div>
   <p>Dungeon Set 1-delar låg på 100 g på betan, med de dyraste. Listan är inte komplett: den bygger på de dyraste skanningarna, de mest visade epic BoE som droppar enligt Wowhead och Classics världsepics som finns i Forever.</p>
 
-  <h3>Det du tillverkar: priser och vinst</h3>
+  <h2 class="del">Det du tillverkar: priser och vinst</h2>
   <p>Material och säljpris är lägsta utköp på wow.gg för EU, Alliance, PvE, den 24 november på kvällen. Betan gav Bronze Tube runt 40 s, den 10 november låg den på 9 till 11 s 50 k, den 20 november på 5 s och den 24 november på 8 s 31 k. Mithril Casing lönar sig bara med egna Mithril Bar. Skanna AH och justera.</p>
   <div class="tabell" tabindex="0" role="region" aria-label="Tillverkning">
   <table id="recept" data-sort-key="recept">
   <thead><tr><th>Vara</th><th>Yrke</th><th>Material</th><th>Max kostnad</th><th>Sälj på AH</th><th>Vendor</th><th>Vinst per st</th><th>Köpare</th></tr></thead>
   <tbody></tbody></table></div>
 
-  <h3>Var du bryter</h3>
+  <h2 class="del">Var du bryter</h2>
   <div class="tabell" tabindex="0" role="region" aria-label="Malm">
   <table data-sort-key="malm">
   <thead><tr><th>Malm</th><th>Smälta kräver</th><th>Bästa zonerna för Alliance</th><th>Blir</th></tr></thead>
@@ -152,11 +153,11 @@
 
   <p class="not"><strong>Takregeln:</strong> <a href="https://www.wowhead.com/forever/npc=263384" rel="noopener">Mister Graphed</a> i Riverglades säljer Scarce och toppmaterial till fast pris. Det sätter taket: betala aldrig mer än han tar. Den 24 november låg AH långt under taket (Pristine Leather 3 s 70 k mot hans 5 g, Black Lotus 8 g 78 s mot 50 g), så följ riktpriserna i tabellen.</p>
 
-  <h3>Schema: när du köper och säljer</h3>
+  <h2 class="del">Schema: när du köper och säljer</h2>
   <p>Datumen räknar med 6 h spel om dagen. Spelar du mindre, följ priserna: köp under maxpriset och sälj på riktpriset.</p>
   <ul class="gantt" id="gantt"></ul>
 
-  <h3>Arbitrage: löpande affärer</h3>
+  <h2 class="del">Arbitrage: löpande affärer</h2>
   <p>Gör affären bara om marginalen är minst 20 % efter deposition och AH-avgift. Auctionator visar priserna och vendorvärdet på varje skanning.</p>
   <div class="tabell" tabindex="0" role="region" aria-label="Arbitrage">
   <table data-sort-key="arbitrage">
@@ -175,7 +176,7 @@
   <tr><td><strong>Eget tillverkat</strong></td><td>När ett köp saknar säljare</td><td>Tillverka det marknaden saknar och som dina yrken kan.</td><td>Bronze Tube, väskor, Mithril Casing</td></tr>
   </tbody></table></div>
 
-  <h3>Affärer enligt AH-priserna</h3>
+  <h2 class="del">Affärer enligt AH-priserna</h2>
   <p>Lägsta utköpspris från <a href="https://wow.gg/auction-house/forever" rel="noopener">wow.gg</a> för EU, Alliance, PvE, den 20 november på eftermiddagen. Priserna rör sig snabbt: Silk Headband gick från förlust till bästa affären på tio dagar, Rune of Teleportation från 1 g till under vendorpriset. Kolla med Auctionator innan du köper in. Vinst är 95 % av AH-priset (AH tar 5 %) eller hela vendorpriset, minus kostnaden. Kostnaden räknar material till AH-pris och tråd, färg, salt och flux till vendorpris. Recepten är kontrollerade mot Wowheads Forever-data.</p>
   <div class="tabell" tabindex="0" role="region" aria-label="Affärer">
   <table data-sort-key="affarer">
@@ -209,13 +210,13 @@
   </tbody></table></div>
   <p><strong>Fungerar inte just nu:</strong> Greater Magic Wand (Simple Wood och 2 Lesser Magic Essence kostar 2 s 80 k, vendorn ger 2 s), Light Leather till Medium Leather (4 Light Leather för 1 s 60 k blir 99 k) och Bolt of Mageweave (5 Mageweave Cloth för 26 s 5 k, bolten 26 s 63 k före AH:s 5 %). Billibubs Bronze Tube för 8 s 42 k går back mot AH:s 5 s 6 k.</p>
 
-  <h3>Köp till dig själv</h3>
+  <h2 class="del">Köp till dig själv</h2>
   <ul>
     <li>Väskor: Woolen Bag (8) upp till 50 s, Small Silk Pack (10) upp till 1 g, Mageweave Bag (12) upp till 2 g. Köp fyra av den bästa du har råd med.</li>
     <li>Bronze Bar upp till 8 s bara om du inte bryter själv.</li>
     <li>Gift of Galloping för 150 g (+10 % mounted speed i 15 dagar): först när epic är betald.</li>
   </ul>
-  <h3>Köp inte</h3>
+  <h2 class="del">Köp inte</h2>
   <ul>
     <li>Linen, Copper och andra vanliga material över vendor, de sjunker när alla samlar.</li>
     <li>Något över 90 % av Graphed-taket.</li>
@@ -223,7 +224,7 @@
     <li>Pyrite: priset rörde sig inte på betan.</li>
   </ul>
 
-  <h3>Vad är det här?</h3>
+  <h2 class="del">Vad är det här?</h2>
   <dl class="ord">
     <dt><a href="https://www.wowhead.com/forever/item=248549" rel="noopener">Waylaid Crate</a></dt>
     <dd>Droppar från mobs nivå 9 till 35 och kräver nivå 10. Högerklicka: den blir en av 30 lådtyper. Fyll med ett paket material, till exempel 20 Copper Ore eller 8 Bronze Tube, och lämna in den förseglade lådan. Ofylld kan den säljas på AH.</dd>
@@ -237,7 +238,7 @@
     <dd>Campfire från Cooking är grunden. Till lägret finns Fish Bowl, Mana Well, Sharpening Wheel och Camp Tent, som toppar rested.</dd>
   </dl>
 
-  <h3>Vendorvärden: golvet för dina priser</h3>
+  <h2 class="del">Vendorvärden: golvet för dina priser</h2>
   <p>Täcker AH-priset inte det här plus depositionen: sälj till vendor.</p>
   <div class="tabell" tabindex="0" role="region" aria-label="Vendorvärden">
   <table data-sort-key="vendor">
@@ -252,7 +253,7 @@
 </section>
 
 <section id="mal" class="vy" hidden>
-  <h2>Mål med minsta insats</h2>
+  <h1 class="vyrubrik">Mål med minsta insats</h1>
   <div class="tabell" tabindex="0" role="region" aria-label="Mål">
   <table data-sort-key="mal">
   <thead><tr><th>Mål</th><th>Snabbaste vägen</th><th>Kostnad</th></tr></thead>
@@ -268,7 +269,7 @@
   <tr><td><strong>Engineering billigast</strong></td><td>1 till 30 Rough Blasting Powder, 30 till 50 Copper Bolts, 51 till 75 Rough Copper Bombs, 75 till 90 Coarse Blasting Powder, 105 till 125 Bronze Tubes, 145 till 160 Bronze Framework, 215 till 238 Mithril Casings, 260 till 285 Thorium Widgets, 285 till 300 Thorium Tubes.</td><td>225 Thorium Bar och 35 Runecloth till 225 till 300</td></tr>
   </tbody></table></div>
 
-<h3>Main: Engineering till 225</h3>
+<h2 class="del">Main: Engineering till 225</h2>
   <p>Orange ger en skillpoäng per tillverkning. Gul ger det nästan alltid i början av intervallet och allt mer sällan mot slutet, och antalet räknar med det. Färggränserna kommer från <a href="https://classicdb.ch/?spells=11.202" rel="noopener">ClassicDB</a> (vanilla), eftersom Wowheads Forever-lista var spärrad när jag hämtade. Recepten och när de lärs ut kommer från Forever-data. Journeyman vid 50 kräver nivå 10, Expert vid 150 nivå 20.</p>
   <p><strong>Pengar:</strong> Kostnad är material till AH-pris för EU den 20 november (lägsta utköp på wow.gg) och Weak Flux till vendorpris (1 s). Netto är 95 % av AH-priset minus kostnaden. Bryter du malmen själv blir kostnaden lägre. Priserna rör sig snabbt, så se Affärer under Köp och sälj och kolla med Auctionator.</p>
   <div class="tabell" tabindex="0" role="region" aria-label="Engineering 1 till 225">
@@ -296,7 +297,7 @@
   <tr><td>215 till 225</td><td>Mithril Casing</td><td>3 Mithril Bar</td><td>10</td><td>40 s 14 k</td><td>53 s 63 k</td><td>+10 s 81 k</td><td>Behövs till Mithril Frag Bomb och senare. Säljer med vinst.</td></tr>
   </tbody></table></div>
 
-  <h3>Bank-alten: Tailoring till 225</h3>
+  <h2 class="del">Bank-alten: Tailoring till 225</h2>
   <p>Varje rad är orange, alltså en skillpoäng per tillverkning, om inte annat står. Gul betyder att alla inte ger skill, så räkna med fler. Journeyman vid 50 kräver nivå 10, Expert vid 150 nivå 20. Tailoring och Enchanting går hand i hand: det du syr blir dust när du disenchantar det.</p>
   <p><strong>Pengar:</strong> Kostnad är tråd och färg från vendorn plus tyget räknat till vendorpris, alltså vad du hade fått om du sålt tyget i stället. Netto är vendorpriset minus kostnaden. Hela vägen tar ungefär 240 Linen, 240 Wool, 750 Silk och 1 000 Mageweave Cloth, och kostar runt 23 g i tråd och färg. Det mesta går till Heavy Silken Thread. Det som syns som förlust till vendor kan du ofta sälja på AH eller disenchanta. På AH kostade tyget 20 nov mer än hos vendor: Wool 1 s 46 k, Silk 1 s 85 k och Mageweave 5 s 21 k. Flera av sakerna du syr säljs ändå över kostnaden: se Affärer under Köp och sälj.</p>
   <div class="tabell" tabindex="0" role="region" aria-label="Tailoring 1 till 225">
@@ -323,7 +324,7 @@
   <tr><td>205 till 225</td><td>Black Mageweave Headband eller Shoulders</td><td>3 Bolt of Mageweave, 2 Heavy Silken Thread</td><td>cirka 33</td><td>cirka 77 s 50 k</td><td>54 s 21 k</td><td>cirka −23 s</td><td>Gul hela vägen. Billigare per poäng än Red Mageweave Bag.</td></tr>
   </tbody></table></div>
 
-  <h3>Bank-alten: Enchanting till 225</h3>
+  <h2 class="del">Bank-alten: Enchanting till 225</h2>
   <p>Forever har bytt början mot Classic: Runed Copper Rod görs av Mote of Magic, och den gör du själv av Strange Dust med Dust to Motes. Varje enchant kräver en stav, och för varje nivå behövs en ny stav. Den tar du med dig. Du kan enchanta samma föremål om och om igen, så en billig cape, ett par bracers eller en vendor-stav räcker. Journeyman vid 50 kräver nivå 10, Expert vid 125 nivå 20.</p>
   <p><strong>Pengar:</strong> Dust, essences och shards säljs för 1 k till vendor. Värdet sitter alltså i AH-priset, och det mesta får du gratis genom att disenchanta det du syr. Det enda du köper hos vendor är Copper Rod för 1 s 24 k. Hela vägen tar ungefär 155 Strange Dust, 20 Small Glimmering Shard, 53 Soul Dust och 46 Vision Dust, plus tre stavar och tre pärlor eller stenar.</p>
   <div class="tabell" tabindex="0" role="region" aria-label="Enchanting 1 till 225">
@@ -344,7 +345,7 @@
   <tr><td>205 till 225</td><td>Enchant Cloak - Greater Defense</td><td>1 Vision Dust</td><td>20</td><td>20 Vision Dust</td><td></td></tr>
   </tbody></table></div>
 
-  <h3>Warrior-alten: Blacksmithing till 225</h3>
+  <h2 class="del">Warrior-alten: Blacksmithing till 225</h2>
   <p>Den billigaste vägen med Forevers recept från tränaren, räknad på AH-priserna för EU den 21 november (lägsta utköp på wow.gg). Orange ger en skillpoäng per tillverkning. Gul och grön ger det allt mer sällan ju närmare grått du kommer, och antalet räknar med det. Därför står billiga stenar på flera steg som gula: de är så billiga att fler försök ändå kostar minst. Färggränserna kommer från Wowheads Forever-data. Journeyman vid 50 kräver nivå 10. Expert kräver nivå 20 och måste vara klar före 150.</p>
   <p><strong>Pengar:</strong> hela vägen kostar runt 67 g med köpta material. Nästan allt går till Mithril Bar och Steel Bar från 180 och uppåt. Bryter du malmen själv med Mining blir det mycket billigare: Iron Ore kostar ungefär lika mycket som Iron Bar. Green Dye köps hos vendorn för 1 s.</p>
   <div class="tabell" tabindex="0" role="region" aria-label="Blacksmithing 1 till 225">
@@ -369,7 +370,7 @@
   <tr><td>215 till 225</td><td>Mithril Coif</td><td>10 Mithril Bar, 6 Mageweave Cloth</td><td>10</td><td>1 g 63 s 40 k</td><td>Orange hela vägen.</td></tr>
   </tbody></table></div>
 
-  <h3>Inköpslista: Blacksmithing till 225</h3>
+  <h2 class="del">Inköpslista: Blacksmithing till 225</h2>
   <p>Summan av tabellen ovan. Slipstenarna du gör på 73 till 78 är inräknade i senare steg, så du köper bara stenen. Priset är lägsta utköp på AH 21 november.</p>
   <div class="tabell" tabindex="0" role="region" aria-label="Inköpslista Blacksmithing">
   <table data-sort-key="bs-inkop">
@@ -390,7 +391,7 @@
   <tr><td>Rough Stone</td><td>158</td><td data-sort-value="8">8 k</td><td data-sort-value="1300">13 s</td><td>1 till 73</td></tr>
   </tbody></table></div>
 
-  <h3>Det smeden gör åt Warrior och Rogue</h3>
+  <h2 class="del">Det smeden gör åt Warrior och Rogue</h2>
   <p>Recept från tränaren, med skill och nivån som krävs för att bära saken. Det mesta binder när det bärs, så du kan posta det till Roguen. Två saker binder redan när du gör dem och passar bara Warriorn. Slipstenarna (sharpening stones) fungerar på svärd, yxor och dolkar. För klubbor gör du weightstones med samma sten.</p>
   <div class="tabell" tabindex="0" role="region" aria-label="Smide till Warrior och Rogue">
   <table data-sort-key="smide">
@@ -425,7 +426,7 @@
   <tr><td>44</td><td><a href="https://www.wowhead.com/forever/item=7961" rel="noopener"><strong>Phantom Blade</strong></a></td><td>Rogue</td><td>Svärd, 32,5 dps, sänker målets armor</td><td>220</td></tr>
   </tbody></table></div>
 
-  <h3>Alchemy till 225</h3>
+  <h2 class="del">Alchemy till 225</h2>
   <p>Samma metod som Blacksmithing ovan: Forevers recept från tränaren, färggränser från Wowheads Forever-data och AH-priser för EU den 21 november. Här används medianpriset, eftersom det går åt många örter och de billigaste exemplaren tar slut. Flaskorna köps hos vendorn; deras pris är uppskattat från säljpriset. Journeyman vid 50 kräver nivå 10.</p>
   <p><strong>Pengar:</strong> hela vägen kostar runt 7 g med köpta örter. Plockar Rogue-alten örterna med Herbalism blir det nästan gratis: posta dem till den som gör Alchemy.</p>
   <div class="tabell" tabindex="0" role="region" aria-label="Alchemy 1 till 225">
@@ -445,7 +446,7 @@
   <tr><td>195 till 225</td><td>Elixir of Defense</td><td>1 Wild Steelbloom, 1 Goldthorn, 1 Leaded Vial</td><td>cirka 32</td><td>6 s 62 k</td><td>Orange till 215. Armor-elixir till Warriorn.</td></tr>
   </tbody></table></div>
 
-  <h3>Inköpslista: Alchemy till 225</h3>
+  <h2 class="del">Inköpslista: Alchemy till 225</h2>
   <p>Summan av tabellen ovan. Oljorna du gör själv går in i senare steg och är avdragna, så du köper bara det som fattas.</p>
   <div class="tabell" tabindex="0" role="region" aria-label="Inköpslista Alchemy">
   <table data-sort-key="alc-inkop">
@@ -468,7 +469,7 @@
   <tr><td>Peacebloom</td><td>3</td><td data-sort-value="75">75 k</td><td data-sort-value="200">2 s</td><td>77 till 80</td></tr>
   </tbody></table></div>
 
-  <h3>Fishing: var, vad och vad det ger</h3>
+  <h2 class="del">Fishing: var, vad och vad det ger</h2>
   <p>Du får skill lika snabbt överallt, så länge fisken inte slinker iväg. Fiska alltså där fisken är värd mest. Fiska i pools (virvlar i vattnet), för där får du mer per kast. Färdigheten i spalten är ungefär vad du behöver för att fisken inte ska slinka iväg. Den kommer från wikins tabell, som bygger på senare patchar. Vendorpriserna är små: pengarna kommer från AH, där alchemists köper fisken till oljor. AH-priserna gäller EU, Alliance, den 20 november (wow.gg, lägsta utköp). Zonens nivå är mobsens nivå enligt wikins Classic-lista: fiska där mobsen inte är för höga för dig.</p>
   <div class="tabell" tabindex="0" role="region" aria-label="Fishing 1 till 300">
   <table>
@@ -488,7 +489,7 @@
 </section>
 
 <section id="karaktarer" class="vy" hidden>
-  <h2>Bästa karaktärerna för hög skill</h2>
+  <h1 class="vyrubrik">Bästa karaktärerna för hög skill</h1>
   <ul>
     <li><strong>Levling, högst tak:</strong> Frost Mage med AoE-bygget. Tempot beror på din timing.</li>
     <li><strong>Levling, låg risk:</strong> Beast Mastery Hunter.</li>
@@ -511,7 +512,7 @@
   <tr><td><strong>Warrior</strong></td><td>Arms</td><td data-sort-value="4">C</td><td>Fury S, Protection S</td><td>Arms A</td></tr>
   </tbody></table></div>
 
-  <h3>Gnome Mage, Frost</h3>
+  <h2 class="del">Gnome Mage, Frost</h2>
   <p><strong>Talanger:</strong> <a href="https://www.icy-veins.com/wow-forever/frost-mage-leveling#frost-mage-leveling-talent-build-for-wow-forever" rel="noopener">Icy Veins Frost-bygge för levling</a>, med reglage för varje nivå. Samma bygge i <a href="https://www.icy-veins.com/wow-forever/mage-talent-calculator#tc-CCBBBEEEBBJDDDDMMMDLPPONNNHHHIRCQQQQQKKGGIIA3330044~70888-0650090c" rel="noopener">talangkalkylatorn</a>. Det fungerar för både AoE och ensamma mobs.</p>
   <ul>
     <li><strong>Pull från nivå 14:</strong> samla 3 till 4 mobs, Frost Nova, kliv in och kör Arcane Explosion. Från 16: lägg Flamestrike under dem när Novan släpper.</li>
@@ -522,18 +523,18 @@
 
   <p><strong>Legacy:</strong> Bountiful Harvest, valt 11 november, eftersom mainen har Mining och Rogue-alten Skinning och Herbalism. Perkarna väljs per karaktär, så alten måste också välja den för att få effekten. Full rang (5) ger dubbelt så mycket Scarce-material, till exempel Pyrite från Copper Vein, och öppnar Performance Bonus: chans till dubbel Merchant&#39;s Favor för lådor.</p>
 
-  <h3>Föremål nivå för nivå, Mage</h3>
+  <h2 class="del">Föremål nivå för nivå, Mage</h2>
   <p>Mitt urval ur Wowheads Forever-databas: föremål med spell power, Intellect och crit, utan Horde-saker, PvP och raid. <strong>Det är ingen BiS-lista och inget är provat:</strong> Wowheads BiS-tabell för Forever är tom än, så jämför alltid med tooltipen. Tom ruta under Intellect betyder att tooltipen inte visar värdet där, inte att det saknas. Kolla på AH först: BoE och craftat går ofta att köpa. Listan saknar trinkets under nivå 50 och mantlar.</p>
   <div class="tabell" tabindex="0" role="region" aria-label="Föremål för Mage">
   <table id="gear" data-sort-key="gear">
   <thead><tr><th>Nivå</th><th>Plats</th><th>Föremål</th><th>Kräver</th><th>Intellect</th><th>Var</th></tr></thead>
   <tbody></tbody></table></div>
 
-  <h3>Warrior-alten, Protection</h3>
+  <h2 class="del">Warrior-alten, Protection</h2>
   <p>Mining och Blacksmithing. <a href="https://www.icy-veins.com/wow-forever/protection-warrior-leveling" rel="noopener">Icy Veins Forever-guide</a> kallar Protection den snabbaste Warrior-specen för levling: Revenge är förstärkt, skölden håller nere skadan och talangerna löser Warriorns rage-brist. Första fem poängen från nivå 10 går till Shield Specialization. Kör tvåhandsvapen tills du lärt dig Revenge på nivå 14, byt sedan till enhandsvapen och sköld. Därefter väger Stamina och Strength tyngst. Tabellen har båda: tvåhandsvapnen är för nivå 1 till 14 och för den som vill byta spec. Mail fram till 40, plate från 40 när du lärt dig det hos tränaren. Mycket av det du behöver gör du själv, se Blacksmithing under Mål.</p>
   <p><strong>Legacy:</strong> bygget Levla (Thrill of Adventure 5, Well Rested 5, Talented 5, Field Medicine 1). Thrill ersätter mat mellan striderna, och Talented ger talangpoäng från nivå 5. Working Overtime 5 sparar bara 4 till 8 g på Blacksmithing till 225 (6 till 12 %), eftersom de dyra stegen ger skill varje gång ändå. Perken hjälper bara när receptet är gult eller grönt. Byt till Working Overtime om du senare går vidare mot 300.</p>
 
-  <h3>Föremål nivå för nivå, Warrior</h3>
+  <h2 class="del">Föremål nivå för nivå, Warrior</h2>
   <p>Mitt urval ur Wowheads Forever-databas 21 november, viktat på Strength, Agility och Stamina. Bara Alliance och quests för båda sidor, inget PvP och ingen raid. <strong>Det är ingen BiS-lista och inget är provat.</strong> Plate före nivå 40 är bortplockat: du kan inte bära det än. "Du själv" betyder Blacksmithing på alten, med den skill du behöver.</p>
   <div class="tabell" tabindex="0" role="region" aria-label="Föremål för Warrior">
   <table data-sort-key="gear-warrior">
@@ -644,7 +645,7 @@
   <tr><td>50 till 60</td><td>Sköld</td><td><a href="https://www.wowhead.com/forever/item=18756" rel="noopener"><strong>Dreadguard's Protector</strong></a></td><td>57</td><td data-sort-value="2121 armor">2 121 armor, 18 Str, 5 Sta</td><td>Lord Hel'nurath, Dire Maul</td></tr>
   </tbody></table></div>
 
-  <h3>Enchants nivå för nivå, Warrior</h3>
+  <h2 class="del">Enchants nivå för nivå, Warrior</h2>
   <p>Bank-alten med Enchanting gör allt med skill 225 eller lägre. Effekterna är Forevers, lästa ur Wowheads tooltips 21 november: flera är högre än i Classic. Enchanta inte gröna saker du byter inom några nivåer, bara vapnet och det du bär länge.</p>
   <div class="tabell" tabindex="0" role="region" aria-label="Enchants för Warrior">
   <table data-sort-key="ench-warrior">
@@ -671,7 +672,7 @@
   <tr><td>60</td><td>Handled</td><td><strong>Bracer - Greater Strength</strong></td><td>+7 Strength</td><td>240, över bank-altens 225</td></tr>
   </tbody></table></div>
 
-  <h3>Vilka alts går snabbast?</h3>
+  <h2 class="del">Vilka alts går snabbast?</h2>
   <p>Hastigheten kommer från <a href="https://conquestcapped.com/guides/wow-forever/wow-forever-best-leveling-class/" rel="noopener">Conquest Capped</a> (22 oktober), byggd på betan med tak 30, så 31 till 60 är en prognos. För och emot är min bedömning. <strong>Min ordning är altplanens: Warlock, Rogue och Warrior, som redan finns, sedan Paladin och Hunter.</strong> Snabbast i sig är Hunter, men bank-altens yrken ger pengar och Legacy-poäng från nivå 10, och Paladin fyller rollen gruppen saknar.</p>
   <div class="tabell" tabindex="0" role="region" aria-label="Alts">
   <table id="alts" data-sort-key="alts">
@@ -687,7 +688,7 @@
     <tr><td data-sort-value="8"><strong>Priest</strong></td><td data-sort-value="6">Långsam</td><td>Healer är alltid efterfrågad.</td><td>Långsammast solo. En finns redan.</td></tr>
   </tbody></table></div>
 
-  <h3>Human Hunter, Beast Mastery</h3>
+  <h2 class="del">Human Hunter, Beast Mastery</h2>
   <ul>
     <li><strong>Till 30:</strong> Endurance Training och Focused Fire, Pathfinding 20 till 21, Summon Hawk 25, Intimidation 30.</li>
     <li><strong>31 till 60:</strong> Ferocity och Bestial Discipline, 4 i Frenzy, Bestial Wrath på 40, sedan Marksmanship.</li>
@@ -695,7 +696,7 @@
     <li><strong>Yrken:</strong> Skinning och Leatherworking, med blå Agility-utrustning från nivå 10. Passar din sambo: magen tar Mining, så ni krockar inte. Sambon samlar Pristine Leather vid skinning och gör Camp Tent från Leatherworking 20.</li>
   </ul>
 
-  <h3>Spela ihop</h3>
+  <h2 class="del">Spela ihop</h2>
   <ul>
     <li>Kill-XP delas, quest-XP får alla fullt. Questa ihop, grinda inte.</li>
     <li>Gruppbonus: 3 spelare +16,6 %, 4 spelare +30 %, 5 spelare +40 %.</li>
@@ -705,7 +706,7 @@
 </section>
 
 <section id="dungeons" class="vy" hidden>
-  <h2>Dungeons</h2>
+  <h1 class="vyrubrik">Dungeons</h1>
   <p>Nivåerna kommer från wikins lista över Forever-dungeons. Dropparna är ett urval ur Wowheads Forever-data (14 november), inte en BiS-lista: för mage Intellect (Int) och spell power (SP), för rogue vapnets dps och Agility (Agi) eller Strength (Str) på läder. "Set" betyder del av ett set, "BoE" att den också går att köpa på AH. Gör innan visar Alliance-questerna med länk till Wowhead och kedjan före dem. Kedjorna för de gamla dungeonsen kommer från wikins Classic-sidor, för de nya från wikins Forever-sidor. Wikin-länken i varje rad visar hela listan. Flyg i Notering är närmaste flygpunkt för Alliance. Nya dungeons är märkta "ny". Max 5 instanser i timmen, och hämta questen innan ni går in: där finns XP:n.</p>
   <div class="tabell" tabindex="0" role="region" aria-label="Dungeons">
   <table data-sort-key="dungeons">
@@ -748,14 +749,14 @@
 </section>
 
 <section id="legacy" class="vy" hidden>
-  <h2>Legacy points</h2>
+  <h1 class="vyrubrik">Legacy points</h1>
   <p>Poängen gäller hela kontot och du spenderar högst 16 per karaktär. Belöningar hämtas hos Innkeeper Wiley i Ratchet vid 15, 25, 40 och 55 poäng.</p>
-  <h3>Vad ska jag välja?</h3>
+  <h2 class="del">Vad ska jag välja?</h2>
   <fieldset><legend>Klass</legend><div class="chips" id="val-klass"></div></fieldset>
   <fieldset><legend>Vad karaktären ska göra</legend><div class="chips" id="val-mal"></div></fieldset>
   <div id="bygge" aria-live="polite"></div>
 
-  <h3>Din väg till 16</h3>
+  <h2 class="del">Din väg till 16</h2>
   <ol class="steg">
     <li><strong>Engineering 150</strong> från nivå 10. Summa 1.</li>
     <li><strong>Nivå 25 och Novice Spelunker.</strong> Summa 3. Spelunker kräver fler dungeons än tidslinjens quest-körningar, se listan nedan.</li>
@@ -767,14 +768,14 @@
   </ol>
   <p>Yrkeskrav: 150 kräver nivå 10, 225 nivå 20, 300 nivå 35. Varje klass och craft ger poäng en gång.</p>
 
-  <h3>Bocka av</h3>
+  <h2 class="del">Bocka av</h2>
   <div>
     <p class="räknare" role="status"><strong id="poang"></strong><span id="nasta"></span></p>
     <div id="utmaningar"></div>
   </div>
   <p><small>Novice: Ragefire Chasm eller Hall of Thanes, Ruins of Lordaeron, Wailing Caverns, Deadmines, Shadowfang Keep, Excavation Site: Wetlands. Experienced: City of Dalaran, Blackfathom Deeps, Gnomeregan, The Drowned City, fyra Scarlet Monastery, Razorfen Kraul, Krol'dok Stronghold.</small></p>
 
-  <h3>Alla 21 perkar</h3>
+  <h2 class="del">Alla 21 perkar</h2>
   <div class="tabell" tabindex="0" role="region" aria-label="Perkar">
   <table id="perkar" data-sort-key="perkar">
   <thead><tr><th>Träd</th><th>Perk</th><th>Rang</th><th>Effekt</th><th>Kräver</th></tr></thead>
@@ -782,7 +783,7 @@
 </section>
 
 <section id="addons" class="vy" hidden>
-  <h2>Addons</h2>
+  <h1 class="vyrubrik">Addons</h1>
   <p>Lägg dem i <code>World of Warcraft\_forever_\Interface\AddOns</code> och välj filen märkt Forever. Leatrix standardfil är Classic-versionen. Program utanför spelet som automatiserar spelandet ger ban, så håll dig till addons.</p>
   <div class="tabell" tabindex="0" role="region" aria-label="Addons">
   <table data-sort-key="addons">
@@ -798,9 +799,9 @@
   <tr><td>8</td><td><a href="https://github.com/max-ri/Guidelime/releases" rel="noopener">Guidelime</a></td><td>Gratis rutter</td></tr>
   <tr><td>9</td><td><a href="https://www.curseforge.com/wow/addons/atlasloot-forever" rel="noopener">AtlasLoot Forever</a></td><td>Lootlistor inför raids</td></tr>
   </tbody></table></div>
-  <h3>Redan inbyggt</h3>
+  <h2 class="del">Redan inbyggt</h2>
   <p>Damage meter, Cooldown Manager (Options, Gameplay Enhancement), Edit Mode, Click Casting och combat text.</p>
-  <h3>Installera inte</h3>
+  <h2 class="del">Installera inte</h2>
   <p>WeakAuras, OmniBar, BigDebuffs, Hekili, Cell, Auctioneer, AdiBags, Postal, SexyMap, ForeverCompat. De fungerar inte i Forever eller ställer till det. Forever stänger combat log, hot, auror och fiendens casts för addons i strid.</p>
 </section>
 

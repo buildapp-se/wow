@@ -27,6 +27,7 @@ body {
   margin: 0;
   color: var(--krita);
   font: 400 17px/1.55 Barlow, system-ui, sans-serif;
+  overflow-wrap: break-word; /* långa sökvägar och namn bryts vid 200 % text i 390 px */
   background-color: var(--papper);
   background-image:
     linear-gradient(var(--rut) 1px, transparent 1px),
@@ -143,7 +144,7 @@ td.kryss .bock { justify-content: center; min-width: 44px; }
 figcaption { margin-top: 4px; color: var(--dov); font-size: .9rem; }
 dialog { width: min(820px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 16px; color: var(--krita); background: var(--papper); border: 2px solid var(--krita); }
 dialog::backdrop { background: rgba(6, 18, 44, .75); }
-.stang { display: block; min-height: 44px; margin-left: auto; padding: 0 16px; color: #0e2f6e; background: var(--mässing); border: 0; font: 600 1rem Barlow, sans-serif; cursor: pointer; }
+.stang { display: block; min-height: 44px; margin-left: auto; padding: 0 16px; color: #0e2f6e; background: var(--mässing); border: 1px solid transparent; font: 600 1rem Barlow, sans-serif; cursor: pointer; }
 
 .not { border-left: 4px solid var(--mässing); padding: 2px 0 2px 16px; margin: 1.2em 0; max-width: 72ch; }
 
@@ -152,15 +153,15 @@ dialog::backdrop { background: rgba(6, 18, 44, .75); }
 .g-rad { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 14px; margin: 0; padding: 10px 12px; border-bottom: 1px solid var(--linje); }
 .g-rad:last-child { border-bottom: 0; }
 .g-rad small { display: block; line-height: 1.3; margin-top: 2px; }
-.g-spar { position: relative; height: 54px; }
+.g-spar { position: relative; height: 3.2em; } /* em: staplarna växer med textstorleken */
 .g-axel { background: var(--papper-2); }
 .g-tick, .g-mil { position: absolute; white-space: nowrap; font-size: .85rem; line-height: 1.2; }
 .g-tick { top: 0; color: var(--dov); }
-.g-mil { top: 28px; padding-left: 4px; border-left: 2px dashed var(--krita); font-weight: 600; }
+.g-mil { top: 2.06em; padding-left: 4px; border-left: 2px dashed var(--krita); font-weight: 600; }
 .g-linje { position: absolute; top: 0; bottom: 0; border-left: 2px dashed var(--linje); }
-.stapel { position: absolute; height: 24px; padding-left: 6px; overflow: hidden; color: #0e2f6e; font: 600 .85rem/24px Barlow, sans-serif; }
-.stapel.kop { top: 2px; background: var(--himmel); }
-.stapel.salj { top: 28px; background: var(--mässing); }
+.stapel { position: absolute; height: 1.76em; padding-left: 6px; overflow: hidden; white-space: nowrap; color: #0e2f6e; font: 600 .85rem/1.76 Barlow, sans-serif; }
+.stapel.kop { top: .15em; background: var(--himmel); }
+.stapel.salj { top: 2.06em; background: var(--mässing); }
 
 /* Tabeller */
 .tabell { overflow-x: auto; border: 1px solid var(--linje); background: var(--papper); margin: 1em 0; }
@@ -196,6 +197,7 @@ legend { font: 600 1.2rem "Barlow Condensed", sans-serif; padding: 0 6px; }
 
 /* Bocklistor */
 .bock { display: flex; gap: 10px; align-items: center; min-height: 44px; cursor: pointer; }
+.bock > span { min-width: 0; } /* annars bryts inte långa ord i flexraden */
 .bock input { width: 22px; height: 22px; flex: none; accent-color: var(--mässing); margin: 0; }
 .bock input:checked + span { color: var(--dov); text-decoration: line-through; }
 .matris { display: grid; grid-template-columns: minmax(110px, 1fr) repeat(var(--cols), minmax(62px, auto)); align-items: center; column-gap: 8px; max-width: 460px; }
@@ -225,7 +227,7 @@ ol.steg li { padding-left: 4px; }
 }
 @media (max-width: 680px) {
   body { font-size: 16px; }
-  .huvud { grid-template-columns: 1fr; }
+  .huvud { grid-template-columns: minmax(0, 1fr); }
   .titelblock { border-left: 0; border-top: 2px solid var(--krita); }
   .g-rad { grid-template-columns: minmax(0, 1fr); gap: 8px; }
   .g-axel > div:first-child { display: none; }
@@ -234,6 +236,15 @@ ol.steg li { padding-left: 4px; }
   .tid { position: static; text-align: left; padding: 0 0 6px; }
   .steg-kort { margin: 0; padding: 12px; }
   .steg-kort::before { display: none; }
+}
+/* Tvingade färger (Windows kontrastteman) tar bort bakgrunder: valt läge, staplar, rangpips och myntens enhet hänger på dem. */
+@media (forced-colors: active) {
+  .stapel.kop, .stapel.salj, .pip i.on, .chip input:checked + span { forced-color-adjust: none; background: CanvasText; color: Canvas; }
+  .mynt { width: auto; height: auto; margin: 0 0 0 .2em; font-style: normal; }
+  .mynt.g::after { content: "g"; }
+  .mynt.s::after { content: "s"; }
+  .mynt.k::after { content: "k"; }
+  nav a[aria-current="page"] { text-decoration: underline; }
 }
 @media print {
   nav { display: none; }

@@ -168,3 +168,19 @@ Rättat:
 
 Inte rättat: bockarnas id är position i listan (`p<fas>-<rad>`, `plan<nivå>-<rad>` i `app.js`). Tas en rad bort eller läggs en till mitt i en fas flyttar sparade bockar till fel rad. Text som nyckel tål inte prisändringar, så det kräver fasta id:n i datan.
 
+
+## 2026-11-24: buggjakt 2 (agent, worktree `_wt/wow-1124k`, gren `hunt2/2026-11-24`, körd natten mot 25 nov): klar
+
+Täckte det buggjakt 1 inte gick igenom: länkar, innehåll, trasiga adresser, andra besök och nätfel. Playwright-skript lokalt och live.
+
+Länkkontroll, alla 685 unika externa länkar: 626 Wowhead-id:n (470 föremål, 152 quests, 4 npc) finns i Forever-datan via nether-tooltipen och namnen stämmer med länktexten; de 31 wiki-sidorna finns (wikins API, inga omdirigeringar); Icy Veins, Conquest Capped, Blizzard, GitHub, wow.gg, WoWCensus, classicdb, wow-professions och YouTube svarar 200; alla 14 zonbilder svarar 200. CurseForge (8) och Wowheads fyra guide-, nyhets- och startsidor svarar 403 mot skript och är inte kontrollerade. Inga döda interna `#`-länkar. Ingen decimalpunkt i svensk text.
+
+Rättat, live på 33325de (körning 45518473091 grön):
+- Sju armorvärden i Warrior-tabellen stod utan tusentalsmellanslag ("1548 armor"), nu "1 548". Sorteringen oförändrad (`data-sort-value` utan mellanslag). `site/test.mjs` fäller fyra siffror eller fler utan mellanslag i HTML-texten.
+- Alchemy-texten sade "runt 7,24 g", nu "runt 7 g" (inköpslistan summerar till 7 g 23 s). Testet fäller pengar som decimaltal ("7,24 g").
+- En avkapad länk med `%` i `#` (till exempel `#handel%`) kastade URIError i `visa()`: menyn fick ingen markering och undermenyn ritades inte. Nu blir det Roadmap.
+- Saknade sidor under /wow/ gav GitHub Pages engelska 404 utan väg tillbaka. Ny `site/404.html` (svensk, noindex, länk till Roadmap). Kontrollerat live på `/wow/finnsinte` och `/wow/a/b/c.html` i 390 och 1440 px.
+
+Prövat utan fel: andra besök behåller bockarna, okänd `#`, zonbilder och typsnitt blockerade (kartrutan visar koordinater och Wowhead-länk, bilden blir tom). Inte rättat:
+- Laddar en modul inte (nätfel) visas bara den statiska texten och tomma tabeller, utan felmeddelande. CSP:n stoppar inline-skript, så ett meddelande kräver ett eget litet skript; P3 i BACKLOG.
+- Sparad bockdata som inte är ett objekt (till exempel `[]` i `localStorage`) gör att nya bockar tyst inte sparas. Kan bara uppstå om någon ändrar lagringen för hand, så inte rättat.

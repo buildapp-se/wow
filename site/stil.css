@@ -19,6 +19,9 @@
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+/* Syns efter 6 s om app.js inte tagit bort den: en modul laddades inte eller kastade. Ingen JS behövs, CSP:n stoppar inline-skript. */
+#laddfel { position: fixed; inset: auto 16px 16px; z-index: 9; margin: 0; padding: 12px 16px; background: var(--mässing); color: #0e2f6e; font-weight: 600; visibility: hidden; animation: laddfel 0s 6s forwards; }
+@keyframes laddfel { to { visibility: visible; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body {
   margin: 0;

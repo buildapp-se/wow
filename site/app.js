@@ -237,3 +237,4 @@ $("#gear tbody").innerHTML = GEAR.map(([niva, plats, id, namn, krav, int, kalla]
 document.querySelectorAll("table[data-sort-key]").forEach(sortable);
 // Sist, när allt är renderat: annars hamnar en direktlänk till en rubrik fel när innehållet ovanför växer.
 visa();
+$("#laddfel").remove();

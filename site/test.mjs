@@ -118,6 +118,9 @@ assert.match(html, /<meta http-equiv="Content-Security-Policy" content="default-
 // Filerna cachas i 4 h. Utan version i adressen möter ny HTML gammal app.js och sidan blir tom.
 assert.match(html, /app\.js\?v=dev/);
 assert.match(html, /stil\.css\?v=dev/);
+// Felrutan visas av stil.css efter 6 s om app.js inte kommit till sista raden och tagit bort den.
+assert.match(html, /<p id="laddfel"/);
+assert.match(readFileSync(new URL("./app.js", import.meta.url), "utf8").trimEnd(), /\$\("#laddfel"\)\.remove\(\);$/);
 const importer = readFileSync(new URL("./app.js", import.meta.url), "utf8").match(/from "\.\/[a-z]+\.js\?v=dev"/g);
 assert.equal(importer.length, 4);
 // modulepreload hämtar modulerna parallellt med app.js. Fel adress ger dubbel hämtning i stället.

@@ -7,9 +7,10 @@ const $ = (s) => document.querySelector(s);
 
 // ponytail: bockarna ligger bara i webbläsaren, delad lista kräver backend och ingen har bett om det.
 const KEY = "wow-forever-bockar";
-let saved = {};
-try { saved = JSON.parse(localStorage.getItem(KEY)) ?? {}; } catch {}
-const save = () => { try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch {} };
+// Läses om före varje sparning: två flikar skrev annars över varandras bockar.
+const load = () => { try { const v = JSON.parse(localStorage.getItem(KEY)); if (v && typeof v === "object" && !Array.isArray(v)) return v; } catch {} return {}; };
+let saved = load();
+const save = (id, on) => { saved = { ...load(), [id]: on }; try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch {} };
 const box = (id, label) => `<label class="bock"><input type="checkbox" data-id="${id}"><span>${label}</span></label>`;
 
 const chips = (el, name, options, value) => {
@@ -168,15 +169,16 @@ function count() {
   $("#nasta").textContent = next ? `Nästa belöning: ${next.name} vid ${next.at} poäng.` : "Alla belöningar upplåsta.";
 }
 
-document.querySelectorAll("input[data-id]").forEach((i) => { i.checked = !!saved[i.dataset.id]; });
-count();
+const visaBockar = () => { document.querySelectorAll("input[data-id]").forEach((i) => { i.checked = !!saved[i.dataset.id]; }); count(); };
+visaBockar();
+// En bock i en annan flik syns direkt här.
+addEventListener("storage", (e) => { if (e.key === KEY) { saved = load(); visaBockar(); } });
 
 document.addEventListener("change", (e) => {
   if (e.target.name === "klass" || e.target.name === "mal") return renderBuild();
   if (e.target.name === "rutt") { renderRutt(); mynt($("#rutt")); return; }
   if (e.target.type !== "checkbox" || !e.target.dataset.id) return;
-  saved[e.target.dataset.id] = e.target.checked;
-  save();
+  save(e.target.dataset.id, e.target.checked);
   count();
 });
 

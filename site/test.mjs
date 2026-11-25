@@ -115,6 +115,8 @@ assert.equal(importer.length, 4);
 // modulepreload hämtar modulerna parallellt med app.js. Fel adress ger dubbel hämtning i stället.
 assert.deepEqual([...html.matchAll(/rel="modulepreload" href="([a-z]+\.js\?v=dev)"/g)].map((m) => m[1]).sort(), importer.map((s) => s.slice(8, -1)).sort());
 assert.ok(!allText.includes("—"), "inget tankstreck i texten");
+// Svensk text: tusentalsmellanslag ("1 548 armor", inte "1548 armor").
+assert.deepEqual(html.replace(/<[^>]*>/g, " ").match(/(?<![\d.,\/=#?:-])\d{4,}(?= [a-zåäö])/gi), null, "tal utan tusentalsmellanslag");
 assert.ok(!/Gemini|Ej belagt/i.test(allText), "ingen faktakollstext på sidan");
 assert.ok(PHASES.every((f) => f.gor.length), "varje fas har något att göra");
 // En cell som börjar med ett pris ("8 k", "13 s 19 k") sorterar som text utan data-sort-value: 8 k hamnade mellan 5 s och 8 s.

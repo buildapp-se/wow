@@ -9,6 +9,10 @@ export function pris(c) {
   return [gold && `${String(gold).replace(/\B(?=(\d{3})+$)/g, " ")} g`, silver && `${silver} s`, kop && `${kop} k`].filter(Boolean).join(" ") || "0";
 }
 
+// Bockens nyckel byggs av texten utan taggar, länkar, siffror och priser: nya priser behåller bocken,
+// och en rad som läggs till eller tas bort flyttar inte andras bockar. Ny formulering tappar bocken.
+export const bockId = (typ, text) => `${typ}-${text.replace(/<[^>]*>|\[\w+:\w+\]|\d[\d ]*(?:[gsk]\b)?/g, " ").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z]+/g, "-").replace(/^-|-$/g, "").slice(0, 60)}`;
+
 // AH-median i koppar, wow.gg EU Alliance PvE 24 nov kväll. Riktpris är medianen, maxpris hälften (samma regel som Dyra föremål).
 const AH24 = { "Pristine Leather": 369, "Frilled Lichen": 4030, "Rosecap": 895, "Bauxite": 1138, "Pristine Hide": 395, "Stranglevine": 2740, "Pitchblende": 2705, "Pristine Scale": 3900, "Death Lotus": 72899, "Fel Crystal": 97900, "Torbernite": 29898, "Black Lotus": 87778, "Arcane Crystal": 138997, "Elemental Fire": 3949, "Dreamfoil": 1848, "Heart of Fire": 10600, "Bronze Tube": 1243, "Bronze Framework": 850, "Gyrochronatom": 790, "Mithril Casing": 3600, "Frost Oil": 2396, "Free Action Potion": 840 };
 const avrunda = (c, f = Math.round) => c < g ? f(c / 10) * 10 : f(c / s) * s;

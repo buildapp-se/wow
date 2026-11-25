@@ -1,5 +1,5 @@
 import { PERKS, TREES, CLASSES, GOALS, CHALLENGES, REWARDS, buildFor, stegFor } from "./data.js?v=dev";
-import { PHASES, PLAN, PLATSER, RUTTER, BOE, golv, GANTT, MILSTOLPAR, RECEPT, START, SLUT, dag, datum, pris, wh } from "./plan.js?v=dev";
+import { PHASES, PLAN, PLATSER, RUTTER, BOE, golv, GANTT, MILSTOLPAR, RECEPT, START, SLUT, dag, datum, pris, wh, bockId } from "./plan.js?v=dev";
 import { initSortable, sortable } from "./sortable.js?v=dev";
 import { GEAR } from "./mage.js?v=dev";
 
@@ -11,6 +11,17 @@ const KEY = "wow-forever-bockar";
 const load = () => { try { const v = JSON.parse(localStorage.getItem(KEY)); if (v && typeof v === "object" && !Array.isArray(v)) return v; } catch {} return {}; };
 let saved = load();
 const save = (id, on) => { saved = { ...load(), [id]: on }; try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch {} };
+// Bockarna hade nyckel efter plats i listan (p1-2, plang0-1, plan7-2): en ny rad flyttade sparade bockar till fel rad.
+// Nu nyckel efter text (bockId). flytt minns gammal nyckel till ny så att sparade bockar följer med en gång.
+// ponytail: samma text två gånger får -2, -3 i ordning, så bara identiska rader kan byta bock med varandra.
+const anvanda = new Set(), flytt = {};
+const nyId = (gammal, bas) => {
+  let id = bas, n = 1;
+  while (anvanda.has(id)) id = `${bas}-${++n}`;
+  anvanda.add(id);
+  flytt[gammal] = id;
+  return id;
+};
 const box = (id, label) => `<label class="bock"><input type="checkbox" data-id="${id}"><span>${label}</span></label>`;
 
 const chips = (el, name, options, value) => {
@@ -36,7 +47,7 @@ $("#tidslinje").innerHTML = PHASES.map((f, i) => `<li>
   <div class="steg-kort">
     <h3>${f.titel}</h3>
     <div class="kolumner">
-      <div><h4>Gör</h4>${f.gor.map((t, n) => box(`p${i}-${n}`, t)).join("")}</div>
+      <div><h4>Gör</h4>${f.gor.map((t, n) => box(nyId(`p${i}-${n}`, bockId("p", t)), t)).join("")}</div>
       ${f.kop ? `<div><h4>Köp</h4><ul>${f.kop.map((t) => `<li>${t}</li>`).join("")}</ul></div>` : ""}
       ${f.salj ? `<div><h4>Sälj</h4><ul>${f.salj.map((t) => `<li>${t}</li>`).join("")}</ul></div>` : ""}
       ${f.inte ? `<div class="inte"><h4>Gör inte</h4><ul>${f.inte.map((t) => `<li>${t}</li>`).join("")}</ul></div>` : ""}
@@ -117,9 +128,9 @@ $("#plan tbody").innerHTML = PLAN.map((f, n) => {
   const kapital = f.rader.filter((r) => r.typ === "Spara" && r.kop).reduce((a, r) => a + r.antal * r.kop, 0);
   const cell = `<th class="plan-fas" scope="rowgroup" rowspan="${f.rader.length + 1}"><div><b>${f.fas}</b><small>${f.tid}</small>
     ${f.budget ? `<small>${f.budget}</small>` : ""}${kapital ? `<small>Spara för högst ${pris(kapital)}</small>` : ""}</div></th>`;
-  return `<tr class="plan-start">${cell}<td colspan="9" class="plan-gor">${f.gor.map((t, i) => box(`plang${n}-${i}`, lankar(t))).join("")}</td></tr>`
+  return `<tr class="plan-start">${cell}<td colspan="9" class="plan-gor">${f.gor.map((t, i) => box(nyId(`plang${n}-${i}`, bockId("plang", t)), lankar(t))).join("")}</td></tr>`
     + f.rader.map((r, i) => `<tr>
-    <td class="kryss"><label class="bock"><input type="checkbox" data-id="plan${n}-${i}" aria-label="Klart: ${r.vad}"></label></td>
+    <td class="kryss"><label class="bock"><input type="checkbox" data-id="${nyId(`plan${n}-${i}`, bockId("plan", `${r.typ} ${r.vad}`))}" aria-label="Klart: ${r.vad}"></label></td>
     <td><span class="typ ${typKlass[r.typ]}">${r.typ}</span></td>
     <td>${r.id ? `<a href="${wh("item", r.id)}" rel="noopener"><strong>${r.vad}</strong></a>` : r.vad}</td>
     <td>${r.antal ?? ""}</td><td>${r.kop ? pris(r.kop) : r.kopText ?? ""}</td>
@@ -169,6 +180,13 @@ function count() {
   $("#nasta").textContent = next ? `Nästa belöning: ${next.name} vid ${next.at} poäng.` : "Alla belöningar upplåsta.";
 }
 
+const GAMMAL = /^(p|plang?)\d+-\d+$/;
+if (Object.keys(saved).some((k) => GAMMAL.test(k))) {
+  const ny = {};
+  for (const [k, v] of Object.entries(saved)) if (!GAMMAL.test(k)) ny[k] = v; else if (flytt[k]) ny[flytt[k]] ??= v;
+  saved = ny;
+  try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch {}
+}
 const visaBockar = () => { document.querySelectorAll("input[data-id]").forEach((i) => { i.checked = !!saved[i.dataset.id]; }); count(); };
 visaBockar();
 // En bock i en annan flik syns direkt här.

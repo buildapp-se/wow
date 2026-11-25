@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 import { PERKS, CLASSES, GOALS, CHALLENGES, buildFor, buildError, stegFor } from "./data.js";
 import { GEAR } from "./mage.js";
 import { numberOf, cellValue, compareValues, orderedRows, sortable, initSortable } from "./sortable.js";
-import { wh, HANDEL, PLAN, PLATSER, RUTTER, BOE, golv, PHASES, RECEPT, GANTT, MILSTOLPAR, START, SLUT, dag, datum, pris, rikt } from "./plan.js";
+import { wh, HANDEL, PLAN, PLATSER, RUTTER, BOE, golv, PHASES, RECEPT, GANTT, MILSTOLPAR, START, SLUT, dag, datum, pris, rikt, bockId } from "./plan.js";
 
 assert.equal(Object.keys(PERKS).length, 21, "Blizzard anger 21 perkar");
 assert.equal(CHALLENGES.reduce((a, c) => a + c.points, 0), 65, "Blizzard anger 65 utmaningar");
@@ -88,6 +88,10 @@ assert.equal(kostnad("Bronze Tube"), 488);
 // Riktpris är AH-medianen avrundad, maxpris hälften nedåt: under 1 g till 10 k, annars till hela silver.
 assert.deepEqual(rikt("Pristine Leather"), { salj: 370, kop: 180 });
 assert.deepEqual(rikt("Death Lotus"), { salj: 72900, kop: 36400 }); // maxpriset avrundas nedåt
+// Bockens nyckel: nya priser och antal behåller bocken.
+assert.equal(bockId("p", "Köp 20 <a href=\"x\">Linen</a> för högst 4 g 50 s [plats:bank]"), bockId("p", "Köp 5 <a>Linen</a> för högst 1 g 5 k"));
+assert.equal(bockId("plan", "Sälj Bronze Tube 15 s eller mer"), "plan-salj-bronze-tube-eller-mer");
+for (const t of [...PHASES.flatMap((f) => f.gor), ...PLAN.flatMap((f) => f.gor)]) assert.ok(bockId("p", t).length > 8, `tom bocknyckel: ${t}`);
 for (const r of RECEPT) assert.ok(r.salj > r.kostnad && r.salj > r.vendor, r.vad);
 // 1 Gold Bar plus 3 Iron Bar för högst 18 s ger 3 Gyrochronatom för 22 s 50 k hos vendor.
 assert.ok(3 * RECEPT.find((r) => r.vad === "Gyrochronatom").vendor > 1800);

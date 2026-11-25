@@ -4,7 +4,7 @@ status: active
 currentGoal: Handlingsplanen är live på buildapp.se/wow inför släppet 5 november 2026
 nextAction: Efter släppet: byt riktpriserna i site/plan.js mot riktiga AH-priser, se BACKLOG.md
 blockers: []
-reviewedAt: 2026-11-24
+reviewedAt: 2026-11-25
 ---
 
 # Handoff
@@ -184,3 +184,14 @@ Rättat, live på 33325de (körning 45518473091 grön):
 Prövat utan fel: andra besök behåller bockarna, okänd `#`, zonbilder och typsnitt blockerade (kartrutan visar koordinater och Wowhead-länk, bilden blir tom). Inte rättat:
 - Laddar en modul inte (nätfel) visas bara den statiska texten och tomma tabeller, utan felmeddelande. CSP:n stoppar inline-skript, så ett meddelande kräver ett eget litet skript; P3 i BACKLOG.
 - Sparad bockdata som inte är ett objekt (till exempel `[]` i `localStorage`) gör att nya bockar tyst inte sparas. Kan bara uppstå om någon ändrar lagringen för hand, så inte rättat.
+
+## 2026-11-25: fart, tillgänglighet och metadata (agent, worktree `_wt/wow-1125s`, gren `speed/2026-11-25`): klar
+
+Mätt live med headless Playwright i alla åtta vyer, 390 px med 4x CPU och Slow 4G och 1440 px, före och efter deploy. Live på 4db2758 (körning 45525464843 grön).
+
+- Typsnitten självhostade i `site/fonts/` (sex latin-`.woff2`, Google Fonts OFL), CSP:n `style-src` och `font-src` bara `'self'`, även i `404.html`, som nu också får typsnitten (kontrollerat live på `/wow/finnsinte`). Render-blockerande före: Google Fonts-CSS:en och `stil.css`, efter: bara `stil.css`. Preload av tre typsnitt prövades och togs bort: FCP 1 204 ms mot 984 ms utan (median av 5, lokalt).
+- CLS på Roadmap 390 px 0,23 till 0,003: tidslinjen ritas av `app.js` och sköt ner "Main och alts". `.tidslinje:empty` håller platsen.
+- axe-core: före 1 fel per vy (Roadmap hoppade h1 till h3, de andra sju saknade h1), efter 0 i alla 16. Vyrubrikerna är `h1.vyrubrik`, underrubrikerna i de sju vyerna `h2.del` (ser ut som förut), Legacy-byggets rubrik `h3`, och en dold `h2` "Tidslinje" före tidslinjen. Skärmbilder före och efter pixelidentiska utom menyns scrollläge i 390 px.
+- Metadata: `lang="sv"`, unik titel och beskrivning, favicon. Sidan är `noindex` och olistad, så canonical och Open Graph-bild lades inte till; ingen PWA.
+
+Kvar i BACKLOG (P3): CLS 0,08 till 0,11 av typsnittsbytet i tre vyer, och 4 h cachetid på versionerade filer (Cloudflare-inställning).

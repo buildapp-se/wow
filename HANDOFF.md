@@ -195,3 +195,11 @@ Mätt live med headless Playwright i alla åtta vyer, 390 px med 4x CPU och Slow
 - Metadata: `lang="sv"`, unik titel och beskrivning, favicon. Sidan är `noindex` och olistad, så canonical och Open Graph-bild lades inte till; ingen PWA.
 
 Kvar i BACKLOG (P3): CLS 0,08 till 0,11 av typsnittsbytet i tre vyer, och 4 h cachetid på versionerade filer (Cloudflare-inställning).
+
+## 2026-11-25: scenariojakt (agent, worktree `_wt/wow-1125c`, gren `scen/2026-11-25`): klar
+
+Flerstegsscenarier med headless Playwright mot lokal server: en vecka i komprimerad form (bocka i tre vyer, ladda om, avbocka, Legacy-räknaren, tillbaka-knappen), två flikar, alla 196 bockar satta (omladdning 118 ms lokalt), gårdagens sparade läge mot dagens bygge, trasig sparad data, kartrutan öppen när bredden byts 390 till 1440 och tillbaka, och en modul som inte laddas. Sidan har ingen inloggning, ingen import eller export och ingen service worker, så de scenarierna finns inte.
+
+Rättat (BACKLOG har detaljerna): två flikar skrev över varandras bockar; bockarnas nyckel var plats i listan, så nya eller borttagna rader flyttade sparade bockar (det som buggjakt 1 lämnade); sparad data som inte var ett objekt tappade nya bockar; en modul som inte laddas ger nu en uppmaning att ladda om. Utan fel: vecka, volym, breddbyte, tillbaka-knappen.
+
+Inte gjort: fallback-typsnitt mot CLS (BACKLOG P3, går inte att belägga på telefoner). En flik som fortfarande kör gammal `app.js` (cache 4 h) kan skriva platsnycklar; nästa laddning flyttar dem efter dagens ordning.

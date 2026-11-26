@@ -10,7 +10,7 @@ Privat samlingssida för oss som börjar spela WoW: Forever (släpp 5 november 2
 
 ## Gruppen
 
-Patrik spelar Gnome Mage med Mining och Engineering, plus bank-alt med Tailoring och Enchanting (hans egna val) och, från 21 november, en Warrior-alt med Blacksmithing (Mining som andra yrke är mitt antagande, inte hans besked). Sambon spelar Hunter med Skinning och Leatherworking. Övriga: Protection Warrior, Priest, Druid och en Warrior som spelar mer sällan. Patrik har också en Rogue-alt med Skinning och Herbalism (11 november). Altplanen under Roadmap visar de fyra som finns i spelordning, sedan förslagen Paladin (fyller den roll som saknas) och Hunter. Legacy räknas per konto, så andras yrken ger inte Patrik poäng.
+Patrik spelar Gnome Mage med Mining och Engineering, plus bank-alt med Tailoring och Enchanting (hans egna val) och, från 21 november, en Warrior-alt med Blacksmithing och Alchemy (Patriks besked 26 november). Sambon spelar Hunter med Skinning och Leatherworking. Övriga: Protection Warrior, Priest, Druid och en Warrior som spelar mer sällan. Patrik har också en Rogue-alt med Skinning och Herbalism (11 november). Altplanen under Roadmap visar de fyra som finns i spelordning, sedan förslagen Paladin (fyller den roll som saknas) och Hunter. Legacy räknas per konto, så andras yrken ger inte Patrik poäng.
 
 ## Regler för innehållet
 
